@@ -115,18 +115,21 @@
   .hermes-head { background: #FAF7F1; }
   .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
   .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
-    font-family: 'Noto Sans SC', sans-serif; font-weight: 700;
-    font-size: 21px; letter-spacing: 10px; text-indent: 10px; }
-  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 400;
-    font-size: 11px; letter-spacing: 7px; text-indent: 7px; color: #8B8B8B; margin-top: 7px; }
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 20px; letter-spacing: 8px; text-indent: 8px; }
+  .wordmark span { display: block; font-family: 'Noto Sans SC', sans-serif; font-weight: 400;
+    font-size: 12px; letter-spacing: 10px; text-indent: 10px; color: #8B8B8B; margin-top: 6px; }
   .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
     background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
-  .nav-links { max-width: 760px; margin: 0 auto; padding: 0 24px; height: 49px;
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
     display: flex; align-items: center; justify-content: center; gap: 36px; }
-  .nav-links a { color: #342C2C; text-decoration: none; font-size: 12px; font-weight: 400;
-    letter-spacing: 2px; padding: 8px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
-  .nav-links a:hover { border-bottom-color: #342C2C; }
-  .nav-links a.active { color: #A8894F; border-bottom-color: #A8894F; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
   .nav-toggle { display: none; }
   @media (max-width: 640px) {
     .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
@@ -135,7 +138,7 @@
     .nav-strip { display: none; }
     .nav-strip.open { display: block; }
     .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
-    .nav-links a { padding: 15px 24px; font-size: 13px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
     .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
   }
 
@@ -146,7 +149,8 @@
     min-width: 230px; padding: 10px 0; z-index: 101; }
   .has-menu:hover .mega { display: block; }
   .mega a { display: flex !important; align-items: baseline; gap: 14px;
-    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap; }
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
   .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
   .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
   .mega a:hover { background: rgba(52,44,44,.045); }
@@ -157,14 +161,14 @@
 <header class="hermes-head">
   <div class="brand-bar">
     <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
-    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+    <a class="wordmark" href="../index.html">CURTAINRAISER<span>卷帘人</span></a>
   </div>
 </header>
 <nav class="nav-strip">
     <div class="nav-links">
-      <a href="../index.html">首页</a>
+      <a href="../index.html"><b>HOME</b><span>首页</span></a>
       <div class="has-menu">
-      <a href="../roadmap/index.html">六个月</a>
+      <a href="../roadmap/index.html"><b>6 MONTHS</b><span>六个月</span></a>
       <div class="mega">
         <a href="../roadmap/index.html#m1"><b>M1</b><span>打基础</span></a>
         <a href="../roadmap/index.html#m2"><b>M2</b><span>玩转大模型</span></a>
@@ -174,9 +178,9 @@
         <a href="../roadmap/index.html#m6"><b>M6</b><span>选方向</span></a>
       </div>
     </div>
-      <a href="../library/index.html">资料库</a>
-      <a href="../log/index.html" class="active">笔记本</a>
-      <a href="../fundamentals/index.html">字卡</a>
+      <a href="../library/index.html"><b>LIBRARY</b><span>资料库</span></a>
+      <a href="../log/index.html" class="active"><b>NOTEBOOK</b><span>笔记本</span></a>
+      <a href="../fundamentals/index.html"><b>FLASHCARDS</b><span>字卡</span></a>
     </div>
 </nav>
 <div class="wrap">
