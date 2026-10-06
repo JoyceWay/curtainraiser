@@ -110,50 +110,54 @@
     font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
   }
 
-  /* Apple-style fixed frosted navbar */
-  body { padding-top: 52px; }
-  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 52px;
-    background: rgba(250,247,241,.78);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(42,42,40,.08); }
-  .nav-inner { max-width: 680px; margin: 0 auto; padding: 0 24px; height: 52px;
-    display: flex; align-items: center; justify-content: space-between; }
-  .nav-brand { font-size: 14px; font-weight: 700; letter-spacing: 3px; color: #342C2C; text-decoration: none; white-space: nowrap; }
-  .nav-brand .en { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 12px; letter-spacing: 1px; color: #8B8B8B; margin-left: 8px; }
-  .nav-links { display: flex; align-items: center; gap: 26px; }
-  .nav-links a { color: rgba(52,44,44,.72); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 2px; padding: 6px 0; border-bottom: 2px solid transparent; }
-  .nav-links a:hover { color: #342C2C; }
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Noto Sans SC', sans-serif; font-weight: 700;
+    font-size: 21px; letter-spacing: 10px; text-indent: 10px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 400;
+    font-size: 11px; letter-spacing: 7px; text-indent: 7px; color: #8B8B8B; margin-top: 7px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 0 24px; height: 49px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links a { color: #342C2C; text-decoration: none; font-size: 12px; font-weight: 400;
+    letter-spacing: 2px; padding: 8px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links a:hover { border-bottom-color: #342C2C; }
   .nav-links a.active { color: #A8894F; border-bottom-color: #A8894F; }
-  .nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 10px 4px; }
-  .nav-toggle span { display: block; width: 20px; height: 2px; background: #342C2C; margin: 5px 0; border-radius: 1px; }
+  .nav-toggle { display: none; }
   @media (max-width: 640px) {
-    .nav-toggle { display: block; }
-    .nav-links { display: none; position: absolute; top: 52px; left: 0; right: 0;
-      flex-direction: column; align-items: stretch; gap: 0;
-      background: #FAF7F1; border-bottom: 1px solid rgba(42,42,40,.08); }
-    .nav-links.open { display: flex; }
-    .nav-links a { padding: 14px 24px; font-size: 14px; border-bottom: 1px solid rgba(42,42,40,.06); }
-    .nav-links a.active { border-bottom: 1px solid rgba(42,42,40,.06); border-left: 3px solid #A8894F; padding-left: 21px; }
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links a { padding: 15px 24px; font-size: 13px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
   }
 </style>
 </head>
 <body>
-<div class="wrap">
-
-  <nav class="nav">
-    <div class="nav-inner">
-      <a class="nav-brand" href="../index.html">卷帘人<span class="en">CurtainRaiser</span></a>
-      <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
-      <div class="nav-links">
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
       <a href="../index.html">首页</a>
       <a href="../roadmap/index.html">六个月</a>
       <a href="../library/index.html">资料库</a>
       <a href="../log/index.html" class="active">笔记本</a>
       <a href="../fundamentals/index.html">字卡</a>
-      </div>
     </div>
-  </nav>
+</nav>
+<div class="wrap">
+
 
   <div class="kicker">DAY 1 · 2026-10-05</div>
   <h1>P0 开工：用 Antigravity 建真网站</h1>
@@ -321,8 +325,8 @@ document.querySelectorAll('.plan li').forEach(li => {
 });
 </script>
 <script>
-var _nt=document.querySelector(".nav-toggle"),_nl=document.querySelector(".nav-links");
-if(_nt&&_nl){_nt.addEventListener("click",function(){_nl.classList.toggle("open");});}
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
 </script>
 </body>
 </html>

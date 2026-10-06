@@ -9,28 +9,24 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="wrap">
-
-  <header class="site-head">
-    <div class="brand-cn">卷帘人</div>
-    <div class="brand-en">CurtainRaiser</div>
-    <div class="brand-tag">小白与技术大拿之间的桥梁</div>
-    <hr class="gold-rule">
-  </header>
-
-  <nav class="nav">
-    <div class="nav-inner">
-      <a class="nav-brand" href="index.html">卷帘人<span class="en">CurtainRaiser</span></a>
-      <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
-      <div class="nav-links">
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
       <a href="index.html" class="active">首页</a>
       <a href="roadmap/index.html">六个月</a>
       <a href="library/index.html">资料库</a>
       <a href="log/index.html">笔记本</a>
       <a href="fundamentals/index.html">字卡</a>
-      </div>
     </div>
-  </nav>
+</nav>
+<div class="wrap">
+
+<div class="tagline">小白与技术大拿之间的桥梁</div>
 
   <section class="hero">
     <h1>把难的东西，讲简单。</h1>
@@ -103,8 +99,8 @@
 
 </div>
 <script>
-var _nt=document.querySelector(".nav-toggle"),_nl=document.querySelector(".nav-links");
-if(_nt&&_nl){_nt.addEventListener("click",function(){_nl.classList.toggle("open");});}
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
 </script>
 </body>
 </html>

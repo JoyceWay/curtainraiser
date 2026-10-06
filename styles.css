@@ -30,33 +30,36 @@ body {
              margin: 28px auto; }
 
 /* nav */
-/* nav — Apple-style fixed frosted navbar */
-body { padding-top: 52px; }
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 52px;
-  background: rgba(250,247,241,.78);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(42,42,40,.08); }
-.nav-inner { max-width: 680px; margin: 0 auto; padding: 0 24px; height: 52px;
-  display: flex; align-items: center; justify-content: space-between; }
-.nav-brand { font-size: 14px; font-weight: 700; letter-spacing: 3px; color: var(--ink); text-decoration: none; white-space: nowrap; }
-.nav-brand .en { font-family: "EB Garamond", Georgia, serif; font-weight: 400; font-size: 12px; letter-spacing: 1px; color: var(--ink-soft); margin-left: 8px; }
-.nav-links { display: flex; align-items: center; gap: 26px; }
-.nav-links a { color: rgba(42,42,40,.72); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 2px; padding: 6px 0; border-bottom: 2px solid transparent; }
-.nav-links a:hover { color: var(--ink); }
+/* header — Hermès-style two-tier: brand bar + sticky nav strip */
+body { padding-top: 0; }
+.hermes-head { background: var(--paper); }
+.brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+.wordmark { display: inline-block; text-decoration: none; color: var(--ink);
+  font-family: "Noto Serif SC", "Songti SC", serif; font-weight: 600;
+  font-size: 21px; letter-spacing: 10px; text-indent: 10px; }
+.wordmark span { display: block; font-family: "EB Garamond", Georgia, serif; font-weight: 400;
+  font-size: 11px; letter-spacing: 7px; text-indent: 7px; color: var(--ink-soft); margin-top: 7px; }
+.nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+  background: var(--paper); border-bottom: 1px solid rgba(42,42,40,.14); }
+.nav-links { max-width: 760px; margin: 0 auto; padding: 0 24px; height: 49px;
+  display: flex; align-items: center; justify-content: center; gap: 36px; }
+.nav-links a { color: var(--ink); text-decoration: none; font-size: 12px; font-weight: 400;
+  letter-spacing: 2px; padding: 8px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+.nav-links a:hover { border-bottom-color: var(--ink); }
 .nav-links a.active { color: var(--gold); border-bottom-color: var(--gold); }
-.nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 10px 4px; }
-.nav-toggle span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 5px 0; border-radius: 1px; }
+.nav-toggle { display: none; }
+.tagline { text-align: center; font-size: 14px; letter-spacing: 4px; text-indent: 4px;
+  color: var(--ink-soft); padding: 36px 24px 4px; }
 @media (max-width: 640px) {
-  .nav-toggle { display: block; }
-  .nav-links { display: none; position: absolute; top: 52px; left: 0; right: 0;
-    flex-direction: column; align-items: stretch; gap: 0;
-    background: var(--paper); border-bottom: 1px solid rgba(42,42,40,.08); }
-  .nav-links.open { display: flex; }
-  .nav-links a { padding: 14px 24px; font-size: 14px; border-bottom: 1px solid rgba(42,42,40,.06); }
-  .nav-links a.active { border-bottom: 1px solid rgba(42,42,40,.06); border-left: 3px solid var(--gold); padding-left: 21px; }
+  .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+    transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+  .nav-toggle span { display: block; width: 20px; height: 1px; background: var(--ink); margin: 6px 0; }
+  .nav-strip { display: none; }
+  .nav-strip.open { display: block; }
+  .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+  .nav-links a { padding: 15px 24px; font-size: 13px; border-bottom: 1px solid rgba(42,42,40,.07); }
+  .nav-links a.active { border-bottom-color: rgba(42,42,40,.07); border-left: 3px solid var(--gold); padding-left: 21px; }
 }
-
 /* hero */
 .hero { text-align: center; padding: 40px 0 20px; }
 .hero h1 { font-size: 27px; font-weight: 600; letter-spacing: 4px; margin-bottom: 18px; }
