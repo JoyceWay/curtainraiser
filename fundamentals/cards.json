@@ -1,1 +1,114 @@
-[{"day":0,"en":"change directory","example":"cd ai-engineer-roadmap-hub 进去；cd .. 回上一层","explain":"进目录：在文件夹之间走动。","term":"cd","topic":"Shell"},{"day":0,"en":"print working directory","example":"pwd → /Users/zhipengzhou/.../ai-engineer-roadmap-hub","explain":"显示你现在在哪。晕了就敲它。","term":"pwd","topic":"Shell"},{"day":0,"en":"list","example":"ls → index.html  styles.css  README.md；ls -la 看隐藏文件","explain":"列出当前目录里有什么。","term":"ls","topic":"Shell"},{"day":0,"en":"initialize","example":"跑完多出隐藏的 .git 文件夹，别删","explain":"开账本：在当前目录初始化仓库，主分支叫 main。一个项目只跑一次。","term":"git init -b main","topic":"Git"},{"day":0,"en":"add","example":"只加一个文件：git add index.html","explain":"点名：把所有改动放进暂存区，准备打包。","term":"git add -A","topic":"Git"},{"day":0,"en":"commit","example":"git commit -m \"首页改暖纸底\"","explain":"记一笔账：正式存成一个版本。备注写清干了什么。","term":"git commit -m \"备注\"","topic":"Git"},{"day":0,"en":"push","example":"用户名 JoyceWay，密码用 Personal Access Token","explain":"把本地账本抄送到 GitHub。-u 记住地址，以后光 git push 就行。","term":"git push -u origin main","topic":"Git"}]
+[
+  {
+    "day": 0,
+    "en": "change directory",
+    "example": "cd ai-engineer-roadmap-hub 进去；cd .. 回上一层",
+    "explain": "进目录：在文件夹之间走动。",
+    "term": "cd",
+    "topic": "Shell"
+  },
+  {
+    "day": 0,
+    "en": "print working directory",
+    "example": "pwd → /Users/zhipengzhou/.../ai-engineer-roadmap-hub",
+    "explain": "显示你现在在哪。晕了就敲它。",
+    "term": "pwd",
+    "topic": "Shell"
+  },
+  {
+    "day": 0,
+    "en": "list",
+    "example": "ls → index.html  styles.css  README.md；ls -la 看隐藏文件",
+    "explain": "列出当前目录里有什么。",
+    "term": "ls",
+    "topic": "Shell"
+  },
+  {
+    "day": 0,
+    "en": "initialize",
+    "example": "跑完多出隐藏的 .git 文件夹，别删",
+    "explain": "开账本：在当前目录初始化仓库，主分支叫 main。一个项目只跑一次。",
+    "term": "git init -b main",
+    "topic": "Git"
+  },
+  {
+    "day": 0,
+    "en": "add",
+    "example": "只加一个文件：git add index.html",
+    "explain": "点名：把所有改动放进暂存区，准备打包。",
+    "term": "git add -A",
+    "topic": "Git"
+  },
+  {
+    "day": 0,
+    "en": "commit",
+    "example": "git commit -m \"首页改暖纸底\"",
+    "explain": "记一笔账：正式存成一个版本。备注写清干了什么。",
+    "term": "git commit -m \"备注\"",
+    "topic": "Git"
+  },
+  {
+    "day": 0,
+    "en": "push",
+    "example": "用户名 JoyceWay，密码用 Personal Access Token",
+    "explain": "把本地账本抄送到 GitHub。-u 记住地址，以后光 git push 就行。",
+    "term": "git push -u origin main",
+    "topic": "Git"
+  },
+  {
+    "day": 1,
+    "topic": "Shell",
+    "term": "mkdir",
+    "en": "make directory",
+    "explain": "建新文件夹：在当前目录里造一个目录。",
+    "example": "mkdir fundamentals 就在网站目录下造了 fundamentals 文件夹"
+  },
+  {
+    "day": 1,
+    "topic": "Git",
+    "term": "git status",
+    "en": "",
+    "explain": "看工作区状态：哪些文件改了、哪些还没提交。",
+    "example": "git status 告诉你「哪些卡片写了还没 push」"
+  },
+  {
+    "day": 1,
+    "topic": "Python",
+    "term": "print",
+    "en": "",
+    "explain": "打印输出：把东西显示到屏幕上，调试的第一利器。",
+    "example": "print('hello'+' world') → hello world"
+  },
+  {
+    "day": 1,
+    "topic": "HTML/CSS",
+    "term": "<h1>",
+    "en": "heading 1",
+    "explain": "一级标题：网页上最大的标题，一页只放一个。",
+    "example": "<h1>我的学习卡片</h1> → 页面顶部大标题"
+  },
+  {
+    "day": 1,
+    "topic": "Prompt",
+    "term": "指定角色",
+    "en": "role prompting",
+    "explain": "给 AI 定身份：它按角色的水准和口吻回答。",
+    "example": "'你是 PCC 的 Python 老师，用一句话解释变量'"
+  },
+  {
+    "day": 1,
+    "topic": "AI 概念",
+    "term": "token",
+    "en": "",
+    "explain": "AI 看的最小单位：一个词、半个词或一个字。",
+    "example": "'hello world' 约 2 个 token，中文一个字约 1–2 个"
+  },
+  {
+    "day": 1,
+    "topic": "读代码",
+    "term": "Traceback",
+    "en": "",
+    "explain": "报错的路标：出错的文件、行号和原因都写在里面。",
+    "example": "从下往上读：最后一行是错误名，倒数第二是你的哪行代码炸了"
+  }
+]
