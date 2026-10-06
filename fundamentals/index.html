@@ -59,6 +59,7 @@
     <h2>基本功字卡</h2>
     <div class="sub en">FLASHCARDS</div>
     <p class="hint">点卡片翻面 · 每天 7 张，60 天一轮</p>
+    <p class="hint" id="filter-note" style="display:none"></p>
     <div class="cards" id="cards"></div>
   </section>
 
@@ -71,6 +72,17 @@
 <script>
 fetch('cards.json').then(r => r.json()).then(cards => {
   const box = document.getElementById('cards');
+  const note = document.getElementById('filter-note');
+  let topic = '';
+  try { topic = decodeURIComponent(location.hash.slice(1)); } catch (e) {}
+  if (topic) {
+    const hit = cards.filter(c => c.topic === topic);
+    if (hit.length) {
+      cards = hit;
+      note.style.display = '';
+      note.innerHTML = '只看【' + topic + '】 · <a href="#" id="show-all" style="color:var(--gold)">显示全部</a>';
+    }
+  }
   const days = [...new Set(cards.map(c => c.day))].sort((a, b) => b - a);
   days.forEach(d => {
     const h = document.createElement('div');
@@ -91,6 +103,12 @@ fetch('cards.json').then(r => r.json()).then(cards => {
       el.addEventListener('click', () => el.classList.toggle('flipped'));
       box.appendChild(el);
     });
+  });
+  const sa = document.getElementById('show-all');
+  if (sa) sa.addEventListener('click', e => {
+    e.preventDefault();
+    history.replaceState(null, '', location.pathname);
+    location.reload();
   });
 });
 </script>

@@ -65,7 +65,7 @@
   }
   .plan li.done .txt { opacity: .4; }
   .plan li.done .txt .zh { text-decoration: line-through; }
-  .note-item { margin-bottom: 36px; }
+  .note-item { margin-bottom: 40px; }
   .note-item h3 { font-size: 20px; font-weight: 700; margin: 0 0 10px; }
   .note-item p { font-size: 18px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
   .note-item p.en {
@@ -88,6 +88,21 @@
     font-family: 'Inter', sans-serif; letter-spacing: 1px;
   }
   .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  a.topic:hover { background: rgba(102,172,53,.12); }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 17px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
   .foot {
     margin-top: 72px; padding-top: 24px;
     border-top: 1px solid rgba(52,44,44,.12);
@@ -116,46 +131,96 @@
   </ul>
 
   <h2>学习笔记</h2>
-  <div class="en-label">STUDY NOTES</div>
+  <div class="en-label">STUDY NOTES · 点徽章看这个知识点的面</div>
 
   <div class="note-item">
     <h3>1. P0：直接做真项目</h3>
+    <p><span class="topic">计划</span></p>
     <p>不做一次性玩具网站。P0 作业 = DeRonin 六个月中文实战站：把 DeRonin 的路线图做成中文学习站，学到哪章更新到哪章。</p>
     <p class="en">P0: build a real project from day one — a Chinese practice site based on DeRonin's 6-month roadmap.</p>
   </div>
 
   <div class="note-item">
     <h3>2. Prompt 铁律</h3>
+    <p><a class="topic" href="../fundamentals/index.html#Prompt">Prompt</a></p>
     <p>你不指定的，AI 就自己猜。语言、颜色、字数——想要什么就写什么。比如英文 prompt 不会自动生成中文网站，必须写：All page content must be bilingual: Simplified Chinese primary, English secondary.</p>
     <p class="en">Iron rule of prompting: what you don't specify, the AI guesses. Spell out everything.</p>
   </div>
 
   <div class="note-item">
     <h3>3. 网页三件套</h3>
+    <p><a class="topic" href="../fundamentals/index.html#HTML/CSS">HTML/CSS</a></p>
     <p>HTML 是骨架：决定页面上有什么。CSS 是衣服：决定长什么样。JS 是动作：决定点了会发生什么。</p>
     <p class="en">HTML is the skeleton, CSS the clothing, JS the behavior.</p>
   </div>
 
   <div class="note-item">
     <h3>4. CSS 三行</h3>
+    <p><a class="topic" href="../fundamentals/index.html#HTML/CSS">HTML/CSS</a></p>
     <p><code>max-width: 680px</code> 限宽，内容不铺满全屏。<code>margin: 0 auto</code> 居中（center）。<code>padding</code> 留白（whitespace）。</p>
     <p class="en">Three lines that shape a page: constrain width, center it, breathe with padding.</p>
   </div>
 
   <div class="note-item">
     <h3>5. 查色号</h3>
+    <p><a class="topic" href="../fundamentals/index.html#HTML/CSS">HTML/CSS</a></p>
     <p>Google 直接搜 <code>#XXXXXX</code>，色卡马上出来。DeRonin 站配色：背景 <code>#FAF7F1</code> 暖纸色，文字 <code>#2A2A28</code> 墨灰，点缀 <code>#A8894F</code> 哑光金。</p>
     <p class="en">Look up any hex code by Googling it. DeRonin site palette: warm paper, ink gray, matte gold.</p>
   </div>
 
   <div class="note-item">
-    <h3>6. 今日决定</h3>
-    <p>DeRonin 实战站：中英双语，中文为主。学习笔记：justfont 风——干净黑体 + 简体中文 + 30px 网格底。</p>
-    <p class="en">Decisions: bilingual site (Chinese first); notes in Justfont style — clean sans, Simplified Chinese, 30px grid.</p>
+    <h3>6. Git 三件套</h3>
+    <p><a class="topic" href="../fundamentals/index.html#Git">Git</a></p>
+    <p><code>git init -b main</code>：在文件夹里初始化一个仓库，主分支叫 main。从这一刻起，Git 开始盯着这个文件夹。</p>
+    <p><code>git add -A</code>：把所有文件放进暂存区——就是告诉 Git："这些，我要打包了。"</p>
+    <p><code>git commit -m "备注"</code>：正式打包成一个版本。备注写清楚这次干了什么，以后随时能回到这个版本。</p>
+    <p class="en">The git trio: init a repo on main, stage everything, commit a version with a clear message. You can always come back to any version.</p>
   </div>
 
   <div class="note-item">
-    <h3>7. 见贤思齐</h3>
+    <h3>7. GitHub 中转站模型</h3>
+    <p><a class="topic" href="../fundamentals/index.html#Git">Git</a></p>
+    <p>我的文件夹 ⇄ GitHub（中转站）⇄ 你的文件夹。git 走的不是"传文件"，是"对账本"——两边各自记账，push / pull 就是对账。</p>
+    <p><b>走来走去的文件</b>（网站本身）：<code>index.html</code> 骨架内容、<code>styles.css</code> 样子、<code>log/*.html</code> 每篇日志、<code>README.md</code> 说明书、<code>.nojekyll</code> 让 Pages 原样发布。</p>
+    <p><b>不走的</b>：我的后台（流量账本、文章包、图片素材）不上 GitHub；Antigravity 的 scratch 目录是草稿纸，push 后才进中转站。</p>
+    <p><b>GitHub 独家记的</b>：Pages 开关和部署记录、仓库设置、commit 公账——跟本地 <code>.git</code> 一样，但这份丢不了，是你电脑坏了之后的救命账。</p>
+    <p class="en">Git doesn't pass files around — it reconciles ledgers. GitHub is the cloud ledger you can always recover from.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>8. Shell：电脑的翻译官</h3>
+    <p><a class="topic" href="../fundamentals/index.html#Shell">Shell</a></p>
+    <p>Shell 就是你跟电脑说话的语言，终端是它的嘴。每一行都是"动词 + 对象"：<code>cd 文件夹</code> = 去那儿，<code>git push</code> = 推上去。</p>
+    <p><code>cd</code> 不是机器语言——机器语言是 0 和 1。Shell 把你的人话翻成操作系统能懂的指令：你 → shell → 操作系统 → 0 和 1。</p>
+    <p>常用 12 个：<code>pwd</code> 我在哪、<code>ls</code> 有啥、<code>cd</code> 进去、<code>mkdir</code> 新建文件夹、<code>git status/add/commit/push/pull/log</code> 记账五件套、<code>rm</code> 删除（不进回收站，用前先问）。</p>
+    <p>DOS 是亲戚：Mac 现在用 zsh，你 2003 年学的 <code>cd</code>、<code>mkdir</code> 照用，二十多年没变。唯一区别：当年 <code>dir</code> 现在叫 <code>ls</code>。</p>
+    <p class="en">Shell is how you talk to the computer. Code says what to do; shell is how you command it. An evergreen skill.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>9. Git 名字的由来</h3>
+    <p><a class="topic" href="../fundamentals/index.html#Git">Git</a></p>
+    <p>作者 Linus Torvalds（Linux 之父）起的。Git 在英式俚语里是"蠢货"——他原话："我是个自大的混蛋，所有项目都以自己命名。"名字是自嘲，工具是认真的。</p>
+    <p class="en">"Git" is British slang for "idiot" — Linus named it after himself, as a joke.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>10. 60 天基本功计划</h3>
+    <p><span class="topic">计划</span></p>
+    <p>7 个主题轮换：Shell、Git、Python、HTML/CSS、Prompt、AI 概念、读代码。每天一讲 7 条，60 天每主题从入门到进阶。字卡自动同步到本站字卡页。</p>
+    <p class="en">Seven topics on rotation, 7 bites a day, 60 days from basics to advanced. Flashcards auto-sync to this site.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>11. 今日决定</h3>
+    <p><span class="topic">计划</span></p>
+    <p>DeRonin 实战站：中英双语，中文为主。学习笔记：justfont 风——干净黑体 + 简体中文 + 30px 网格底。双站分工：DeRonin 站我亲手（P0），CurtainRaiser 他全权——不混。</p>
+    <p class="en">Decisions: bilingual DeRonin site (Chinese first); notes in Justfont style; hands-on P0 stays mine, CurtainRaiser stays his. No mixing.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>12. 见贤思齐</h3>
+    <p><span class="topic">素材</span></p>
     <blockquote>"找到好的素材要存起来，术业有专攻，直接见贤思齐更节省时间。"</blockquote>
     <p class="origin">——我的原话</p>
     <p><b>触因：</b>今天看 <a href="https://justfont.com/">justfont.com</a>，中文字体排版好看，网格底喜欢。字体设计师花四年磨一套字，我直接学做好的。</p>
@@ -163,13 +228,20 @@
     <p class="en">"Save good materials when you find them — specialization matters; learning from the best saves time." — my own words, after browsing justfont.com.</p>
   </div>
 
-  <div class="note-item">
-    <h3>8. Git 三件套</h3>
-    <p><code>git init -b main</code>：在文件夹里初始化一个仓库，主分支叫 main。从这一刻起，Git 开始盯着这个文件夹。</p>
-    <p><code>git add -A</code>：把所有文件放进暂存区——就是告诉 Git："这些，我要打包了。"</p>
-    <p><code>git commit -m "备注"</code>：正式打包成一个版本。备注写清楚这次干了什么，以后随时能回到这个版本。</p>
-    <p class="en">The git trio: init a repo on main, stage everything, commit a version with a clear message. You can always come back to any version.</p>
-  </div>
+  <h2>今日问答</h2>
+  <div class="en-label">Q&A · 会了就删</div>
+  <ul class="qa">
+    <li><span class="q">你做的 push 对应我在 Antigravity 手工做的哪步？</span><br><span class="a">commit / push / Pages 一样；你多 git init 和 remote add；授权你走 Token 我走设备码。</span></li>
+    <li><span class="q">Antigravity 终端快捷键？</span><br><span class="a">Ctrl + `（反引号）。</span></li>
+    <li><span class="q">Antigravity 编程 vs 你编程？</span><br><span class="a">它是练功房（本地、所见即所得），我是代驾 + 管家（云端、全包）。</span></li>
+    <li><span class="q">有你还需要学 vibe code 吗？</span><br><span class="a">要。看懂、指挥、验收三样谁也替不了你。</span></li>
+    <li><span class="q">你的代码能搬到本地吗？</span><br><span class="a">能。GitHub 是桥，我 push 你 pull。</span></li>
+    <li><span class="q">你能接管 Antigravity 吗？</span><br><span class="a">不能，它在你 Mac 上。</span></li>
+    <li><span class="q">要不要换 Claude Code？</span><br><span class="a">不用，跑完 P0 再决定。</span></li>
+    <li><span class="q">git 是什么意思？cd 是机器语言吗？</span><br><span class="a">git = Linus 自嘲"蠢货"；cd 是 shell 命令，机器语言是 0 和 1。</span></li>
+    <li><span class="q">是 DOS 语言吗？</span><br><span class="a">亲戚。Mac 用 zsh，cd/mkdir 照用，dir 改名 ls。</span></li>
+    <li><span class="q">Shell 算基本功吗？怎么学？</span><br><span class="a">算，常青技能。每天一讲混脸熟，60 天一轮。</span></li>
+  </ul>
 
   <div class="foot">CURTAINRAISER · 卷帘人 📜</div>
 
