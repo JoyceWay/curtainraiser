@@ -66,14 +66,14 @@
   .plan li.done .txt { opacity: .4; }
   .plan li.done .txt .zh { text-decoration: line-through; }
   .note-item { margin-bottom: 40px; }
-  .note-item h3 { font-size: 20px; font-weight: 700; margin: 0 0 10px; }
-  .note-item p { font-size: 18px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
   .note-item p.en {
     font-family: 'Inter', sans-serif;
-    font-size: 15px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
   }
   .note-item code {
-    font-family: 'Inter', monospace; font-size: 16px;
+    font-family: 'Inter', monospace; font-size: 14px;
     background: rgba(102,172,53,.1); color: #4E8A28;
     padding: 2px 8px; border-radius: 4px;
   }
@@ -81,7 +81,7 @@
   .note-item blockquote {
     margin: 0 0 8px; padding: 4px 0 4px 16px;
     border-left: 3px solid #66AC35;
-    font-size: 20px; font-weight: 500; line-height: 1.65; color: #342C2C;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
   }
   .note-item .origin {
     font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
@@ -98,11 +98,21 @@
   .qa { list-style: none; margin: 0; padding: 0; }
   .qa li {
     padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
-    font-size: 17px; line-height: 1.7;
+    font-size: 16px; line-height: 1.7;
   }
   .qa li:last-child { border-bottom: none; }
   .qa .q { font-weight: 700; }
   .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
   .foot {
     margin-top: 72px; padding-top: 24px;
     border-top: 1px solid rgba(52,44,44,.12);
@@ -199,29 +209,51 @@
   <div class="note-item">
     <h3>2. 硬数字</h3>
     <p><span class="topic">数字</span></p>
-    <p>定价：免费 / <code>$9.99</code>月 / <code>$79</code>年（最受欢迎，省 34%）/ <code>$169</code> 终身（创始价，随库增长涨价）。</p>
-    <p><code>137</code> 个付费订阅，MRR <code>$1,350</code>；近 30 天收入 <code>$3,768</code>（+3,389%）。Marc Lou 原帖：TrustMRR 本周增长最快，$0→$3K/mo，10 天，8.1 万浏览。</p>
+    <ul class="pts">
+      <li><b>定价</b>：免费 / <code>$9.99</code>月 / <code>$79</code>年（最受欢迎，省 34%）/ <code>$169</code> 终身（创始价，随库增长涨价）</li>
+      <li><b>订阅</b>：<code>137</code> 个付费订阅，MRR <code>$1,350</code></li>
+      <li><b>收入</b>：近 30 天 <code>$3,768</code>（+3,389%），Stripe 验证</li>
+      <li><b>传播</b>：Marc Lou 原帖——TrustMRR 本周增长最快，$0→$3K/mo，10 天，8.1 万浏览</li>
+    </ul>
     <p class="en">137 paid subscriptions, $1,350 MRR, $3,768 last 30 days. Marc Lou's post: fastest-growing on TrustMRR, $0 to $3K/mo in 10 days.</p>
   </div>
 
   <div class="note-item">
     <h3>3. 好在哪</h3>
     <p><span class="topic">打法</span></p>
-    <p><b>卖筛选不卖内容</b>——信息差即库存，零边际成本。<b>免费目录=获客</b>——目录页自带 SEO 和传播。<b>软付费墙</b>——FREE 徽章而非锁，免费不被惩罚，付费靠 breadth 和更新 upsell。<b>订阅制复利</b>——MRR 每月自动到账。<b>踩新增需求</b>——2026 agent skills 生态正热。<b>信任飞轮</b>——TrustMRR 验证收入 + 大V转发。</p>
+    <ul class="pts">
+      <li><b>卖筛选不卖内容</b>——信息差即库存，零边际成本</li>
+      <li><b>免费目录=获客</b>——目录页自带 SEO 和传播</li>
+      <li><b>软付费墙</b>——FREE 徽章而非锁，免费不被惩罚，付费靠 breadth 和更新 upsell</li>
+      <li><b>订阅制复利</b>——MRR 每月自动到账</li>
+      <li><b>踩新增需求</b>——2026 agent skills 生态正热</li>
+      <li><b>信任飞轮</b>——TrustMRR 验证收入 + 大V转发</li>
+    </ul>
     <p class="en">Sells curation, not content. The free directory is the acquisition channel. Soft paywall: badges, not locks. Subscriptions compound. Rides new demand. Trust flywheel: verified revenue plus influencer distribution.</p>
   </div>
 
   <div class="note-item">
     <h3>4. 对我们的参考</h3>
     <p><span class="topic">战略</span></p>
-    <p><b>第一个产品有了模子</b>：精选目录 + 付费墙 + 订阅，不用再纠结"做什么"。<b>学习=攒库存</b>：现在学的每个 AI 工具，都是未来目录里的一条目；学到哪，目录长到哪。<b>同一资产两条轨道</b>：他只有英文版，我们做中英双版。<b>定价锚</b>：$9.99 / $79 / $169 直接参考。<b>10 天验证</b>：不用等"学完"，先上最小可用。<b>已落地</b>：资料库 2026-10-06 改成目录形态——免费简介 + "深度全文 · 准备中"预留位。</p>
+    <ul class="pts">
+      <li><b>第一个产品有了模子</b>：精选目录 + 付费墙 + 订阅，不用再纠结"做什么"</li>
+      <li><b>学习=攒库存</b>：现在学的每个 AI 工具，都是未来目录里的一条目；学到哪，目录长到哪</li>
+      <li><b>同一资产两条轨道</b>：他只有英文版，我们做中英双版</li>
+      <li><b>定价锚</b>：$9.99 / $79 / $169 直接参考</li>
+      <li><b>10 天验证</b>：不用等"学完"，先上最小可用</li>
+      <li><b>已落地</b>：资料库 2026-10-06 改成目录形态——免费简介 + "深度全文 · 准备中"预留位</li>
+    </ul>
     <p class="en">Our first product has a mold. Learning equals building inventory. Same asset, two rails: he is English-only, we go bilingual. Pricing anchors ready. Validate in 10 days. Already shipped: the library is now directory-shaped.</p>
   </div>
 
   <div class="note-item">
     <h3>5. 设计参考</h3>
     <p><span class="topic">设计</span></p>
-    <p><b>结构可抄，风格别抄。</b>可抄：顶部公告栏价格锚、横滑卡片走廊（主题分行 + Browse all）、工具兼容小图标、定价页话术（"Keep your agent free of AI slop"，slop 红删除线；终身版"随库增长涨价"给紧迫感）。别抄：lime 荧光绿、卡通大圆角——跟极简暖纸标准冲突。</p>
+    <p><b>结构可抄，风格别抄。</b></p>
+    <ul class="pts">
+      <li><b>可抄</b>：顶部公告栏价格锚、横滑卡片走廊（主题分行 + Browse all）、工具兼容小图标、定价页话术（"Keep your agent free of AI slop"，slop 红删除线；终身版"随库增长涨价"给紧迫感）</li>
+      <li><b>别抄</b>：lime 荧光绿、卡通大圆角——跟极简暖纸标准冲突</li>
+    </ul>
     <p class="en">Copy the structure, not the style. Take: persistent pricing anchor, carousel rows, compatibility icons, pricing copy. Skip: the lime neon playfulness — it clashes with the minimalist warm-paper standard.</p>
   </div>
 
