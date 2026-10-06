@@ -102,3 +102,17 @@ body { padding-top: 0; }
 footer { border-top: 1px solid var(--line); margin-top: 30px; padding: 28px 0 46px;
          text-align: center; color: var(--ink-soft); font-size: 13px; letter-spacing: 1px; }
 footer .en { font-style: italic; }
+
+/* mega menu — Hermès-style hover dropdown, only where sub-content exists */
+.has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+.mega { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: var(--paper); border: 1px solid rgba(42,42,40,.12);
+  min-width: 230px; padding: 10px 0; z-index: 101; }
+.has-menu:hover .mega { display: block; }
+.mega a { display: flex !important; align-items: baseline; gap: 14px;
+  padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap; }
+.mega a b { font-size: 11px; letter-spacing: 2px; color: var(--gold); font-weight: 600; }
+.mega a span { font-size: 13px; letter-spacing: 1px; color: var(--ink); }
+.mega a:hover { background: rgba(42,42,40,.045); }
+.mega a:hover span { color: var(--ink); }
+@media (max-width: 640px) { .mega { display: none !important; } }
