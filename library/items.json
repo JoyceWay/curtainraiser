@@ -1,1 +1,52 @@
-[{"chapter":"M1","oneline":"哈佛 CS50P：Python 入门课，免费，带作业和期末项目","status":"准备中","summary":"DeRonin M1 推荐之一。比视频课更严格：每节有 problem set，最后要交一个完整项目。想要“被逼着写代码”的人选它。英文授课，有字幕。","take":"跟我的 P0 思路一致——直接做真东西，不只看视频。（初稿，待 Joyce 改）","title":"CS50P：哈佛 Python 入门","type":"链接简介","url":"https://cs50.harvard.edu/python/"},{"chapter":"M1","oneline":"可视化玩转 Git 分支，免费交互式教程","status":"准备中","summary":"DeRonin 原话“理解分支和合并最好的可视化工具”。在网页里直接拖拽练 branch / merge，不用装任何东西。今天学的 init / add / commit 是单人记账，分支是多人协作的下一步。","take":"今天刚学会三件套，这个是下一步，留着。（初稿，待 Joyce 改）","title":"Learn Git Branching","type":"链接简介","url":"https://learngitbranching.js.org/"},{"chapter":"M1","oneline":"Coursera 免费旁听，Dr. Chuck 主讲，绝对零基础友好","status":"准备中","summary":"DeRonin 给纯新手的第一推荐。Dr. Chuck 是网上最会教新手的 Python 老师之一。免费旁听（audit）就能看全部内容。","take":"我有 CS 底子，这个可以跳过或当查漏。（初稿，待 Joyce 改）","title":"Python for Everybody","type":"链接简介","url":"https://www.coursera.org/specializations/python"},{"chapter":"M1","oneline":"GitHub 官方交互式课程，直接在仓库里学","status":"准备中","summary":"DeRonin 建议从这里开始学 Git。课程就建在 GitHub 仓库里，跟着步骤做，机器人自动检查作业。对“学完就能用”的人最友好。","take":"跟今天 P0 的建仓 / push 流程是同一套，练一遍更熟。（初稿，待 Joyce 改）","title":"GitHub Skills","type":"链接简介","url":"https://skills.github.com/"}]
+[
+ {
+  "chapter": "M1",
+  "oneline": "哈佛 CS50P：Python 入门课，免费，带作业和期末项目",
+  "status": "准备中",
+  "summary": "DeRonin M1 推荐之一。比视频课更严格：每节有 problem set，最后要交一个完整项目。想要“被逼着写代码”的人选它。英文授课，有字幕。",
+  "take": "跟我的 P0 思路一致——直接做真东西，不只看视频。（初稿，待 Joyce 改）",
+  "title": "CS50P：哈佛 Python 入门",
+  "type": "链接简介",
+  "url": "https://cs50.harvard.edu/python/"
+ },
+ {
+  "chapter": "M1",
+  "oneline": "可视化玩转 Git 分支，免费交互式教程",
+  "status": "准备中",
+  "summary": "DeRonin 原话“理解分支和合并最好的可视化工具”。在网页里直接拖拽练 branch / merge，不用装任何东西。今天学的 init / add / commit 是单人记账，分支是多人协作的下一步。",
+  "take": "今天刚学会三件套，这个是下一步，留着。（初稿，待 Joyce 改）",
+  "title": "Learn Git Branching",
+  "type": "链接简介",
+  "url": "https://learngitbranching.js.org/"
+ },
+ {
+  "chapter": "M1",
+  "oneline": "Coursera 免费旁听，Dr. Chuck 主讲，绝对零基础友好",
+  "status": "准备中",
+  "summary": "DeRonin 给纯新手的第一推荐。Dr. Chuck 是网上最会教新手的 Python 老师之一。免费旁听（audit）就能看全部内容。",
+  "take": "我有 CS 底子，这个可以跳过或当查漏。（初稿，待 Joyce 改）",
+  "title": "Python for Everybody",
+  "type": "链接简介",
+  "url": "https://www.coursera.org/specializations/python"
+ },
+ {
+  "chapter": "M1",
+  "oneline": "GitHub 官方交互式课程，直接在仓库里学",
+  "status": "准备中",
+  "summary": "DeRonin 建议从这里开始学 Git。课程就建在 GitHub 仓库里，跟着步骤做，机器人自动检查作业。对“学完就能用”的人最友好。",
+  "take": "跟今天 P0 的建仓 / push 流程是同一套，练一遍更熟。（初稿，待 Joyce 改）",
+  "title": "GitHub Skills",
+  "type": "链接简介",
+  "url": "https://skills.github.com/"
+ },
+ {
+  "chapter": "SOLO",
+  "type": "链接简介",
+  "title": "How To Turn Your Interests Into a Profitable Lifestyle Business",
+  "oneline": "Dan Koe 免费迷你课（X 长文，24 万阅读）：把多重兴趣变成一人公司",
+  "summary": "四步：①内容地图（定 mission、Point A→B、话题树，帖子是拼图）；②软件栈（社媒引流、邮件收集、Eden 平台收款）；③微产品（约 $19 小产品 + $500–1000 教练包）；④第一个客户（问卷、DM、成交：5 个客户约 $5k/月）。核心观点：别硬 niche down，把兴趣拼成一幅地图，soft rich。",
+  "take": "跟我的一人公司目标直接相关。细读后决定做不做微产品。（初稿，待 Joyce 改）",
+  "url": "https://x.com/thedankoe/status/2107151068446789829",
+  "status": "准备中"
+ }
+]
