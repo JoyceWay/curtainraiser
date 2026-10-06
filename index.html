@@ -19,11 +19,17 @@
   </header>
 
   <nav class="nav">
-    <a href="index.html" class="active">首页</a>
-    <a href="roadmap/index.html">六个月</a>
-    <a href="library/index.html">资料库</a>
-    <a href="log/index.html">笔记本</a>
-    <a href="fundamentals/index.html">字卡</a>
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">卷帘人<span class="en">CurtainRaiser</span></a>
+      <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+      <div class="nav-links">
+      <a href="index.html" class="active">首页</a>
+      <a href="roadmap/index.html">六个月</a>
+      <a href="library/index.html">资料库</a>
+      <a href="log/index.html">笔记本</a>
+      <a href="fundamentals/index.html">字卡</a>
+      </div>
+    </div>
   </nav>
 
   <section class="hero">
@@ -96,5 +102,9 @@
   </footer>
 
 </div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_nl=document.querySelector(".nav-links");
+if(_nt&&_nl){_nt.addEventListener("click",function(){_nl.classList.toggle("open");});}
+</script>
 </body>
 </html>
