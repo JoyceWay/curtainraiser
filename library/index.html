@@ -35,6 +35,11 @@
   .filter a { color: var(--ink-soft); text-decoration: none; margin: 0 10px; letter-spacing: 1px; }
   .filter a.on, .filter a:hover { color: var(--gold); }
   .empty { text-align: center; color: var(--ink-soft); font-size: 15px; padding: 30px 0; }
+  .intro { text-align: center; color: var(--ink-soft); font-size: 15px; letter-spacing: 1px; margin: 2px 0 16px; }
+  .intro b { color: var(--gold); font-weight: 600; }
+  .lib-card .full { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line);
+                    font-size: 13px; letter-spacing: 2px; color: var(--ink-soft); }
+  .lib-card .full .k { color: var(--gold); }
 </style>
 </head>
 <body>
@@ -66,6 +71,7 @@
   <section class="section">
     <h2>资料库</h2>
     <div class="sub en">LIBRARY</div>
+    <p class="intro">免费看简介。<b>深度全文</b>，准备中。</p>
     <div class="filter" id="filter">
       <a href="#" data-t="" class="on">全部</a>
       <a href="#" data-t="链接简介">链接简介</a>
@@ -120,7 +126,8 @@ fetch('items.json').then(r => r.json()).then(items => {
         (i.oneline ? '<div class="one">' + i.oneline + '</div>' : '') +
         (i.summary ? '<div class="sum">' + i.summary + '</div>' : '') +
         (i.take ? '<div class="take"><b>我的 take：</b>' + i.take + '</div>' : '') +
-        (i.url ? '<div class="src"><a href="' + i.url + '" target="_blank" rel="noopener">原链 →</a></div>' : '');
+        (i.url ? '<div class="src"><a href="' + i.url + '" target="_blank" rel="noopener">原链 →</a></div>' : '') +
+        '<div class="full"><span class="k">深度全文</span> · 准备中</div>';
       box.appendChild(el);
     });
   });
