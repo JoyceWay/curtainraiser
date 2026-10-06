@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>资料库 — 卷帘人 CurtainRaiser</title>
+<link rel="stylesheet" href="../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  .badge {
+    display: inline-block; font-size: 12px; letter-spacing: 1px;
+    border: 1px solid var(--line); border-radius: 20px;
+    padding: 2px 12px; margin-right: 8px; color: var(--ink-soft);
+  }
+  .badge.type-a { color: var(--gold); border-color: rgba(168,137,79,.5); }
+  .badge.type-b { color: #4E8A28; border-color: rgba(102,172,53,.45); }
+  .badge.done { color: #4E8A28; border-color: rgba(102,172,53,.45); }
+  .badge.doing { color: #B07C2A; border-color: rgba(176,124,42,.45); }
+  .lib-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+              padding: 24px 28px; margin-bottom: 18px; }
+  .lib-card h3 { font-size: 19px; margin: 10px 0 6px; letter-spacing: 1px; }
+  .lib-card .one { font-size: 15px; color: var(--ink-soft); margin-bottom: 12px; }
+  .lib-card .sum { font-size: 15px; margin-bottom: 10px; }
+  .lib-card .take { font-size: 15px; margin-bottom: 12px; }
+  .lib-card .take b { color: var(--gold); font-weight: 600; }
+  .lib-card .src { font-size: 14px; }
+  .lib-card .src a { color: var(--gold); text-decoration: none; letter-spacing: 1px; }
+  .ch-head { margin: 34px 0 4px; font-size: 18px; letter-spacing: 4px; }
+  .ch-head:first-of-type { margin-top: 10px; }
+  .ch-sub { font-size: 13px; color: var(--ink-soft); letter-spacing: 1px; margin-bottom: 18px; }
+  .ch-sub .bar { display: inline-block; width: 120px; height: 6px; background: var(--line);
+                 border-radius: 3px; vertical-align: middle; margin: 0 8px; overflow: hidden; }
+  .ch-sub .bar i { display: block; height: 100%; background: var(--gold); }
+  .filter { text-align: center; margin: 6px 0 10px; font-size: 14px; }
+  .filter a { color: var(--ink-soft); text-decoration: none; margin: 0 10px; letter-spacing: 1px; }
+  .filter a.on, .filter a:hover { color: var(--gold); }
+  .empty { text-align: center; color: var(--ink-soft); font-size: 15px; padding: 30px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="site-head">
+    <div class="brand-cn">卷帘人</div>
+    <div class="brand-en">CurtainRaiser</div>
+    <hr class="gold-rule">
+  </header>
+
+  <nav class="nav">
+    <a href="../index.html">首页</a>
+    <a href="../roadmap/index.html">六个月</a>
+    <a href="index.html" class="active">资料库</a>
+    <a href="../log/index.html">笔记本</a>
+    <a href="../fundamentals/index.html">字卡</a>
+  </nav>
+
+  <section class="section">
+    <h2>资料库</h2>
+    <div class="sub en">LIBRARY</div>
+    <div class="filter" id="filter">
+      <a href="#" data-t="" class="on">全部</a>
+      <a href="#" data-t="链接简介">链接简介</a>
+      <a href="#" data-t="读书总结">读书总结</a>
+    </div>
+    <div id="libs"></div>
+  </section>
+
+  <footer>
+    <p>卷帘人 CurtainRaiser 📜</p>
+    <p class="en">Go Big, Then Never Stop Running.</p>
+  </footer>
+
+</div>
+<script>
+const CHAPTERS = {
+  M1: 'M1 · 打基础', M2: 'M2 · 玩转大模型', M3: 'M3 · RAG',
+  M4: 'M4 · 智能体', M5: 'M5 · 部署上线', M6: 'M6 · 选方向'
+};
+let typeFilter = '';
+try {
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h && CHAPTERS[h]) window._ch = h;
+  if (h === '链接简介' || h === '读书总结') typeFilter = h;
+} catch (e) {}
+fetch('items.json').then(r => r.json()).then(items => {
+  const box = document.getElementById('libs');
+  const chs = [...new Set(items.map(i => i.chapter))];
+  const ordered = Object.keys(CHAPTERS).filter(c => chs.includes(c));
+  const list = (window._ch && ordered.includes(window._ch)) ? [window._ch] : ordered;
+  if (!list.length) { box.innerHTML = '<div class="empty">第一篇即将到来 · 第一批卡片在路上了</div>'; return; }
+  list.forEach(ch => {
+    let group = items.filter(i => i.chapter === ch);
+    if (typeFilter) group = group.filter(i => i.type === typeFilter);
+    if (!group.length) return;
+    const done = group.filter(i => i.status === '已完成').length;
+    const pct = Math.round(done / group.length * 100);
+    const h = document.createElement('div');
+    h.innerHTML = '<div class="ch-head">' + CHAPTERS[ch] + '</div>' +
+      '<div class="ch-sub">已完成 ' + done + '/' + group.length +
+      ' <span class="bar"><i style="width:' + pct + '%"></i></span></div>';
+    box.appendChild(h);
+    group.forEach(i => {
+      const el = document.createElement('div');
+      el.className = 'lib-card';
+      const tb = i.type === '读书总结' ? 'type-b' : 'type-a';
+      const sb = i.status === '已完成' ? 'done' : (i.status === '进行中' ? 'doing' : '');
+      el.innerHTML =
+        '<div><span class="badge ' + tb + '">' + i.type + '</span>' +
+        (i.status ? '<span class="badge ' + sb + '">' + i.status + '</span>' : '') + '</div>' +
+        '<h3>' + i.title + '</h3>' +
+        (i.oneline ? '<div class="one">' + i.oneline + '</div>' : '') +
+        (i.summary ? '<div class="sum">' + i.summary + '</div>' : '') +
+        (i.take ? '<div class="take"><b>我的 take：</b>' + i.take + '</div>' : '') +
+        (i.url ? '<div class="src"><a href="' + i.url + '" target="_blank" rel="noopener">原链 →</a></div>' : '');
+      box.appendChild(el);
+    });
+  });
+  if (!box.children.length) box.innerHTML = '<div class="empty">这一类还没有卡片</div>';
+  document.querySelectorAll('#filter a').forEach(a => {
+    if (a.dataset.t === typeFilter) {
+      document.querySelector('#filter a.on').classList.remove('on');
+      a.classList.add('on');
+    }
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = a.dataset.t;
+      history.replaceState(null, '', t ? '#' + encodeURIComponent(t) : location.pathname);
+      location.reload();
+    });
+  });
+});
+</script>
+</body>
+</html>
