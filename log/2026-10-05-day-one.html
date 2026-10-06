@@ -103,6 +103,16 @@
   .qa li:last-child { border-bottom: none; }
   .qa .q { font-weight: 700; }
   .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
   .foot {
     margin-top: 72px; padding-top: 24px;
     border-top: 1px solid rgba(52,44,44,.12);
@@ -323,6 +333,42 @@
     <p><span class="topic">设计</span></p>
     <p>配色：低饱和暖中性（米白 / 暖灰 / 墨灰）+ 哑光金点缀。克制留白，拒绝高饱和和强对比。排版是卖点——只做最好看，不将就。</p>
     <p class="en">Palette: low-saturation warm neutrals + matte gold accents. Restraint, whitespace, no neon. Typography is the product.</p>
+  </div>
+
+  <h2>命令速查</h2>
+  <div class="en-label">CHEAT SHEET · 每天碰到的知识点都记下来</div>
+
+  <div class="note-item">
+    <h3>认路三件套</h3>
+    <ul class="pts">
+      <li><code>pwd</code> —— 显示你现在在哪。晕了就敲它</li>
+      <li><code>ls</code> —— 列出当前目录里的东西。隐藏文件用 <code>ls -la</code></li>
+      <li><code>cd</code> —— 进目录。<code>cd 文件夹名</code> 进去，<code>cd ..</code> 回上一层，直接 <code>cd</code> 回车 = 回家</li>
+    </ul>
+    <p class="en">pwd: where am I. ls: what's here. cd: go there.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>Git 记账</h3>
+    <ul class="pts">
+      <li><code>git init -b main</code> —— 开账本，主分支叫 main。一个项目只跑一次；跑完多出隐藏 <code>.git</code>，别删</li>
+      <li><code>git add -A</code> —— 把所有改动放进暂存区。<code>-A</code> = 全部；单个文件用 <code>git add index.html</code></li>
+      <li><code>git commit -m "备注"</code> —— 正式记一笔账。备注写清楚干了什么，如 <code>"首页改暖纸底"</code></li>
+      <li><code>git push</code> —— 账本抄送到 GitHub。第一次用 <code>git push -u origin main</code>，以后光 <code>git push</code></li>
+      <li><code>git pull</code> —— 从 GitHub 把更新抄回来对账</li>
+      <li><code>git status</code> —— 看现在啥状态：改了啥、暂存了啥。卡住先敲它</li>
+      <li><code>git log --oneline</code> —— 翻旧账，一行一条。前面的 <code>7fcafe7</code> 是版本号</li>
+    </ul>
+    <p class="en">Git doesn't pass files around — it reconciles ledgers. GitHub is the cloud ledger.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>新建 / 删除</h3>
+    <ul class="pts">
+      <li><code>mkdir 名字</code> —— 新建文件夹</li>
+      <li><code>rm 文件名</code> —— 删除，<b>不进回收站</b>。删文件夹用 <code>rm -r</code>；拿不准先问</li>
+    </ul>
+    <p class="en">mkdir: new folder. rm: delete forever — no trash. When unsure, ask first.</p>
   </div>
 
   <h2>今日问答</h2>
