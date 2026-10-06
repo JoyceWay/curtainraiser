@@ -36,9 +36,9 @@ body { padding-top: 0; }
 .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
 .wordmark { display: inline-block; text-decoration: none; color: var(--ink);
   font-family: "Inter", sans-serif; font-weight: 600;
-  font-size: 20px; letter-spacing: 8px; text-indent: 8px; }
-.wordmark span { display: block; font-family: "Noto Sans SC", sans-serif; font-weight: 400;
-  font-size: 12px; letter-spacing: 10px; text-indent: 10px; color: var(--ink-soft); margin-top: 6px; }
+  font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+.wordmark span { display: block; font-family: "Inter", sans-serif; font-weight: 500;
+  font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: var(--ink-soft); margin-top: 8px; }
 .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
   background: var(--paper); border-bottom: 1px solid rgba(42,42,40,.14); }
 .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
@@ -108,7 +108,7 @@ footer .en { font-style: italic; }
 
 /* mega menu — Hermès-style hover dropdown, only where sub-content exists */
 .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
-.mega { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+.mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
   background: var(--paper); border: 1px solid rgba(42,42,40,.12);
   min-width: 230px; padding: 10px 0; z-index: 101; }
 .has-menu:hover .mega { display: block; }

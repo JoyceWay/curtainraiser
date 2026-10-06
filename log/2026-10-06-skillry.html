@@ -126,9 +126,9 @@
   .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
   .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
     font-family: 'Inter', sans-serif; font-weight: 600;
-    font-size: 20px; letter-spacing: 8px; text-indent: 8px; }
-  .wordmark span { display: block; font-family: 'Noto Sans SC', sans-serif; font-weight: 400;
-    font-size: 12px; letter-spacing: 10px; text-indent: 10px; color: #8B8B8B; margin-top: 6px; }
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
   .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
     background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
   .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
@@ -154,7 +154,7 @@
 
   /* mega menu — hover dropdown */
   .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
-  .mega { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
     background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
     min-width: 230px; padding: 10px 0; z-index: 101; }
   .has-menu:hover .mega { display: block; }
@@ -171,23 +171,23 @@
 <header class="hermes-head">
   <div class="brand-bar">
     <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
-    <a class="wordmark" href="../index.html">CURTAINRAISER<span>卷帘人</span></a>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
   </div>
 </header>
 <nav class="nav-strip">
     <div class="nav-links">
-      <a href="../index.html"><b>HOME</b><span>首页</span></a>
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
       <div class="has-menu">
-      <a href="../roadmap/index.html"><b>STUDY PLAN</b><span>学习计划</span></a>
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
       <div class="mega">
         <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
         <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
         <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
       </div>
     </div>
-      <a href="../library/index.html"><b>LIBRARY</b><span>资料库</span></a>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
       <div class="has-menu">
-      <a href="index.html" class="active"><b>NOTEBOOK</b><span>笔记本</span></a>
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
       <div class="mega">
         <a href="index.html"><b>列表</b><span>内容目录</span></a>
         <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
@@ -195,7 +195,7 @@
         <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
       </div>
     </div>
-      <a href="../fundamentals/index.html"><b>FLASHCARDS</b><span>字卡</span></a>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
     </div>
 </nav>
 <div class="wrap">
