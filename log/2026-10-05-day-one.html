@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 1：P0 开工，用 Antigravity 建真网站 — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .plan { list-style: none; margin: 0; padding: 0; }
+  .plan li {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 16px 4px; cursor: pointer;
+    border-bottom: 1px solid rgba(52,44,44,.09);
+  }
+  .plan li:last-child { border-bottom: none; }
+  .box {
+    flex: none; width: 24px; height: 24px; margin-top: 3px;
+    border: 1.5px solid #66AC35; border-radius: 6px;
+    position: relative; transition: all .18s;
+  }
+  .plan li.done .box { background: #66AC35; }
+  .plan li.done .box::after {
+    content: ''; position: absolute; left: 7px; top: 3px;
+    width: 5px; height: 10px;
+    border: solid #fff; border-width: 0 2px 2px 0;
+    transform: rotate(42deg);
+  }
+  .txt .zh { font-size: 20px; line-height: 1.6; }
+  .txt .en {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; color: #8B8B8B; margin-top: 3px; line-height: 1.5;
+  }
+  .plan li.done .txt { opacity: .4; }
+  .plan li.done .txt .zh { text-decoration: line-through; }
+  .note-item { margin-bottom: 36px; }
+  .note-item h3 { font-size: 20px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 18px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 16px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 20px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">DAY 1 · 2026-10-05</div>
+  <h1>P0 开工：用 Antigravity 建真网站</h1>
+  <div class="sub">Build a real site with Antigravity — no toy projects.</div>
+
+  <h2>今日计划</h2>
+  <div class="en-label">TODAY'S PLAN</div>
+  <ul class="plan">
+    <li><span class="box"></span><span class="txt"><span class="zh">新建 GitHub 仓库（deronin-6months）</span><div class="en">Create a new GitHub repo</div></span></li>
+    <li><span class="box"></span><span class="txt"><span class="zh">把 prompt 粘贴进 Antigravity，生成</span><div class="en">Paste the prompt, generate</div></span></li>
+    <li><span class="box"></span><span class="txt"><span class="zh">预览效果，看 diff</span><div class="en">Preview and review the diff</div></span></li>
+    <li><span class="box"></span><span class="txt"><span class="zh">不懂就问它："这段代码是干什么的？"</span><div class="en">Ask: "what does this code do?"</div></span></li>
+    <li><span class="box"></span><span class="txt"><span class="zh">能用自己的话讲出 3 段代码的作用</span><div class="en">Explain 3 code sections in your own words</div></span></li>
+    <li><span class="box"></span><span class="txt"><span class="zh">Commit + push，开 GitHub Pages</span><div class="en">Commit, push, enable Pages</div></span></li>
+    <li><span class="box"></span><span class="txt"><span class="zh">把网址发出来</span><div class="en">Share the live URL</div></span></li>
+  </ul>
+
+  <h2>学习笔记</h2>
+  <div class="en-label">STUDY NOTES</div>
+
+  <div class="note-item">
+    <h3>1. P0：直接做真项目</h3>
+    <p>不做一次性玩具网站。P0 作业 = DeRonin 六个月中文实战站：把 DeRonin 的路线图做成中文学习站，学到哪章更新到哪章。</p>
+    <p class="en">P0: build a real project from day one — a Chinese practice site based on DeRonin's 6-month roadmap.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>2. Prompt 铁律</h3>
+    <p>你不指定的，AI 就自己猜。语言、颜色、字数——想要什么就写什么。比如英文 prompt 不会自动生成中文网站，必须写：All page content must be bilingual: Simplified Chinese primary, English secondary.</p>
+    <p class="en">Iron rule of prompting: what you don't specify, the AI guesses. Spell out everything.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>3. 网页三件套</h3>
+    <p>HTML 是骨架：决定页面上有什么。CSS 是衣服：决定长什么样。JS 是动作：决定点了会发生什么。</p>
+    <p class="en">HTML is the skeleton, CSS the clothing, JS the behavior.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>4. CSS 三行</h3>
+    <p><code>max-width: 680px</code> 限宽，内容不铺满全屏。<code>margin: 0 auto</code> 居中（center）。<code>padding</code> 留白（whitespace）。</p>
+    <p class="en">Three lines that shape a page: constrain width, center it, breathe with padding.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>5. 查色号</h3>
+    <p>Google 直接搜 <code>#XXXXXX</code>，色卡马上出来。DeRonin 站配色：背景 <code>#FAF7F1</code> 暖纸色，文字 <code>#2A2A28</code> 墨灰，点缀 <code>#A8894F</code> 哑光金。</p>
+    <p class="en">Look up any hex code by Googling it. DeRonin site palette: warm paper, ink gray, matte gold.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>6. 今日决定</h3>
+    <p>DeRonin 实战站：中英双语，中文为主。学习笔记：justfont 风——干净黑体 + 简体中文 + 30px 网格底。</p>
+    <p class="en">Decisions: bilingual site (Chinese first); notes in Justfont style — clean sans, Simplified Chinese, 30px grid.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>7. 见贤思齐</h3>
+    <blockquote>"找到好的素材要存起来，术业有专攻，直接见贤思齐更节省时间。"</blockquote>
+    <p class="origin">——我的原话</p>
+    <p><b>触因：</b>今天看 <a href="https://justfont.com/">justfont.com</a>，中文字体排版好看，网格底喜欢。字体设计师花四年磨一套字，我直接学做好的。</p>
+    <p><b>落地：</b>建素材库，每条记一句"好在哪"。参考：justfont.com（30px 网格底，品牌绿 <code>#66AC35</code>）。</p>
+    <p class="en">"Save good materials when you find them — specialization matters; learning from the best saves time." — my own words, after browsing justfont.com.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 卷帘人 📜</div>
+
+</div>
+<script>
+document.querySelectorAll('.plan li').forEach(li => {
+  li.addEventListener('click', () => li.classList.toggle('done'));
+});
+</script>
+</body>
+</html>
