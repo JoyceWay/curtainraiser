@@ -110,5 +110,61 @@
     "en": "",
     "explain": "报错的路标：出错的文件、行号和原因都写在里面。",
     "example": "从下往上读：最后一行是错误名，倒数第二是你的哪行代码炸了"
+  },
+  {
+    "day": 2,
+    "topic": "Shell",
+    "term": "touch",
+    "en": "touch",
+    "explain": "秒建空文件：不进编辑器，直接造出一个 0 字节的新文件。",
+    "example": "touch notes.txt → 在当前目录里多出一个 notes.txt"
+  },
+  {
+    "day": 2,
+    "topic": "Git",
+    "term": "git log",
+    "en": "log",
+    "explain": "翻账本：倒序查看每次提交的备注、作者和时间。",
+    "example": "git log --oneline → 一行一条，快速看到『字卡 Day 1』那条记录"
+  },
+  {
+    "day": 2,
+    "topic": "Python",
+    "term": "input()",
+    "en": "input",
+    "explain": "问用户要答案：程序停下来等你打字回车。",
+    "example": "name = input('你叫什么？') → 你输入 Joyce，它被收进变量 name"
+  },
+  {
+    "day": 2,
+    "topic": "HTML/CSS",
+    "term": "<p>",
+    "en": "paragraph",
+    "explain": "段落：放一段文字的标签，浏览器会自动加上段间距。",
+    "example": "<p>今天学了 touch 命令。</p> → 页面上显示一段话"
+  },
+  {
+    "day": 2,
+    "topic": "Prompt",
+    "term": "指定格式",
+    "en": "format specification",
+    "explain": "告诉 AI 按什么格式回答：长度、结构、要不要例子。",
+    "example": "在问题后面加一句『用 3 行以内的中文短句回答』"
+  },
+  {
+    "day": 2,
+    "topic": "AI 概念",
+    "term": "context window",
+    "en": "context window",
+    "explain": "AI 一次能记住的字数上限：超出就忘了开头。",
+    "example": "长聊天开始答非所问时，开新话题比继续堆字管用"
+  },
+  {
+    "day": 2,
+    "topic": "读代码",
+    "term": "缩进",
+    "en": "indentation",
+    "explain": "Python 的分组方式：四个空格算一组，决定代码归谁管。",
+    "example": "if 下面缩进的那行，只在条件成立时跑；对齐回去就散伙"
   }
 ]
