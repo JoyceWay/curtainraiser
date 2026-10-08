@@ -166,5 +166,61 @@
     "en": "indentation",
     "explain": "Python 的分组方式：四个空格算一组，决定代码归谁管。",
     "example": "if 下面缩进的那行，只在条件成立时跑；对齐回去就散伙"
+  },
+  {
+    "day": 3,
+    "topic": "Shell",
+    "term": "cp",
+    "en": "copy",
+    "explain": "复制文件或目录——改文件前先备份，出错了还能找回。",
+    "example": "在 ~/workspace/curtainraiser-site 里敲：cp index.html index.html.bak，改坏了把 .bak 拷回来就行"
+  },
+  {
+    "day": 3,
+    "topic": "Git",
+    "term": "git diff",
+    "en": "git difference",
+    "explain": "commit 之前先看一眼：工作区到底改了哪些行。",
+    "example": "在 curtainraiser-site 里敲：git diff fundamentals/cards.json，红色是删掉的、绿色是新增的"
+  },
+  {
+    "day": 3,
+    "topic": "Python",
+    "term": "len()",
+    "en": "length",
+    "explain": "数长度——字符串有几个字、列表有几项，一问就知道。",
+    "example": "print(len('hello'))  # 输出 5\nprint(len(['a', 'b', 'c']))  # 输出 3"
+  },
+  {
+    "day": 3,
+    "topic": "HTML/CSS",
+    "term": "<a>",
+    "en": "anchor",
+    "explain": "超链接——点文字就能跳到别的页面，是网页的灵魂标签。",
+    "example": "<a href='https://joyceway.github.io/curtainraiser/'>我的学习站</a>"
+  },
+  {
+    "day": 3,
+    "topic": "Prompt",
+    "term": "给例子",
+    "en": "few-shot",
+    "explain": "想让 AI 照你的样子写？直接甩 1–2 个例子，比讲一百句规则都管用。",
+    "example": "写短句：先给两句『太阳升起来了。它把影子拉得很长。』再说：按这个风格续写"
+  },
+  {
+    "day": 3,
+    "topic": "AI 概念",
+    "term": "temperature",
+    "en": "温度参数",
+    "explain": "控制 AI 回答多『放飞』：0 保守精准，1 天马行空。写代码用低，写文案用高。",
+    "example": "让 AI 写格言配文：temperature 0.8 更有灵气；让它查 API 文档：0.2 更靠谱"
+  },
+  {
+    "day": 3,
+    "topic": "读代码",
+    "term": "for 循环",
+    "en": "for loop",
+    "explain": "读到 for x in 东西：就是把『东西』里的每一项拿出来，逐个处理一遍。",
+    "example": "for line in lines:\n    print(line)  # 把 lines 里每一行都打印出来"
   }
 ]
