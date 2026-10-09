@@ -1,226 +1,282 @@
 [
-  {
-    "day": 0,
-    "en": "change directory",
-    "example": "cd ai-engineer-roadmap-hub 进去；cd .. 回上一层",
-    "explain": "进目录：在文件夹之间走动。",
-    "term": "cd",
-    "topic": "Shell"
-  },
-  {
-    "day": 0,
-    "en": "print working directory",
-    "example": "pwd → /Users/zhipengzhou/.../ai-engineer-roadmap-hub",
-    "explain": "显示你现在在哪。晕了就敲它。",
-    "term": "pwd",
-    "topic": "Shell"
-  },
-  {
-    "day": 0,
-    "en": "list",
-    "example": "ls → index.html  styles.css  README.md；ls -la 看隐藏文件",
-    "explain": "列出当前目录里有什么。",
-    "term": "ls",
-    "topic": "Shell"
-  },
-  {
-    "day": 0,
-    "en": "initialize",
-    "example": "跑完多出隐藏的 .git 文件夹，别删",
-    "explain": "开账本：在当前目录初始化仓库，主分支叫 main。一个项目只跑一次。",
-    "term": "git init -b main",
-    "topic": "Git"
-  },
-  {
-    "day": 0,
-    "en": "add",
-    "example": "只加一个文件：git add index.html",
-    "explain": "点名：把所有改动放进暂存区，准备打包。",
-    "term": "git add -A",
-    "topic": "Git"
-  },
-  {
-    "day": 0,
-    "en": "commit",
-    "example": "git commit -m \"首页改暖纸底\"",
-    "explain": "记一笔账：正式存成一个版本。备注写清干了什么。",
-    "term": "git commit -m \"备注\"",
-    "topic": "Git"
-  },
-  {
-    "day": 0,
-    "en": "push",
-    "example": "用户名 JoyceWay，密码用 Personal Access Token",
-    "explain": "把本地账本抄送到 GitHub。-u 记住地址，以后光 git push 就行。",
-    "term": "git push -u origin main",
-    "topic": "Git"
-  },
-  {
-    "day": 1,
-    "topic": "Shell",
-    "term": "mkdir",
-    "en": "make directory",
-    "explain": "建新文件夹：在当前目录里造一个目录。",
-    "example": "mkdir fundamentals 就在网站目录下造了 fundamentals 文件夹"
-  },
-  {
-    "day": 1,
-    "topic": "Git",
-    "term": "git status",
-    "en": "",
-    "explain": "看工作区状态：哪些文件改了、哪些还没提交。",
-    "example": "git status 告诉你「哪些卡片写了还没 push」"
-  },
-  {
-    "day": 1,
-    "topic": "Python",
-    "term": "print",
-    "en": "",
-    "explain": "打印输出：把东西显示到屏幕上，调试的第一利器。",
-    "example": "print('hello'+' world') → hello world"
-  },
-  {
-    "day": 1,
-    "topic": "HTML/CSS",
-    "term": "<h1>",
-    "en": "heading 1",
-    "explain": "一级标题：网页上最大的标题，一页只放一个。",
-    "example": "<h1>我的学习卡片</h1> → 页面顶部大标题"
-  },
-  {
-    "day": 1,
-    "topic": "Prompt",
-    "term": "指定角色",
-    "en": "role prompting",
-    "explain": "给 AI 定身份：它按角色的水准和口吻回答。",
-    "example": "'你是 PCC 的 Python 老师，用一句话解释变量'"
-  },
-  {
-    "day": 1,
-    "topic": "AI 概念",
-    "term": "token",
-    "en": "",
-    "explain": "AI 看的最小单位：一个词、半个词或一个字。",
-    "example": "'hello world' 约 2 个 token，中文一个字约 1–2 个"
-  },
-  {
-    "day": 1,
-    "topic": "读代码",
-    "term": "Traceback",
-    "en": "",
-    "explain": "报错的路标：出错的文件、行号和原因都写在里面。",
-    "example": "从下往上读：最后一行是错误名，倒数第二是你的哪行代码炸了"
-  },
-  {
-    "day": 2,
-    "topic": "Shell",
-    "term": "touch",
-    "en": "touch",
-    "explain": "秒建空文件：不进编辑器，直接造出一个 0 字节的新文件。",
-    "example": "touch notes.txt → 在当前目录里多出一个 notes.txt"
-  },
-  {
-    "day": 2,
-    "topic": "Git",
-    "term": "git log",
-    "en": "log",
-    "explain": "翻账本：倒序查看每次提交的备注、作者和时间。",
-    "example": "git log --oneline → 一行一条，快速看到『字卡 Day 1』那条记录"
-  },
-  {
-    "day": 2,
-    "topic": "Python",
-    "term": "input()",
-    "en": "input",
-    "explain": "问用户要答案：程序停下来等你打字回车。",
-    "example": "name = input('你叫什么？') → 你输入 Joyce，它被收进变量 name"
-  },
-  {
-    "day": 2,
-    "topic": "HTML/CSS",
-    "term": "<p>",
-    "en": "paragraph",
-    "explain": "段落：放一段文字的标签，浏览器会自动加上段间距。",
-    "example": "<p>今天学了 touch 命令。</p> → 页面上显示一段话"
-  },
-  {
-    "day": 2,
-    "topic": "Prompt",
-    "term": "指定格式",
-    "en": "format specification",
-    "explain": "告诉 AI 按什么格式回答：长度、结构、要不要例子。",
-    "example": "在问题后面加一句『用 3 行以内的中文短句回答』"
-  },
-  {
-    "day": 2,
-    "topic": "AI 概念",
-    "term": "context window",
-    "en": "context window",
-    "explain": "AI 一次能记住的字数上限：超出就忘了开头。",
-    "example": "长聊天开始答非所问时，开新话题比继续堆字管用"
-  },
-  {
-    "day": 2,
-    "topic": "读代码",
-    "term": "缩进",
-    "en": "indentation",
-    "explain": "Python 的分组方式：四个空格算一组，决定代码归谁管。",
-    "example": "if 下面缩进的那行，只在条件成立时跑；对齐回去就散伙"
-  },
-  {
-    "day": 3,
-    "topic": "Shell",
-    "term": "cp",
-    "en": "copy",
-    "explain": "复制文件或目录——改文件前先备份，出错了还能找回。",
-    "example": "在 ~/workspace/curtainraiser-site 里敲：cp index.html index.html.bak，改坏了把 .bak 拷回来就行"
-  },
-  {
-    "day": 3,
-    "topic": "Git",
-    "term": "git diff",
-    "en": "git difference",
-    "explain": "commit 之前先看一眼：工作区到底改了哪些行。",
-    "example": "在 curtainraiser-site 里敲：git diff fundamentals/cards.json，红色是删掉的、绿色是新增的"
-  },
-  {
-    "day": 3,
-    "topic": "Python",
-    "term": "len()",
-    "en": "length",
-    "explain": "数长度——字符串有几个字、列表有几项，一问就知道。",
-    "example": "print(len('hello'))  # 输出 5\nprint(len(['a', 'b', 'c']))  # 输出 3"
-  },
-  {
-    "day": 3,
-    "topic": "HTML/CSS",
-    "term": "<a>",
-    "en": "anchor",
-    "explain": "超链接——点文字就能跳到别的页面，是网页的灵魂标签。",
-    "example": "<a href='https://joyceway.github.io/curtainraiser/'>我的学习站</a>"
-  },
-  {
-    "day": 3,
-    "topic": "Prompt",
-    "term": "给例子",
-    "en": "few-shot",
-    "explain": "想让 AI 照你的样子写？直接甩 1–2 个例子，比讲一百句规则都管用。",
-    "example": "写短句：先给两句『太阳升起来了。它把影子拉得很长。』再说：按这个风格续写"
-  },
-  {
-    "day": 3,
-    "topic": "AI 概念",
-    "term": "temperature",
-    "en": "温度参数",
-    "explain": "控制 AI 回答多『放飞』：0 保守精准，1 天马行空。写代码用低，写文案用高。",
-    "example": "让 AI 写格言配文：temperature 0.8 更有灵气；让它查 API 文档：0.2 更靠谱"
-  },
-  {
-    "day": 3,
-    "topic": "读代码",
-    "term": "for 循环",
-    "en": "for loop",
-    "explain": "读到 for x in 东西：就是把『东西』里的每一项拿出来，逐个处理一遍。",
-    "example": "for line in lines:\n    print(line)  # 把 lines 里每一行都打印出来"
-  }
+ {
+  "day": 0,
+  "en": "change directory",
+  "example": "cd ai-engineer-roadmap-hub 进去；cd .. 回上一层",
+  "explain": "进目录：在文件夹之间走动。",
+  "term": "cd",
+  "topic": "Shell"
+ },
+ {
+  "day": 0,
+  "en": "print working directory",
+  "example": "pwd → /Users/zhipengzhou/.../ai-engineer-roadmap-hub",
+  "explain": "显示你现在在哪。晕了就敲它。",
+  "term": "pwd",
+  "topic": "Shell"
+ },
+ {
+  "day": 0,
+  "en": "list",
+  "example": "ls → index.html  styles.css  README.md；ls -la 看隐藏文件",
+  "explain": "列出当前目录里有什么。",
+  "term": "ls",
+  "topic": "Shell"
+ },
+ {
+  "day": 0,
+  "en": "initialize",
+  "example": "跑完多出隐藏的 .git 文件夹，别删",
+  "explain": "开账本：在当前目录初始化仓库，主分支叫 main。一个项目只跑一次。",
+  "term": "git init -b main",
+  "topic": "Git"
+ },
+ {
+  "day": 0,
+  "en": "add",
+  "example": "只加一个文件：git add index.html",
+  "explain": "点名：把所有改动放进暂存区，准备打包。",
+  "term": "git add -A",
+  "topic": "Git"
+ },
+ {
+  "day": 0,
+  "en": "commit",
+  "example": "git commit -m \"首页改暖纸底\"",
+  "explain": "记一笔账：正式存成一个版本。备注写清干了什么。",
+  "term": "git commit -m \"备注\"",
+  "topic": "Git"
+ },
+ {
+  "day": 0,
+  "en": "push",
+  "example": "用户名 JoyceWay，密码用 Personal Access Token",
+  "explain": "把本地账本抄送到 GitHub。-u 记住地址，以后光 git push 就行。",
+  "term": "git push -u origin main",
+  "topic": "Git"
+ },
+ {
+  "day": 1,
+  "topic": "Shell",
+  "term": "mkdir",
+  "en": "make directory",
+  "explain": "建新文件夹：在当前目录里造一个目录。",
+  "example": "mkdir fundamentals 就在网站目录下造了 fundamentals 文件夹"
+ },
+ {
+  "day": 1,
+  "topic": "Git",
+  "term": "git status",
+  "en": "",
+  "explain": "看工作区状态：哪些文件改了、哪些还没提交。",
+  "example": "git status 告诉你「哪些卡片写了还没 push」"
+ },
+ {
+  "day": 1,
+  "topic": "Python",
+  "term": "print",
+  "en": "",
+  "explain": "打印输出：把东西显示到屏幕上，调试的第一利器。",
+  "example": "print('hello'+' world') → hello world"
+ },
+ {
+  "day": 1,
+  "topic": "HTML/CSS",
+  "term": "<h1>",
+  "en": "heading 1",
+  "explain": "一级标题：网页上最大的标题，一页只放一个。",
+  "example": "<h1>我的学习卡片</h1> → 页面顶部大标题"
+ },
+ {
+  "day": 1,
+  "topic": "Prompt",
+  "term": "指定角色",
+  "en": "role prompting",
+  "explain": "给 AI 定身份：它按角色的水准和口吻回答。",
+  "example": "'你是 PCC 的 Python 老师，用一句话解释变量'"
+ },
+ {
+  "day": 1,
+  "topic": "AI 概念",
+  "term": "token",
+  "en": "",
+  "explain": "AI 看的最小单位：一个词、半个词或一个字。",
+  "example": "'hello world' 约 2 个 token，中文一个字约 1–2 个"
+ },
+ {
+  "day": 1,
+  "topic": "读代码",
+  "term": "Traceback",
+  "en": "",
+  "explain": "报错的路标：出错的文件、行号和原因都写在里面。",
+  "example": "从下往上读：最后一行是错误名，倒数第二是你的哪行代码炸了"
+ },
+ {
+  "day": 2,
+  "topic": "Shell",
+  "term": "touch",
+  "en": "touch",
+  "explain": "秒建空文件：不进编辑器，直接造出一个 0 字节的新文件。",
+  "example": "touch notes.txt → 在当前目录里多出一个 notes.txt"
+ },
+ {
+  "day": 2,
+  "topic": "Git",
+  "term": "git log",
+  "en": "log",
+  "explain": "翻账本：倒序查看每次提交的备注、作者和时间。",
+  "example": "git log --oneline → 一行一条，快速看到『字卡 Day 1』那条记录"
+ },
+ {
+  "day": 2,
+  "topic": "Python",
+  "term": "input()",
+  "en": "input",
+  "explain": "问用户要答案：程序停下来等你打字回车。",
+  "example": "name = input('你叫什么？') → 你输入 Joyce，它被收进变量 name"
+ },
+ {
+  "day": 2,
+  "topic": "HTML/CSS",
+  "term": "<p>",
+  "en": "paragraph",
+  "explain": "段落：放一段文字的标签，浏览器会自动加上段间距。",
+  "example": "<p>今天学了 touch 命令。</p> → 页面上显示一段话"
+ },
+ {
+  "day": 2,
+  "topic": "Prompt",
+  "term": "指定格式",
+  "en": "format specification",
+  "explain": "告诉 AI 按什么格式回答：长度、结构、要不要例子。",
+  "example": "在问题后面加一句『用 3 行以内的中文短句回答』"
+ },
+ {
+  "day": 2,
+  "topic": "AI 概念",
+  "term": "context window",
+  "en": "context window",
+  "explain": "AI 一次能记住的字数上限：超出就忘了开头。",
+  "example": "长聊天开始答非所问时，开新话题比继续堆字管用"
+ },
+ {
+  "day": 2,
+  "topic": "读代码",
+  "term": "缩进",
+  "en": "indentation",
+  "explain": "Python 的分组方式：四个空格算一组，决定代码归谁管。",
+  "example": "if 下面缩进的那行，只在条件成立时跑；对齐回去就散伙"
+ },
+ {
+  "day": 3,
+  "topic": "Shell",
+  "term": "cp",
+  "en": "copy",
+  "explain": "复制文件或目录——改文件前先备份，出错了还能找回。",
+  "example": "在 ~/workspace/curtainraiser-site 里敲：cp index.html index.html.bak，改坏了把 .bak 拷回来就行"
+ },
+ {
+  "day": 3,
+  "topic": "Git",
+  "term": "git diff",
+  "en": "git difference",
+  "explain": "commit 之前先看一眼：工作区到底改了哪些行。",
+  "example": "在 curtainraiser-site 里敲：git diff fundamentals/cards.json，红色是删掉的、绿色是新增的"
+ },
+ {
+  "day": 3,
+  "topic": "Python",
+  "term": "len()",
+  "en": "length",
+  "explain": "数长度——字符串有几个字、列表有几项，一问就知道。",
+  "example": "print(len('hello'))  # 输出 5\nprint(len(['a', 'b', 'c']))  # 输出 3"
+ },
+ {
+  "day": 3,
+  "topic": "HTML/CSS",
+  "term": "<a>",
+  "en": "anchor",
+  "explain": "超链接——点文字就能跳到别的页面，是网页的灵魂标签。",
+  "example": "<a href='https://joyceway.github.io/curtainraiser/'>我的学习站</a>"
+ },
+ {
+  "day": 3,
+  "topic": "Prompt",
+  "term": "给例子",
+  "en": "few-shot",
+  "explain": "想让 AI 照你的样子写？直接甩 1–2 个例子，比讲一百句规则都管用。",
+  "example": "写短句：先给两句『太阳升起来了。它把影子拉得很长。』再说：按这个风格续写"
+ },
+ {
+  "day": 3,
+  "topic": "AI 概念",
+  "term": "temperature",
+  "en": "温度参数",
+  "explain": "控制 AI 回答多『放飞』：0 保守精准，1 天马行空。写代码用低，写文案用高。",
+  "example": "让 AI 写格言配文：temperature 0.8 更有灵气；让它查 API 文档：0.2 更靠谱"
+ },
+ {
+  "day": 3,
+  "topic": "读代码",
+  "term": "for 循环",
+  "en": "for loop",
+  "explain": "读到 for x in 东西：就是把『东西』里的每一项拿出来，逐个处理一遍。",
+  "example": "for line in lines:\n    print(line)  # 把 lines 里每一行都打印出来"
+ },
+ {
+  "day": 4,
+  "topic": "Shell",
+  "term": "mv",
+  "en": "move",
+  "explain": "搬家命令：移动文件，也用来给文件改名。",
+  "example": "mv 旧笔记.md 笔记.md 是改名；mv 照片.jpg ~/workspace/curtainraiser-site/assets/ 是把照片搬进网站素材目录。"
+ },
+ {
+  "day": 4,
+  "topic": "Git",
+  "term": "git pull",
+  "en": "pull",
+  "explain": "把远程仓库的最新代码拉到本地，和别人的更新保持同步。",
+  "example": "在 ~/workspace/curtainraiser-site 里跑 git pull origin main，先把最新字卡拿下来，再动手改，不容易冲突。"
+ },
+ {
+  "day": 4,
+  "topic": "Python",
+  "term": "f-string",
+  "en": "formatted string literal",
+  "explain": "在引号前加个 f，就能在字符串里直接塞变量，不用加号拼接。",
+  "example": "name = 'joyce'\nprint(f'Hi, {name}！第 4 天了')  # 直接跑，输出 Hi, joyce！第 4 天了"
+ },
+ {
+  "day": 4,
+  "topic": "HTML/CSS",
+  "term": "<img>",
+  "en": "image",
+  "explain": "在网页里插图片的标签，src 是图片地址，alt 是图片挂掉时显示的文字。",
+  "example": "<img src='笔记截图.png' alt='今天的 shell 练习'> 这样文章页里就能配图了。"
+ },
+ {
+  "day": 4,
+  "topic": "Prompt",
+  "term": "限定读者",
+  "en": "specify the audience",
+  "explain": "告诉 AI 这段话是写给谁看的，它会自动调整深浅和用词。",
+  "example": "给 Joyce 用法：请用‘新手读者能听懂’的中文解释 git 暂存区，举一个日常生活的例子。"
+ },
+ {
+  "day": 4,
+  "topic": "AI 概念",
+  "term": "幻觉",
+  "en": "hallucination",
+  "explain": "模型不知道答案时会一本正经地编一个，语气越肯定越要警惕。",
+  "example": "问模型‘我 2023 年那篇 X 文章的标题是什么’，它会编一个出来——数字和事实永远自己核对一遍。"
+ },
+ {
+  "day": 4,
+  "topic": "读代码",
+  "term": "# 注释",
+  "en": "comment",
+  "explain": "以 # 开头的行是写给人看的，机器直接跳过，是代码里的便利贴。",
+  "example": "# TODO：字卡翻面动画先用最简单的，以后再美化 —— 读别人的代码时，先看注释能省一半时间。"
+ }
 ]
