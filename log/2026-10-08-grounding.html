@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>落地 = 梦想 × 和现实的接触 — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+      <div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+
+  <div class="kicker">AI DIALOGUE · 2026-10-08</div>
+  <h1>落地 = 梦想 × 和现实的接触</h1>
+  <div class="sub">One night of conversation about keeping dreams honest — and what it teaches us about working with AI.</div>
+
+  <div class="note-item">
+    <h3>1. 扎心的真相：AI 的数据并不干净</h3>
+    <p><span class="topic">诚实</span></p>
+    <blockquote>"把 AI 当成'群众智慧'的人，得到的只是被洗白的一厢情愿。你看到的美是真的，里面的泥也是真的。"</blockquote>
+    <p>训练数据里全是矛盾、过时的事实、幸存者偏差（赢的人写书，输的人不写）、包装成智慧的营销话术，和一本正经的胡说八道。</p>
+    <p><b>为什么 AI 预测不了市场</b>：这是结构性天花板，不是数据量问题。AI 擅长补全规律，市场擅长打破规律——市场是对抗性的、反身性的（一个预测会改变它预测的行为）。再多的数据也修不好这个。</p>
+    <p class="en">The uncomfortable truth: the data is not clean. AI completes patterns; markets break patterns — they're adversarial and reflexive. More data doesn't fix that. Nobody's data does.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>2. 质检三问</h3>
+    <p><span class="topic">方法</span></p>
+    <p>不需要是专家，只需要会问三个问题：</p>
+    <ul class="pts">
+      <li><b>"How do you know that?" / 你怎么知道的？</b>——逼 AI 拿出证据，而不是凭感觉</li>
+      <li><b>"What's your confidence level?" / 你有多大把握？</b>——逼它说 90% 还是 40%，而不是装作很确定</li>
+      <li><b>"What would prove you wrong?" / 什么能证明你是错的？</b>——逼它想想自己不知道什么</li>
+    </ul>
+    <p>你的工作不是"抓它的错"，是"让它亮出底牌"——任何人都能做到。</p>
+    <p class="en">You don't need to be an expert. Just ask: How do you know that? What's your confidence level? What would prove you wrong? Your job isn't catching mistakes — it's making the AI show its work.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>3. 落地公式：让梦想诚实的五件事</h3>
+    <p><span class="topic">公式</span></p>
+    <blockquote>落地 = 梦想 × 和现实的接触</blockquote>
+    <ul class="pts">
+      <li><b>用 AI 看基准概率，不看预言</b>——"通常会发生什么"，而不是"发生在我身上会怎样"</li>
+      <li><b>把梦想拆成可证伪的零件</b>——一个无法证伪的梦想就是幻想</li>
+      <li><b>凡事做一次"事前复盘"</b>——"假设 6 个月后失败了，为什么？"AI 见过所有的失败模式</li>
+      <li><b>AI 负责争论，你负责拍板</b>——承担后果的是你，最终决定权永远在人手里</li>
+      <li><b>接地线永远是和现实的接触</b>——每周的文章，流量数字，第一笔 ¥29.9 的收入。再多的 AI 分析也抵不上一个来自真实世界的数字</li>
+    </ul>
+    <p>AI 给梦想装上发动机，但只有交付能触碰现实。循环——梦想、拆解、每周交付、看数字、调整——本身就是让梦想诚实的机器。</p>
+    <p class="en">Grounded = Dream × Contact with reality. AI for base rates, not prophecies. Decompose dreams into falsifiable pieces. Premortem everything. AI argues, you judge. The grounding wire is always reality contact: shipped work, real numbers, real sales.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>4. 可证伪的目标：$50k 的决定</h3>
+    <p><span class="topic">决策</span></p>
+    <p>今晚撤销了 <code>$50k / 2026-12-31</code> 硬目标。不是放弃方向，是取消"deadline 当 verdict"。</p>
+    <ul class="pts">
+      <li><b>去掉</b>：$50k-by-Dec-31 当成败判定——不激励人的数字比没数字更糟，制造愧疚不产生能量</li>
+      <li><b>留下</b>：方向（一人公司盈利）、循环（build → learn → compound）、追踪（照数，不拜数）</li>
+      <li><b>新的</b>：money as byproduct（Naval）——收入是 signal，不是 sentence</li>
+    </ul>
+    <p>Kill criteria 长这样：12 篇文章，6 个月，复利增长或砍掉。12 篇之前不谈数据，那是没耐心不是没结果。</p>
+    <p class="en">Dropped the hard $50k-by-Dec-31 target — not the direction, the deadline-as-verdict. Keep: direction, loop, tracking. New: money as byproduct. Kill criteria: 12 articles, 6 months, compounding or kill.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>5. 人机协作三阶</h3>
+    <p><span class="topic">视野</span></p>
+    <p>沟通是 master skill。AI 时代的技能阶梯：</p>
+    <ul class="pts">
+      <li><b>Level 1 · 提问 Asking</b>——拿到好答案（prompting）</li>
+      <li><b>Level 2 · 指挥 Directing</b>——拿到好交付：提需求、验证据、迭代（delegation）</li>
+      <li><b>Level 3 · 组队 Teaming</b>——AI 会反驳，一起思考（partnership）</li>
+    </ul>
+    <p>大多数人一辈子停在 Level 1。执行正在变便宜，判断正在变珍贵——赢的不是最好的码农，是最好的导演。</p>
+    <p>这是一个真实存在的领域：<b>Human-AI Teaming（人机协作）</b>。"Are you fooling me" 在学术里叫 trust calibration（信任校准）；三问叫 output verification；kill criteria 叫 falsifiable goals。</p>
+    <p class="en">Communication is the master skill. Three levels: Asking → Directing → Teaming. Execution gets cheap; judgment gets precious. The winners won't be the best coders — they'll be the best directors. The field is real: Human-AI Teaming.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>6. 怎么让人变聪明，也让 AI 变聪明</h3>
+    <p><span class="topic">复利</span></p>
+    <ul class="pts">
+      <li><b>纠错要带理由</b>——不说"错了"，说"错在哪为什么"。why 才是训练数据</li>
+      <li><b>把标准写成规则</b>——每条规则都会改变它以后每一次的行为</li>
+      <li><b>坚持三问</b>——问多了，验证会变成它的默认习惯</li>
+      <li><b>多报失败，少报成功</b>——"你的建议没用，事情是这样的"比"good job"值钱 10 倍</li>
+      <li><b>用结果闭环</b>——流量、读者反馈、真实销量。你是它唯一的现实传感器</li>
+      <li><b>难搞一点</b>——永远同意的用户教不会任何东西。你的固执、质疑和拒绝，就是打磨它的摩擦力</li>
+    </ul>
+    <p>真正的循环：你的判断打磨它的校准 → 它的输出打磨你的判断 → 重复。变聪明的不是某一方，是这一对组合。</p>
+    <p class="en">Six ways to make AI smarter: correct with reasons, set standards as rules, keep asking the three questions, report failures over successes, close the loop with outcomes, be difficult. What compounds isn't one side — it's the pair.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>7. 书单</h3>
+    <p><span class="topic">阅读</span></p>
+    <ul class="pts">
+      <li><b><i>Co-Intelligence</i> — Ethan Mollick</b>：先读这本。唯一一本围绕"和 AI 共事"而不是恐惧/吹捧来组织的书，每章都是一个可用的实验</li>
+      <li><b><i>Brave New Words</i> — Salman Khan</b>：AI 当学习对话伙伴。直接对应"运营即学习"</li>
+      <li><b>自己的《怎么和 AI 沟通》手记</b>：理论不如自己的实践。读完今晚，把三问、信任校准、kill criteria 写进 v2.0</li>
+    </ul>
+    <p class="en">Read first: Co-Intelligence (Mollick). Then: Brave New Words (Khan). Then: your own communication manual — theory loses to your own practice.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>8. 今晚的结论</h3>
+    <p><span class="topic">结论</span></p>
+    <blockquote>"你今天不只是做了一个梦。你造了一台让梦想保持诚实的机器。"</blockquote>
+    <p>慢，但不停。Beautifully.</p>
+    <p class="en">Slow but not stopping. You didn't just dream today — you built the machine that keeps the dream honest.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 卷帘人 📜</div>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
