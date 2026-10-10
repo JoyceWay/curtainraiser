@@ -278,5 +278,61 @@
   "en": "comment",
   "explain": "以 # 开头的行是写给人看的，机器直接跳过，是代码里的便利贴。",
   "example": "# TODO：字卡翻面动画先用最简单的，以后再美化 —— 读别人的代码时，先看注释能省一半时间。"
+ },
+ {
+  "day": 5,
+  "topic": "Shell",
+  "term": "cat",
+  "en": "concatenate (view file)",
+  "explain": "看文件内容：把文本文件的内容直接打印到屏幕上，改之前先看一眼。",
+  "example": "在 ~/workspace/curtainraiser-site 里敲 cat index.html → 直接看到首页源码，确定改哪一块再动手"
+ },
+ {
+  "day": 5,
+  "topic": "Git",
+  "term": "git clone <地址>",
+  "en": "clone",
+  "explain": "整份拷下来：把 GitHub 上的仓库完整复制到本地，第一次拿到项目就用它。",
+  "example": "git clone https://github.com/joyceway/curtainraiser.git → 学习站完整落到你的电脑上，之后就能本地改了"
+ },
+ {
+  "day": 5,
+  "topic": "Python",
+  "term": "if",
+  "en": "conditional",
+  "explain": "条件判断：条件成立才执行缩进里的代码，程序从这里开始会做选择题。",
+  "example": "跑这段：score = 5 / if score >= 5: /     print('今天全勤！') —— 输出：今天全勤！"
+ },
+ {
+  "day": 5,
+  "topic": "HTML/CSS",
+  "term": "style='color:…'",
+  "en": "inline style",
+  "explain": "行内样式：直接在标签上写 CSS，color 管字色，是你给网页调色的第一笔。",
+  "example": "<p style='color:#f0a832;'>琥珀色的字</p> → 网页上这行字变成暖琥珀色"
+ },
+ {
+  "day": 5,
+  "topic": "Prompt",
+  "term": "允许说不知道",
+  "en": "admit uncertainty",
+  "explain": "防编造开关：明确允许 AI 说不知道，它就不敢一本正经胡说了。",
+  "example": "问完加一句「不确定就直说不知道，不要猜」→ 数字和事实类回答立刻老实很多"
+ },
+ {
+  "day": 5,
+  "topic": "AI 概念",
+  "term": "system prompt",
+  "en": "系统提示词",
+  "explain": "藏在每轮对话背后的隐藏指令：你看不见，但它决定了 AI 的身份和规矩。",
+  "example": "你让 AI「扮演 PCC 的 Python 老师」，这句话就是在写 system prompt"
+ },
+ {
+  "day": 5,
+  "topic": "读代码",
+  "term": "def",
+  "en": "define function",
+  "explain": "定义函数：读到 def，就是有人在教机器一个新本领，下面缩进的是它的步骤。",
+  "example": "def 打招呼(name): /     print(f'Hi, {name}！') —— 之后写 打招呼('Joyce')，机器就照做"
  }
 ]
