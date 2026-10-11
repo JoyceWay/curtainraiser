@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>d09 · 品牌系统母题 — 设计分析 — 卷帘人 CurtainRaiser</title>
+<link rel="stylesheet" href="../../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{ --accent:#66AC35; }
+.da-head{ text-align:center; padding:56px 20px 10px; }
+.da-head .kicker{ color:var(--accent); font-size:12px; letter-spacing:.35em; font-weight:700; }
+.da-head h1{ font-size:38px; margin:14px 0 10px; letter-spacing:-.01em; }
+.da-head .lede{ color:#6b6f76; font-size:15px; max-width:640px; margin:0 auto; line-height:1.9; }
+.da-back{ text-align:center; margin:10px 0 0; }
+.da-back a{ color:var(--accent); font-size:14px; text-decoration:none; font-weight:600; }
+.da-item{ max-width:860px; margin:48px auto 0; background:#fff; border:1px solid #eceae4; border-radius:18px; overflow:hidden; box-shadow:0 6px 24px rgba(30,30,30,.05); }
+.da-item img{ width:100%; display:block; }
+.da-body{ padding:26px 30px 30px; }
+.da-code{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.14em; color:#fff; background:var(--accent); border-radius:6px; padding:2px 8px; margin-right:8px; vertical-align:1px; }
+.da-date{ font-size:12px; color:#9aa0a8; letter-spacing:.12em; }
+.da-body h2{ font-size:24px; margin:10px 0 8px; }
+.da-one{ font-size:14px; color:#4a4e54; line-height:1.8; margin:0 0 14px; }
+.swatches{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; }
+.sw{ display:flex; align-items:center; gap:6px; font-size:11px; color:#6b6f76; background:#f7f6f2; border-radius:999px; padding:4px 10px 4px 4px; }
+.sw i{ width:18px; height:18px; border-radius:50%; display:inline-block; border:1px solid rgba(0,0,0,.08); }
+.da-tag{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:.2em; color:var(--accent); margin:18px 0 4px; }
+.da-steal{ margin:0; padding:0; list-style:none; }
+.da-steal li{ font-size:13.5px; line-height:1.8; color:#33373c; padding:7px 0 7px 22px; position:relative; border-top:1px dashed #eee; }
+.da-steal li::before{ content:"✓"; position:absolute; left:2px; color:var(--accent); font-weight:700; }
+.da-skip{ font-size:13px; color:#9aa0a8; line-height:1.8; margin:6px 0 0; }
+.illus-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:6px 0 8px; }
+.illus-grid figure{ margin:0; background:#f7f6f2; border-radius:12px; overflow:hidden; }
+.illus-grid img{ width:100%; display:block; aspect-ratio:1/1; object-fit:cover; }
+.illus-grid figcaption{ font-size:11.5px; color:#6b6f76; padding:8px 10px; line-height:1.6; }
+@media (max-width:640px){ .illus-grid{ grid-template-columns:1fr; } }
+.font-table{ width:100%; border-collapse:collapse; font-size:13px; margin:4px 0 8px; }
+.font-table th{ text-align:left; font-size:11px; letter-spacing:.14em; color:#9aa0a8; padding:8px 10px; border-bottom:1px solid #eee; }
+.font-table td{ padding:9px 10px; border-bottom:1px solid #f4f2ec; color:#33373c; line-height:1.7; vertical-align:top; }
+@media (max-width:640px){ .da-head h1{ font-size:28px; } .da-body{ padding:20px; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../../index.html"><b>首页</b><span>HOME</span></a>
+<div class="has-menu">
+      <a href="../../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="../../log/index.html"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="../../log/index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="../../log/2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="../../log/2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="../../log/2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="../../log/2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="../../log/2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="../../log/2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+      </div>
+    </div>
+      <a href="../../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../index.html" class="active"><b>设计分析</b><span>DESIGN</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+  <div class="da-head">
+    <div class="kicker">d09 SERIES · 设计母题</div>
+    <h1>品牌系统母题</h1>
+    <p class="lede">一个品牌的三件套：标志 + 官网首页 + 产品页。看 justfont 整套怎么做。</p>
+    <p class="da-back"><a href="../index.html">← 返回设计分析</a></p>
+  </div>
+
+  <article class="da-item">
+    <img src="../img/justfont/jf-logo.png" alt="justfont 标志">
+    <div class="da-body">
+      <div class="da-date"><span class="da-code">D09-1</span>2026-10-11 · 品牌标志</div>
+      <h2>justfont 标志</h2>
+      <p class="da-one">绿圆内白 jf 合字 + 右侧全小写 justfont。</p>
+      <div class="swatches">
+        <span class="sw"><i style="background:#88A878"></i>#88A878 标志绿</span>
+      </div>
+      <div class="da-tag">能偷的</div>
+      <ul class="da-steal">
+        <li>圆 + 小写 = 亲和：字体公司的 logo 不卖弄字形，卖"好接近"</li>
+        <li>jf 合字：j 的点落在圆上沿，一个细节让人记住</li>
+        <li>鼠尾草绿不选正绿：文气，不科技</li>
+      </ul>
+      <div class="da-tag">不要学的</div>
+      <p class="da-skip">无。简单到小图也认得，范本。</p>
+    </div>
+  </article>
+<article class="da-item">
+    <img src="../img/justfont-02.png" alt="justfont 首页柑仔蜜板块">
+    <div class="da-body">
+      <div class="da-date"><span class="da-code">D09-2</span>2026-10-11 · 首页 · 实测</div>
+      <h2>一绿到底的首页</h2>
+      <p class="da-one">全站只有一个强调色。制图纸网格铺满整页，板块模板严格统一，靠滚动描边动画出活泼。</p>
+      <div class="swatches">
+        <span class="sw"><i style="background:#66AC35"></i>#66AC35 品牌绿</span>
+        <span class="sw"><i style="background:#437223"></i>#437223 绿hover</span>
+        <span class="sw"><i style="background:#fcfcfc"></i>#fcfcfc 纸底</span>
+        <span class="sw"><i style="background:#342c2c"></i>#342c2c 正文</span>
+        <span class="sw"><i style="background:#bfbfbf"></i>#bfbfbf 标签灰</span>
+      </div>
+      <div class="da-tag">字体（实测）</div>
+      <table class="font-table">
+        <tr><th>角色</th><th>实测字体</th></tr>
+        <tr><td>正文 / 导航 UI</td><td>源樣黑體 GenYo Gothic TW 400/500</td></tr>
+        <tr><td>Hero 竖排标题</td><td>蘭陽明體 jf-lanyangming 300 + .2em 字距</td></tr>
+        <tr><td>全站策略</td><td>每类页面换一款自家产品 —— 网站本身就是字帖</td></tr>
+      </table>
+      <div class="da-tag">能偷的</div>
+      <ul class="da-steal">
+        <li>一绿到底：链接、按钮、hover、区块底全归 #66AC35；meta 信息用灰 —— 屏幕上永远只有一个主角</li>
+        <li>网站即字帖：导航、正文、标题各用一款自家字体，产品自己代言</li>
+        <li>制图纸底纹：30px 浅网格铺满整页，设计师草稿感，成本几乎为零</li>
+        <li>模板严格、表面活泼：板块结构（hashtag→标题→副标→正文→胶囊按钮）一字不差，活泼全靠滚动描边动画</li>
+        <li>胶囊描边按钮 hover 填绿：简单、可拥有感强，全站复用</li>
+      </ul>
+      <div class="da-tag">不要学的</div>
+      <p class="da-skip">首屏天际线动画约 10 秒才画完 —— 为艺术牺牲首屏信息密度，品牌站可以，转化页不行。竖排大标题只适合中文品牌站。</p>
+    </div>
+  </article>
+<article class="da-item">
+    <img src="../img/justfont-10.png" alt="金萱页字重网格">
+    <div class="da-body">
+      <div class="da-date"><span class="da-code">D09-3</span>2026-10-11 · 金萱字体页 · 实测</div>
+      <h2>产品即视觉的金萱页</h2>
+      <p class="da-one">超大裁切字形 × 5 字重并排当 hero；9 档字重不叫 Bold 叫"九分糖"；hover 逐笔重绘展工艺。</p>
+      <div class="swatches">
+        <span class="sw"><i style="background:#66AC35"></i>#66AC35 绿 wash</span>
+        <span class="sw"><i style="background:#ffffff"></i>#ffffff 卡片</span>
+        <span class="sw"><i style="background:#342c2c"></i>#342c2c 字</span>
+      </div>
+      <div class="da-tag">字体（实测）</div>
+      <table class="font-table">
+        <tr><th>角色</th><th>实测字体</th></tr>
+        <tr><td>展示字体</td><td>金萱 jf-jinxuan 700</td></tr>
+        <tr><td>9 字重命名</td><td>一分糖 → 九分糖（糖度命名法）</td></tr>
+      </table>
+      <div class="da-tag">能偷的</div>
+      <ul class="da-steal">
+        <li>糖度命名：技术参数变文化梗 —— 好记、好传播、好晒单</li>
+        <li>超大裁切字形当 hero：产品本身就是最有力的视觉，省掉一切装饰图</li>
+        <li>三卡片流程化：家族一覽 / 文章探索 / 字型細節 —— "买前先玩"做成编号三步</li>
+        <li>hover 逐笔重绘：静态图 + sprite 帧 = 伪动画，低成本展工艺感</li>
+      </ul>
+      <div class="da-tag">不要学的</div>
+      <p class="da-skip">整版绿底白字只适合品牌绿够亮、字够粗。9 档字重对普通用户是选择负担 —— 他们用"糖度"故事化解了，学的是化解手法。</p>
+    </div>
+  </article>
+
+  <footer>
+    <p>卷帘人 CurtainRaiser 📜</p>
+    <p class="en">Go Big, Then Never Stop Running.</p>
+  </footer>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>

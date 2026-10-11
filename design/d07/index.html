@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>D07 · 印章徽章母题 — 设计分析 — 卷帘人 CurtainRaiser</title>
+<title>d07 · 字表陈列母题 — 设计分析 — 卷帘人 CurtainRaiser</title>
 <link rel="stylesheet" href="../../styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -29,6 +29,14 @@
 .da-steal li{ font-size:13.5px; line-height:1.8; color:#33373c; padding:7px 0 7px 22px; position:relative; border-top:1px dashed #eee; }
 .da-steal li::before{ content:"✓"; position:absolute; left:2px; color:var(--accent); font-weight:700; }
 .da-skip{ font-size:13px; color:#9aa0a8; line-height:1.8; margin:6px 0 0; }
+.illus-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:6px 0 8px; }
+.illus-grid figure{ margin:0; background:#f7f6f2; border-radius:12px; overflow:hidden; }
+.illus-grid img{ width:100%; display:block; aspect-ratio:1/1; object-fit:cover; }
+.illus-grid figcaption{ font-size:11.5px; color:#6b6f76; padding:8px 10px; line-height:1.6; }
+@media (max-width:640px){ .illus-grid{ grid-template-columns:1fr; } }
+.font-table{ width:100%; border-collapse:collapse; font-size:13px; margin:4px 0 8px; }
+.font-table th{ text-align:left; font-size:11px; letter-spacing:.14em; color:#9aa0a8; padding:8px 10px; border-bottom:1px solid #eee; }
+.font-table td{ padding:9px 10px; border-bottom:1px solid #f4f2ec; color:#33373c; line-height:1.7; vertical-align:top; }
 @media (max-width:640px){ .da-head h1{ font-size:28px; } .da-body{ padding:20px; } }
 </style>
 </head>
@@ -70,32 +78,32 @@
 <div class="wrap">
 
   <div class="da-head">
-    <div class="kicker">D07 SERIES · 设计母题</div>
-    <h1>印章徽章母题</h1>
-    <p class="lede">一枚红色印章 = 证书感。圆形徽章 + 一圈小字，获奖/认证最省力的视觉符号。</p>
+    <div class="kicker">d07 SERIES · 设计母题</div>
+    <h1>字表陈列母题</h1>
+    <p class="lede">网格 + 标注 + 尺子 = 展示系统性收藏的万能版式。</p>
     <p class="da-back"><a href="../index.html">← 返回设计分析</a></p>
   </div>
 
   <article class="da-item">
-    <img src="../img/tdc-seal-black.png" alt="TDC 黑底印章">
+    <img src="../img/rixing-specimen.png" alt="日星字表">
     <div class="da-body">
-      <div class="da-date"><span class="da-code">D07-1</span>2026-10-11 · TDC · Joyce 发图</div>
-      <h2>黑底上的红印章</h2>
-      <p class="da-one">Type Directors Club 优秀奖文章头图。品红 kicker + 白衬线标题 + 红色圆形徽章，全居中大留白。</p>
+      <div class="da-date"><span class="da-code">D07-1</span>2026-10-11 · 日星鑄字行 · Joyce 发图</div>
+      <h2>字表：目录式美学</h2>
+      <p class="da-one">初號/一號三档字重，左侧尺子，网格字表，右下铸字机小图。功能性字表，但体裁可偷。</p>
       <div class="swatches">
-        <span class="sw"><i style="background:#0A0A0A"></i>#0A0A0A 黑底</span>
-        <span class="sw"><i style="background:#B82878"></i>#B82878 品红</span>
-        <span class="sw"><i style="background:#D23A3A"></i>#D23A3A 印章红</span>
+        <span class="sw"><i style="background:#F5F3EC"></i>米白纸</span>
+        <span class="sw"><i style="background:#1a1a1a"></i>墨黑字</span>
+        <span class="sw"><i style="background:#3a3a3a"></i>深灰尺子</span>
       </div>
       <div class="da-tag">能偷的</div>
       <ul class="da-steal">
-        <li>一枚红印章 = 证书感：圆形徽章 + 一圈小字，放在任何标题旁都成立</li>
-        <li>黑底是印章的舞台：红印章在黑底上最跳，白底上则平庸</li>
-        <li>品红 kicker：小写无衬线品红，三重反差和白衬线标题拉开层级</li>
-        <li>全居中 + 大留白：证书感需要"庄重"，居中是最便宜的庄重</li>
+        <li>字表式陈列 = 万能版式：网格 + 标注 + 尺子，字体、色卡、案例库、产品线直接套用</li>
+        <li>"度量"母题：尺子、编号（初號①/一號③）给人技术可信感，数字即权威</li>
+        <li>双页并排：天然适合"对比"（细/粗、旧/新），对比是最省力的叙事</li>
+        <li>纸纹 + 小插图：匠人/复古叙事的低成本配件</li>
       </ul>
       <div class="da-tag">不要学的</div>
-      <p class="da-skip">印章一年用一次是"获奖"，天天用是"贴纸"——稀缺性是它价值的一半。徽章里的字移动端看不清，徽章认形状不认字。</p>
+      <p class="da-skip">信息密度极高，只适合"查阅"场景；繁体标注 + 纸纹有年代感，现代品牌用要提纯；字表是"目录"不是"广告"，要种草另配情境图。</p>
     </div>
   </article>
 

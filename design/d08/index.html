@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>d08 · 印章徽章母题 — 设计分析 — 卷帘人 CurtainRaiser</title>
+<link rel="stylesheet" href="../../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{ --accent:#66AC35; }
+.da-head{ text-align:center; padding:56px 20px 10px; }
+.da-head .kicker{ color:var(--accent); font-size:12px; letter-spacing:.35em; font-weight:700; }
+.da-head h1{ font-size:38px; margin:14px 0 10px; letter-spacing:-.01em; }
+.da-head .lede{ color:#6b6f76; font-size:15px; max-width:640px; margin:0 auto; line-height:1.9; }
+.da-back{ text-align:center; margin:10px 0 0; }
+.da-back a{ color:var(--accent); font-size:14px; text-decoration:none; font-weight:600; }
+.da-item{ max-width:860px; margin:48px auto 0; background:#fff; border:1px solid #eceae4; border-radius:18px; overflow:hidden; box-shadow:0 6px 24px rgba(30,30,30,.05); }
+.da-item img{ width:100%; display:block; }
+.da-body{ padding:26px 30px 30px; }
+.da-code{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.14em; color:#fff; background:var(--accent); border-radius:6px; padding:2px 8px; margin-right:8px; vertical-align:1px; }
+.da-date{ font-size:12px; color:#9aa0a8; letter-spacing:.12em; }
+.da-body h2{ font-size:24px; margin:10px 0 8px; }
+.da-one{ font-size:14px; color:#4a4e54; line-height:1.8; margin:0 0 14px; }
+.swatches{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; }
+.sw{ display:flex; align-items:center; gap:6px; font-size:11px; color:#6b6f76; background:#f7f6f2; border-radius:999px; padding:4px 10px 4px 4px; }
+.sw i{ width:18px; height:18px; border-radius:50%; display:inline-block; border:1px solid rgba(0,0,0,.08); }
+.da-tag{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:.2em; color:var(--accent); margin:18px 0 4px; }
+.da-steal{ margin:0; padding:0; list-style:none; }
+.da-steal li{ font-size:13.5px; line-height:1.8; color:#33373c; padding:7px 0 7px 22px; position:relative; border-top:1px dashed #eee; }
+.da-steal li::before{ content:"✓"; position:absolute; left:2px; color:var(--accent); font-weight:700; }
+.da-skip{ font-size:13px; color:#9aa0a8; line-height:1.8; margin:6px 0 0; }
+.illus-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:6px 0 8px; }
+.illus-grid figure{ margin:0; background:#f7f6f2; border-radius:12px; overflow:hidden; }
+.illus-grid img{ width:100%; display:block; aspect-ratio:1/1; object-fit:cover; }
+.illus-grid figcaption{ font-size:11.5px; color:#6b6f76; padding:8px 10px; line-height:1.6; }
+@media (max-width:640px){ .illus-grid{ grid-template-columns:1fr; } }
+.font-table{ width:100%; border-collapse:collapse; font-size:13px; margin:4px 0 8px; }
+.font-table th{ text-align:left; font-size:11px; letter-spacing:.14em; color:#9aa0a8; padding:8px 10px; border-bottom:1px solid #eee; }
+.font-table td{ padding:9px 10px; border-bottom:1px solid #f4f2ec; color:#33373c; line-height:1.7; vertical-align:top; }
+@media (max-width:640px){ .da-head h1{ font-size:28px; } .da-body{ padding:20px; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../../index.html"><b>首页</b><span>HOME</span></a>
+<div class="has-menu">
+      <a href="../../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="../../log/index.html"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="../../log/index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="../../log/2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="../../log/2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="../../log/2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="../../log/2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="../../log/2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="../../log/2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+      </div>
+    </div>
+      <a href="../../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../index.html" class="active"><b>设计分析</b><span>DESIGN</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+  <div class="da-head">
+    <div class="kicker">d08 SERIES · 设计母题</div>
+    <h1>印章徽章母题</h1>
+    <p class="lede">一枚红色印章 = 证书感。圆形徽章 + 一圈小字，黑底是它的舞台。</p>
+    <p class="da-back"><a href="../index.html">← 返回设计分析</a></p>
+  </div>
+
+  <article class="da-item">
+    <img src="../img/tdc-seal-black.png" alt="TDC 黑底印章">
+    <div class="da-body">
+      <div class="da-date"><span class="da-code">D08-1</span>2026-10-11 · TDC · Joyce 发图</div>
+      <h2>黑底上的红印章</h2>
+      <p class="da-one">Type Directors Club 优秀奖文章头图。品红 kicker + 白衬线标题 + 红色圆形徽章，全居中大留白。</p>
+      <div class="swatches">
+        <span class="sw"><i style="background:#0A0A0A"></i>#0A0A0A 黑底</span>
+        <span class="sw"><i style="background:#B82878"></i>#B82878 品红</span>
+        <span class="sw"><i style="background:#D23A3A"></i>#D23A3A 印章红</span>
+      </div>
+      <div class="da-tag">能偷的</div>
+      <ul class="da-steal">
+        <li>一枚红印章 = 证书感：圆形徽章 + 一圈小字，放在任何标题旁都成立</li>
+        <li>黑底是印章的舞台：红印章在黑底上最跳，白底上则平庸</li>
+        <li>品红 kicker：小写无衬线品红，三重反差和白衬线标题拉开层级</li>
+        <li>全居中 + 大留白：证书感需要"庄重"，居中是最便宜的庄重</li>
+      </ul>
+      <div class="da-tag">不要学的</div>
+      <p class="da-skip">印章一年用一次是"获奖"，天天用是"贴纸"——稀缺性是它价值的一半。徽章里的字移动端看不清，徽章认形状不认字。</p>
+    </div>
+  </article>
+
+  <footer>
+    <p>卷帘人 CurtainRaiser 📜</p>
+    <p class="en">Go Big, Then Never Stop Running.</p>
+  </footer>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>

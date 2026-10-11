@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>D06 · 字表陈列母题 — 设计分析 — 卷帘人 CurtainRaiser</title>
+<title>d06 · 手绘过程母题 — 设计分析 — 卷帘人 CurtainRaiser</title>
 <link rel="stylesheet" href="../../styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -29,6 +29,14 @@
 .da-steal li{ font-size:13.5px; line-height:1.8; color:#33373c; padding:7px 0 7px 22px; position:relative; border-top:1px dashed #eee; }
 .da-steal li::before{ content:"✓"; position:absolute; left:2px; color:var(--accent); font-weight:700; }
 .da-skip{ font-size:13px; color:#9aa0a8; line-height:1.8; margin:6px 0 0; }
+.illus-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:6px 0 8px; }
+.illus-grid figure{ margin:0; background:#f7f6f2; border-radius:12px; overflow:hidden; }
+.illus-grid img{ width:100%; display:block; aspect-ratio:1/1; object-fit:cover; }
+.illus-grid figcaption{ font-size:11.5px; color:#6b6f76; padding:8px 10px; line-height:1.6; }
+@media (max-width:640px){ .illus-grid{ grid-template-columns:1fr; } }
+.font-table{ width:100%; border-collapse:collapse; font-size:13px; margin:4px 0 8px; }
+.font-table th{ text-align:left; font-size:11px; letter-spacing:.14em; color:#9aa0a8; padding:8px 10px; border-bottom:1px solid #eee; }
+.font-table td{ padding:9px 10px; border-bottom:1px solid #f4f2ec; color:#33373c; line-height:1.7; vertical-align:top; }
 @media (max-width:640px){ .da-head h1{ font-size:28px; } .da-body{ padding:20px; } }
 </style>
 </head>
@@ -70,32 +78,31 @@
 <div class="wrap">
 
   <div class="da-head">
-    <div class="kicker">D06 SERIES · 设计母题</div>
-    <h1>字表陈列母题</h1>
-    <p class="lede">网格 + 标注 + 尺子 = 展示系统性收藏的万能版式。<br>价值在"体裁"，不在某一张。</p>
+    <div class="kicker">d06 SERIES · 设计母题</div>
+    <h1>手绘过程母题</h1>
+    <p class="lede">过程感是最便宜的高级感：天际线 10 秒逐笔画完，用户就多看了 10 秒。</p>
     <p class="da-back"><a href="../index.html">← 返回设计分析</a></p>
   </div>
 
   <article class="da-item">
-    <img src="../img/rixing-specimen.png" alt="日星字表">
+    <img src="../img/justfont-hero.png" alt="justfont 首屏手绘">
     <div class="da-body">
-      <div class="da-date"><span class="da-code">D06-1</span>2026-10-11 · 日星鑄字行 · Joyce 发图</div>
-      <h2>字表：目录式美学</h2>
-      <p class="da-one">初號/一號三档字重，左侧尺子，网格字表，右下铸字机小图。功能性字表，但体裁可偷。</p>
-      <div class="swatches">
-        <span class="sw"><i style="background:#F5F3EC"></i>米白纸</span>
-        <span class="sw"><i style="background:#1a1a1a"></i>墨黑字</span>
-        <span class="sw"><i style="background:#3a3a3a"></i>深灰尺子</span>
+      <div class="da-date"><span class="da-code">D06-1</span>2026-10-11 · justfont 首屏</div>
+      <h2>手绘过程感：天际线 10 秒画完</h2>
+      <p class="da-one">全景构图：方格纸 + 天际线绿 wash + 竖排中文大标题 + 大面积留白。另有 10 帧过程动画（0→10.8 秒，900ms/帧）。</p>
+      <img src="../img/justfont-hero-anim.gif" alt="手绘过程动画" style="margin-top:12px;border:1px solid #eee;border-radius:12px">
+      <div class="swatches" style="margin-top:14px">
+        <span class="sw"><i style="background:#66AC35"></i>#66AC35 品牌绿</span>
+        <span class="sw"><i style="background:#fcfcfc"></i>#fcfcfc 纸底</span>
       </div>
       <div class="da-tag">能偷的</div>
       <ul class="da-steal">
-        <li>字表式陈列 = 万能版式：网格 + 标注 + 尺子，字体、色卡、案例库、产品线直接套用</li>
-        <li>"度量"母题：尺子、编号（初號①/一號③）给人技术可信感，数字即权威</li>
-        <li>双页并排：天然适合"对比"（细/粗、旧/新），对比是最省力的叙事</li>
-        <li>纸纹 + 小插图：匠人/复古叙事的低成本配件</li>
+        <li>过程感是最便宜的高级感：天际线 10 秒逐笔画完，用户就多看了 10 秒</li>
+        <li>完整构图才成立：孤立的天际线图层弱，全景 + 留白 + 竖排标题一起才成立</li>
+        <li>竖排中文标题：天然的视觉锚点，横排信息流里一眼区分</li>
       </ul>
       <div class="da-tag">不要学的</div>
-      <p class="da-skip">信息密度极高，只适合"查阅"场景；繁体标注 + 纸纹有年代感，现代品牌用要提纯；字表是"目录"不是"广告"，要种草另配情境图。</p>
+      <p class="da-skip">动画 1.1MB，首屏慎用；过程动画只适合"展示手艺"的场景。</p>
     </div>
   </article>
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>D03 · 工程制图母题 — 设计分析 — 卷帘人 CurtainRaiser</title>
+<title>d03 · 工程制图母题 — 设计分析 — 卷帘人 CurtainRaiser</title>
 <link rel="stylesheet" href="../../styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -29,6 +29,14 @@
 .da-steal li{ font-size:13.5px; line-height:1.8; color:#33373c; padding:7px 0 7px 22px; position:relative; border-top:1px dashed #eee; }
 .da-steal li::before{ content:"✓"; position:absolute; left:2px; color:var(--accent); font-weight:700; }
 .da-skip{ font-size:13px; color:#9aa0a8; line-height:1.8; margin:6px 0 0; }
+.illus-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:6px 0 8px; }
+.illus-grid figure{ margin:0; background:#f7f6f2; border-radius:12px; overflow:hidden; }
+.illus-grid img{ width:100%; display:block; aspect-ratio:1/1; object-fit:cover; }
+.illus-grid figcaption{ font-size:11.5px; color:#6b6f76; padding:8px 10px; line-height:1.6; }
+@media (max-width:640px){ .illus-grid{ grid-template-columns:1fr; } }
+.font-table{ width:100%; border-collapse:collapse; font-size:13px; margin:4px 0 8px; }
+.font-table th{ text-align:left; font-size:11px; letter-spacing:.14em; color:#9aa0a8; padding:8px 10px; border-bottom:1px solid #eee; }
+.font-table td{ padding:9px 10px; border-bottom:1px solid #f4f2ec; color:#33373c; line-height:1.7; vertical-align:top; }
 @media (max-width:640px){ .da-head h1{ font-size:28px; } .da-body{ padding:20px; } }
 </style>
 </head>
@@ -70,9 +78,9 @@
 <div class="wrap">
 
   <div class="da-head">
-    <div class="kicker">D03 SERIES · 设计母题</div>
+    <div class="kicker">d03 SERIES · 设计母题</div>
     <h1>工程制图母题</h1>
-    <p class="lede">用生产工具语言做装饰：Bézier 锚点、参考线、裁切标记、叠印。<br>不同来源的同类图续成 -2、-3。</p>
+    <p class="lede">用生产工具语言做装饰：锚点、参考线、裁切标记。黑底白工程线 = 蓝图感。</p>
     <p class="da-back"><a href="../index.html">← 返回设计分析</a></p>
   </div>
 
@@ -95,6 +103,27 @@
       </ul>
       <div class="da-tag">不要学的</div>
       <p class="da-skip">黑底大白字只适合展示场合；Bézier 装饰需要真有"造字/设计"故事，没有故事硬画锚点就是装。</p>
+    </div>
+  </article>
+<article class="da-item">
+    <div class="da-body">
+      <div class="da-date"><span class="da-code">D03-2</span>2026-10-11 · 配图分析 · 6 选 3</div>
+      <h2>工程制图语言：把生产过程变成视觉母题</h2>
+      <p class="da-one">Bézier 锚点、测量线、印刷裁切标记 —— 做字体的"生产工具语言"直接当插画用。</p>
+      <div class="illus-grid">
+        <figure><img src="../img/justfont-illus-weight.png" alt="多字重叠印"><figcaption>多字重叠印：一眼看懂"可变字重"</figcaption></figure>
+        <figure><img src="../img/justfont-illus-sketch.png" alt="工程草图秀"><figcaption>工程草图"秀"：匠人人设最小单位</figcaption></figure>
+        <figure><img src="../img/justfont-illus-push.png" alt="小人推大字"><figcaption>小人推大字：抽象词变成动作</figcaption></figure>
+      </div>
+      <div class="da-tag">能偷的</div>
+      <ul class="da-steal">
+        <li>用行业黑话做装饰：锚点、参考线、裁切标记 —— 内行会心一笑，外行觉得专业</li>
+        <li>叠印透明度表现"变化"：多个版本叠在一起透出来，比画箭头高级</li>
+        <li>小人 + 巨物：抽象概念具象化的万能公式，人物越小反差越幽默</li>
+        <li>单色 + 一点灰：三张全是品牌绿 + 灰色辅助线，和"一绿到底"同纪律</li>
+      </ul>
+      <div class="da-tag">不要学的</div>
+      <p class="da-skip">锚点装饰只适合字体/设计工具类品牌；叠印字重的前提是真有多个字重；小人推大字成立是因为推的是自家产品。</p>
     </div>
   </article>
 
