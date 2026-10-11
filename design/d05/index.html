@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D05 · 手绘过程感 — 设计分析 — 卷帘人 CurtainRaiser</title>
+<link rel="stylesheet" href="../../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{ --accent:#66AC35; }
+.da-head{ text-align:center; padding:56px 20px 10px; }
+.da-head .kicker{ color:var(--accent); font-size:12px; letter-spacing:.35em; font-weight:700; }
+.da-head h1{ font-size:38px; margin:14px 0 10px; letter-spacing:-.01em; }
+.da-head .lede{ color:#6b6f76; font-size:15px; max-width:640px; margin:0 auto; line-height:1.9; }
+.da-back{ text-align:center; margin:10px 0 0; }
+.da-back a{ color:var(--accent); font-size:14px; text-decoration:none; font-weight:600; }
+.da-item{ max-width:860px; margin:48px auto 0; background:#fff; border:1px solid #eceae4; border-radius:18px; overflow:hidden; box-shadow:0 6px 24px rgba(30,30,30,.05); }
+.da-item img{ width:100%; display:block; }
+.da-body{ padding:26px 30px 30px; }
+.da-code{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.14em; color:#fff; background:var(--accent); border-radius:6px; padding:2px 8px; margin-right:8px; vertical-align:1px; }
+.da-date{ font-size:12px; color:#9aa0a8; letter-spacing:.12em; }
+.da-body h2{ font-size:24px; margin:10px 0 8px; }
+.da-one{ font-size:14px; color:#4a4e54; line-height:1.8; margin:0 0 14px; }
+.swatches{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; }
+.sw{ display:flex; align-items:center; gap:6px; font-size:11px; color:#6b6f76; background:#f7f6f2; border-radius:999px; padding:4px 10px 4px 4px; }
+.sw i{ width:18px; height:18px; border-radius:50%; display:inline-block; border:1px solid rgba(0,0,0,.08); }
+.da-tag{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:.2em; color:var(--accent); margin:18px 0 4px; }
+.da-steal{ margin:0; padding:0; list-style:none; }
+.da-steal li{ font-size:13.5px; line-height:1.8; color:#33373c; padding:7px 0 7px 22px; position:relative; border-top:1px dashed #eee; }
+.da-steal li::before{ content:"✓"; position:absolute; left:2px; color:var(--accent); font-weight:700; }
+.da-skip{ font-size:13px; color:#9aa0a8; line-height:1.8; margin:6px 0 0; }
+@media (max-width:640px){ .da-head h1{ font-size:28px; } .da-body{ padding:20px; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../../index.html"><b>首页</b><span>HOME</span></a>
+<div class="has-menu">
+      <a href="../../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="../../log/index.html"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="../../log/index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="../../log/2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="../../log/2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="../../log/2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="../../log/2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="../../log/2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="../../log/2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+      </div>
+    </div>
+      <a href="../../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../index.html" class="active"><b>设计分析</b><span>DESIGN</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+  <div class="da-head">
+    <div class="kicker">D05 SERIES</div>
+    <h1>手绘过程感</h1>
+    <p class="lede">品牌故事"画出来"讲，不用装饰讲。<br><a href="https://www.justfont.com/" style="color:var(--accent);font-weight:600;">justfont.com →</a></p>
+    <p class="da-back"><a href="../index.html">← 返回设计分析</a></p>
+  </div>
+
+  <article class="da-item">
+    <img src="../img/justfont-hero.png" alt="justfont 首屏手绘天际线">
+    <div class="da-body">
+      <div class="da-date"><span class="da-code">D05-1</span>2026-10-11 · justfont 首屏 · 实测</div>
+      <h2>天际线 10 秒画完，用户就看了 10 秒</h2>
+      <p class="da-one">铅笔素描城市天际线 5 图层逐笔绘制 + 竖排蘭陽明體标题。过程感是最便宜的高级感。</p>
+      <div class="swatches">
+        <span class="sw"><i style="background:#fcfcfc"></i>#fcfcfc 纸底</span>
+        <span class="sw"><i style="background:#9aa0a8"></i>铅笔灰</span>
+        <span class="sw"><i style="background:#66AC35"></i>#66AC35 点睛</span>
+      </div>
+      <div class="da-tag">能偷的</div>
+      <ul class="da-steal">
+        <li>过程感是最便宜的高级感：一个逐笔绘制动画，胜过十张装饰图</li>
+        <li>动画 = 停留时长：10 秒画完，用户就看了 10 秒 —— 注意力拿满</li>
+        <li>手绘 × 工程网格：潦草天际线 × 精密网格，反差出"匠人"气质</li>
+        <li>竖排标题：中文独有版式红利，英文站做不出来</li>
+      </ul>
+      <div class="da-tag">不要学的</div>
+      <p class="da-skip">天际线单拎出来很淡，必须配网格底 + 标题，单独用撑不起场面。10 秒动画只适合低频访问的品牌站；老用户天天看会烦。</p>
+    </div>
+  </article>
+
+  <footer>
+    <p>卷帘人 CurtainRaiser 📜</p>
+    <p class="en">Go Big, Then Never Stop Running.</p>
+  </footer>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
