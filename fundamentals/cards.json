@@ -334,5 +334,61 @@
   "en": "define function",
   "explain": "定义函数：读到 def，就是有人在教机器一个新本领，下面缩进的是它的步骤。",
   "example": "def 打招呼(name): /     print(f'Hi, {name}！') —— 之后写 打招呼('Joyce')，机器就照做"
+ },
+ {
+  "day": 6,
+  "topic": "Shell",
+  "term": ">",
+  "en": "output redirect",
+  "explain": "输出重定向：把命令的输出从屏幕转存进文件，攒日志/备忘就靠它。",
+  "example": "在 ~/workspace 里敲 ls > today.txt → 屏幕没输出，目录里多了 today.txt，里面是文件清单"
+ },
+ {
+  "day": 6,
+  "topic": "Git",
+  "term": "git branch",
+  "en": "branch",
+  "explain": "分支：开一条平行时间线，试新想法不污染主线，炸了也无所谓。",
+  "example": "git branch 新卡片样式 新建分支；git branch 列出所有分支，带星号的是你现在站的那条"
+ },
+ {
+  "day": 6,
+  "topic": "Python",
+  "term": "append",
+  "en": "append",
+  "explain": "列表往里加东西：列表是筐，append 是往筐里放一个。",
+  "example": "todo = [] / todo.append('练 shell') / print(todo) → 跑起来输出 ['练 shell']"
+ },
+ {
+  "day": 6,
+  "topic": "HTML/CSS",
+  "term": "<ul>",
+  "en": "unordered list",
+  "explain": "无序列表：li 包起来的每一行都会带小圆点，清单、目录都用它。",
+  "example": "<ul><li>第 6 天</li><li>Shell</li></ul> → 网页上变成带圆点的两行清单"
+ },
+ {
+  "day": 6,
+  "topic": "Prompt",
+  "term": "一步步想",
+  "en": "chain-of-thought",
+  "explain": "让 AI 先列推理步骤再给结论：难的问题准确率直接上一个档。",
+  "example": "结尾加一句『分三步想：①…②…③…，最后再给结论』→ 它先写思考过程，瞎编明显变少"
+ },
+ {
+  "day": 6,
+  "topic": "AI 概念",
+  "term": "embedding",
+  "en": "词向量",
+  "explain": "把文字变成一串数字：意思越接近的文字，数字越接近。这是 AI 搜索和记忆的底座。",
+  "example": "『从我的笔记里找和“自动备份”意思相近的条目』→ 靠 embedding 找语义，不是靠关键词"
+ },
+ {
+  "day": 6,
+  "topic": "读代码",
+  "term": "return",
+  "en": "return",
+  "explain": "函数把结果递出来：return 后面跟的是它交出的答案，没有 return 的函数算白忙活。",
+  "example": "def 加(a, b): /     return a + b —— 之后 加(2, 3) 交出 5，你可以 print 它或接着算"
  }
 ]
