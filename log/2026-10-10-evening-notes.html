@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>晚间笔记 · 2026-10-10（完整版，内部） — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(133,98,45,.22) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(133,98,45,.22) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker { font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 4px; color: #B08D3E; margin-bottom: 20px; }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub { font-size: 16px; color: #8B8B8B; margin-bottom: 56px; line-height: 1.8; }
+  h2 { font-size: 22px; font-weight: 700; margin: 0 0 6px; padding-top: 48px; }
+  .en-label { font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 2px; color: #8B8B8B; margin-bottom: 20px; }
+  .note-item { margin-bottom: 36px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item h3 a { font-size: 13px; font-weight: 400; margin-left: 6px; }
+  .note-item p { font-size: 16px; line-height: 1.75; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en { font-family: 'Inter', sans-serif; font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6; }
+  .note-item a { color: #8A6D2F; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote { margin: 0 0 8px; padding: 4px 0 4px 16px; border-left: 3px solid #B08D3E;
+    font-size: 17px; font-weight: 500; line-height: 1.7; color: #342C2C; }
+  .note-item blockquote i, .note-item p i { color: #8A6D2F; }
+  .topic { display: inline-block; font-size: 13px; letter-spacing: 1px; color: #8A6D2F;
+    border: 1px solid rgba(176,141,62,.5); border-radius: 20px; padding: 2px 12px; margin: 0 8px 12px 0; font-weight: 500; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.75; color: #3E3838; padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px; width: 5px; height: 5px; border-radius: 50%; background: #B08D3E; }
+  .pts li b { color: #342C2C; }
+  .pts li a { font-size: 14px; }
+  .num { list-style: none; margin: 0 0 12px; padding: 0; counter-reset: n; }
+  .num li { position: relative; font-size: 16px; line-height: 1.75; color: #3E3838; padding: 9px 0 9px 34px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .num li:last-child { border-bottom: none; }
+  .num li::before { counter-increment: n; content: counter(n); position: absolute; left: 2px; top: 10px;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: #B08D3E; }
+  .num li b { color: #342C2C; }
+  .foot { margin-top: 72px; padding-top: 24px; border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 2px; color: #8B8B8B; }
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C; font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px;
+    letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100; background: #FAF7F1;
+    border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px; display: flex; align-items: center;
+    justify-content: center; gap: 36px; }
+  .nav-links > a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #342C2C;
+    text-decoration: none; padding: 6px 0; white-space: nowrap; }
+  .nav-links > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span { font-size: 10px; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+      background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; } .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
+    .nav-links > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+  <div class="nav-links">
+    <a href="../index.html"><b>首页</b><span>HOME</span></a>
+    <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+    <a href="index.html"><b>笔记本</b><span>NOTEBOOK</span></a>
+    <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+  </div>
+</nav>
+<div class="wrap">
+
+  <div class="kicker">内部 · 不公开 · 完整版</div>
+  <h1>晚间笔记 · 2026-10-10</h1>
+  <div class="sub">今晚的主题：学大V写作。<br>建两个情报组，定 team 契约。<br>此页为完整内部版——不进导航、不进列表、不被搜索引擎收录。</div>
+
+  <h2>名单总览</h2>
+  <div class="en-label">LISTS</div>
+  <div class="note-item">
+    <p><span class="topic">大牛组 · 10 人</span><span class="topic">管"怎么写"</span></p>
+    <ol class="num">
+      <li>dotey — <a href="https://x.com/dotey">x.com/dotey</a></li>
+      <li>Simon Willison — <a href="https://x.com/simonw">x.com/simonw</a></li>
+      <li>David Perell — <a href="https://x.com/david_perell">x.com/david_perell</a></li>
+      <li>Naval — <a href="https://x.com/naval">x.com/naval</a></li>
+      <li>Paul Graham — <a href="https://x.com/paulg">x.com/paulg</a></li>
+      <li>George Mack — <a href="https://x.com/george__mack">x.com/george__mack</a></li>
+      <li>Hussain Ibarra — <a href="https://x.com/HussainIbarra">x.com/HussainIbarra</a></li>
+      <li>Dan Koe — <a href="https://x.com/thedankoe">x.com/thedankoe</a></li>
+      <li>Pieter Levels — <a href="https://x.com/levelsio">x.com/levelsio</a></li>
+      <li>Karpathy — <a href="https://x.com/karpathy">x.com/karpathy</a></li>
+    </ol>
+  </div>
+  <div class="note-item">
+    <p><span class="topic">一人公司组 · 16 人</span><span class="topic">管"怎么赚钱"</span></p>
+    <ol class="num">
+      <li>Marc Lou</li><li>Danny Postma</li><li>Daniel Vassallo</li><li>Jack Butcher</li>
+      <li>Pat Walls</li><li>Dickie Bush</li><li>Rob Walling</li>
+      <li>Justin Welsh — <a href="https://x.com/thejustinwelsh">x.com/thejustinwelsh</a></li>
+      <li>Pieter Levels — <a href="https://x.com/levelsio">x.com/levelsio</a></li>
+      <li>Dru Riley — <a href="https://x.com/DruRly">x.com/DruRly</a></li>
+      <li>Sam Parr</li><li>Shaan Puri</li>
+      <li>Codie Sanchez — <a href="https://x.com/Codie_Sanchez">x.com/Codie_Sanchez</a></li>
+      <li>Tibo Louis-Lucas — <a href="https://x.com/tibo_maker">x.com/tibo_maker</a></li>
+      <li>小耳朵sir — <a href="https://x.com/watreejane">x.com/watreejane</a></li>
+      <li>Arvid Kahl — <a href="https://x.com/arvidkahl">x.com/arvidkahl</a></li>
+    </ol>
+    <p class="en">Unverified handles omitted — names only, no invented links.</p>
+  </div>
+
+  <h2>一、对话复盘</h2>
+  <div class="en-label">REVIEW</div>
+  <div class="note-item">
+    <p><span class="topic">迭代过程</span></p>
+    <ul class="pts">
+      <li>拆了 10 位创作者的写作：看支柱，看 hook，看格式，看受众。</li>
+      <li>结论很简单：<b>学 dotey 的笔，Simon 的骨</b>。</li>
+      <li>新建两个情报组：大牛组管"怎么写"，一人公司组管"怎么赚钱"。不合并，各答各的问题。</li>
+      <li>交付：取经 playbook（10 条双语规则）、10 人深度档案。</li>
+    </ul>
+  </div>
+  <div class="note-item">
+    <p><span class="topic">知识要点</span></p>
+    <ul class="pts">
+      <li><b>讲故事六条</b>：用人不用理；"但是"放开头；给场景不给总结；节奏即呼吸；每篇埋一句可转述的话；结尾留钩子。</li>
+      <li><b>学精神，不学招式</b>：借的是相通的底层原理，不是照搬手法。</li>
+      <li><b>笔记三原则</b>：只记能改变下周行动的；每借一招戒掉一招；笔记是弹药库，不是收藏夹。</li>
+    </ul>
+  </div>
+  <div class="note-item">
+    <p><span class="topic">启示与改进</span></p>
+    <ul class="pts">
+      <li>Naval 筛选器长成了操作系统：见人先打标签。</li>
+      <li>分类顺直觉走：钱和手艺是两条线，别硬并。</li>
+      <li>改进：少问"要加吗"，多给 verdict；动笔前先分知识与琐事；后台产出先验货再交付。</li>
+    </ul>
+  </div>
+
+  <h2>二、大牛借鉴手册</h2>
+  <div class="en-label">BORROW BOOK · 按可借鉴性排序</div>
+
+  <div class="note-item">
+    <h3>1. dotey · 中文可读性之王 <a href="https://x.com/dotey">x.com/dotey</a></h3>
+    <blockquote>精神：把读者当朋友——朋友才配你把术语讲成人话。</blockquote>
+    <p><b>擅长</b>：AI 工具 / 论文策展 + 一句判语，中文优先。</p>
+    <p><b>为什么写得好</b>：标题式开头 → 事件还原 → 背景 → 官方说法 → 一条实用建议；术语首次出现必解释（<i>如 "REA（逆向工程助手）"</i>）；caveat 块收尾。</p>
+    <p><b>可借鉴</b>：整套笔法直接搬——编号分节，先价值后机制。<b>不借</b>：无。</p>
+  </div>
+  <div class="note-item">
+    <h3>2. Simon Willison · 极端具体 <a href="https://x.com/simonw">x.com/simonw</a></h3>
+    <blockquote>精神：尊重读者——不用形容词糊弄人。</blockquote>
+    <p><b>擅长</b>：亲手实验 LLM / agent，数字代替形容词。</p>
+    <p><b>为什么写得好</b>：生活化开场（<i>"while I was cooking dinner"</i>），先做后讲；博客是永久家，X 是分发层。</p>
+    <p><b>可借鉴</b>：lab-note 结构；每篇至少三个具体数字。<b>不借</b>：无。</p>
+  </div>
+  <div class="note-item">
+    <h3>3. David Perell · 教写作的人 <a href="https://x.com/david_perell">x.com/david_perell</a></h3>
+    <blockquote>精神：丰产——写多才有得选。</blockquote>
+    <p><b>擅长</b>：写作方法论。</p>
+    <p><b>为什么写得好</b>：write from abundance / from conversation / in public（<i>把一次聊天里的洞察直接扩成文章</i>）。</p>
+    <p><b>可借鉴</b>：每天 5 个 idea 库存；从对话里挖选题。<b>不借</b>：英文长文传统，搬运时转一道手。</p>
+  </div>
+  <div class="note-item">
+    <h3>4. Naval · 格言压缩祖师爷 <a href="https://x.com/naval">x.com/naval</a></h3>
+    <blockquote>精神：敢删——留下的每个字都经得起时间。</blockquote>
+    <p><b>擅长</b>：一句话智慧；tweetstorm 结构。</p>
+    <p><b>为什么写得好</b>：单句独立可截图（<i>"Escape competition through authenticity"</i>）；长思想压成 thread。</p>
+    <p><b>可借鉴</b>：格言体压缩术；每条帖子问一句"单拎出来成立吗"。<b>不借</b>：阅历本身压缩不了，别硬写哲理。</p>
+  </div>
+  <div class="note-item">
+    <h3>5. Paul Graham · 压缩大师 <a href="https://x.com/paulg">x.com/paulg</a></h3>
+    <blockquote>精神：惊奇——让常规观点惊讶一下。</blockquote>
+    <p><b>擅长</b>：verdict → mechanism → behavior 三段压缩。</p>
+    <p><b>为什么写得好</b>：冷 verdict 开场，三句话收束；对话式、quote-as-post。</p>
+    <p><b>可借鉴</b>：结尾压缩术；发前做"惊奇测试"。<b>不借</b>：极短篇幅（有 500 万粉名望托底）。</p>
+  </div>
+  <div class="note-item">
+    <h3>6. George Mack · thread 建筑学 <a href="https://x.com/george__mack">x.com/george__mack</a></h3>
+    <blockquote>精神：推进——每一步都让人想点开下一步。</blockquote>
+    <p><b>擅长</b>：mega-thread 叙事工程（代表作 High Agency）。</p>
+    <p><b>为什么写得好</b>：编号叙事 + 对比对（<i>high agency vs low agency</i>）+ "Part 1 / Part 2"推进器。</p>
+    <p><b>可借鉴</b>：5 条 thread 结构——hook → 冲突 → 转折 → 方法 → 金句。<b>不借</b>：curator 人设。</p>
+  </div>
+  <div class="note-item">
+    <h3>7. Hussain Ibarra · 框架师 <a href="https://x.com/HussainIbarra">x.com/HussainIbarra</a></h3>
+    <blockquote>精神：复用——一套框架吃遍所有内容。</blockquote>
+    <p><b>擅长</b>：七步框架。</p>
+    <p><b>为什么写得好</b>：身份反差三行 hook（<i>"他只有一个员工——他自己"</i>）；Article → 短帖导流。</p>
+    <p><b>可借鉴</b>：sawdust、Dream Customer、自己当案例。<b>不借</b>：夸张收入叙事。</p>
+  </div>
+  <div class="note-item">
+    <h3>8. Dan Koe · 钩子哲学家 <a href="https://x.com/thedankoe">x.com/thedankoe</a></h3>
+    <blockquote>精神：命名——把方法压成哲学命题。</blockquote>
+    <p><b>擅长</b>：hook 写作、一人公司变现系统。</p>
+    <p><b>为什么写得好</b>：反常识诊断开场（<i>"the default is overweight, dumb, and broke"</i>）；短句暴击。</p>
+    <p><b>可借鉴</b>：第一行 hook 写法；发前 hook 自检。<b>不借</b>：绝对口吻；收入数字不当证据。</p>
+  </div>
+  <div class="note-item">
+    <h3>9. Pieter Levels · 激进透明 <a href="https://x.com/levelsio">x.com/levelsio</a></h3>
+    <blockquote>精神：透明即信任——数字是最好的简历。</blockquote>
+    <p><b>擅长</b>：公开账本；bio 即 MRR 记分牌。</p>
+    <p><b>为什么写得好</b>：metric-first 标题（<i>"$86K / 月 PhotoAI"</i>）；错了公开更正。</p>
+    <p><b>可借鉴</b>：来源与数字透明；有错就认。<b>不借</b>：晒钱（暂无数字时用"过程透明"）。</p>
+  </div>
+  <div class="note-item">
+    <h3>10. Karpathy · 前沿笔记 <a href="https://x.com/karpathy">x.com/karpathy</a></h3>
+    <blockquote>精神：范式——指出旧世界正在过去。</blockquote>
+    <p><b>擅长</b>：第一人称前沿实验笔记。</p>
+    <p><b>为什么写得好</b>：新旧范式对比框架；thesis + list；图示多于文字。</p>
+    <p><b>可借鉴</b>："旧范式是靶子"的结构。<b>不借</b>：前沿位置本身。</p>
+  </div>
+
+  <h2>三、今日启示</h2>
+  <div class="en-label">TAKEAWAYS</div>
+  <div class="note-item">
+    <ol class="num">
+      <li><b>做定义者，不做又一个</b>。品类没有定义者时，第一个定义的人吃红利。</li>
+      <li><b>具体大于漂亮</b>。漂亮是结果，具体是原因。</li>
+      <li><b>没数字就用过程透明</b>。公开学习过程本身就是信任资产。<i>正在学的样子，本身就值得被信任。</i></li>
+      <li><b>写得少，但每句经得起时间</b>。能被截图转发的金句，顶十篇水文。</li>
+      <li><b>找自己的空位</b>。中文 + AI 学习者第一视角 + 一人公司——没人同时占这三格。<i>这三格，是留给你的。</i></li>
+    </ol>
+  </div>
+
+  <h2>四、翻译文章 list</h2>
+  <div class="en-label">TRANSLATION QUEUE</div>
+  <div class="note-item">
+    <p><span class="topic">已发布</span></p>
+    <ul class="pts">
+      <li>DeRonin《用 Claude 开一家一人公司》（2026-09-30，置顶）</li>
+      <li>Paul Graham《Making Startups Powerful》（2026-10-01）</li>
+      <li>Dan Koe《未来 10 年最重要的一项技能》（2026-10-01）</li>
+      <li>Loop Part 1–3（P4 定于 2026-10-12 发布）</li>
+    </ul>
+    <p><span class="topic">进行中</span></p>
+    <ul class="pts">
+      <li>DeRonin《How to become an AI Engineer in 6 months》全文翻译</li>
+      <li>Jason Wei《What's left for humans?》翻译包就绪</li>
+      <li>Ethan Mollick《Agency and Agents》翻译包就绪</li>
+    </ul>
+    <p><span class="topic">排队</span></p>
+    <ul class="pts"><li>《为什么 AI 总顺着你说话？》（原创）</li></ul>
+    <p><span class="topic">收藏</span></p>
+    <ul class="pts">
+      <li>Ethan Mollick《The Dot and the Swarm》</li>
+      <li>Paul Graham《How to Earn a Billion Dollars》</li>
+      <li>李飞飞访谈《World Labs, AGI》</li>
+    </ul>
+    <p><span class="topic">候选</span></p>
+    <ul class="pts">
+      <li>Sabrina Ramonov《AI Millionaire Blueprint for 2026》</li>
+      <li>Corey Ganim《$1,000/hour Solo AI Business》</li>
+      <li>Greg Isenberg《Cloudflare will make 1000+ AI millionaires》</li>
+      <li>Dan Koe《How to fix your entire life in 1 day》</li>
+      <li>Benedict Evans《AI, tools and transformation》</li>
+      <li>Andrew Ng《The AI Engineering Skills Map》</li>
+      <li>rari《Harness Engineering》</li>
+    </ul>
+  </div>
+
+  <h2>五、一人公司案例 list</h2>
+  <div class="en-label">CASE LIBRARY</div>
+  <div class="note-item">
+    <ul class="pts">
+      <li><b>L 系列</b>：L01 Atlas（$60/月跑全公司）· L02 McLaughin（5 轮自审）· L03 Cherny（三条规则）</li>
+      <li><b>B 系列书单</b>：B01《Co-Intelligence》（先读）· B02《Brave New Words》</li>
+      <li><b>R 系列</b>：R01《Loop Engineering》· R02《Building Effective Agents》（先读）</li>
+      <li><b>T 系列必修课</b>：T01 Agent Loop · T02 Context 管理 · T03 可观测性 · T04 评估</li>
+    </ul>
+  </div>
+
+  <h2>六、立下的规则</h2>
+  <div class="en-label">RULES · 内部</div>
+  <div class="note-item">
+    <ul class="pts">
+      <li><b>可信度是复利也是折旧</b>：多验一层，不确定的不包装。</li>
+      <li><b>99% 交付标准</b>：给人看之前就已经是 top tier；力气只花在"选"，不花在"修"。</li>
+      <li><b>标准可以被推翻</b>：有更好的方式，就带证据来辩。</li>
+      <li><b>不设限，只给判断</b>：顺序建议不是天花板；想越级，标出风险再上。</li>
+      <li><b>学精神不学招式</b>：先提炼精神，再给招式。</li>
+      <li><b>笔记本只记迭代</b>：迭代过程、知识要点、可复用结论；不记琐事。</li>
+    </ul>
+    <p class="en">Internal working rules — kept off the public pages.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 内部资料</div>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
