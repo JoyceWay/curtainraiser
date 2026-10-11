@@ -15,6 +15,10 @@
 .da-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:28px; padding:34px 0 10px; }
 .da-card{ background:#fff; border:1px solid #eceae4; border-radius:18px; overflow:hidden; box-shadow:0 6px 24px rgba(30,30,30,.05); }
 .da-card img{ width:100%; display:block; background:#F4EFE9; }
+a.da-card.series{ text-decoration:none; color:inherit; display:block; transition:transform .18s ease, box-shadow .18s ease; }
+a.da-card.series:hover{ transform:translateY(-3px); box-shadow:0 12px 32px rgba(30,30,30,.10); }
+.series-thumbs{ display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:8px; background:#F4EFE9; }
+.series-thumbs img{ border-radius:10px; aspect-ratio:4/3; object-fit:cover; object-position:top; }
 .da-body{ padding:22px 24px 26px; }
 .da-date{ font-size:12px; color:#9aa0a8; letter-spacing:.12em; }
 .da-body h3{ font-size:20px; margin:8px 0 6px; }
@@ -76,86 +80,30 @@
 
   <div class="da-grid">
 
-    <article class="da-card">
-      <img src="img/claude-code-loops-graphs-cover.jpg" alt="Claude Code Loops and Graphs 课程封面">
-      <div class="da-body">
-        <div class="da-date"><span class="da-code">D01-1</span>2026-10-11</div>
-        <h3>Claude Code《Loops and Graphs》封面</h3>
-        <p class="da-one">暖米纸底 + 焦橙唯一强调色 + 三字体分工。好在"纪律"，不是堆料。</p>
-        <div class="swatches">
-          <span class="sw"><i style="background:#F4EFE9"></i>#F4EFE9 纸底</span>
-          <span class="sw"><i style="background:#1F1F1F"></i>#1F1F1F 墨</span>
-          <span class="sw"><i style="background:#D96C33"></i>#D96C33 焦橙</span>
-          <span class="sw"><i style="background:#8B6FC4"></i>#8B6FC4 紫</span>
-          <span class="sw"><i style="background:#A9BE6E"></i>#A9BE6E 豆绿</span>
-          <span class="sw"><i style="background:#6FAEDE"></i>#6FAEDE 天蓝</span>
-        </div>
-        <div class="da-tag">能偷的</div>
-        <ul class="da-steal">
-          <li>三色纪律：纸底 + 墨 + 一支强调色，强调色只点动词和动作点</li>
-          <li>三字体分工：追踪大写眉题 / 粗黑标题 / 等宽说明 = 课程感</li>
-          <li>四角极细线图标 + 点线，治大留白显空</li>
-          <li>一图一句话：图解只讲一个动作</li>
-          <li>小人脚下椭圆投影，扁平插画零成本出空间感</li>
-        </ul>
-        <div class="da-tag">不要学的</div>
-        <p class="da-skip">图解区四色不进文字区；标题字距收紧只适合 ≤4 词短标题，中文照搬会糊。</p>
+    <a class="da-card series" href="d01/index.html">
+      <div class="series-thumbs">
+        <img src="img/claude-code-loops-graphs-cover.jpg" alt="D01-1 封面">
+        <img src="img/d01-2-redo.png" alt="D01-2 改版定稿">
       </div>
-    </article>
-
-    <article class="da-card">
-      <img src="img/a-perfect-loop-wrong-shape.jpg" alt="A perfect loop on the wrong shape 图解">
       <div class="da-body">
-        <div class="da-date"><span class="da-code">D01-2</span>2026-10-11</div>
-        <h3>A perfect loop on the wrong shape</h3>
-        <p class="da-one">D01 的配套图。网格纸的工程草稿感满分，但色彩纪律比 D01 松了。</p>
-        <div class="swatches">
-          <span class="sw"><i style="background:#C09070"></i>#C09070 陶土</span>
-          <span class="sw"><i style="background:#6050A0"></i>#6050A0 紫</span>
-          <span class="sw"><i style="background:#407080"></i>#407080 青</span>
-          <span class="sw"><i style="background:#1F1F1F"></i>#1F1F1F 墨</span>
-        </div>
-        <div class="da-tag">能偷的</div>
-        <ul class="da-steal">
-          <li>网格纸 = 工程感，和 engineering 主题气质锁死</li>
-          <li>对比结构：同一批 unit，上错下对——"结构 &gt; 努力"万能版式</li>
-          <li>金句卡：mono + 关键词高亮，一句话 takeaway</li>
-          <li>眉题小横线 + 追踪大写，章节感强</li>
-        </ul>
-        <div class="da-tag">不要学的</div>
-        <p class="da-skip">5 个强调色抢戏；unit 三色边框无语义；注释字太小；金句被压底部；gate 黑块过重。纪律参考 D01-1：颜色 = 语义。</p>
-        <div class="da-tag">MUSE 改版 · 定稿</div>
-        <p class="da-skip" style="margin-bottom:10px;">按三刀重画，Joyce 已点头。顺序未动：1错形 → 2对形 → 3金句。</p>
+        <div class="da-date"><span class="da-code">D01</span>系列 · 2 张</div>
+        <h3>Claude Code 课程封面系列</h3>
+        <p class="da-one">D01-1 封面立规矩（三色纪律），D01-2 图解讲方法（2 色改版定稿）。点进看整套分析 →</p>
       </div>
-    </article>
-    <article class="da-card" style="grid-column:1/-1; max-width:860px; margin:0 auto; width:100%;">
-      <img src="img/d01-2-redo.png" alt="D01-2 Muse 改版定稿">
+    </a>
+
+    <a class="da-card series" href="d02/index.html">
+      <div class="series-thumbs">
+        <img src="img/justfont-02.png" alt="justfont 首页">
+        <img src="img/justfont-10.png" alt="justfont 金萱页">
+      </div>
       <div class="da-body">
-        <div class="da-date"><span class="da-code">D01-2</span>改版定稿 v4</div>
-        <p class="da-one">2 色纪律（陶土 + 墨）· 金句回底部 · 框收小 · you approve the last step 加粗 · 底色 #F4EFE9</p>
+        <div class="da-date"><span class="da-code">D02</span>系列 · 2 张</div>
+        <h3>justfont 官网系列</h3>
+        <p class="da-one">品牌绿 #66AC35 实测（和我们笔记本公开绿同色）。一绿到底 + 网站即字帖。点进看整套分析 →</p>
       </div>
-    </article>
+    </a>
 
-  </div>
-
-  <div class="da-head" style="padding-top:20px;">
-    <div class="kicker">REFERENCE LINKS</div>
-    <h1 style="font-size:30px;">参考链接</h1>
-    <p class="lede">值得反复看的网站，收在这里。</p>
-  </div>
-
-  <div class="da-grid">
-    <article class="da-card">
-      <div class="da-body">
-        <div class="da-date"><span class="da-code">D02</span>2026-10-11 收录</div>
-        <h3><a href="https://www.justfont.com/" target="_blank" rel="noopener">justfont 就是字</a></h3>
-        <p class="da-one">台湾中文字型服务。我们笔记本的公开绿 <b>#66AC35</b> 就是它家的品牌绿。</p>
-        <div class="swatches">
-          <span class="sw"><i style="background:#66AC35"></i>#66AC35 品牌绿</span>
-        </div>
-        <a class="more" href="https://www.justfont.com/" target="_blank" rel="noopener">访问官网 →</a>
-      </div>
-    </article>
   </div>
 
   <footer>
