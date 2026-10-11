@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大牛写作课：10 个人的借鉴手册 — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li a { font-size: 14px; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 12px 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+      <div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+  <div class="kicker">写作课 · 2026-10-10</div>
+  <h1>大牛写作课：10 个人的借鉴手册</h1>
+  <div class="sub">一晚拆了 10 位 X 创作者的写作。学精神，不学招式。Ten creators' writing, dissected in one night — steal the spirit, not the moves.</div>
+
+  <div class="note-item">
+    <p><span class="topic">名单</span></p>
+    <h3>10 个人，按可借鉴性排序</h3>
+    <ul class="pts">
+      <li><b>dotey</b> · 中文可读性之王 — <a href="https://x.com/dotey">x.com/dotey</a></li>
+      <li><b>Simon Willison</b> · 极端具体 — <a href="https://x.com/simonw">x.com/simonw</a></li>
+      <li><b>David Perell</b> · 教写作的人 — <a href="https://x.com/david_perell">x.com/david_perell</a></li>
+      <li><b>Naval</b> · 格言压缩祖师爷 — <a href="https://x.com/naval">x.com/naval</a></li>
+      <li><b>Paul Graham</b> · 压缩大师 — <a href="https://x.com/paulg">x.com/paulg</a></li>
+      <li><b>George Mack</b> · thread 建筑学 — <a href="https://x.com/george__mack">x.com/george__mack</a></li>
+      <li><b>Hussain Ibarra</b> · 框架师 — <a href="https://x.com/HussainIbarra">x.com/HussainIbarra</a></li>
+      <li><b>Dan Koe</b> · 钩子哲学家 — <a href="https://x.com/thedankoe">x.com/thedankoe</a></li>
+      <li><b>Pieter Levels</b> · 激进透明 — <a href="https://x.com/levelsio">x.com/levelsio</a></li>
+      <li><b>Karpathy</b> · 前沿笔记 — <a href="https://x.com/karpathy">x.com/karpathy</a></li>
+    </ul>
+    <p class="en">Ten creators ranked by how borrowable their craft is — most directly usable first.</p>
+  </div>
+
+  <div class="note-item">
+    <p><span class="topic">手册</span></p>
+    <h3>每人一句话精神 + 可借鉴</h3>
+    <blockquote>dotey：把读者当朋友——朋友才配你把术语讲成人话。借整套中文笔法：编号分节，先价值后机制。</blockquote>
+    <blockquote>Simon Willison：尊重读者——不用形容词糊弄人。借 lab-note 结构：每篇至少三个具体数字。</blockquote>
+    <blockquote>David Perell：丰产——写多才有得选。借每天 5 个 idea 库存，从对话里挖选题。</blockquote>
+    <blockquote>Naval：敢删——留下的每个字都经得起时间。借格言压缩术：单拎出来成立吗？</blockquote>
+    <blockquote>Paul Graham：惊奇——让常规观点惊讶一下。借结尾压缩术，发前做"惊奇测试"。</blockquote>
+    <blockquote>George Mack：推进——每一步都让人想点开下一步。借 5 条 thread 结构：hook → 冲突 → 转折 → 方法 → 金句。</blockquote>
+    <blockquote>Ibarra：复用——一套框架吃遍所有内容。借 sawdust、Dream Customer、自己当案例。</blockquote>
+    <blockquote>Dan Koe：命名——把方法压成哲学命题。借第一行 hook 写法；不借绝对口吻。</blockquote>
+    <blockquote>Pieter Levels：透明即信任。借来源与数字透明；没数字时用"过程透明"代替。</blockquote>
+    <blockquote>Karpathy：范式——指出旧世界正在过去。借"旧范式是靶子"的结构；不借前沿位置本身。</blockquote>
+    <p class="en">One line of spirit per person, then the borrowable move. Spirit first — moves are footnotes.</p>
+  </div>
+
+  <div class="note-item">
+    <p><span class="topic">方法</span></p>
+    <h3>讲故事六条</h3>
+    <ul class="pts">
+      <li><b>用人，不用理</b>：具体的人 + 具体的数字 + 具体的时刻。</li>
+      <li><b>"但是"放开头</b>：期待和现实的裂缝，读者就会往里走。</li>
+      <li><b>给场景，不给总结</b>：让读者看见，不让他知道。</li>
+      <li><b>节奏即呼吸</b>：一句话一段，留白也是文字。</li>
+      <li><b>每篇埋一句可转述的话</b>：被转述的从来不是文章，是金句。</li>
+      <li><b>结尾留钩子</b>：让人"还想再看"靠系列感。</li>
+    </ul>
+    <p class="en">Six rules for telling stories that travel: real people, open with the twist, show don't summarize, breathe on the page, plant one quotable line, end with a hook.</p>
+  </div>
+
+  <div class="note-item">
+    <p><span class="topic">启示</span></p>
+    <h3>五条启示</h3>
+    <ul class="pts">
+      <li><b>做定义者，不做又一个</b>：品类没有定义者时，第一个定义的人吃红利。</li>
+      <li><b>具体大于漂亮</b>：漂亮是结果，具体是原因。</li>
+      <li><b>没数字就用过程透明</b>：公开学习过程本身就是信任资产。</li>
+      <li><b>写得少，但每句经得起时间</b>：能被截图转发的金句，顶十篇水文。</li>
+      <li><b>找自己的空位</b>：中文 + AI 学习者第一视角 + 一人公司——没人同时占这三格。</li>
+    </ul>
+    <p class="en">Five takeaways: define the category, be concrete over pretty, transparency of process beats numbers you don't have, write less but lasting, and find the empty seat no one occupies.</p>
+  </div>
+
+  <div class="note-item">
+    <p><span class="topic">习惯</span></p>
+    <h3>笔记三原则</h3>
+    <ul class="pts">
+      <li>只记能改变下周行动的。</li>
+      <li>每借一招，戒掉一招。</li>
+      <li>笔记是弹药库，不是收藏夹。</li>
+    </ul>
+    <p class="en">Note-taking rules: only what changes next week's actions; every borrowed move retires an old one; a notebook is an armory, not a collection.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 卷帘人 📜</div>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
