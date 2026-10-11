@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Watchlist — 内部 — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background-color: #FCFCFC;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M30 .5H0v30' fill='none' stroke='%2385622D' stroke-opacity='.13'/%3E%3C/svg%3E");
+    background-size: 30px 30px; background-position: center top;
+    font-family: 'Inter','Noto Sans SC',sans-serif; color: #342C2C;
+  }
+  @media (max-width: 767.98px) {
+    body { background-size: 22px 22px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M22 .5H0v22' fill='none' stroke='%2385622D' stroke-opacity='.13'/%3E%3C/svg%3E"); }
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker { font-size: 14px; letter-spacing: 4px; color: #B08D3E; margin-bottom: 20px; }
+  h1 { font-size: 34px; font-weight: 700; margin: 0 0 8px; }
+  .progress { font-size: 15px; color: #8A6D2F; margin-bottom: 40px; font-weight: 500; }
+  .item { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid rgba(52,44,44,.09); }
+  .item:last-child { border-bottom: none; }
+  .item input[type="checkbox"] { width: 22px; height: 22px; margin-top: 3px; accent-color: #8A6D2F; cursor: pointer; flex-shrink: 0; }
+  .item .body { flex: 1; }
+  .item .body h2 { font-size: 17px; font-weight: 700; margin: 0 0 6px; line-height: 1.4; }
+  .item .body h2 a { color: #8A6D2F; }
+  .item .body p { font-size: 15px; line-height: 1.7; color: #3E3838; margin: 0 0 4px; }
+  .item .body p.zh { font-family: 'Noto Sans SC',sans-serif; font-size: 13px; color: #8B8B8B; }
+  .item.done .body h2, .item.done .body p { opacity: .45; }
+  .item.done .body h2 { text-decoration: line-through; text-decoration-color: rgba(138,109,47,.6); }
+  .foot { margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(52,44,44,.12); font-size: 14px; letter-spacing: 2px; color: #8B8B8B; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C; font-weight: 600; font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-weight: 500; font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100; background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px; display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #342C2C; text-decoration: none; padding: 6px 0; white-space: nowrap; }
+  .nav-links > a > b { font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span { font-family: 'Noto Sans SC',sans-serif; font-size: 10px; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; } .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
+    .nav-links > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+  <div class="nav-links">
+    <a href="../index.html"><b>HOME</b><span>首页</span></a>
+    <a href="../library/index.html"><b>LIBRARY</b><span>资料库</span></a>
+    <a href="index.html"><b>NOTEBOOK</b><span>笔记本</span></a>
+    <a href="../fundamentals/index.html"><b>FLASHCARDS</b><span>字卡</span></a>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="kicker">内部 · 不公开 · INTERNAL</div>
+  <h1>Watchlist</h1>
+  <div class="progress" id="progress"></div>
+
+  <div class="item" data-id="cherny">
+    <input type="checkbox" id="c-cherny" aria-label="watched">
+    <div class="body"><h2><a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">Boris Cherny — 80% of the Work Is the Prompt</a></h2>
+    <p>Verification beats prompt engineering; skills beat context.</p><p class="zh">验证大于提示词工程；skill 大于 context。</p></div>
+  </div>
+  <div class="item" data-id="wang">
+    <input type="checkbox" id="c-wang" aria-label="watched">
+    <div class="body"><h2><a href="https://www.youtube.com/watch?v=sJ4VJWycX9M">Alexandr Wang — Civilization-Scale Opportunity</a></h2>
+    <p>Evals over prompts; companies are feedback loops.</p><p class="zh">eval 优先于 prompt；公司即反馈循环。</p></div>
+  </div>
+  <div class="item" data-id="tan">
+    <input type="checkbox" id="c-tan" aria-label="watched">
+    <div class="body"><h2><a href="https://www.youtube.com/watch?v=eRrc1pUY5oU">Garry Tan — Own Your Intelligence</a></h2>
+    <p>"Markdown is code" — skill files as owned cognition.</p><p class="zh">"Markdown 就是代码"——skill 文件是拥有的认知。</p></div>
+  </div>
+  <div class="item" data-id="dean">
+    <input type="checkbox" id="c-dean" aria-label="watched">
+    <div class="body"><h2><a href="https://www.youtube.com/watch?v=CxXgV54KzpQ">Jeff Dean — The 1% Rule for Building in AI</a></h2>
+    <p>The 0%–1% test for direction; taste is the scarce resource.</p><p class="zh">0%–1% 方向测试；taste 是稀缺资源。</p></div>
+  </div>
+  <div class="item" data-id="collison">
+    <input type="checkbox" id="c-collison" aria-label="watched">
+    <div class="body"><h2><a href="https://www.youtube.com/watch?v=5d6y3poKwK4">Patrick Collison — Is AI Breaking the Lean Startup Playbook?</a></h2>
+    <p>Knowledge as L1 cache; start from lived pain.</p><p class="zh">知识是 L1 缓存；从亲身之痛出发。</p></div>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 内部资料</div>
+</div>
+<script>
+(function(){
+  var KEY='cr-watchlist-v1';
+  var state={}; try{ state=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+  var items=document.querySelectorAll('.item');
+  function render(){
+    var n=0;
+    items.forEach(function(el){
+      var id=el.getAttribute('data-id');
+      var box=el.querySelector('input[type=checkbox]');
+      var on=!!state[id];
+      box.checked=on;
+      el.classList.toggle('done',on);
+      if(on)n++;
+    });
+    document.getElementById('progress').textContent=n+' / '+items.length+' watched · 看完 '+n+' / 共 '+items.length;
+  }
+  items.forEach(function(el){
+    var id=el.getAttribute('data-id');
+    el.querySelector('input[type=checkbox]').addEventListener('change',function(e){
+      state[id]=e.target.checked;
+      try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(err){}
+      render();
+    });
+  });
+  var _nt=document.querySelector('.nav-toggle'),_ns=document.querySelector('.nav-strip');
+  if(_nt&&_ns){_nt.addEventListener('click',function(){_ns.classList.toggle('open');});}
+  render();
+})();
+</script>
+</body>
+</html>
