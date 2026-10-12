@@ -390,5 +390,61 @@
   "en": "return",
   "explain": "函数把结果递出来：return 后面跟的是它交出的答案，没有 return 的函数算白忙活。",
   "example": "def 加(a, b): /     return a + b —— 之后 加(2, 3) 交出 5，你可以 print 它或接着算"
+ },
+ {
+  "day": 7,
+  "topic": "Shell",
+  "term": "rm",
+  "en": "remove",
+  "explain": "删文件：rm 删文件，删文件夹要加 -r；删了不进回收站，手轻点。",
+  "example": "rm 旧稿.md 删除草稿；rm -rf 临时目录 删整个文件夹——动手前先用 ls 确认名字"
+ },
+ {
+  "day": 7,
+  "topic": "Git",
+  "term": "git switch 分支名",
+  "en": "switch branch",
+  "explain": "跳到另一条时间线：切换分支就是换个平行世界干活，主线 main 保持干净。",
+  "example": "git switch 新卡片样式 跳过去试样式；git switch main 回主线，改坏了也互不干扰"
+ },
+ {
+  "day": 7,
+  "topic": "Python",
+  "term": "while",
+  "en": "while loop",
+  "explain": "条件循环：条件为真就一直重复，变了才停——适合不知道要重复多少次的情况。",
+  "example": "n = 1\nwhile n <= 3:\n    print(f'第 {n} 天')\n    n += 1\n# 跑起来打印：第 1 天、第 2 天、第 3 天"
+ },
+ {
+  "day": 7,
+  "topic": "HTML/CSS",
+  "term": "<div>",
+  "en": "division",
+  "explain": "装东西的盒子：没有自己的样子，是给一块内容打包的通用容器，颜值都靠 CSS 贴上去。",
+  "example": "<div style='background:#f5f0e6; padding:12px;'>今日卡片</div> → 网页上变成一张米纸色小卡"
+ },
+ {
+  "day": 7,
+  "topic": "Prompt",
+  "term": "先问我三个问题",
+  "en": "ask clarifying questions first",
+  "explain": "需求不清先别答：让 AI 先问你问题，问明白再出答案，一轮顶三轮。",
+  "example": "结尾加一句『开始写之前，先问我三个关键问题』→ 它先问读者、篇幅、语气，不再凭空猜"
+ },
+ {
+  "day": 7,
+  "topic": "AI 概念",
+  "term": "训练 vs 推理",
+  "en": "training vs inference",
+  "explain": "学车 vs 开车：训练是花大钱一次把模型教会（巨贵），推理是它上路答题（你每次用的就是这步）。",
+  "example": "为什么聊天免费？训练的钱在出厂前就烧完了，你每次只花了一点推理算力——用得多，涨的是推理的账单"
+ },
+ {
+  "day": 7,
+  "topic": "读代码",
+  "term": "看名字猜活儿",
+  "en": "read names for intent",
+  "explain": "读代码先看名字：函数名、变量名是作者留下的提示词，先猜它干什么，再去核对它的身体。",
+  "example": "看到 get_user_list() 先猜『拿到用户列表』；看到 total += price 猜『累计金额』——猜中八成再往下读"
  }
 ]
