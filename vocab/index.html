@@ -65,6 +65,23 @@
     font-size: 14px; font-weight: 700; color: #999; padding: 10px 12px; cursor: pointer;
   }
   .seg button.on { border-color: #f0a832; color: #b97a12; }
+  /* daily-5 juice */
+  #confetti { position: fixed; inset: 0; pointer-events: none; display: none; z-index: 50; }
+  @keyframes flipin { from { opacity: 0; transform: scale(.96) rotate(-1.2deg); } to { opacity: 1; transform: none; } }
+  #learn-img.flip { animation: flipin .28s ease; }
+  #quiz-img.flip { animation: flipin .28s ease; }
+  /* quiz */
+  .quiz-face img { display: block; width: auto; max-width: 100%; height: auto; max-height: 36vh; max-height: 36dvh; margin: 0 auto; }
+  .quiz-q { text-align: center; font-size: 20px; font-weight: 800; margin: 12px 0 10px; }
+  .quiz-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .quiz-opts button {
+    border: 2px solid #e2d9c8; background: #fff; border-radius: 14px;
+    font-size: 19px; font-weight: 800; padding: 16px 8px; cursor: pointer; color: #1a1a1a;
+  }
+  .quiz-opts button:disabled { opacity: 1; }
+  .quiz-opts button.correct { background: #38a169; border-color: #38a169; color: #fff; }
+  .quiz-opts button.wrong { background: #e0533d; border-color: #e0533d; color: #fff; animation: shake .3s; }
+  @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-7px); } 75% { transform: translateX(7px); } }
 </style>
 </head>
 <body>
@@ -75,9 +92,12 @@
     <h1>⭐ Meme Word Cards</h1>
     <div class="sub">SAT words, but make them funny.</div>
     <div class="center"><span class="streak" id="home-streak">🔥 0 day streak</span></div>
-    <button class="btn btn-primary" onclick="startLearn()">▶ Learn today's words</button>
+    <button class="btn btn-primary" onclick="startQuiz()">📝 Quiz · 60 words</button>
+    <button class="btn btn-ghost" id="daily5-btn" onclick="startDaily5()">📅 Daily 5</button>
+    <button class="btn btn-ghost" onclick="startLearn()">🎲 Shuffle all 60</button>
     <div class="howto">
       <b>How to play</b><br>
+      📅 <b>Daily 5:</b> five words a day — finish them all to grow your streak 🔥<br>
       1️⃣ Learn: swipe up / down, or ← → keys on desktop — each word reads itself aloud 🔊<br>
       2️⃣ Auto-play: flip the switch and let the words loop by themselves 🔁<br>
       🐱 Psst — cats are hiding in every card. Sometimes more than one. Can you find them all?
@@ -102,25 +122,20 @@
 
   <!-- LEARN DONE -->
   <div id="learn-done" class="hidden">
-    <h1>Heard them all! 🎉</h1>
+    <h1 id="learn-done-title">Heard them all! 🎉</h1>
     <div class="sub" id="learn-done-sub">3 words down.</div>
-    <button class="btn btn-primary" onclick="startLearn()">↻ Learn again</button>
+    <button class="btn btn-primary" id="learn-done-again" onclick="startLearn()">↻ Learn again</button>
     <button class="btn btn-ghost" onclick="showHome()">Back home</button>
   </div>
 
   <!-- QUIZ -->
   <div id="quiz" class="hidden">
-    <div class="progress" id="quiz-progress">Quiz 1 / 3</div>
-    <div class="swipe-zone" id="quiz-zone">
-      <div class="face">
-        <img id="quiz-img" src="" alt="guess the word">
-      </div>
+    <div class="progress" id="quiz-progress">Quiz 1 / 60</div>
+    <div class="face quiz-face">
+      <img id="quiz-img" src="" alt="guess the word">
     </div>
-    <div class="row">
-      <button class="btn btn-green" onclick="grade(true)">✓ Got it</button>
-      <button class="btn btn-red" onclick="grade(false)">✗ Missed</button>
-    </div>
-    <div class="hint">swipe up = got it · swipe left = missed</div>
+    <div class="quiz-q">Guess the word! 🤔</div>
+    <div id="quiz-opts" class="quiz-opts"></div>
   </div>
 
   <!-- DONE -->
@@ -129,10 +144,13 @@
     <div class="score-big" id="score-line">3 / 3</div>
     <div class="sub" id="done-msg"></div>
     <div class="center"><span class="streak" id="done-streak"></span></div>
-    <button class="btn btn-primary" onclick="showHome()">Back home</button>
+    <button class="btn btn-primary hidden" id="review-missed-btn" onclick="reviewMissed()">🐱 Review missed</button>
+    <button class="btn btn-ghost" onclick="showHome()">Back home</button>
   </div>
 
 </div>
+
+<canvas id="confetti"></canvas>
 
 <script>
 const CARDS = [
@@ -200,6 +218,7 @@ const CARDS = [
 let learnDeck = [], li = 0;
 let quizDeck = [], qi = 0, missed = [], score = 0;
 let current = null;
+let dailyMode = false;
 
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
@@ -277,6 +296,7 @@ function streak() {
 function paintStreak() {
   const s = streak().s;
   document.getElementById("home-streak").textContent = "🔥 " + s + " day streak";
+  paintDaily5();
 }
 function bumpStreak() {
   const w = streak();
@@ -302,6 +322,7 @@ function showHome() { stopVoice(); paintStreak(); show("home"); }
 function startLearn() {
   learnDeck = shuffle(CARDS.slice());
   preloadAudios();
+  dailyMode = false;
   li = 0;
   autoOn = false;
   const ab = document.getElementById("auto-btn");
@@ -311,7 +332,9 @@ function startLearn() {
 }
 function showLearn() {
   current = learnDeck[li];
-  document.getElementById("learn-img").src = current.front;
+  const img = document.getElementById("learn-img");
+  img.src = current.front;
+  img.classList.remove("flip"); void img.offsetWidth; img.classList.add("flip");
   document.getElementById("learn-progress").textContent = (li + 1) + " / " + learnDeck.length;
   playWord(current);   /* sound fires the moment the card lands */
   scheduleAuto();
@@ -320,8 +343,22 @@ function learnNext() {
   if (li < learnDeck.length - 1) { li++; showLearn(); }
   else {
     stopVoice();
-    document.getElementById("learn-done-sub").textContent = learnDeck.length + " words down. Ready?";
-    show("learn-done");
+    if (dailyMode) {
+      const s = daily5store();
+      s.done = todayStr(); daily5save(s);
+      const n = bumpStreak();
+      document.getElementById("learn-done-title").textContent = "Daily 5 complete! 🎉";
+      document.getElementById("learn-done-sub").textContent = "5 words down. Streak: 🔥 " + n + " day" + (n > 1 ? "s" : "") + " — see you tomorrow!";
+      document.getElementById("learn-done-again").textContent = "🎲 Shuffle all 60";
+      show("learn-done");
+      confettiBurst();
+      try { sfx(true); } catch (e) {}
+    } else {
+      document.getElementById("learn-done-title").textContent = "Heard them all! 🎉";
+      document.getElementById("learn-done-sub").textContent = learnDeck.length + " words down. Ready?";
+      document.getElementById("learn-done-again").textContent = "↻ Learn again";
+      show("learn-done");
+    }
   }
 }
 function learnPrev() {
@@ -365,42 +402,79 @@ function stopAuto() {
   if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
 }
 
+/* ---------- quiz: guess the word from the 4 panels ---------- */
+let quizList = [], qz = 0, qzScore = 0, qzMissed = [], qzLock = false;
+function quizPath(card) { return card.front.replace("-front.jpg", "-quiz.jpg"); }
 function startQuiz() {
   stopVoice();
-  quizDeck = shuffle(learnDeck.slice());
-  missed = []; qi = 0; score = 0;
-  showQuiz();
+  quizList = shuffle(CARDS.slice());
+  qz = 0; qzScore = 0; qzMissed = []; qzLock = false;
   show("quiz");
+  showQuizQ();
 }
-function showQuiz() {
-  current = quizDeck[qi];
-  document.getElementById("quiz-img").src = current.back;
-  document.getElementById("quiz-progress").textContent = "Quiz " + (qi + 1) + " / " + quizDeck.length;
+function showQuizQ() {
+  qzLock = false;
+  const card = quizList[qz];
+  const img = document.getElementById("quiz-img");
+  img.classList.remove("flip"); void img.offsetWidth; img.classList.add("flip");
+  img.src = quizPath(card);
+  document.getElementById("quiz-progress").textContent = "Quiz " + (qz + 1) + " / " + quizList.length;
+  const opts = [card];
+  const pool = shuffle(CARDS.filter(function (c) { return c.word !== card.word; }));
+  for (let i = 0; i < 3; i++) opts.push(pool[i]);
+  shuffle(opts);
+  const box = document.getElementById("quiz-opts");
+  box.innerHTML = "";
+  opts.forEach(function (o) {
+    const b = document.createElement("button");
+    b.textContent = o.word;
+    b.onclick = function () { answerQuiz(o.word === card.word, b, card); };
+    box.appendChild(b);
+  });
 }
-function grade(ok) {
-  sfx(ok);
-  if (ok) score++;
-  else missed.push(current);
-  qi++;
-  if (qi >= quizDeck.length) {
-    if (missed.length) {
-      quizDeck = shuffle(missed);
-      missed = []; qi = 0;
-      showQuiz();
-      return;
-    }
-    return finish();
-  }
-  setTimeout(showQuiz, 450);
+function answerQuiz(ok, btn, card) {
+  if (qzLock) return;
+  qzLock = true;
+  const btns = document.getElementById("quiz-opts").querySelectorAll("button");
+  btns.forEach(function (b) {
+    b.disabled = true;
+    if (b.textContent === card.word) b.classList.add("correct");
+  });
+  if (ok) qzScore++; else { btn.classList.add("wrong"); qzMissed.push(card); }
+  try { sfx(ok); } catch (e) {}
+  try { playWord(card); } catch (e) {}
+  setTimeout(function () {
+    qz++;
+    if (qz < quizList.length) showQuizQ();
+    else finishQuiz();
+  }, 1700);
 }
-function finish() {
+function finishQuiz() {
+  stopVoice();
+  const n = quizList.length, pct = Math.round(qzScore / n * 100);
   const s = bumpStreak();
-  document.getElementById("score-line").textContent = score + " / " + learnDeck.length;
+  document.getElementById("score-line").textContent = qzScore + " / " + n;
   document.getElementById("done-msg").textContent =
-    score === learnDeck.length ? "Flawless. The memes did their job. 😎" :
-    "Missed ones will come back tomorrow. 🔁";
+    pct === 100 ? "Flawless! Are you a dictionary? 📚" :
+    pct >= 80 ? "Awesome! Just a few sneaky ones left. 😎" :
+    pct >= 60 ? "Good start! Review the missed ones below. 💪" :
+    "The memes will help — review the missed ones! 🐱";
   document.getElementById("done-streak").textContent = "🔥 " + s + " day streak";
+  const rb = document.getElementById("review-missed-btn");
+  if (qzMissed.length) { rb.classList.remove("hidden"); rb.textContent = "🐱 Review " + qzMissed.length + " missed"; }
+  else rb.classList.add("hidden");
   show("done");
+  if (pct >= 80) confettiBurst();
+}
+function reviewMissed() {
+  if (!qzMissed.length) return;
+  learnDeck = shuffle(qzMissed.slice());
+  dailyMode = false; li = 0;
+  autoOn = false;
+  const ab = document.getElementById("auto-btn");
+  if (ab) { ab.textContent = "▶ Auto-play"; ab.classList.remove("playing"); }
+  showLearn();
+  show("learn");
 }
 
 /* ---------- swipe ---------- */
@@ -432,10 +506,6 @@ bindSwipe("learn-zone", {
   up: learnNext,
   down: learnPrev,
   tap: function () { playWord(current); }
-});
-bindSwipe("quiz-zone", {
-  up: function () { grade(true); },
-  left: function () { grade(false); }
 });
 paintStreak();
 </script>
