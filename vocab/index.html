@@ -69,7 +69,7 @@
     <div class="howto">
       <b>How to play</b><br>
       1️⃣ Look at the meme — get the joke<br>
-      2️⃣ Tap 🔊 to hear the word<br>
+      2️⃣ The word reads itself aloud — tap 🔊 to replay<br>
       3️⃣ Flip the card &amp; guess the word<br>
       4️⃣ Be honest: ✓ or ✗<br>
       Missed cards come back. That's how brains work. 🧠
@@ -155,6 +155,12 @@ function speak(e) {
     voiceAudio.play().catch(function () { fallbackSpeak(); });
   } catch (err) { fallbackSpeak(); }
 }
+function stopVoice() {
+  try {
+    if (voiceAudio) { voiceAudio.pause(); voiceAudio = null; }
+    speechSynthesis.cancel();
+  } catch (err) {}
+}
 function fallbackSpeak() {
   try {
     speechSynthesis.cancel();
@@ -212,8 +218,12 @@ function nextCard() {
   document.getElementById("stage-learn").classList.remove("hidden");
   document.getElementById("stage-quiz").classList.add("hidden");
   document.getElementById("progress").textContent = "Card " + (round + 1) + " of " + TOTAL;
+  /* learn stage: autoplay the word; quiz side stays silent so it doesn't give away the answer */
+  stopVoice();
+  setTimeout(function () { speak(null); }, 600);
 }
 function doFlip() {
+  stopVoice();
   document.getElementById("flip").classList.add("flipped");
   document.getElementById("stage-learn").classList.add("hidden");
   document.getElementById("stage-quiz").classList.remove("hidden");
