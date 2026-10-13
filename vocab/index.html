@@ -90,7 +90,7 @@
     <div class="hint">swipe up/down or ← → keys · tap = replay</div>
     <div class="auto-row">
       <button class="btn btn-ghost btn-small auto-toggle" id="auto-btn" onclick="toggleAuto()">▶ Auto-play</button>
-      <div class="seg" id="auto-seg"><button onclick="setAutoSec(3,this)">3s</button><button onclick="setAutoSec(5,this)" class="on">5s</button><button onclick="setAutoSec(8,this)">8s</button></div>
+      <div class="seg" id="auto-seg"><button onclick="setAutoSec(1,this)">1s</button><button onclick="setAutoSec(2,this)" class="on">2s</button><button onclick="setAutoSec(3,this)">3s</button></div>
     </div>
   </div>
 
@@ -317,7 +317,7 @@ document.addEventListener("keydown", function (e) {
 });
 
 /* ---------- auto-play: flip every N seconds, looping ---------- */
-let autoOn = false, autoSec = 5, autoTimer = null;
+let autoOn = false, autoSec = 2, autoTimer = null;
 function toggleAuto() {
   autoOn = !autoOn;
   const b = document.getElementById("auto-btn");
