@@ -91,6 +91,14 @@
   .seg button { transition: transform .1s ease; }
   .seg button:active { transform: scale(.9); }
   .seg button.on { background: #f0a832; border-color: #f0a832; color: #fff; }
+  /* home candy buttons */
+  .btn.candy { color: #fff; font-weight: 800; border: none; border-bottom: 4px solid rgba(0,0,0,.2); transition: transform .1s ease; }
+  .btn.candy:active { transform: translateY(3px); border-bottom-width: 1px; }
+  .candy-blue { background: #3b82c4; }
+  .candy-green { background: #38a169; }
+  .candy-amber { background: #f0a832; }
+  .tip { display: flex; gap: 10px; align-items: flex-start; margin-top: 10px; line-height: 1.45; }
+  .tip > span:first-child { font-size: 20px; flex: 0 0 auto; }
   /* quiz */
   .quiz-face img { display: block; width: auto; max-width: 100%; height: auto; max-height: 36vh; max-height: 36dvh; margin: 0 auto; }
   .quiz-q { text-align: center; font-size: 20px; font-weight: 800; margin: 12px 0 10px; }
@@ -116,15 +124,15 @@
       <span class="streak" id="home-streak">🔥 0 day streak</span>
       <span class="streak" id="home-cats">🐱 0 / 60 cats found</span>
     </div>
-    <button class="btn btn-primary" onclick="startQuiz()">📝 Quiz · 60 words</button>
-    <button class="btn btn-ghost" onclick="startLearn()">🎲 Shuffle all 60</button>
-    <button class="btn btn-ghost" id="bank-btn" onclick="startBank()">📚 Word Bank (60)</button>
+    <button class="btn candy candy-blue" onclick="startLearn()">🎲 Shuffle all 60</button>
+    <button class="btn candy candy-green" id="bank-btn" onclick="startBank()">📚 Word Bank (60)</button>
+    <button class="btn candy candy-amber" onclick="startQuiz()">📝 Quiz · 60 words</button>
     <div class="howto">
-      <b>How to play</b><br>
-      1️⃣ Learn: swipe up / down, or ← → keys on desktop — each word reads itself aloud 🔊<br>
-      📚 Word Bank: tap ✅ Got it on words you already know — your second pass covers only the bank.<br>
-      2️⃣ Auto-play: flip the switch and let the words loop by themselves 🔁<br>
-      🐱 Psst — cats are hiding in every card. Sometimes more than one. Can you find them all?
+      <b>How to play</b>
+      <div class="tip"><span>🎲</span><span>Shuffle to browse — every card reads itself aloud 🔊</span></div>
+      <div class="tip"><span>✅</span><span>Tap "Got it!" on words you already know</span></div>
+      <div class="tip"><span>📚</span><span>Your Word Bank saves the tricky ones for round two</span></div>
+      <div class="tip"><span>🐱</span><span>Psst — a cat hides in every card. Can you find them all?</span></div>
     </div>
   </div>
 
