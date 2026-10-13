@@ -50,6 +50,15 @@
     font-size: 15px; font-weight: 700; padding: 10px 16px; cursor: pointer;
   }
   .hint { text-align: center; color: #999; font-size: 13px; margin-top: 12px; }
+  .auto-row { display: flex; gap: 10px; align-items: stretch; margin-top: 14px; }
+  .auto-toggle { flex: 1; margin: 0 !important; }
+  .auto-toggle.playing { background: #2b6cb0; color: #fff; border-color: #2b6cb0; }
+  .seg { display: flex; gap: 6px; }
+  .seg button {
+    border: 2px solid #e2d9c8; background: #fff; border-radius: 12px;
+    font-size: 14px; font-weight: 700; color: #999; padding: 10px 12px; cursor: pointer;
+  }
+  .seg button.on { border-color: #f0a832; color: #b97a12; }
 </style>
 </head>
 <body>
@@ -63,9 +72,8 @@
     <button class="btn btn-primary" onclick="startLearn()">▶ Learn today's words</button>
     <div class="howto">
       <b>How to play</b><br>
-      1️⃣ Learn: swipe up through the words — each reads itself aloud 🔊<br>
-      2️⃣ Quiz: guess the word, then be honest: ✓ or ✗<br>
-      3️⃣ Missed cards come back. That's how brains work. 🧠<br>
+      1️⃣ Learn: swipe up / down, or ← → keys on desktop — each word reads itself aloud 🔊<br>
+      2️⃣ Auto-play: flip the switch and let the words loop by themselves 🔁<br>
       🐱 Psst — a cat is hiding in every card. Can you find it?
     </div>
   </div>
@@ -79,16 +87,19 @@
         <img id="learn-img" src="" alt="word meme">
       </div>
     </div>
-    <div class="hint">swipe up = next · swipe down = back · tap = replay</div>
-    <button class="btn btn-ghost btn-small" onclick="startQuiz()">Skip to quiz →</button>
+    <div class="hint">swipe up/down or ← → keys · tap = replay</div>
+    <div class="auto-row">
+      <button class="btn btn-ghost btn-small auto-toggle" id="auto-btn" onclick="toggleAuto()">▶ Auto-play</button>
+      <div class="seg" id="auto-seg"><button onclick="setAutoSec(3,this)">3s</button><button onclick="setAutoSec(5,this)" class="on">5s</button><button onclick="setAutoSec(8,this)">8s</button></div>
+    </div>
   </div>
 
   <!-- LEARN DONE -->
   <div id="learn-done" class="hidden">
     <h1>Heard them all! 🎉</h1>
     <div class="sub" id="learn-done-sub">3 words down.</div>
-    <button class="btn btn-primary" onclick="startQuiz()">Start quiz →</button>
-    <button class="btn btn-ghost" onclick="startLearn()">↻ Learn again</button>
+    <button class="btn btn-primary" onclick="startLearn()">↻ Learn again</button>
+    <button class="btn btn-ghost" onclick="showHome()">Back home</button>
   </div>
 
   <!-- QUIZ -->
@@ -206,12 +217,16 @@ function show(id) {
   ["home", "learn", "learn-done", "quiz", "done"].forEach(x => document.getElementById(x).classList.add("hidden"));
   document.getElementById(id).classList.remove("hidden");
   window.scrollTo(0, 0);
+  if (id !== "learn") stopAuto();
 }
 function showHome() { stopVoice(); paintStreak(); show("home"); }
 
 function startLearn() {
   learnDeck = shuffle(CARDS.slice());
   li = 0;
+  autoOn = false;
+  const ab = document.getElementById("auto-btn");
+  if (ab) { ab.textContent = "▶ Auto-play"; ab.classList.remove("playing"); }
   showLearn();
   show("learn");
 }
@@ -219,7 +234,8 @@ function showLearn() {
   current = learnDeck[li];
   document.getElementById("learn-img").src = current.front;
   document.getElementById("learn-progress").textContent = (li + 1) + " / " + learnDeck.length;
-  setTimeout(function () { playWord(current); }, 500);
+  playWord(current);   /* sound fires the moment the card lands */
+  scheduleAuto();
 }
 function learnNext() {
   if (li < learnDeck.length - 1) { li++; showLearn(); }
@@ -231,6 +247,43 @@ function learnNext() {
 }
 function learnPrev() {
   if (li > 0) { li--; showLearn(); }
+}
+
+/* ---------- quiz deferred: ships later (Joyce 2026-10-13) ---------- */
+const QUIZ_ENABLED = false;
+
+/* ---------- desktop keyboard: ← → flip cards ---------- */
+document.addEventListener("keydown", function (e) {
+  if (document.getElementById("learn").classList.contains("hidden")) return;
+  if (e.key === "ArrowRight") { e.preventDefault(); learnNext(); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); learnPrev(); }
+});
+
+/* ---------- auto-play: flip every N seconds, looping ---------- */
+let autoOn = false, autoSec = 5, autoTimer = null;
+function toggleAuto() {
+  autoOn = !autoOn;
+  const b = document.getElementById("auto-btn");
+  b.textContent = autoOn ? "⏸ Auto-playing" : "▶ Auto-play";
+  b.classList.toggle("playing", autoOn);
+  if (autoOn) scheduleAuto(); else stopAuto();
+}
+function setAutoSec(s, el) {
+  autoSec = s;
+  document.querySelectorAll("#auto-seg button").forEach(b => b.classList.remove("on"));
+  el.classList.add("on");
+  if (autoOn) scheduleAuto();
+}
+function scheduleAuto() {
+  stopAuto();
+  if (!autoOn) return;
+  autoTimer = setTimeout(function () {
+    if (li < learnDeck.length - 1) li++; else li = 0;   /* loop back to start */
+    showLearn();
+  }, autoSec * 1000);
+}
+function stopAuto() {
+  if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
 }
 
 function startQuiz() {
