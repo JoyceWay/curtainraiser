@@ -34,6 +34,9 @@
     color: #555; line-height: 1.7; margin: 18px 0;
   }
   .progress { text-align: center; font-weight: 800; color: #2b6cb0; font-size: 16px; margin-bottom: 10px; }
+  .learn-top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; margin-bottom: 6px; }
+  .back-btn { justify-self: start; background: none; border: none; color: #2b6cb0; font-size: 16px; font-weight: 700; cursor: pointer; padding: 4px 8px; }
+  .learn-top .progress { margin-bottom: 0; }
   .swipe-zone { touch-action: none; }
   .face {
     width: 100%; border-radius: 20px; overflow: hidden;
@@ -141,7 +144,11 @@
 
   <!-- LEARN -->
   <div id="learn" class="hidden">
-    <div class="progress" id="learn-progress">1 / 3</div>
+    <div class="learn-top">
+      <button class="back-btn" onclick="showHome()">‹ Home</button>
+      <div class="progress" id="learn-progress">1 / 60</div>
+      <span></span>
+    </div>
     <div class="swipe-zone" id="learn-zone">
       <div class="face">
         <button class="speak-btn" onclick="replay(event)">🔊</button>
@@ -169,7 +176,11 @@
 
   <!-- QUIZ -->
   <div id="quiz" class="hidden">
-    <div class="progress" id="quiz-progress">Quiz 1 / 60</div>
+    <div class="learn-top">
+      <button class="back-btn" onclick="showHome()">‹ Home</button>
+      <div class="progress" id="quiz-progress">Quiz 1 / 60</div>
+      <span></span>
+    </div>
     <div class="face quiz-face">
       <img id="quiz-img" src="" alt="guess the word">
     </div>
