@@ -27,7 +27,7 @@
   .btn-green { background: #38a169; color: #fff; }
   .btn-red { background: #e0533d; color: #fff; }
   .btn-ghost { background: #fff; color: #2b6cb0; border: 2px solid #2b6cb0; }
-  .btn-small { font-size: 15px; padding: 10px; margin-top: 14px; }
+  .btn-small { font-size: 14px; padding: 8px 10px; margin-top: 8px; }
   .btn:active { transform: scale(0.97); }
   .howto {
     background: #fff; border-radius: 16px; padding: 14px 18px; font-size: 15px;
@@ -44,8 +44,11 @@
   #learn .face { display: flex; justify-content: center; }
   #learn-img {
     width: auto !important; max-width: 100%; height: auto;
-    max-height: calc(100vh - 250px); max-height: calc(100dvh - 250px);
+    max-height: calc(100vh - 195px); max-height: calc(100dvh - 195px);
   }
+  #learn { padding: 12px 8px 16px; }
+  .learn-actions { display: flex; gap: 8px; }
+  .learn-actions .btn-small { flex: 1; }
   .row { display: flex; gap: 10px; }
   .row .btn { margin: 10px 0 0; }
   .score-big { font-size: 64px; text-align: center; margin: 10px 0; }
@@ -56,13 +59,13 @@
     font-size: 15px; font-weight: 700; padding: 10px 16px; cursor: pointer;
   }
   .hint { text-align: center; color: #999; font-size: 13px; margin-top: 12px; }
-  .auto-row { display: flex; gap: 10px; align-items: stretch; margin-top: 14px; }
+  .auto-row { display: flex; gap: 8px; align-items: stretch; margin-top: 8px; }
   .auto-toggle { flex: 1; margin: 0 !important; }
   .auto-toggle.playing { background: #2b6cb0; color: #fff; border-color: #2b6cb0; }
   .seg { display: flex; gap: 6px; }
   .seg button {
     border: 2px solid #e2d9c8; background: #fff; border-radius: 12px;
-    font-size: 14px; font-weight: 700; color: #999; padding: 10px 12px; cursor: pointer;
+    font-size: 14px; font-weight: 700; color: #999; padding: 7px 10px; cursor: pointer;
   }
   .seg button.on { border-color: #f0a832; color: #b97a12; }
   /* daily-5 juice */
@@ -150,8 +153,10 @@
       <button class="btn btn-ghost btn-small auto-toggle" id="auto-btn" onclick="toggleAuto()">▶ Auto-play</button>
       <div class="seg" id="auto-seg"><button onclick="setAutoSec(2,this)">2s</button><button onclick="setAutoSec(4,this)" class="on">4s</button><button onclick="setAutoSec(6,this)">6s</button></div>
     </div>
-    <button class="btn btn-ghost btn-small" id="known-btn" onclick="toggleKnown()">✅ Got it!</button>
-    <button class="btn btn-ghost btn-small" id="cat-btn" onclick="toggleCat()">🐱 Found the cat?</button>
+    <div class="learn-actions">
+      <button class="btn btn-small" id="known-btn" onclick="toggleKnown()">✅ Got it!</button>
+      <button class="btn btn-small" id="cat-btn" onclick="toggleCat()">🐱 Found the cat?</button>
+    </div>
   </div>
 
   <!-- LEARN DONE -->
