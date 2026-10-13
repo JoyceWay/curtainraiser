@@ -249,6 +249,44 @@ function sfx(ok) {
   if (ok) { tone(660, 0, 0.15); tone(880, 0.12, 0.25); }
   else { tone(180, 0, 0.25, "square"); }
 }
+
+/* ---------- cat meows: 4 voices, one per cat (v1: cards rotate cats in order) ---------- */
+const CATS = [
+  { name: "Poppy",  base: 480, peak: 700,  end: 400, dur: 0.42 },  // proud boy, assertive
+  { name: "Mocchi", base: 740, peak: 1150, end: 640, dur: 0.72 },  // soft sweet girl
+  { name: "Kitty3", base: 620, peak: 950,  end: 520, dur: 0.55 },  // playful (temp voice)
+  { name: "Kitty4", base: 430, peak: 620,  end: 350, dur: 0.85 },  // sleepy (temp voice)
+];
+function catIndexFor(card) {
+  const i = CARDS.indexOf(card);
+  return i >= 0 ? i % 4 : Math.floor(Math.random() * 4);
+}
+function meow(ci) {
+  try {
+    const v = CATS[ci % 4];
+    if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === "suspended") actx.resume();
+    const t = actx.currentTime;
+    const o1 = actx.createOscillator(), o2 = actx.createOscillator();
+    o1.type = "sawtooth"; o2.type = "sawtooth";
+    o1.frequency.setValueAtTime(v.base, t);
+    o1.frequency.linearRampToValueAtTime(v.peak, t + v.dur * 0.38);
+    o1.frequency.linearRampToValueAtTime(v.end, t + v.dur);
+    o2.frequency.setValueAtTime(v.base * 1.007, t);
+    o2.frequency.linearRampToValueAtTime(v.peak * 1.007, t + v.dur * 0.38);
+    o2.frequency.linearRampToValueAtTime(v.end * 1.007, t + v.dur);
+    const f = actx.createBiquadFilter();
+    f.type = "lowpass"; f.frequency.value = 2200; f.Q.value = 2;
+    const g = actx.createGain();
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.4, t + 0.04);
+    g.gain.setValueAtTime(0.4, t + v.dur * 0.7);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + v.dur);
+    o1.connect(f); o2.connect(f); f.connect(g); g.connect(actx.destination);
+    o1.start(t); o2.start(t);
+    o1.stop(t + v.dur + 0.05); o2.stop(t + v.dur + 0.05);
+  } catch (e) {}
+}
 let voiceAudio = null;
 const audioCache = {};
 function preloadAudios() {
@@ -416,7 +454,7 @@ function toggleCat() {
   let s = catStore();
   const i = s.indexOf(current.word);
   if (i >= 0) s.splice(i, 1);
-  else { s.push(current.word); try { sfx(true); } catch (e) {} }
+  else { s.push(current.word); meow(catIndexFor(current)); }
   try { localStorage.setItem("wmcc", JSON.stringify(s)); } catch (e) {}
   paintCatBtn(); paintCatHome();
 }
