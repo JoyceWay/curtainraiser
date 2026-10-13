@@ -27,24 +27,19 @@
   .btn-green { background: #38a169; color: #fff; }
   .btn-red { background: #e0533d; color: #fff; }
   .btn-ghost { background: #fff; color: #2b6cb0; border: 2px solid #2b6cb0; }
+  .btn-small { font-size: 15px; padding: 10px; margin-top: 14px; }
   .btn:active { transform: scale(0.97); }
   .howto {
     background: #fff; border-radius: 16px; padding: 14px 18px; font-size: 15px;
     color: #555; line-height: 1.7; margin: 18px 0;
   }
   .progress { text-align: center; font-weight: 800; color: #2b6cb0; font-size: 16px; margin-bottom: 10px; }
-  .flip-scene { perspective: 1200px; touch-action: none; }
-  .flip-inner {
-    position: relative; width: 100%; transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.4, 0.1, 0.2, 1);
-  }
-  .flip-inner.flipped { transform: rotateY(180deg); }
+  .swipe-zone { touch-action: none; }
   .face {
-    width: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-    border-radius: 20px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    width: 100%; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12); position: relative;
   }
   .face img { display: block; width: 100%; height: auto; }
-  .face.back { position: absolute; top: 0; left: 0; transform: rotateY(180deg); }
   .row { display: flex; gap: 10px; }
   .row .btn { margin: 10px 0 0; }
   .score-big { font-size: 64px; text-align: center; margin: 10px 0; }
@@ -54,7 +49,7 @@
     background: rgba(0,0,0,0.65); color: #fff; border: none; border-radius: 999px;
     font-size: 15px; font-weight: 700; padding: 10px 16px; cursor: pointer;
   }
-  .card-holder { position: relative; }
+  .hint { text-align: center; color: #999; font-size: 13px; margin-top: 12px; }
 </style>
 </head>
 <body>
@@ -65,46 +60,56 @@
     <h1>⭐ Meme Word Cards</h1>
     <div class="sub">SAT words, but make them funny.</div>
     <div class="center"><span class="streak" id="home-streak">🔥 0 day streak</span></div>
-    <button class="btn btn-primary" onclick="startSession()">▶ Today's 5 cards</button>
+    <button class="btn btn-primary" onclick="startLearn()">▶ Learn today's words</button>
     <div class="howto">
       <b>How to play</b><br>
-      1️⃣ Look at the meme — the word reads itself aloud<br>
-      2️⃣ Swipe up to flip &amp; guess the word<br>
-      3️⃣ Swipe up = got it · swipe left = missed · swipe down = back<br>
-      Missed cards come back. That's how brains work. 🧠
+      1️⃣ Learn: swipe up through the words — each reads itself aloud 🔊<br>
+      2️⃣ Quiz: guess the word, then be honest: ✓ or ✗<br>
+      3️⃣ Missed cards come back. That's how brains work. 🧠<br>
+      🐱 Psst — a cat is hiding in every card. Can you find it?
     </div>
   </div>
 
-  <!-- PLAY -->
-  <div id="play" class="hidden">
-    <div class="progress" id="progress">Card 1 of 5</div>
-    <div class="flip-scene">
-      <div class="flip-inner" id="flip">
-        <div class="face front card-holder">
-          <button class="speak-btn" onclick="speak(event)">🔊 Hear it</button>
-          <img id="img-front" src="" alt="word meme front">
-        </div>
-        <div class="face back">
-          <img id="img-back" src="" alt="word quiz back">
-        </div>
+  <!-- LEARN -->
+  <div id="learn" class="hidden">
+    <div class="progress" id="learn-progress">1 / 3</div>
+    <div class="swipe-zone" id="learn-zone">
+      <div class="face">
+        <button class="speak-btn" onclick="replay(event)">🔊</button>
+        <img id="learn-img" src="" alt="word meme">
       </div>
     </div>
-    <div id="stage-learn">
-      <button class="btn btn-ghost" id="btn-flip" onclick="doFlip()">Flip to quiz →</button>
-      <button class="btn btn-ghost hidden" id="btn-back" onclick="backToLive()">← Back to this card</button>
-    </div>
-    <div id="stage-quiz" class="hidden">
-      <div class="row">
-        <button class="btn btn-green" onclick="grade(true)">✓ Got it</button>
-        <button class="btn btn-red" onclick="grade(false)">✗ Missed</button>
+    <div class="hint">swipe up = next · swipe down = back · tap = replay</div>
+    <button class="btn btn-ghost btn-small" onclick="startQuiz()">Skip to quiz →</button>
+  </div>
+
+  <!-- LEARN DONE -->
+  <div id="learn-done" class="hidden">
+    <h1>Heard them all! 🎉</h1>
+    <div class="sub" id="learn-done-sub">3 words down.</div>
+    <button class="btn btn-primary" onclick="startQuiz()">Start quiz →</button>
+    <button class="btn btn-ghost" onclick="startLearn()">↻ Learn again</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="hidden">
+    <div class="progress" id="quiz-progress">Quiz 1 / 3</div>
+    <div class="swipe-zone" id="quiz-zone">
+      <div class="face">
+        <img id="quiz-img" src="" alt="guess the word">
       </div>
     </div>
+    <div class="row">
+      <button class="btn btn-green" onclick="grade(true)">✓ Got it</button>
+      <button class="btn btn-red" onclick="grade(false)">✗ Missed</button>
+    </div>
+    <div class="hint">swipe up = got it · swipe left = missed</div>
   </div>
 
   <!-- DONE -->
   <div id="done" class="hidden">
     <h1>Done! 🎉</h1>
-    <div class="score-big" id="score-line">3 / 5</div>
+    <div class="score-big" id="score-line">3 / 3</div>
     <div class="sub" id="done-msg"></div>
     <div class="center"><span class="streak" id="done-streak"></span></div>
     <button class="btn btn-primary" onclick="showHome()">Back home</button>
@@ -118,8 +123,9 @@ const CARDS = [
   { word: "serendipity",  audio: "audio/serendipity.mp3",  front: "cards/serendipity-front.jpg",  back: "cards/serendipity-back.jpg" },
   { word: "ephemeral",    audio: "audio/ephemeral.mp3",    front: "cards/ephemeral-front.jpg",    back: "cards/ephemeral-back.jpg" },
 ];
-const TOTAL = 5;
-let order = [], wrongPile = [], round = 0, score = 0, current = null;
+let learnDeck = [], li = 0;
+let quizDeck = [], qi = 0, missed = [], score = 0;
+let current = null;
 
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
@@ -146,14 +152,22 @@ function sfx(ok) {
   else { tone(180, 0, 0.25, "square"); }
 }
 let voiceAudio = null;
-function speak(e) {
-  if (e) e.stopPropagation();
-  if (!current) return;
+function playWord(card) {
+  stopVoice();
+  const c = card || current;
+  if (!c) return;
   try {
-    if (voiceAudio) { voiceAudio.pause(); voiceAudio = null; }
-    voiceAudio = new Audio(current.audio);
-    voiceAudio.play().catch(function () { fallbackSpeak(); });
-  } catch (err) { fallbackSpeak(); }
+    voiceAudio = new Audio(c.audio);
+    voiceAudio.play().catch(function () { fallbackSpeak(c); });
+  } catch (err) { fallbackSpeak(c); }
+}
+function fallbackSpeak(c) {
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(c.word);
+    u.rate = 0.85; u.lang = "en-US";
+    speechSynthesis.speak(u);
+  } catch (err) {}
 }
 function stopVoice() {
   try {
@@ -161,13 +175,9 @@ function stopVoice() {
     speechSynthesis.cancel();
   } catch (err) {}
 }
-function fallbackSpeak() {
-  try {
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(current.word);
-    u.rate = 0.85; u.lang = "en-US";
-    speechSynthesis.speak(u);
-  } catch (err) {}
+function replay(e) {
+  if (e) e.stopPropagation();
+  playWord(current);
 }
 
 /* ---------- streak ---------- */
@@ -193,91 +203,77 @@ function bumpStreak() {
 
 /* ---------- flow ---------- */
 function show(id) {
-  ["home", "play", "done"].forEach(x => document.getElementById(x).classList.add("hidden"));
+  ["home", "learn", "learn-done", "quiz", "done"].forEach(x => document.getElementById(x).classList.add("hidden"));
   document.getElementById(id).classList.remove("hidden");
   window.scrollTo(0, 0);
 }
-function showHome() { paintStreak(); show("home"); }
+function showHome() { stopVoice(); paintStreak(); show("home"); }
 
-function startSession() {
-  order = shuffle(CARDS.slice());
-  wrongPile = []; round = 0; score = 0;
-  nextCard();
-  show("play");
+function startLearn() {
+  learnDeck = shuffle(CARDS.slice());
+  li = 0;
+  showLearn();
+  show("learn");
 }
-function pickCard() {
-  if (round < 3) return order[round % order.length];
-  if (wrongPile.length) return wrongPile[Math.floor(Math.random() * wrongPile.length)];
-  return CARDS[Math.floor(Math.random() * CARDS.length)];
+function showLearn() {
+  current = learnDeck[li];
+  document.getElementById("learn-img").src = current.front;
+  document.getElementById("learn-progress").textContent = (li + 1) + " / " + learnDeck.length;
+  setTimeout(function () { playWord(current); }, 500);
 }
-function showFront(card, isReview) {
-  document.getElementById("img-front").src = card.front;
-  document.getElementById("img-back").src = card.back;
-  document.getElementById("flip").classList.remove("flipped");
-  document.getElementById("stage-quiz").classList.add("hidden");
-  document.getElementById("stage-learn").classList.remove("hidden");
-  document.getElementById("btn-flip").classList.toggle("hidden", isReview);
-  document.getElementById("btn-back").classList.toggle("hidden", !isReview);
-  document.getElementById("progress").textContent = isReview
-    ? "← reviewing an old card"
-    : "Card " + (round + 1) + " of " + TOTAL;
-  /* learn stage: autoplay the word; quiz side stays silent so it doesn't give away the answer */
+function learnNext() {
+  if (li < learnDeck.length - 1) { li++; showLearn(); }
+  else {
+    stopVoice();
+    document.getElementById("learn-done-sub").textContent = learnDeck.length + " words down. Ready?";
+    show("learn-done");
+  }
+}
+function learnPrev() {
+  if (li > 0) { li--; showLearn(); }
+}
+
+function startQuiz() {
   stopVoice();
-  setTimeout(function () { speakFor(card); }, 600);
+  quizDeck = shuffle(learnDeck.slice());
+  missed = []; qi = 0; score = 0;
+  showQuiz();
+  show("quiz");
 }
-function nextCard() {
-  current = pickCard();
-  reviewIdx = -1;
-  showFront(current, false);
-}
-function doFlip() {
-  stopVoice();
-  document.getElementById("flip").classList.add("flipped");
-  document.getElementById("stage-learn").classList.add("hidden");
-  document.getElementById("stage-quiz").classList.remove("hidden");
-}
-function doFlipBack() {
-  showFront(current, false);
-}
-/* review history (view-only) */
-let past = [], reviewIdx = -1;
-function prevCard() {
-  if (!past.length || reviewIdx === 0) return;
-  reviewIdx = (reviewIdx === -1) ? past.length - 1 : reviewIdx - 1;
-  showFront(past[reviewIdx], true);
-}
-function backToLive() {
-  reviewIdx = -1;
-  showFront(current, false);
-}
-function speakFor(card) {
-  const saved = current;
-  current = card;
-  speak(null);
-  current = saved;
+function showQuiz() {
+  current = quizDeck[qi];
+  document.getElementById("quiz-img").src = current.back;
+  document.getElementById("quiz-progress").textContent = "Quiz " + (qi + 1) + " / " + quizDeck.length;
 }
 function grade(ok) {
   sfx(ok);
-  past.push(current);
   if (ok) score++;
-  else if (!wrongPile.includes(current)) wrongPile.push(current);
-  round++;
-  if (round >= TOTAL) return finish();
-  setTimeout(nextCard, 450);
+  else missed.push(current);
+  qi++;
+  if (qi >= quizDeck.length) {
+    if (missed.length) {
+      quizDeck = shuffle(missed);
+      missed = []; qi = 0;
+      showQuiz();
+      return;
+    }
+    return finish();
+  }
+  setTimeout(showQuiz, 450);
 }
 function finish() {
   const s = bumpStreak();
-  document.getElementById("score-line").textContent = score + " / " + TOTAL;
+  document.getElementById("score-line").textContent = score + " / " + learnDeck.length;
   document.getElementById("done-msg").textContent =
-    score === TOTAL ? "Flawless. The memes did their job. 😎" :
-    score >= 3 ? "Nice! Missed ones will come back tomorrow. 🔁" :
-    "Tough round — the pile wants you back tomorrow. 💪";
+    score === learnDeck.length ? "Flawless. The memes did their job. 😎" :
+    "Missed ones will come back tomorrow. 🔁";
   document.getElementById("done-streak").textContent = "🔥 " + s + " day streak";
   show("done");
 }
-/* ---------- swipe: up = forward, down = back, left on quiz = missed ---------- */
-(function () {
-  const el = document.getElementById("play");
+
+/* ---------- swipe ---------- */
+function bindSwipe(elId, handlers) {
+  const el = document.getElementById(elId);
   let sx = 0, sy = 0;
   el.addEventListener("touchstart", function (e) {
     const t = e.changedTouches[0];
@@ -287,23 +283,28 @@ function finish() {
     const t = e.changedTouches[0];
     const dx = t.clientX - sx, dy = t.clientY - sy;
     const ax = Math.abs(dx), ay = Math.abs(dy);
-    if (Math.max(ax, ay) < 60) return;
-    const flipped = document.getElementById("flip").classList.contains("flipped");
-    const reviewing = reviewIdx !== -1;
+    if (Math.max(ax, ay) < 60) {
+      if (handlers.tap) handlers.tap();
+      return;
+    }
     if (ay >= ax) {
-      if (dy < 0) {          // swipe up
-        if (reviewing) return;
-        if (!flipped) doFlip();
-        else grade(true);
-      } else {               // swipe down
-        if (flipped) doFlipBack();
-        else prevCard();
-      }
-    } else if (dx < 0 && flipped && !reviewing) {
-      grade(false);          // swipe left = missed
+      if (dy < 0 && handlers.up) handlers.up();
+      else if (dy > 0 && handlers.down) handlers.down();
+    } else {
+      if (dx < 0 && handlers.left) handlers.left();
+      else if (dx > 0 && handlers.right) handlers.right();
     }
   }, { passive: true });
-})();
+}
+bindSwipe("learn-zone", {
+  up: learnNext,
+  down: learnPrev,
+  tap: function () { playWord(current); }
+});
+bindSwipe("quiz-zone", {
+  up: function () { grade(true); },
+  left: function () { grade(false); }
+});
 paintStreak();
 </script>
 </body>
