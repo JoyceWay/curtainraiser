@@ -114,9 +114,9 @@
 
 <script>
 const CARDS = [
-  { word: "procrastinate", front: "cards/procrastinate-front.jpg", back: "cards/procrastinate-back.jpg" },
-  { word: "serendipity",  front: "cards/serendipity-front.jpg",  back: "cards/serendipity-back.jpg" },
-  { word: "ephemeral",    front: "cards/ephemeral-front.jpg",    back: "cards/ephemeral-back.jpg" },
+  { word: "procrastinate", audio: "audio/procrastinate.mp3", front: "cards/procrastinate-front.jpg", back: "cards/procrastinate-back.jpg" },
+  { word: "serendipity",  audio: "audio/serendipity.mp3",  front: "cards/serendipity-front.jpg",  back: "cards/serendipity-back.jpg" },
+  { word: "ephemeral",    audio: "audio/ephemeral.mp3",    front: "cards/ephemeral-front.jpg",    back: "cards/ephemeral-back.jpg" },
 ];
 const TOTAL = 5;
 let order = [], wrongPile = [], round = 0, score = 0, current = null;
@@ -145,9 +145,17 @@ function sfx(ok) {
   if (ok) { tone(660, 0, 0.15); tone(880, 0.12, 0.25); }
   else { tone(180, 0, 0.25, "square"); }
 }
+let voiceAudio = null;
 function speak(e) {
   if (e) e.stopPropagation();
   if (!current) return;
+  try {
+    if (voiceAudio) { voiceAudio.pause(); voiceAudio = null; }
+    voiceAudio = new Audio(current.audio);
+    voiceAudio.play().catch(function () { fallbackSpeak(); });
+  } catch (err) { fallbackSpeak(); }
+}
+function fallbackSpeak() {
   try {
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(current.word);
