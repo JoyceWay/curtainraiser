@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Meme Word Cards</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #FFF6E9; color: #1a1a1a; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .wrap { width: 100%; max-width: 480px; padding: 20px 16px 40px; }
+  h1 { font-size: 30px; margin: 8px 0 4px; text-align: center; }
+  .sub { text-align: center; color: #777; font-size: 15px; margin-bottom: 18px; }
+  .streak {
+    display: inline-block; background: #fff; border: 2px solid #f0a832; color: #b97a12;
+    font-weight: 800; font-size: 17px; padding: 8px 18px; border-radius: 999px; margin-bottom: 18px;
+  }
+  .center { text-align: center; }
+  .btn {
+    display: block; width: 100%; border: none; border-radius: 18px;
+    font-size: 20px; font-weight: 800; padding: 18px; margin: 10px 0; cursor: pointer;
+  }
+  .btn-primary { background: #2b6cb0; color: #fff; }
+  .btn-green { background: #38a169; color: #fff; }
+  .btn-red { background: #e0533d; color: #fff; }
+  .btn-ghost { background: #fff; color: #2b6cb0; border: 2px solid #2b6cb0; }
+  .btn:active { transform: scale(0.97); }
+  .howto {
+    background: #fff; border-radius: 16px; padding: 14px 18px; font-size: 15px;
+    color: #555; line-height: 1.7; margin: 18px 0;
+  }
+  .progress { text-align: center; font-weight: 800; color: #2b6cb0; font-size: 16px; margin-bottom: 10px; }
+  .flip-scene { perspective: 1200px; }
+  .flip-inner {
+    position: relative; width: 100%; transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0.1, 0.2, 1);
+  }
+  .flip-inner.flipped { transform: rotateY(180deg); }
+  .face {
+    width: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 20px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .face img { display: block; width: 100%; height: auto; }
+  .face.back { position: absolute; top: 0; left: 0; transform: rotateY(180deg); }
+  .row { display: flex; gap: 10px; }
+  .row .btn { margin: 10px 0 0; }
+  .score-big { font-size: 64px; text-align: center; margin: 10px 0; }
+  .hidden { display: none !important; }
+  .speak-btn {
+    position: absolute; top: 12px; right: 12px; z-index: 5;
+    background: rgba(0,0,0,0.65); color: #fff; border: none; border-radius: 999px;
+    font-size: 15px; font-weight: 700; padding: 10px 16px; cursor: pointer;
+  }
+  .card-holder { position: relative; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HOME -->
+  <div id="home">
+    <h1>⭐ Meme Word Cards</h1>
+    <div class="sub">SAT words, but make them funny.</div>
+    <div class="center"><span class="streak" id="home-streak">🔥 0 day streak</span></div>
+    <button class="btn btn-primary" onclick="startSession()">▶ Today's 5 cards</button>
+    <div class="howto">
+      <b>How to play</b><br>
+      1️⃣ Look at the meme — get the joke<br>
+      2️⃣ Tap 🔊 to hear the word<br>
+      3️⃣ Flip the card &amp; guess the word<br>
+      4️⃣ Be honest: ✓ or ✗<br>
+      Missed cards come back. That's how brains work. 🧠
+    </div>
+  </div>
+
+  <!-- PLAY -->
+  <div id="play" class="hidden">
+    <div class="progress" id="progress">Card 1 of 5</div>
+    <div class="flip-scene">
+      <div class="flip-inner" id="flip">
+        <div class="face front card-holder">
+          <button class="speak-btn" onclick="speak(event)">🔊 Hear it</button>
+          <img id="img-front" src="" alt="word meme front">
+        </div>
+        <div class="face back">
+          <img id="img-back" src="" alt="word quiz back">
+        </div>
+      </div>
+    </div>
+    <div id="stage-learn">
+      <button class="btn btn-ghost" onclick="doFlip()">Flip to quiz →</button>
+    </div>
+    <div id="stage-quiz" class="hidden">
+      <div class="row">
+        <button class="btn btn-green" onclick="grade(true)">✓ Got it</button>
+        <button class="btn btn-red" onclick="grade(false)">✗ Missed</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DONE -->
+  <div id="done" class="hidden">
+    <h1>Done! 🎉</h1>
+    <div class="score-big" id="score-line">3 / 5</div>
+    <div class="sub" id="done-msg"></div>
+    <div class="center"><span class="streak" id="done-streak"></span></div>
+    <button class="btn btn-primary" onclick="showHome()">Back home</button>
+  </div>
+
+</div>
+
+<script>
+const CARDS = [
+  { word: "procrastinate", front: "cards/procrastinate-front.jpg", back: "cards/procrastinate-back.jpg" },
+  { word: "serendipity",  front: "cards/serendipity-front.jpg",  back: "cards/serendipity-back.jpg" },
+  { word: "ephemeral",    front: "cards/ephemeral-front.jpg",    back: "cards/ephemeral-back.jpg" },
+];
+const TOTAL = 5;
+let order = [], wrongPile = [], round = 0, score = 0, current = null;
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* ---------- sound ---------- */
+let actx = null;
+function tone(freq, t0, dur, type) {
+  if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+  const o = actx.createOscillator(), g = actx.createGain();
+  o.type = type || "sine"; o.frequency.value = freq;
+  g.gain.setValueAtTime(0.0001, actx.currentTime + t0);
+  g.gain.exponentialRampToValueAtTime(0.5, actx.currentTime + t0 + 0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + t0 + dur);
+  o.connect(g); g.connect(actx.destination);
+  o.start(actx.currentTime + t0); o.stop(actx.currentTime + t0 + dur + 0.05);
+}
+function sfx(ok) {
+  if (ok) { tone(660, 0, 0.15); tone(880, 0.12, 0.25); }
+  else { tone(180, 0, 0.25, "square"); }
+}
+function speak(e) {
+  if (e) e.stopPropagation();
+  if (!current) return;
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(current.word);
+    u.rate = 0.85; u.lang = "en-US";
+    speechSynthesis.speak(u);
+  } catch (err) {}
+}
+
+/* ---------- streak ---------- */
+function streak() {
+  try { return JSON.parse(localStorage.getItem("wmc") || '{"s":0,"d":""}'); }
+  catch (e) { return { s: 0, d: "" }; }
+}
+function paintStreak() {
+  const s = streak().s;
+  document.getElementById("home-streak").textContent = "🔥 " + s + " day streak";
+}
+function bumpStreak() {
+  const w = streak();
+  const today = new Date().toDateString();
+  if (w.d !== today) {
+    const y = new Date(Date.now() - 864e5).toDateString();
+    w.s = (w.d === y) ? w.s + 1 : 1;
+    w.d = today;
+    try { localStorage.setItem("wmc", JSON.stringify(w)); } catch (e) {}
+  }
+  return w.s;
+}
+
+/* ---------- flow ---------- */
+function show(id) {
+  ["home", "play", "done"].forEach(x => document.getElementById(x).classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+function showHome() { paintStreak(); show("home"); }
+
+function startSession() {
+  order = shuffle(CARDS.slice());
+  wrongPile = []; round = 0; score = 0;
+  nextCard();
+  show("play");
+}
+function pickCard() {
+  if (round < 3) return order[round % order.length];
+  if (wrongPile.length) return wrongPile[Math.floor(Math.random() * wrongPile.length)];
+  return CARDS[Math.floor(Math.random() * CARDS.length)];
+}
+function nextCard() {
+  current = pickCard();
+  document.getElementById("img-front").src = current.front;
+  document.getElementById("img-back").src = current.back;
+  document.getElementById("flip").classList.remove("flipped");
+  document.getElementById("stage-learn").classList.remove("hidden");
+  document.getElementById("stage-quiz").classList.add("hidden");
+  document.getElementById("progress").textContent = "Card " + (round + 1) + " of " + TOTAL;
+}
+function doFlip() {
+  document.getElementById("flip").classList.add("flipped");
+  document.getElementById("stage-learn").classList.add("hidden");
+  document.getElementById("stage-quiz").classList.remove("hidden");
+}
+function grade(ok) {
+  sfx(ok);
+  if (ok) score++;
+  else if (!wrongPile.includes(current)) wrongPile.push(current);
+  round++;
+  if (round >= TOTAL) return finish();
+  setTimeout(nextCard, 450);
+}
+function finish() {
+  const s = bumpStreak();
+  document.getElementById("score-line").textContent = score + " / " + TOTAL;
+  document.getElementById("done-msg").textContent =
+    score === TOTAL ? "Flawless. The memes did their job. 😎" :
+    score >= 3 ? "Nice! Missed ones will come back tomorrow. 🔁" :
+    "Tough round — the pile wants you back tomorrow. 💪";
+  document.getElementById("done-streak").textContent = "🔥 " + s + " day streak";
+  show("done");
+}
+paintStreak();
+</script>
+</body>
+</html>
