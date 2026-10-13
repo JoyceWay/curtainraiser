@@ -70,6 +70,8 @@
   @keyframes flipin { from { opacity: 0; transform: scale(.96) rotate(-1.2deg); } to { opacity: 1; transform: none; } }
   #learn-img.flip { animation: flipin .28s ease; }
   #quiz-img.flip { animation: flipin .28s ease; }
+  .pill-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 8px 0 6px; }
+  .pill-row .streak { margin: 0; }
   #cat-btn { margin-top: 10px; }
   #cat-btn.playing { background: #f0a832; border-color: #f0a832; color: #fff; }
   /* quiz */
@@ -93,15 +95,17 @@
   <div id="home">
     <h1>⭐ Meme Word Cards</h1>
     <div class="sub">SAT words, but make them funny.</div>
-    <div class="center"><span class="streak" id="home-streak">🔥 0 day streak</span></div>
+    <div class="pill-row">
+      <span class="streak" id="home-streak">🔥 0 day streak</span>
+      <span class="streak" id="home-cats">🐱 0 / 60 cats found</span>
+    </div>
     <button class="btn btn-primary" onclick="startQuiz()">📝 Quiz · 60 words</button>
-    <button class="btn btn-ghost" id="bank-btn" onclick="startBank()">📚 生词库 (60)</button>
     <button class="btn btn-ghost" onclick="startLearn()">🎲 Shuffle all 60</button>
-    <div class="center"><span class="streak" id="home-cats">🐱 0 / 60 cats found</span></div>
+    <button class="btn btn-ghost" id="bank-btn" onclick="startBank()">📚 Word Bank (60)</button>
     <div class="howto">
       <b>How to play</b><br>
       1️⃣ Learn: swipe up / down, or ← → keys on desktop — each word reads itself aloud 🔊<br>
-      📚 生词库：看到会的词点 ✅ 我知道了，第二遍只学生词。<br>
+      📚 Word Bank: tap ✅ Got it on words you already know — your second pass covers only the bank.<br>
       2️⃣ Auto-play: flip the switch and let the words loop by themselves 🔁<br>
       🐱 Psst — cats are hiding in every card. Sometimes more than one. Can you find them all?
     </div>
@@ -121,7 +125,7 @@
       <button class="btn btn-ghost btn-small auto-toggle" id="auto-btn" onclick="toggleAuto()">▶ Auto-play</button>
       <div class="seg" id="auto-seg"><button onclick="setAutoSec(2,this)">2s</button><button onclick="setAutoSec(4,this)" class="on">4s</button><button onclick="setAutoSec(6,this)">6s</button></div>
     </div>
-    <button class="btn btn-ghost btn-small" id="known-btn" onclick="toggleKnown()">✅ 我知道了</button>
+    <button class="btn btn-ghost btn-small" id="known-btn" onclick="toggleKnown()">✅ Got it!</button>
     <button class="btn btn-ghost btn-small" id="cat-btn" onclick="toggleCat()">🐱 Found the cat?</button>
   </div>
 
@@ -350,12 +354,12 @@ function paintBankHome() {
   const b = document.getElementById("bank-btn");
   if (!b) return;
   const n = bank().length;
-  b.textContent = n ? "📚 生词库 (" + n + ")" : "📚 生词库清空啦 🎉";
+  b.textContent = n ? "📚 Word Bank (" + n + ")" : "📚 Word Bank cleared 🎉";
 }
 function paintKnownBtn() {
   const b = document.getElementById("known-btn");
   if (!b || !current) return;
-  b.textContent = bank().indexOf(current.word) >= 0 ? "✅ 我知道了" : "↩️ 放回生词库";
+  b.textContent = bank().indexOf(current.word) >= 0 ? "✅ Got it!" : "↩️ Back to Word Bank";
 }
 function toggleKnown() {
   if (!current) return;
@@ -378,8 +382,8 @@ function startBank() {
   const words = bank();
   bankMode = true;
   if (!words.length) {
-    document.getElementById("learn-done-title").textContent = "生词库清空啦！🎉";
-    document.getElementById("learn-done-sub").textContent = "60 个词全掌握了，你是词典本人！📚";
+    document.getElementById("learn-done-title").textContent = "Word Bank cleared! 🎉";
+    document.getElementById("learn-done-sub").textContent = "All 60 words mastered — you're a walking dictionary! 📚";
     const ag = document.getElementById("learn-done-again");
     ag.textContent = "🎲 Shuffle all 60"; ag.onclick = startLearn;
     show("learn-done");
@@ -514,9 +518,9 @@ function finishLearn() {
   const ag = document.getElementById("learn-done-again");
   if (bankMode) {
     const n = bank().length;
-    document.getElementById("learn-done-title").textContent = "生词库过完啦！🎉";
-    document.getElementById("learn-done-sub").textContent = n ? "还剩 " + n + " 个生词，继续加油！" : "生词库清空啦，全掌握了！📚";
-    ag.textContent = "📚 再过一遍生词"; ag.onclick = startBank;
+    document.getElementById("learn-done-title").textContent = "Word Bank done! 🎉";
+    document.getElementById("learn-done-sub").textContent = n ? n + " words left in the bank — keep going!" : "Word Bank cleared — you know them all! 📚";
+    ag.textContent = "📚 Bank again"; ag.onclick = startBank;
     show("learn-done");
     if (!n) confettiBurst();
   } else {
