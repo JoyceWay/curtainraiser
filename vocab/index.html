@@ -40,6 +40,12 @@
     box-shadow: 0 8px 24px rgba(0,0,0,0.12); position: relative;
   }
   .face img { display: block; width: 100%; height: auto; }
+  /* one-screen fit: the whole card (word + panels + definition) always visible */
+  #learn .face { display: flex; justify-content: center; }
+  #learn-img {
+    width: auto !important; max-width: 100%; height: auto;
+    max-height: calc(100vh - 250px); max-height: calc(100dvh - 250px);
+  }
   .row { display: flex; gap: 10px; }
   .row .btn { margin: 10px 0 0; }
   .score-big { font-size: 64px; text-align: center; margin: 10px 0; }
