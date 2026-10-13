@@ -96,7 +96,7 @@
     <div class="hint">swipe up/down or ← → keys · tap = replay</div>
     <div class="auto-row">
       <button class="btn btn-ghost btn-small auto-toggle" id="auto-btn" onclick="toggleAuto()">▶ Auto-play</button>
-      <div class="seg" id="auto-seg"><button onclick="setAutoSec(1,this)">1s</button><button onclick="setAutoSec(2,this)" class="on">2s</button><button onclick="setAutoSec(3,this)">3s</button></div>
+      <div class="seg" id="auto-seg"><button onclick="setAutoSec(2,this)">2s</button><button onclick="setAutoSec(4,this)" class="on">4s</button><button onclick="setAutoSec(6,this)">6s</button></div>
     </div>
   </div>
 
@@ -226,13 +226,28 @@ function sfx(ok) {
   else { tone(180, 0, 0.25, "square"); }
 }
 let voiceAudio = null;
+const audioCache = {};
+function preloadAudios() {
+  (learnDeck || []).forEach(function (card) {
+    if (card && card.audio && !audioCache[card.audio]) {
+      try {
+        const a = new Audio(card.audio);
+        a.preload = "auto";
+        audioCache[card.audio] = a;
+      } catch (err) {}
+    }
+  });
+}
 function playWord(card) {
   stopVoice();
   const c = card || current;
-  if (!c) return;
+  if (!c || !c.audio) { fallbackSpeak(c); return; }
   try {
-    voiceAudio = new Audio(c.audio);
-    voiceAudio.play().catch(function () { fallbackSpeak(c); });
+    const a = audioCache[c.audio] || new Audio(c.audio);
+    try { a.currentTime = 0; } catch (err) {}
+    voiceAudio = a;
+    const p = a.play();
+    if (p && p.catch) p.catch(function () { fallbackSpeak(c); });
   } catch (err) { fallbackSpeak(c); }
 }
 function fallbackSpeak(c) {
@@ -286,6 +301,7 @@ function showHome() { stopVoice(); paintStreak(); show("home"); }
 
 function startLearn() {
   learnDeck = shuffle(CARDS.slice());
+  preloadAudios();
   li = 0;
   autoOn = false;
   const ab = document.getElementById("auto-btn");
@@ -323,7 +339,7 @@ document.addEventListener("keydown", function (e) {
 });
 
 /* ---------- auto-play: flip every N seconds, looping ---------- */
-let autoOn = false, autoSec = 2, autoTimer = null;
+let autoOn = false, autoSec = 4, autoTimer = null;
 function toggleAuto() {
   autoOn = !autoOn;
   const b = document.getElementById("auto-btn");
