@@ -74,14 +74,22 @@
   .pill-row .streak { margin: 0; }
   #cat-btn { margin-top: 10px; }
   #cat-btn.playing { background: #f0a832; border-color: #f0a832; color: #fff; }
-  /* kid-lively learn controls: tinted buttons + press bounce */
-  .btn-small { transition: transform .12s ease; }
-  .btn-small:active { transform: scale(.95); }
-  #auto-btn { background: #e8f0fe; }
-  #known-btn { background: #e9f9ef; border-color: #38a169; color: #1f7a3d; }
-  #cat-btn { background: #fef3e2; border-color: #f0a832; color: #8a5a00; }
-  .seg button { transition: transform .12s ease; }
-  .seg button:active { transform: scale(.92); }
+  /* kid-lively learn controls: chunky candy buttons */
+  #auto-btn, #known-btn, #cat-btn {
+    color: #fff;
+    font-weight: 800;
+    border: none;
+    border-bottom: 4px solid rgba(0,0,0,.2);
+    transition: transform .1s ease;
+  }
+  #auto-btn:active, #known-btn:active, #cat-btn:active { transform: translateY(3px); border-bottom-width: 1px; }
+  #auto-btn { background: #3b82c4; }
+  #auto-btn.playing { background: #1e56a0; }
+  #known-btn { background: #38a169; }
+  #cat-btn { background: #9b59b6; }
+  #cat-btn.playing { background: #f0a832; }
+  .seg button { transition: transform .1s ease; }
+  .seg button:active { transform: scale(.9); }
   .seg button.on { background: #f0a832; border-color: #f0a832; color: #fff; }
   /* quiz */
   .quiz-face img { display: block; width: auto; max-width: 100%; height: auto; max-height: 36vh; max-height: 36dvh; margin: 0 auto; }
