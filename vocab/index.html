@@ -70,6 +70,8 @@
   @keyframes flipin { from { opacity: 0; transform: scale(.96) rotate(-1.2deg); } to { opacity: 1; transform: none; } }
   #learn-img.flip { animation: flipin .28s ease; }
   #quiz-img.flip { animation: flipin .28s ease; }
+  #cat-btn { margin-top: 10px; }
+  #cat-btn.playing { background: #f0a832; border-color: #f0a832; color: #fff; }
   /* quiz */
   .quiz-face img { display: block; width: auto; max-width: 100%; height: auto; max-height: 36vh; max-height: 36dvh; margin: 0 auto; }
   .quiz-q { text-align: center; font-size: 20px; font-weight: 800; margin: 12px 0 10px; }
@@ -93,11 +95,10 @@
     <div class="sub">SAT words, but make them funny.</div>
     <div class="center"><span class="streak" id="home-streak">🔥 0 day streak</span></div>
     <button class="btn btn-primary" onclick="startQuiz()">📝 Quiz · 60 words</button>
-    <button class="btn btn-ghost" id="daily5-btn" onclick="startDaily5()">📅 Daily 5</button>
     <button class="btn btn-ghost" onclick="startLearn()">🎲 Shuffle all 60</button>
+    <div class="center"><span class="streak" id="home-cats">🐱 0 / 60 cats found</span></div>
     <div class="howto">
       <b>How to play</b><br>
-      📅 <b>Daily 5:</b> five words a day — finish them all to grow your streak 🔥<br>
       1️⃣ Learn: swipe up / down, or ← → keys on desktop — each word reads itself aloud 🔊<br>
       2️⃣ Auto-play: flip the switch and let the words loop by themselves 🔁<br>
       🐱 Psst — cats are hiding in every card. Sometimes more than one. Can you find them all?
@@ -118,6 +119,7 @@
       <button class="btn btn-ghost btn-small auto-toggle" id="auto-btn" onclick="toggleAuto()">▶ Auto-play</button>
       <div class="seg" id="auto-seg"><button onclick="setAutoSec(2,this)">2s</button><button onclick="setAutoSec(4,this)" class="on">4s</button><button onclick="setAutoSec(6,this)">6s</button></div>
     </div>
+    <button class="btn btn-ghost btn-small" id="cat-btn" onclick="toggleCat()">🐱 Found the cat?</button>
   </div>
 
   <!-- LEARN DONE -->
@@ -297,6 +299,33 @@ function paintStreak() {
   const s = streak().s;
   document.getElementById("home-streak").textContent = "🔥 " + s + " day streak";
   paintDaily5();
+  paintCatHome();
+}
+
+/* ---------- cat collection: tap when you spot the hidden cat ---------- */
+function catStore() {
+  try { return JSON.parse(localStorage.getItem("wmcc") || "[]"); }
+  catch (e) { return []; }
+}
+function paintCatBtn() {
+  const b = document.getElementById("cat-btn");
+  if (!b || !current) return;
+  const found = catStore().indexOf(current.word) >= 0;
+  b.textContent = found ? "🐱 Cat found! (tap to undo)" : "🐱 Found the cat?";
+  b.classList.toggle("playing", found);
+}
+function toggleCat() {
+  if (!current) return;
+  let s = catStore();
+  const i = s.indexOf(current.word);
+  if (i >= 0) s.splice(i, 1);
+  else { s.push(current.word); try { sfx(true); } catch (e) {} }
+  try { localStorage.setItem("wmcc", JSON.stringify(s)); } catch (e) {}
+  paintCatBtn(); paintCatHome();
+}
+function paintCatHome() {
+  const el = document.getElementById("home-cats");
+  if (el) el.textContent = "🐱 " + catStore().length + " / 60 cats found";
 }
 function bumpStreak() {
   const w = streak();
@@ -338,6 +367,7 @@ function showLearn() {
   document.getElementById("learn-progress").textContent = (li + 1) + " / " + learnDeck.length;
   playWord(current);   /* sound fires the moment the card lands */
   scheduleAuto();
+  paintCatBtn();
 }
 function learnNext() {
   if (li < learnDeck.length - 1) { li++; showLearn(); }
