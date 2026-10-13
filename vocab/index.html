@@ -33,7 +33,7 @@
     color: #555; line-height: 1.7; margin: 18px 0;
   }
   .progress { text-align: center; font-weight: 800; color: #2b6cb0; font-size: 16px; margin-bottom: 10px; }
-  .flip-scene { perspective: 1200px; }
+  .flip-scene { perspective: 1200px; touch-action: none; }
   .flip-inner {
     position: relative; width: 100%; transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(0.4, 0.1, 0.2, 1);
@@ -68,10 +68,9 @@
     <button class="btn btn-primary" onclick="startSession()">▶ Today's 5 cards</button>
     <div class="howto">
       <b>How to play</b><br>
-      1️⃣ Look at the meme — get the joke<br>
-      2️⃣ The word reads itself aloud — tap 🔊 to replay<br>
-      3️⃣ Flip the card &amp; guess the word<br>
-      4️⃣ Be honest: ✓ or ✗<br>
+      1️⃣ Look at the meme — the word reads itself aloud<br>
+      2️⃣ Swipe up to flip &amp; guess the word<br>
+      3️⃣ Swipe up = got it · swipe left = missed · swipe down = back<br>
       Missed cards come back. That's how brains work. 🧠
     </div>
   </div>
@@ -91,7 +90,8 @@
       </div>
     </div>
     <div id="stage-learn">
-      <button class="btn btn-ghost" onclick="doFlip()">Flip to quiz →</button>
+      <button class="btn btn-ghost" id="btn-flip" onclick="doFlip()">Flip to quiz →</button>
+      <button class="btn btn-ghost hidden" id="btn-back" onclick="backToLive()">← Back to this card</button>
     </div>
     <div id="stage-quiz" class="hidden">
       <div class="row">
@@ -210,17 +210,25 @@ function pickCard() {
   if (wrongPile.length) return wrongPile[Math.floor(Math.random() * wrongPile.length)];
   return CARDS[Math.floor(Math.random() * CARDS.length)];
 }
-function nextCard() {
-  current = pickCard();
-  document.getElementById("img-front").src = current.front;
-  document.getElementById("img-back").src = current.back;
+function showFront(card, isReview) {
+  document.getElementById("img-front").src = card.front;
+  document.getElementById("img-back").src = card.back;
   document.getElementById("flip").classList.remove("flipped");
-  document.getElementById("stage-learn").classList.remove("hidden");
   document.getElementById("stage-quiz").classList.add("hidden");
-  document.getElementById("progress").textContent = "Card " + (round + 1) + " of " + TOTAL;
+  document.getElementById("stage-learn").classList.remove("hidden");
+  document.getElementById("btn-flip").classList.toggle("hidden", isReview);
+  document.getElementById("btn-back").classList.toggle("hidden", !isReview);
+  document.getElementById("progress").textContent = isReview
+    ? "← reviewing an old card"
+    : "Card " + (round + 1) + " of " + TOTAL;
   /* learn stage: autoplay the word; quiz side stays silent so it doesn't give away the answer */
   stopVoice();
-  setTimeout(function () { speak(null); }, 600);
+  setTimeout(function () { speakFor(card); }, 600);
+}
+function nextCard() {
+  current = pickCard();
+  reviewIdx = -1;
+  showFront(current, false);
 }
 function doFlip() {
   stopVoice();
@@ -228,8 +236,29 @@ function doFlip() {
   document.getElementById("stage-learn").classList.add("hidden");
   document.getElementById("stage-quiz").classList.remove("hidden");
 }
+function doFlipBack() {
+  showFront(current, false);
+}
+/* review history (view-only) */
+let past = [], reviewIdx = -1;
+function prevCard() {
+  if (!past.length || reviewIdx === 0) return;
+  reviewIdx = (reviewIdx === -1) ? past.length - 1 : reviewIdx - 1;
+  showFront(past[reviewIdx], true);
+}
+function backToLive() {
+  reviewIdx = -1;
+  showFront(current, false);
+}
+function speakFor(card) {
+  const saved = current;
+  current = card;
+  speak(null);
+  current = saved;
+}
 function grade(ok) {
   sfx(ok);
+  past.push(current);
   if (ok) score++;
   else if (!wrongPile.includes(current)) wrongPile.push(current);
   round++;
@@ -246,6 +275,35 @@ function finish() {
   document.getElementById("done-streak").textContent = "🔥 " + s + " day streak";
   show("done");
 }
+/* ---------- swipe: up = forward, down = back, left on quiz = missed ---------- */
+(function () {
+  const el = document.getElementById("play");
+  let sx = 0, sy = 0;
+  el.addEventListener("touchstart", function (e) {
+    const t = e.changedTouches[0];
+    sx = t.clientX; sy = t.clientY;
+  }, { passive: true });
+  el.addEventListener("touchend", function (e) {
+    const t = e.changedTouches[0];
+    const dx = t.clientX - sx, dy = t.clientY - sy;
+    const ax = Math.abs(dx), ay = Math.abs(dy);
+    if (Math.max(ax, ay) < 60) return;
+    const flipped = document.getElementById("flip").classList.contains("flipped");
+    const reviewing = reviewIdx !== -1;
+    if (ay >= ax) {
+      if (dy < 0) {          // swipe up
+        if (reviewing) return;
+        if (!flipped) doFlip();
+        else grade(true);
+      } else {               // swipe down
+        if (flipped) doFlipBack();
+        else prevCard();
+      }
+    } else if (dx < 0 && flipped && !reviewing) {
+      grade(false);          // swipe left = missed
+    }
+  }, { passive: true });
+})();
 paintStreak();
 </script>
 </body>
