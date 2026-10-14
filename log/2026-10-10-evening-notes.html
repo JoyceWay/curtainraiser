@@ -3,90 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
 <title>晚间笔记 · 2026-10-10（完整版，内部） — 卷帘人 CurtainRaiser</title>
+<meta name="robots" content="noindex, nofollow">
+
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   body {
     margin: 0;
     background-color: #FCFCFC;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M30 .5H0v30' fill='none' stroke='%2385622D' stroke-opacity='.13'/%3E%3C/svg%3E");
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
     background-size: 30px 30px;
     background-position: center top;
     font-family: 'Noto Sans SC', sans-serif;
     color: #342C2C;
   }
-  @media (max-width: 767.98px) { body { background-size: 22px 22px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M22 .5H0v22' fill='none' stroke='%2385622D' stroke-opacity='.13'/%3E%3C/svg%3E"); } }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
   .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
-  .kicker { font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 4px; color: #B08D3E; margin-bottom: 20px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
   h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
-  .sub { font-size: 16px; color: #8B8B8B; margin-bottom: 56px; line-height: 1.8; }
-  h2 { font-size: 22px; font-weight: 700; margin: 0 0 6px; padding-top: 48px; }
-  .en-label { font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 2px; color: #8B8B8B; margin-bottom: 20px; }
-  .note-item { margin-bottom: 36px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
   .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
-  .note-item h3 a { font-size: 13px; font-weight: 400; margin-left: 6px; }
-  .note-item p { font-size: 16px; line-height: 1.75; margin: 0 0 10px; color: #3E3838; }
-  .note-item p.en { font-family: 'Inter', sans-serif; font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6; }
-  .note-item a { color: #8A6D2F; text-decoration: underline; text-underline-offset: 3px; }
-  .note-item blockquote { margin: 0 0 8px; padding: 4px 0 4px 16px; border-left: 3px solid #B08D3E;
-    font-size: 17px; font-weight: 500; line-height: 1.7; color: #342C2C; }
-  .note-item blockquote i, .note-item p i { color: #8A6D2F; }
-  .topic { display: inline-block; font-size: 13px; letter-spacing: 1px; color: #8A6D2F;
-    border: 1px solid rgba(176,141,62,.5); border-radius: 20px; padding: 2px 12px; margin: 0 8px 12px 0; font-weight: 500; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
   .pts { list-style: none; margin: 0 0 12px; padding: 0; }
-  .pts li { position: relative; font-size: 16px; line-height: 1.75; color: #3E3838; padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
   .pts li:last-child { border-bottom: none; }
-  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px; width: 5px; height: 5px; border-radius: 50%; background: #B08D3E; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
   .pts li b { color: #342C2C; }
-  .pts li a { font-size: 14px; }
-  .num { list-style: none; margin: 0 0 12px; padding: 0; counter-reset: n; }
-  .num li { position: relative; font-size: 16px; line-height: 1.75; color: #3E3838; padding: 9px 0 9px 34px; border-bottom: 1px solid rgba(52,44,44,.07); }
-  .num li:last-child { border-bottom: none; }
-  .num li::before { counter-increment: n; content: counter(n); position: absolute; left: 2px; top: 10px;
-    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: #B08D3E; }
-  .num li b { color: #342C2C; }
-  .who { display: block; font-size: 13px; color: #8B8B8B; line-height: 1.6; margin-top: 2px; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
 
-  .pill { display: inline-block; font-size: 12px; letter-spacing: 2px; color: #8A6D2F;
-    border: 1px solid rgba(176,141,62,.45); border-radius: 12px; padding: 1px 10px; margin: 0 8px 4px 0; font-weight: 500; }
-  .zone-understand { margin-bottom: 4px; }
-  .zone-div { border: 0; border-top: 1px dashed rgba(52,44,44,.18); margin: 16px 0; }
-  .act-card { background: rgba(176,141,62,.14);
-    border-radius: 12px; padding: 14px 18px 10px; }
-  .act-card p { margin-bottom: 8px; }
-  .act-card .act-sub { padding-left: 26px; }
-  .mk { display: inline-block; width: 20px; font-weight: 700; margin-right: 6px; }
-  .mk.yes { color: #8A6D2F; } .mk.no { color: #B04A3A; }
-  .creator { margin-bottom: 48px; }
-  .foot { margin-top: 72px; padding-top: 24px; border-top: 1px solid rgba(52,44,44,.12);
-    font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 2px; color: #8B8B8B; }
+  /* Hermès-style two-tier header */
   body { padding-top: 0; }
   .hermes-head { background: #FAF7F1; }
   .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
-  .wordmark { display: inline-block; text-decoration: none; color: #342C2C; font-family: 'Inter', sans-serif;
-    font-weight: 600; font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
-  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px;
-    letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
-  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100; background: #FAF7F1;
-    border-bottom: 1px solid rgba(52,44,44,.14); }
-  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px; display: flex; align-items: center;
-    justify-content: center; gap: 36px; }
-  .nav-links > a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #342C2C;
-    text-decoration: none; padding: 6px 0; white-space: nowrap; }
-  .nav-links > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
-  .nav-links > a > span { font-size: 10px; letter-spacing: 3px; color: #8B8B8B; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
   .nav-toggle { display: none; }
   @media (max-width: 640px) {
-    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-      background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
     .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
-    .nav-strip { display: none; } .nav-strip.open { display: block; }
-    .nav-links { flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
-    .nav-links > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
   }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
 </style>
 </head>
 <body>
@@ -97,332 +150,297 @@
   </div>
 </header>
 <nav class="nav-strip">
-  <div class="nav-links">
-    <a href="../index.html"><b>首页</b><span>HOME</span></a>
-    <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
-    <a href="index.html"><b>笔记本</b><span>NOTEBOOK</span></a>
-    <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
-    <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
-  </div>
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+      <div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+    </div>
 </nav>
 <div class="wrap">
 
-  <div class="kicker">内部 · 不公开 · 完整版</div>
+
+  <div class="kicker">EVENING NOTES · 2026-10-10</div>
   <h1>晚间笔记 · 2026-10-10</h1>
-  <div class="sub">今晚的主题：学大V写作。<br>建两个情报组，定 team 契约。<br>此页为完整内部版——不进导航、不进列表、不被搜索引擎收录。</div>
+  <div class="sub">Tonight: studying big-V writing craft. Two intel groups formed, team contract set.<br>内部完整版——不进导航、不进列表、不被搜索引擎收录。</div>
 
-  <h2>名单总览</h2>
-  <div class="en-label">LISTS</div>
   <div class="note-item">
-    <p><span class="topic">大牛组 · 10 人</span><span class="topic">管"怎么写"</span></p>
-    <ol class="num">
-      <li>dotey — <a href="https://x.com/dotey">x.com/dotey</a><span class="who">中文 AI 博主（宝玉）。</span><span class="who">参考：他的 X 时间线——AI 工具实测 + 一句判语的写法。</span></li>
-      <li>Simon Willison — <a href="https://x.com/simonw">x.com/simonw</a><span class="who">英国开发者，Django 联合创造者。</span><span class="who">参考：simonwillison.net——每篇带具体数字的实验笔记。</span></li>
-      <li>David Perell — <a href="https://x.com/david_perell">x.com/david_perell</a><span class="who">写作教练，Write of Passage 创始人。</span><span class="who">参考：他的写作方法论——每天攒 5 个 idea。</span></li>
-      <li>Naval — <a href="https://x.com/naval">x.com/naval</a><span class="who">AngelList 创始人。</span><span class="who">参考：他的 tweetstorm——一句话压成格言的压缩术。</span></li>
-      <li>Paul Graham — <a href="https://x.com/paulg">x.com/paulg</a><span class="who">Y Combinator 联合创始人，知名 essayist。</span><span class="who">参考：paulgraham.com——verdict 三段压缩。</span></li>
-      <li>George Mack — <a href="https://x.com/george__mack">x.com/george__mack</a><span class="who">以 mega-thread 见长的内容写手。</span><span class="who">参考：《High Agency》thread——5 段叙事结构。</span></li>
-      <li>Hussain Ibarra — <a href="https://x.com/HussainIbarra">x.com/HussainIbarra</a><span class="who">一人公司写作博主。</span><span class="who">参考：他的长推文——sawdust / Dream Customer 框架。</span></li>
-      <li>Dan Koe — <a href="https://x.com/thedankoe">x.com/thedankoe</a><span class="who">创作者经济博主。</span><span class="who">参考：他的 newsletter——第一行 hook 写法。</span></li>
-      <li>Pieter Levels — <a href="https://x.com/levelsio">x.com/levelsio</a><span class="who">Nomad List 创始人，独立开发者标杆。</span><span class="who">参考：他的 X——metric-first 标题 + 公开账本。</span></li>
-      <li>Karpathy — <a href="https://x.com/karpathy">x.com/karpathy</a><span class="who">前 Tesla AI 总监，AI 科普标杆。</span><span class="who">参考：他的 X / 公开讲座——新旧范式对比框架。</span></li>
-    </ol>
-  </div>
-  <div class="note-item">
-    <p><span class="topic">一人公司组 · 16 人</span><span class="topic">管"怎么赚钱"</span></p>
-    <ol class="num">
-      <li>Marc Lou<span class="who">法国独立开发者，公开月度收入账本。</span><span class="who">参考：他的收入账本——透明是最好的简历。</span></li><li>Danny Postma<span class="who">HeadshotPro 创始人，一人在巴厘岛做到约 $30 万/月。</span><span class="who">参考：HeadshotPro——一人产品的天花板。</span></li><li>Daniel Vassallo<span class="who">"small bets" 理念倡导者，前大厂工程师转独立创业。</span><span class="who">参考：他的 small bets——小赌注组合代替all in。</span></li><li>Jack Butcher<span class="who">Visualize Value 创始人。</span><span class="who">参考："Build once, sell twice"——把设计变成可卖的产品。</span></li>
-      <li>Pat Walls<span class="who">Starter Story 创始人，4000+ 创业者访谈。</span><span class="who">参考：Starter Story——真实收入数字的定价参考库。</span></li><li>Dickie Bush<span class="who">Ship 30 for 30 联合创始人。</span><span class="who">参考：他的课程产品化——定价、漏斗、cohort 转自学。</span></li><li>Rob Walling<span class="who">MicroConf / TinySeed 创始人。</span><span class="who">参考：stair-step 方法论——bootstrapping 的定价规则。</span></li>
-      <li>Justin Welsh — <a href="https://x.com/thejustinwelsh">x.com/thejustinwelsh</a><span class="who">前高管转一人公司。</span><span class="who">参考：他的 $1,370/天多收入流——钱是副产品。</span></li>
-      <li>Pieter Levels — <a href="https://x.com/levelsio">x.com/levelsio</a><span class="who">Nomad List 创始人，独立开发者标杆。</span><span class="who">参考：他的 X——公开账本，有错就认。</span></li>
-      <li>Dru Riley — <a href="https://x.com/DruRly">x.com/DruRly</a><span class="who">Trends.vc 创始人，付费趋势报告。</span><span class="who">参考：Trends.vc——一份报告养一个社区。</span></li>
-      <li>Sam Parr<span class="who">The Hustle 创始人（卖给 HubSpot），My First Million 主播。</span><span class="who">参考：他的播客——把拆解做成娱乐。</span></li><li>Shaan Puri<span class="who">My First Million 主播，前 Twitch 高管。</span><span class="who">参考：和他 Sam Parr 的对谈——投资人视角看小生意。</span></li>
-      <li>Codie Sanchez — <a href="https://x.com/Codie_Sanchez">x.com/Codie_Sanchez</a><span class="who">Contrarian Thinking 主理人，收购"无聊"小生意。</span><span class="who">参考：她的数字优先逆向思维——不追风口。</span></li>
-      <li>Tibo Louis-Lucas — <a href="https://x.com/tibo_maker">x.com/tibo_maker</a><span class="who">独立开发者，公开构建过程。</span><span class="who">参考：他的 X——小工具快速验证。</span></li>
-      <li>小耳朵sir — <a href="https://x.com/watreejane">x.com/watreejane</a><span class="who">中文独立开发者，出海 AI 产品峰值 $4 万/月。</span><span class="who">参考：他的万字公开复盘——中文区稀缺样本。</span></li>
-      <li>Arvid Kahl — <a href="https://x.com/arvidkahl">x.com/arvidkahl</a><span class="who">《The Bootstrapped Founder》作者，出售过自己的 SaaS。</span><span class="who">参考：他的书——从零到出售的全程记录。</span></li>
-    </ol>
-    <p class="en">Unverified handles omitted — names only, no invented links.</p>
+    <h3>1. 大牛组 · 10 人名单</h3>
+    <p><span class="topic">名单</span><span class="topic">管"怎么写"</span></p>
+    <ul class="pts">
+      <li><b>dotey</b> — <a href="https://x.com/dotey">x.com/dotey</a><br>中文 AI 博主（宝玉）。参考：他的 X 时间线——AI 工具实测 + 一句判语的写法。</li>
+      <li><b>Simon Willison</b> — <a href="https://x.com/simonw">x.com/simonw</a><br>英国开发者，Django 联合创造者。参考：simonwillison.net——每篇带具体数字的实验笔记。</li>
+      <li><b>David Perell</b> — <a href="https://x.com/david_perell">x.com/david_perell</a><br>写作教练，Write of Passage 创始人。参考：他的写作方法论——每天攒 5 个 idea。</li>
+      <li><b>Naval</b> — <a href="https://x.com/naval">x.com/naval</a><br>AngelList 创始人。参考：他的 tweetstorm——一句话压成格言的压缩术。</li>
+      <li><b>Paul Graham</b> — <a href="https://x.com/paulg">x.com/paulg</a><br>Y Combinator 联合创始人，知名 essayist。参考：paulgraham.com——verdict 三段压缩。</li>
+      <li><b>George Mack</b> — <a href="https://x.com/george__mack">x.com/george__mack</a><br>以 mega-thread 见长的内容写手。参考：《High Agency》thread——5 段叙事结构。</li>
+      <li><b>Hussain Ibarra</b> — <a href="https://x.com/HussainIbarra">x.com/HussainIbarra</a><br>一人公司写作博主。参考：他的长推文——sawdust / Dream Customer 框架。</li>
+      <li><b>Dan Koe</b> — <a href="https://x.com/thedankoe">x.com/thedankoe</a><br>创作者经济博主。参考：他的 newsletter——第一行 hook 写法。</li>
+      <li><b>Pieter Levels</b> — <a href="https://x.com/levelsio">x.com/levelsio</a><br>Nomad List 创始人，独立开发者标杆。参考：他的 X——metric-first 标题 + 公开账本。</li>
+      <li><b>Karpathy</b> — <a href="https://x.com/karpathy">x.com/karpathy</a><br>前 Tesla AI 总监，AI 科普标杆。参考：他的 X / 公开讲座——新旧范式对比框架。</li>
+    </ul>
+    <p class="en">The big-V group (10): who to study for writing craft — pillars, hooks, formats, audiences.</p>
   </div>
 
-  <h2>一、对话复盘</h2>
-  <div class="en-label">REVIEW</div>
   <div class="note-item">
-    <p><span class="topic">迭代过程</span></p>
+    <h3>2. 一人公司组 · 16 人名单</h3>
+    <p><span class="topic">名单</span><span class="topic">管"怎么赚钱"</span></p>
+    <ul class="pts">
+      <li><b>Marc Lou</b><br>法国独立开发者，公开月度收入账本。参考：他的收入账本——透明是最好的简历。</li>
+      <li><b>Danny Postma</b><br>HeadshotPro 创始人，一人在巴厘岛做到约 $30 万/月。参考：HeadshotPro——一人产品的天花板。</li>
+      <li><b>Daniel Vassallo</b><br>"small bets" 理念倡导者，前大厂工程师转独立创业。参考：他的 small bets——小赌注组合代替 all in。</li>
+      <li><b>Jack Butcher</b><br>Visualize Value 创始人。参考："Build once, sell twice"——把设计变成可卖的产品。</li>
+      <li><b>Pat Walls</b><br>Starter Story 创始人，4000+ 创业者访谈。参考：Starter Story——真实收入数字的定价参考库。</li>
+      <li><b>Dickie Bush</b><br>Ship 30 for 30 联合创始人。参考：他的课程产品化——定价、漏斗、cohort 转自学。</li>
+      <li><b>Rob Walling</b><br>MicroConf / TinySeed 创始人。参考：stair-step 方法论——bootstrapping 的定价规则。</li>
+      <li><b>Justin Welsh</b> — <a href="https://x.com/thejustinwelsh">x.com/thejustinwelsh</a><br>前高管转一人公司。参考：他的 $1,370/天多收入流——钱是副产品。</li>
+      <li><b>Pieter Levels</b> — <a href="https://x.com/levelsio">x.com/levelsio</a><br>Nomad List 创始人，独立开发者标杆。参考：他的 X——公开账本，有错就认。</li>
+      <li><b>Dru Riley</b> — <a href="https://x.com/DruRly">x.com/DruRly</a><br>Trends.vc 创始人，付费趋势报告。参考：Trends.vc——一份报告养一个社区。</li>
+      <li><b>Sam Parr</b><br>The Hustle 创始人（卖给 HubSpot），My First Million 主播。参考：他的播客——把拆解做成娱乐。</li>
+      <li><b>Shaan Puri</b><br>My First Million 主播，前 Twitch 高管。参考：和 Sam Parr 的对谈——投资人视角看小生意。</li>
+      <li><b>Codie Sanchez</b> — <a href="https://x.com/Codie_Sanchez">x.com/Codie_Sanchez</a><br>Contrarian Thinking 主理人，收购"无聊"小生意。参考：她的数字优先逆向思维——不追风口。</li>
+      <li><b>Tibo Louis-Lucas</b> — <a href="https://x.com/tibo_maker">x.com/tibo_maker</a><br>独立开发者，公开构建过程。参考：他的 X——小工具快速验证。</li>
+      <li><b>小耳朵sir</b> — <a href="https://x.com/watreejane">x.com/watreejane</a><br>中文独立开发者，出海 AI 产品峰值 $4 万/月。参考：他的万字公开复盘——中文区稀缺样本。</li>
+      <li><b>Arvid Kahl</b> — <a href="https://x.com/arvidkahl">x.com/arvidkahl</a><br>《The Bootstrapped Founder》作者，出售过自己的 SaaS。参考：他的书——从零到出售的全程记录。</li>
+    </ul>
+    <p class="en">The solo-biz group (16): who to study for monetization — real revenue numbers and repeatable plays. Unverified handles omitted — names only, no invented links.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>3. 对话复盘 · 迭代过程</h3>
+    <p><span class="topic">复盘</span></p>
     <ul class="pts">
       <li>拆了 10 位创作者的写作：看支柱，看 hook，看格式，看受众。</li>
       <li>结论很简单：<b>学 dotey 的笔，Simon 的骨</b>。</li>
       <li>新建两个情报组：大牛组管"怎么写"，一人公司组管"怎么赚钱"。不合并，各答各的问题。</li>
       <li>交付：取经 playbook（10 条双语规则）、10 人深度档案。</li>
     </ul>
+    <p class="en">Tore down 10 creators' writing. Verdict: dotey's pen, Simon's bones. Two intel groups, each answering its own question.</p>
   </div>
+
   <div class="note-item">
-    <p><span class="topic">知识要点</span></p>
+    <h3>4. 对话复盘 · 知识要点</h3>
+    <p><span class="topic">复盘</span></p>
     <ul class="pts">
       <li><b>讲故事六条</b>：用人不用理；"但是"放开头；给场景不给总结；节奏即呼吸；每篇埋一句可转述的话；结尾留钩子。</li>
       <li><b>学精神，不学招式</b>：借的是相通的底层原理，不是照搬手法。</li>
       <li><b>笔记三原则</b>：只记能改变下周行动的；每借一招戒掉一招；笔记是弹药库，不是收藏夹。</li>
     </ul>
+    <p class="en">Six storytelling rules; borrow the spirit, not the moves; notes are an ammo depot, not a collection.</p>
   </div>
+
   <div class="note-item">
-    <p><span class="topic">启示与改进</span></p>
+    <h3>5. 对话复盘 · 启示与改进</h3>
+    <p><span class="topic">复盘</span></p>
     <ul class="pts">
       <li>Naval 筛选器长成了操作系统：见人先打标签。</li>
       <li>分类顺直觉走：钱和手艺是两条线，别硬并。</li>
       <li>改进：少问"要加吗"，多给 verdict；动笔前先分知识与琐事；后台产出先验货再交付。</li>
     </ul>
+    <p class="en">The Naval filter became an OS. Money and craft are two separate lines. Improve: fewer "should I add this", more verdicts.</p>
   </div>
 
-  <h2>二、大牛借鉴手册</h2>
-  <div class="en-label">BORROW BOOK · 按可借鉴性排序</div>
-
-  <div class="note-item creator">
-    <h3>1. dotey · 中文可读性之王 <a href="https://x.com/dotey">x.com/dotey</a></h3>
-    <div class="zone-understand">
-      <p><span class="pill">精神</span></p>
-      <blockquote>把读者当朋友。</blockquote>
-      <p>朋友才配你把术语讲成人话。</p>
-      <p><span class="pill">擅长</span>AI 工具 / 论文策展 + 一句判语。</p>
-      <p>中文优先。</p>
-      <p><span class="pill">为什么写得好</span></p>
-      <p>标题式开头 → 事件还原 → 背景 → 官方说法 → 一条实用建议。</p>
-      <p>术语首次出现必解释（<i>如 "REA（逆向工程助手）"</i>）。</p>
-      <p>caveat 块收尾。</p>
-    </div>
-    <div class="act-card">
-      <p><span class="mk yes">✓</span><b>可借鉴</b>：整套笔法直接搬。</p>
-      <p class="act-sub">编号分节，先价值后机制。</p>
-      <p><span class="mk no">✗</span><b>不借</b>：无。</p>
-    </div>
-  </div>
-  <div class="note-item creator">
-    <h3>2. Simon Willison · 极端具体 <a href="https://x.com/simonw">x.com/simonw</a></h3>
-    <div class="zone-understand">
-      <p><span class="pill">精神</span></p>
-      <blockquote>尊重读者。</blockquote>
-      <p>不用形容词糊弄人。</p>
-      <p><span class="pill">擅长</span>亲手实验 LLM / agent。</p>
-      <p>数字代替形容词。</p>
-      <p><span class="pill">为什么写得好</span></p>
-      <p>生活化开场（<i>"while I was cooking dinner"</i>）。</p>
-      <p>先做后讲。</p>
-      <p>博客是永久家，X 是分发层。</p>
-    </div>
-    <div class="act-card">
-      <p><span class="mk yes">✓</span><b>可借鉴</b>：lab-note 结构。</p>
-      <p class="act-sub">每篇至少三个具体数字。</p>
-      <p><span class="mk no">✗</span><b>不借</b>：无。</p>
-    </div>
-  </div>
-  <div class="note-item creator">
-    <h3>3. David Perell · 教写作的人 <a href="https://x.com/david_perell">x.com/david_perell</a></h3>
-    <div class="zone-understand">
-      <p><span class="pill">精神</span></p>
-      <blockquote>丰产。</blockquote>
-      <p>写多才有得选。</p>
-      <p><span class="pill">擅长</span>写作方法论。</p>
-      <p><span class="pill">为什么写得好</span></p>
-      <p>write from abundance / from conversation / in public。</p>
-      <p><i>把一次聊天里的洞察，直接扩成文章。</i></p>
-    </div>
-    <div class="act-card">
-      <p><span class="mk yes">✓</span><b>可借鉴</b>：每天 5 个 idea 库存。</p>
-      <p class="act-sub">从对话里挖选题。</p>
-      <p><span class="mk no">✗</span><b>不借</b>：英文长文传统。</p>
-      <p class="act-sub">搬运时转一道手。</p>
-    </div>
-  </div>
-  <div class="note-item creator">
-    <h3>4. Naval · 格言压缩祖师爷 <a href="https://x.com/naval">x.com/naval</a></h3>
-    <div class="zone-understand">
-      <p><span class="pill">精神</span></p>
-      <blockquote>敢删。</blockquote>
-      <p>留下的每个字都经得起时间。</p>
-      <p><span class="pill">擅长</span>一句话智慧。</p>
-      <p>tweetstorm 结构。</p>
-      <p><span class="pill">为什么写得好</span></p>
-      <p>单句独立可截图（<i>"Escape competition through authenticity"</i>）。</p>
-      <p>长思想压成 thread。</p>
-    </div>
-    <div class="act-card">
-      <p><span class="mk yes">✓</span><b>可借鉴</b>：格言体压缩术。</p>
-      <p class="act-sub">每条帖子问一句：单拎出来成立吗。</p>
-      <p><span class="mk no">✗</span><b>不借</b>：阅历本身压缩不了。</p>
-      <p class="act-sub">别硬写哲理。</p>
-    </div>
-  </div>
-  <div class="note-item creator">
-    <h3>5. Paul Graham · 压缩大师 <a href="https://x.com/paulg">x.com/paulg</a></h3>
-    <div class="zone-understand">
-      <p><span class="pill">精神</span></p>
-      <blockquote>惊奇。</blockquote>
-      <p>让常规观点惊讶一下。</p>
-      <p><span class="pill">擅长</span>verdict → mechanism → behavior 三段压缩。</p>
-      <p><span class="pill">为什么写得好</span></p>
-      <p>冷 verdict 开场，三句话收束。</p>
-      <p>对话式，quote-as-post。</p>
-    </div>
-    <div class="act-card">
-      <p><span class="mk yes">✓</span><b>可借鉴</b>：结尾压缩术。</p>
-      <p class="act-sub">发前做"惊奇测试"。</p>
-      <p><span class="mk no">✗</span><b>不借</b>：极短篇幅。</p>
-      <p class="act-sub">有 500 万粉名望托底，小账号别照搬长度。</p>
-    </div>
-  </div>
-  <div class="note-item creator">
-    <h3>6. George Mack · thread 建筑学 <a href="https://x.com/george__mack">x.com/george__mack</a></h3>
-    <div class="zone-understand">
-      <p><span class="pill">精神</span></p>
-      <blockquote>推进。</blockquote>
-      <p>每一步都让人想点开下一步。</p>
-      <p><span class="pill">擅长</span>mega-thread 叙事工程。</p>
-      <p>代表作 High Agency。</p>
-      <p><span class="pill">为什么写得好</span></p>
-      <p>编号叙事 + 对比对（<i>high agency vs low agency</i>）。</p>
-      <p>"Part 1 / Part 2"推进器。</p>
-    </div>
-    <div class="act-card">
-      <p><span class="mk yes">✓</span><b>可借鉴</b>：5 条 thread 结构。</p>
-      <p class="act-sub">hook → 冲突 → 转折 → 方法 → 金句。</p>
-      <p><span class="mk no">✗</span><b>不借</b>：curator 人设。</p>
-      <p class="act-sub">学结构，不信人设。</p>
-    </div>
-  </div>
-  <div class="note-item creator">
-    <h3>7. Hussain Ibarra · 框架师 <a href="https://x.com/HussainIbarra">x.com/HussainIbarra</a></h3>
-    <div class="zone-understand">
-      <p><span class="pill">精神</span></p>
-      <blockquote>复用。</blockquote>
-      <p>一套框架吃遍所有内容。</p>
-      <p><span class="pill">擅长</span>七步框架。</p>
-      <p><span class="pill">为什么写得好</span></p>
-      <p>身份反差三行 hook（<i>"他只有一个员工——他自己"</i>）。</p>
-      <p>Article → 短帖导流。</p>
-    </div>
-    <div class="act-card">
-      <p><span class="mk yes">✓</span><b>可借鉴</b>：sawdust、Dream Customer、自己当案例。</p>
-      <p><span class="mk no">✗</span><b>不借</b>：夸张收入叙事。</p>
-      <p class="act-sub">分享即获客，第二类。</p>
-    </div>
-  </div>
-  <div class="note-item creator">
-    <h3>8. Dan Koe · 钩子哲学家 <a href="https://x.com/thedankoe">x.com/thedankoe</a></h3>
-    <div class="zone-understand">
-      <p><span class="pill">精神</span></p>
-      <blockquote>命名。</blockquote>
-      <p>把方法压成哲学命题。</p>
-      <p><span class="pill">擅长</span>hook 写作。</p>
-      <p>一人公司变现系统。</p>
-      <p><span class="pill">为什么写得好</span></p>
-      <p>反常识诊断开场（<i>"the default is overweight, dumb, and broke"</i>）。</p>
-      <p>短句暴击。</p>
-    </div>
-    <div class="act-card">
-      <p><span class="mk yes">✓</span><b>可借鉴</b>：第一行 hook 写法。</p>
-      <p class="act-sub">发前 hook 自检。</p>
-      <p><span class="mk no">✗</span><b>不借</b>：绝对口吻。</p>
-      <p class="act-sub">百万粉才撑得住。收入数字不当证据。</p>
-    </div>
-  </div>
-  <div class="note-item creator">
-    <h3>9. Pieter Levels · 激进透明 <a href="https://x.com/levelsio">x.com/levelsio</a></h3>
-    <div class="zone-understand">
-      <p><span class="pill">精神</span></p>
-      <blockquote>透明即信任。</blockquote>
-      <p>数字是最好的简历。</p>
-      <p><span class="pill">擅长</span>公开账本。</p>
-      <p>bio 即 MRR 记分牌。</p>
-      <p><span class="pill">为什么写得好</span></p>
-      <p>metric-first 标题（<i>"$86K / 月 PhotoAI"</i>）。</p>
-      <p>错了公开更正。</p>
-    </div>
-    <div class="act-card">
-      <p><span class="mk yes">✓</span><b>可借鉴</b>：来源与数字透明。</p>
-      <p class="act-sub">有错就认。</p>
-      <p><span class="mk no">✗</span><b>不借</b>：晒钱。</p>
-      <p class="act-sub">暂无数字可晒时，改用"过程透明"。</p>
-    </div>
-  </div>
-  <div class="note-item creator">
-    <h3>10. Karpathy · 前沿笔记 <a href="https://x.com/karpathy">x.com/karpathy</a></h3>
-    <div class="zone-understand">
-      <p><span class="pill">精神</span></p>
-      <blockquote>范式。</blockquote>
-      <p>指出旧世界正在过去。</p>
-      <p><span class="pill">擅长</span>第一人称前沿实验笔记。</p>
-      <p><span class="pill">为什么写得好</span></p>
-      <p>新旧范式对比框架。</p>
-      <p>thesis + list，图示多于文字。</p>
-    </div>
-    <div class="act-card">
-      <p><span class="mk yes">✓</span><b>可借鉴</b>："旧范式是靶子"的结构。</p>
-      <p><span class="mk no">✗</span><b>不借</b>：前沿位置本身。</p>
-      <p class="act-sub">不可复制。</p>
-    </div>
-  </div>
-
-  <h2>三、今日启示</h2>
-  <div class="en-label">TAKEAWAYS</div>
   <div class="note-item">
-    <ol class="num">
+    <h3>6. dotey · 中文可读性之王</h3>
+    <p><span class="topic">大牛借鉴</span> <a href="https://x.com/dotey">x.com/dotey</a></p>
+    <blockquote>"把读者当朋友。"</blockquote>
+    <ul class="pts">
+      <li><b>精神</b>：朋友才配你把术语讲成人话。</li>
+      <li><b>擅长</b>：AI 工具 / 论文策展 + 一句判语；中文优先。</li>
+      <li><b>为什么写得好</b>：标题式开头 → 事件还原 → 背景 → 官方说法 → 一条实用建议；术语首次出现必解释（如"REA（逆向工程助手）"）；caveat 块收尾。</li>
+      <li><b>✓ 可借鉴</b>：整套笔法直接搬；编号分节，先价值后机制。</li>
+      <li><b>✗ 不借</b>：无。</li>
+    </ul>
+    <p class="en">Treat readers as friends — explain jargon in plain words. Borrow the whole pen: headline opening, event reconstruction, one practical takeaway.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>7. Simon Willison · 极端具体</h3>
+    <p><span class="topic">大牛借鉴</span> <a href="https://x.com/simonw">x.com/simonw</a></p>
+    <blockquote>"尊重读者。"</blockquote>
+    <ul class="pts">
+      <li><b>精神</b>：不用形容词糊弄人。</li>
+      <li><b>擅长</b>：亲手实验 LLM / agent；数字代替形容词。</li>
+      <li><b>为什么写得好</b>：生活化开场（"while I was cooking dinner"）；先做后讲；博客是永久家，X 是分发层。</li>
+      <li><b>✓ 可借鉴</b>：lab-note 结构；每篇至少三个具体数字。</li>
+      <li><b>✗ 不借</b>：无。</li>
+    </ul>
+    <p class="en">Respect readers — no adjective hand-waving. Numbers instead of adjectives; do first, write second.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>8. David Perell · 教写作的人</h3>
+    <p><span class="topic">大牛借鉴</span> <a href="https://x.com/david_perell">x.com/david_perell</a></p>
+    <blockquote>"丰产。"</blockquote>
+    <ul class="pts">
+      <li><b>精神</b>：写多才有得选。</li>
+      <li><b>擅长</b>：写作方法论。</li>
+      <li><b>为什么写得好</b>：write from abundance / from conversation / in public；把一次聊天里的洞察，直接扩成文章。</li>
+      <li><b>✓ 可借鉴</b>：每天 5 个 idea 库存；从对话里挖选题。</li>
+      <li><b>✗ 不借</b>：英文长文传统；搬运时转一道手。</li>
+    </ul>
+    <p class="en">Write from abundance. Keep a daily inventory of 5 ideas; mine conversations for topics.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>9. Naval · 格言压缩祖师爷</h3>
+    <p><span class="topic">大牛借鉴</span> <a href="https://x.com/naval">x.com/naval</a></p>
+    <blockquote>"敢删。"</blockquote>
+    <ul class="pts">
+      <li><b>精神</b>：留下的每个字都经得起时间。</li>
+      <li><b>擅长</b>：一句话智慧；tweetstorm 结构。</li>
+      <li><b>为什么写得好</b>：单句独立可截图（"Escape competition through authenticity"）；长思想压成 thread。</li>
+      <li><b>✓ 可借鉴</b>：格言体压缩术；每条帖子问一句：单拎出来成立吗。</li>
+      <li><b>✗ 不借</b>：阅历本身压缩不了；别硬写哲理。</li>
+    </ul>
+    <p class="en">Dare to delete. One sentence = one complete judgment. Test every post: does it stand alone?</p>
+  </div>
+
+  <div class="note-item">
+    <h3>10. Paul Graham · 压缩大师</h3>
+    <p><span class="topic">大牛借鉴</span> <a href="https://x.com/paulg">x.com/paulg</a></p>
+    <blockquote>"惊奇。"</blockquote>
+    <ul class="pts">
+      <li><b>精神</b>：让常规观点惊讶一下。</li>
+      <li><b>擅长</b>：verdict → mechanism → behavior 三段压缩。</li>
+      <li><b>为什么写得好</b>：冷 verdict 开场，三句话收束；对话式，quote-as-post。</li>
+      <li><b>✓ 可借鉴</b>：结尾压缩术；发前做"惊奇测试"。</li>
+      <li><b>✗ 不借</b>：极短篇幅；有 500 万粉名望托底，小账号别照搬长度。</li>
+    </ul>
+    <p class="en">Verdict → mechanism → behavior. Cold verdict opening, three-sentence close. Small accounts shouldn't copy his length.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>11. George Mack · thread 建筑学</h3>
+    <p><span class="topic">大牛借鉴</span> <a href="https://x.com/george__mack">x.com/george__mack</a></p>
+    <blockquote>"推进。"</blockquote>
+    <ul class="pts">
+      <li><b>精神</b>：每一步都让人想点开下一步。</li>
+      <li><b>擅长</b>：mega-thread 叙事工程；代表作 High Agency。</li>
+      <li><b>为什么写得好</b>：编号叙事 + 对比对（high agency vs low agency）；"Part 1 / Part 2"推进器。</li>
+      <li><b>✓ 可借鉴</b>：5 条 thread 结构；hook → 冲突 → 转折 → 方法 → 金句。</li>
+      <li><b>✗ 不借</b>：curator 人设；学结构，不信人设。</li>
+    </ul>
+    <p class="en">Every step makes you want to open the next. Numbered narrative + contrast pairs; learn the structure, not the persona.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>12. Hussain Ibarra · 框架师</h3>
+    <p><span class="topic">大牛借鉴</span> <a href="https://x.com/HussainIbarra">x.com/HussainIbarra</a></p>
+    <blockquote>"复用。"</blockquote>
+    <ul class="pts">
+      <li><b>精神</b>：一套框架吃遍所有内容。</li>
+      <li><b>擅长</b>：七步框架。</li>
+      <li><b>为什么写得好</b>：身份反差三行 hook（"他只有一个员工——他自己"）；Article → 短帖导流。</li>
+      <li><b>✓ 可借鉴</b>：sawdust、Dream Customer、自己当案例。</li>
+      <li><b>✗ 不借</b>：夸张收入叙事；分享即获客，第二类。</li>
+    </ul>
+    <p class="en">One framework eats all content. Borrow: sawdust, Dream Customer, yourself as the case study.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>13. Dan Koe · 钩子哲学家</h3>
+    <p><span class="topic">大牛借鉴</span> <a href="https://x.com/thedankoe">x.com/thedankoe</a></p>
+    <blockquote>"命名。"</blockquote>
+    <ul class="pts">
+      <li><b>精神</b>：把方法压成哲学命题。</li>
+      <li><b>擅长</b>：hook 写作；一人公司变现系统。</li>
+      <li><b>为什么写得好</b>：反常识诊断开场（"the default is overweight, dumb, and broke"）；短句暴击。</li>
+      <li><b>✓ 可借鉴</b>：第一行 hook 写法；发前 hook 自检。</li>
+      <li><b>✗ 不借</b>：绝对口吻；百万粉才撑得住；收入数字不当证据。</li>
+    </ul>
+    <p class="en">Name the method as a philosophical claim. Borrow the first-line hook; skip the absolutist tone.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>14. Pieter Levels · 激进透明</h3>
+    <p><span class="topic">大牛借鉴</span> <a href="https://x.com/levelsio">x.com/levelsio</a></p>
+    <blockquote>"透明即信任。"</blockquote>
+    <ul class="pts">
+      <li><b>精神</b>：数字是最好的简历。</li>
+      <li><b>擅长</b>：公开账本；bio 即 MRR 记分牌。</li>
+      <li><b>为什么写得好</b>：metric-first 标题（"$86K / 月 PhotoAI"）；错了公开更正。</li>
+      <li><b>✓ 可借鉴</b>：来源与数字透明；有错就认。</li>
+      <li><b>✗ 不借</b>：晒钱；暂无数字可晒时，改用"过程透明"。</li>
+    </ul>
+    <p class="en">Transparency is trust; numbers are the best résumé. Wrong? Correct publicly.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>15. Karpathy · 前沿笔记</h3>
+    <p><span class="topic">大牛借鉴</span> <a href="https://x.com/karpathy">x.com/karpathy</a></p>
+    <blockquote>"范式。"</blockquote>
+    <ul class="pts">
+      <li><b>精神</b>：指出旧世界正在过去。</li>
+      <li><b>擅长</b>：第一人称前沿实验笔记。</li>
+      <li><b>为什么写得好</b>：新旧范式对比框架；thesis + list，图示多于文字。</li>
+      <li><b>✓ 可借鉴</b>："旧范式是靶子"的结构。</li>
+      <li><b>✗ 不借</b>：前沿位置本身；不可复制。</li>
+    </ul>
+    <p class="en">Point at the old world passing. Borrow the "old paradigm as target" structure — the position itself can't be copied.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>16. 今日启示</h3>
+    <p><span class="topic">启示</span></p>
+    <ul class="pts">
       <li><b>做定义者，不做又一个</b>。品类没有定义者时，第一个定义的人吃红利。</li>
       <li><b>具体大于漂亮</b>。漂亮是结果，具体是原因。</li>
       <li><b>没数字就用过程透明</b>。公开学习过程本身就是信任资产。<i>正在学的样子，本身就值得被信任。</i></li>
       <li><b>写得少，但每句经得起时间</b>。能被截图转发的金句，顶十篇水文。</li>
       <li><b>找自己的空位</b>。中文 + AI 学习者第一视角 + 一人公司——没人同时占这三格。<i>这三格，是留给你的。</i></li>
-    </ol>
+    </ul>
+    <p class="en">Be the definer, not another one. Specific beats pretty. Process transparency when you have no numbers. Find your empty slot.</p>
   </div>
 
-  <h2>四、翻译文章 list</h2>
-  <div class="en-label">TRANSLATION QUEUE</div>
   <div class="note-item">
-    <p><span class="topic">已发布</span></p>
+    <h3>17. 翻译文章 list</h3>
+    <p><span class="topic">翻译</span></p>
     <ul class="pts">
-      <li>DeRonin《用 Claude 开一家一人公司》（2026-09-30，置顶）</li>
-      <li>Paul Graham《Making Startups Powerful》（2026-10-01）</li>
-      <li>Dan Koe《未来 10 年最重要的一项技能》（2026-10-01）</li>
-      <li>Loop Part 1–3（P4 定于 2026-10-12 发布）</li>
+      <li><b>已发布</b>：DeRonin《用 Claude 开一家一人公司》（2026-09-30，置顶）；Paul Graham《Making Startups Powerful》（2026-10-01）；Dan Koe《未来 10 年最重要的一项技能》（2026-10-01）；Loop Part 1–3（P4 定于 2026-10-12 发布）</li>
+      <li><b>进行中</b>：DeRonin《How to become an AI Engineer in 6 months》全文翻译；Jason Wei《What's left for humans?》翻译包就绪；Ethan Mollick《Agency and Agents》翻译包就绪</li>
+      <li><b>排队</b>：《为什么 AI 总顺着你说话？》（原创）</li>
+      <li><b>收藏</b>：Ethan Mollick《The Dot and the Swarm》；Paul Graham《How to Earn a Billion Dollars》；李飞飞访谈《World Labs, AGI》</li>
+      <li><b>候选</b>：Sabrina Ramonov《AI Millionaire Blueprint for 2026》；Corey Ganim《$1,000/hour Solo AI Business》；Greg Isenberg《Cloudflare will make 1000+ AI millionaires》；Dan Koe《How to fix your entire life in 1 day》；Benedict Evans《AI, tools and transformation》；Andrew Ng《The AI Engineering Skills Map》；rari《Harness Engineering》</li>
     </ul>
-    <p><span class="topic">进行中</span></p>
-    <ul class="pts">
-      <li>DeRonin《How to become an AI Engineer in 6 months》全文翻译</li>
-      <li>Jason Wei《What's left for humans?》翻译包就绪</li>
-      <li>Ethan Mollick《Agency and Agents》翻译包就绪</li>
-    </ul>
-    <p><span class="topic">排队</span></p>
-    <ul class="pts"><li>《为什么 AI 总顺着你说话？》（原创）</li></ul>
-    <p><span class="topic">收藏</span></p>
-    <ul class="pts">
-      <li>Ethan Mollick《The Dot and the Swarm》</li>
-      <li>Paul Graham《How to Earn a Billion Dollars》</li>
-      <li>李飞飞访谈《World Labs, AGI》</li>
-    </ul>
-    <p><span class="topic">候选</span></p>
-    <ul class="pts">
-      <li>Sabrina Ramonov《AI Millionaire Blueprint for 2026》</li>
-      <li>Corey Ganim《$1,000/hour Solo AI Business》</li>
-      <li>Greg Isenberg《Cloudflare will make 1000+ AI millionaires》</li>
-      <li>Dan Koe《How to fix your entire life in 1 day》</li>
-      <li>Benedict Evans《AI, tools and transformation》</li>
-      <li>Andrew Ng《The AI Engineering Skills Map》</li>
-      <li>rari《Harness Engineering》</li>
-    </ul>
+    <p class="en">Translation queue: published, in progress, queued, starred, candidates.</p>
   </div>
 
-  <h2>五、一人公司案例 list</h2>
-  <div class="en-label">CASE LIBRARY</div>
   <div class="note-item">
+    <h3>18. 一人公司案例 list</h3>
+    <p><span class="topic">案例</span></p>
     <ul class="pts">
       <li><b>L 系列</b>：L01 Atlas（$60/月跑全公司）· L02 McLaughin（5 轮自审）· L03 Cherny（三条规则）</li>
       <li><b>B 系列书单</b>：B01《Co-Intelligence》（先读）· B02《Brave New Words》</li>
       <li><b>R 系列</b>：R01《Loop Engineering》· R02《Building Effective Agents》（先读）</li>
       <li><b>T 系列必修课</b>：T01 Agent Loop · T02 Context 管理 · T03 可观测性 · T04 评估</li>
     </ul>
+    <p class="en">Case library: L series (cases), B series (books), R series (reading), T series (required courses).</p>
   </div>
 
-  <h2>六、立下的规则</h2>
-  <div class="en-label">RULES · 内部</div>
   <div class="note-item">
+    <h3>19. 立下的规则</h3>
+    <p><span class="topic">规则</span><span class="topic">内部</span></p>
     <ul class="pts">
       <li><b>可信度是复利也是折旧</b>：多验一层，不确定的不包装。</li>
       <li><b>99% 交付标准</b>：给人看之前就已经是 top tier；力气只花在"选"，不花在"修"。</li>
@@ -435,6 +453,7 @@
   </div>
 
   <div class="foot">CURTAINRAISER · 内部资料</div>
+
 
 </div>
 <script>

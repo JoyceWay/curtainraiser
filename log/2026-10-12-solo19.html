@@ -1,55 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
 <title>Solo 19 — 人设与代表作 — 卷帘人 CurtainRaiser</title>
+<meta name="robots" content="noindex, nofollow">
+
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   body {
-    margin: 0; background-color: #FCFCFC;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M30 .5H0v30' fill='none' stroke='%2385622D' stroke-opacity='.13'/%3E%3C/svg%3E");
-    background-size: 30px 30px; background-position: center top;
-    font-family: 'Inter','Noto Sans SC',sans-serif; color: #342C2C;
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
   }
-  @media (max-width: 767.98px) {
-    body { background-size: 22px 22px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M22 .5H0v22' fill='none' stroke='%2385622D' stroke-opacity='.13'/%3E%3C/svg%3E"); }
-  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
   .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
-  .kicker { font-size: 14px; letter-spacing: 4px; color: #B08D3E; margin-bottom: 20px; }
-  h1 { font-size: 34px; font-weight: 700; margin: 0 0 8px; }
-  .progress { font-size: 15px; color: #8A6D2F; margin-bottom: 40px; font-weight: 500; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+
+  .progress { font-family: 'Inter', sans-serif; font-size: 15px; color: #4E8A28; margin-bottom: 40px; font-weight: 500; }
   .item { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid rgba(52,44,44,.09); }
   .item:last-child { border-bottom: none; }
-  .item input[type="checkbox"] { width: 22px; height: 22px; margin-top: 3px; accent-color: #8A6D2F; cursor: pointer; flex-shrink: 0; }
+  .item input[type="checkbox"] { width: 22px; height: 22px; margin-top: 3px; accent-color: #4E8A28; cursor: pointer; flex-shrink: 0; }
   .item .body { flex: 1; }
   .item .body h2 { font-size: 17px; font-weight: 700; margin: 0 0 6px; line-height: 1.4; }
-  .item .body h2 a { color: #8A6D2F; }
+  .item .body h2 a { color: #4E8A28; }
   .item .body p { font-size: 15px; line-height: 1.7; color: #3E3838; margin: 0 0 4px; }
   .item .body p.zh { font-family: 'Noto Sans SC',sans-serif; font-size: 13px; color: #8B8B8B; }
   .item.done .body h2, .item.done .body p { opacity: .45; }
-  .item.done .body h2 { text-decoration: line-through; text-decoration-color: rgba(138,109,47,.6); }
-  .foot { margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(52,44,44,.12); font-size: 14px; letter-spacing: 2px; color: #8B8B8B; }
-  .hermes-head { background: #FAF7F1; }
-  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
-  .wordmark { display: inline-block; text-decoration: none; color: #342C2C; font-weight: 600; font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
-  .wordmark span { display: block; font-weight: 500; font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
-  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100; background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
-  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px; display: flex; align-items: center; justify-content: center; gap: 36px; }
-  .nav-links > a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #342C2C; text-decoration: none; padding: 6px 0; white-space: nowrap; }
-  .nav-links > a > b { font-size: 12px; font-weight: 500; letter-spacing: 2px; }
-  .nav-links > a > span { font-family: 'Noto Sans SC',sans-serif; font-size: 10px; letter-spacing: 3px; color: #8B8B8B; }
-  .nav-toggle { display: none; }
-  @media (max-width: 640px) {
-    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
-    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
-    .nav-strip { display: none; } .nav-strip.open { display: block; }
-    .nav-links { flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
-    .nav-links > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
-  }
+  .item.done .body h2 { text-decoration: line-through; text-decoration-color: rgba(78,138,40,.6); }
+
 </style>
 </head>
 <body>
@@ -60,62 +163,82 @@
   </div>
 </header>
 <nav class="nav-strip">
-  <div class="nav-links">
-    <a href="../index.html"><b>HOME</b><span>首页</span></a>
-    <a href="../library/index.html"><b>LIBRARY</b><span>资料库</span></a>
-    <a href="index.html"><b>NOTEBOOK</b><span>笔记本</span></a>
-    <a href="../fundamentals/index.html"><b>FLASHCARDS</b><span>字卡</span></a>
-    <a href="../design/index.html"><b>DESIGN</b><span>设计分析</span></a>
-  </div>
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+      <div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+    </div>
 </nav>
 <div class="wrap">
-  <div class="kicker">内部 · 不公开 · INTERNAL</div>
-  <h1>Solo 19 — 人设与代表作</h1>
-  <div class="progress" id="progress"></div>
 
-  <div class="kicker" style="margin-top:8px">「一人公司」情报组 · 每人一句话人设 + 代表作亮点</div>
+
+  <div class="kicker">PROFILE · 2026-10-12</div>
+  <h1>Solo 19 — 人设与代表作</h1>
+  <div class="sub">「一人公司」情报组 · 每人一句话人设 + 代表作亮点 · One-line persona + signature work per member.<br>内部——不被搜索引擎收录。勾选框状态保存在本机浏览器。</div>
+  <div class="progress" id="progress"></div>
 
 <div class="item" data-id="marclou">
   <input type="checkbox" id="c-marclou" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/marclou">Marc Lou — @marclou</a></h2>
   <p><b>Character:</b> The build-in-public maniac. Ships a product every few weeks, posts every number. 36 products, ~$3M total — the ledger is the brand.</p><p class="zh"><b>人设：</b>build in public 狂人。几周发一个产品，所有数字公开。36 个产品、累计约 $3M——账本就是品牌。</p>
-  <p><b>Signature:</b> Monthly revenue ledger threads — every product's MRR posted publicly, the benchmark for revenue transparency. / The TweetHunter sale ($10M to Tibo) — how to build and exit a Twitter tool. / ShipFast — turning "ship fast" itself into a Next.js boilerplate product.</p><p class="zh"><b>代表作：</b>每月收入账本帖——每个产品的 MRR 全公开，收入透明的标杆。/ TweetHunter $10M 卖给 Tibo——Twitter 工具怎么做、怎么退。/ ShipFast——把"快速上线"本身做成 Next.js 模板产品。</p></div>
+  <p><b>Signature:</b> Monthly revenue ledger threads — every product's MRR posted publicly, the benchmark for revenue transparency. / The TweetHunter sale ($10M to Tibo) — how to build and exit a Twitter tool. / ShipFast — turning “ship fast” itself into a Next.js boilerplate product.</p><p class="zh"><b>代表作：</b>每月收入账本帖——每个产品的 MRR 全公开，收入透明的标杆。/ TweetHunter $10M 卖给 Tibo——Twitter 工具怎么做、怎么退。/ ShipFast——把“快速上线”本身做成 Next.js 模板产品。</p></div>
 </div>
 <div class="item" data-id="dannypostma">
   <input type="checkbox" id="c-dannypostma" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/dannypostma">Danny Postma — @dannypostma</a></h2>
   <p><b>Character:</b> The one-man AI factory. Runs HeadshotPro (~$300K/mo claimed) solo from Bali. Everything is AI leverage, documented in public.</p><p class="zh"><b>人设：</b>一人 AI 工厂。独自在巴厘岛跑 HeadshotPro（自称约 $30 万/月）。一切靠 AI 放大，全程公开记录。</p>
-  <p><b>Signature:</b> The HeadshotPro launch story — AI headshots before it was a trend. / His AI workflow posts — landing-page skills and daily AI stack, free and practical. / "AI eats everything" threads — spotting which jobs AI replaces first.</p><p class="zh"><b>代表作：</b>HeadshotPro 冷启动——AI 证件照，赶在风口之前。/ 他的 AI 工作流帖——landing page skills、每日 AI 工具栈，免费且实用。/ "AI 吃掉一切"系列——预判 AI 先替代哪些工种。</p></div>
+  <p><b>Signature:</b> The HeadshotPro launch story — AI headshots before it was a trend. / His AI workflow posts — landing-page skills and daily AI stack, free and practical. / “AI eats everything” threads — spotting which jobs AI replaces first.</p><p class="zh"><b>代表作：</b>HeadshotPro 冷启动——AI 证件照，赶在风口之前。/ 他的 AI 工作流帖——landing page skills、每日 AI 工具栈，免费且实用。/ “AI 吃掉一切”系列——预判 AI 先替代哪些工种。</p></div>
 </div>
 <div class="item" data-id="dvassallo">
   <input type="checkbox" id="c-dvassallo" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/dvassallo">Daniel Vassallo — @dvassallo</a></h2>
   <p><b>Character:</b> The small-bets philosopher. Ex-Amazon, walked away to run a portfolio of tiny products. Preaches: don't bet the farm, place many small bets.</p><p class="zh"><b>人设：</b>小赌注哲学家。前亚马逊员工，离职做一堆小产品组合。主张：别 all in，分散下小注。</p>
-  <p><b>Signature:</b> Small Bets (course/community) — his core thesis as a product. / The 3-year $1M product-level revenue breakdown — rare honest numbers. / "Portfolio of small bets" threads — the mental model behind everything he does.</p><p class="zh"><b>代表作：</b>Small Bets（课程/社区）——把核心思想做成产品。/ 3 年 $1M 产品级收入拆分——罕见的诚实数字。/ "portfolio of small bets"系列——他一切行动背后的心智模型。</p></div>
+  <p><b>Signature:</b> Small Bets (course/community) — his core thesis as a product. / The 3-year $1M product-level revenue breakdown — rare honest numbers. / “Portfolio of small bets” threads — the mental model behind everything he does.</p><p class="zh"><b>代表作：</b>Small Bets（课程/社区）——把核心思想做成产品。/ 3 年 $1M 产品级收入拆分——罕见的诚实数字。/ “portfolio of small bets”系列——他一切行动背后的心智模型。</p></div>
 </div>
 <div class="item" data-id="jackbutcher">
   <input type="checkbox" id="c-jackbutcher" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/jackbutcher">Jack Butcher — @jackbutcher</a></h2>
-  <p><b>Character:</b> The design minimalist. Turns ideas into black-and-white visuals, then turns the visuals into products. "Build once, sell twice."</p><p class="zh"><b>人设：</b>设计极简主义者。把想法变成黑白视觉图，再把图变成产品。"Build once, sell twice."</p>
-  <p><b>Signature:</b> "Sell your sawdust" — the concept: monetize the byproducts of your work. / Visualize Value visuals — each image is a product and an ad at once. / His pricing threads — how design skill becomes recurring revenue.</p><p class="zh"><b>代表作：</b>"Sell your sawdust"——把工作的副产品变成钱。/ Visualize Value 视觉图——每张图既是产品又是广告。/ 他的定价帖——设计能力怎么做成持续收入。</p></div>
+  <p><b>Character:</b> The design minimalist. Turns ideas into black-and-white visuals, then turns the visuals into products. “Build once, sell twice.”</p><p class="zh"><b>人设：</b>设计极简主义者。把想法变成黑白视觉图，再把图变成产品。“Build once, sell twice.”</p>
+  <p><b>Signature:</b> “Sell your sawdust” — the concept: monetize the byproducts of your work. / Visualize Value visuals — each image is a product and an ad at once. / His pricing threads — how design skill becomes recurring revenue.</p><p class="zh"><b>代表作：</b>“Sell your sawdust”——把工作的副产品变成钱。/ Visualize Value 视觉图——每张图既是产品又是广告。/ 他的定价帖——设计能力怎么做成持续收入。</p></div>
 </div>
 <div class="item" data-id="thepatwalls">
   <input type="checkbox" id="c-thepatwalls" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/thepatwalls">Pat Walls — @thepatwalls</a></h2>
   <p><b>Character:</b> The interview machine. 4,000+ founder interviews, every one with real revenue numbers. A walking pricing reference library.</p><p class="zh"><b>人设：</b>访谈机器。4000+ 创业者访谈，每个带真实收入数字。行走的定价参考库。</p>
-  <p><b>Signature:</b> The Starter Story database itself — filter by revenue, niche, business model. / His "how I built Starter Story" posts — SEO + interviews as a growth engine. / Niche deep-dives — newsletter businesses, directories, one-person SaaS.</p><p class="zh"><b>代表作：</b>Starter Story 数据库本身——按收入/赛道/模式筛选。/ "我怎么做 Starter Story"——SEO + 访谈是最好的增长引擎。/ 细分赛道深挖——newsletter 生意、目录站、一人 SaaS。</p></div>
+  <p><b>Signature:</b> The Starter Story database itself — filter by revenue, niche, business model. / His “how I built Starter Story” posts — SEO + interviews as a growth engine. / Niche deep-dives — newsletter businesses, directories, one-person SaaS.</p><p class="zh"><b>代表作：</b>Starter Story 数据库本身——按收入/赛道/模式筛选。/ “我怎么做 Starter Story”——SEO + 访谈是最好的增长引擎。/ 细分赛道深挖——newsletter 生意、目录站、一人 SaaS。</p></div>
 </div>
 <div class="item" data-id="dickiebush">
   <input type="checkbox" id="c-dickiebush" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/dickiebush">Dickie Bush — @dickiebush</a></h2>
   <p><b>Character:</b> The writing coach turned course CEO. Ship 30 for 30 took cohort courses mainstream. Productized writing itself.</p><p class="zh"><b>人设：</b>写作教练变课程 CEO。Ship 30 for 30 把 cohort 课程做成主流。把写作本身产品化。</p>
-  <p><b>Signature:</b> Ship 30 for 30 mechanics — cohort to evergreen, pricing, email funnels, the full playbook. / His writing frameworks — atomic essays, the daily writing system. / The course-to-software arc — productizing beyond courses.</p><p class="zh"><b>代表作：</b>Ship 30 for 30 全套打法——cohort 转常青、定价、邮件漏斗。/ 他的写作框架——原子短文、"每天写"系统。/ 从课程到软件——课程之后的产品化之路。</p></div>
+  <p><b>Signature:</b> Ship 30 for 30 mechanics — cohort to evergreen, pricing, email funnels, the full playbook. / His writing frameworks — atomic essays, the daily writing system. / The course-to-software arc — productizing beyond courses.</p><p class="zh"><b>代表作：</b>Ship 30 for 30 全套打法——cohort 转常青、定价、邮件漏斗。/ 他的写作框架——原子短文、“每天写”系统。/ 从课程到软件——课程之后的产品化之路。</p></div>
 </div>
 <div class="item" data-id="robwalling">
   <input type="checkbox" id="c-robwalling" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/robwalling">Rob Walling — @robwalling</a></h2>
   <p><b>Character:</b> The bootstrapping professor. MicroConf + TinySeed founder. Preaches the stair-step method: start tiny, fund the next step with the last win.</p><p class="zh"><b>人设：</b>不融资派教授。MicroConf + TinySeed 创始人。主张 stair-step：从小做起，用上一步的赢利供下一步。</p>
-  <p><b>Signature:</b> "Start Small, Stay Small" (book) — the bootstrapping bible. / The $50–500/year pricing dead zone — why cheap annual plans kill you. / MicroConf talks — stair-step case studies, year after year.</p><p class="zh"><b>代表作：</b>《Start Small, Stay Small》——不融资圣经。/ $50–500/年定价死亡区——便宜年费为什么害死你。/ MicroConf 演讲——一年又一年的 stair-step 实战。</p></div>
+  <p><b>Signature:</b> “Start Small, Stay Small” (book) — the bootstrapping bible. / The $50–500/year pricing dead zone — why cheap annual plans kill you. / MicroConf talks — stair-step case studies, year after year.</p><p class="zh"><b>代表作：</b>《Start Small, Stay Small》——不融资圣经。/ $50–500/年定价死亡区——便宜年费为什么害死你。/ MicroConf 演讲——一年又一年的 stair-step 实战。</p></div>
 </div>
 <div class="item" data-id="thejustinwelsh">
   <input type="checkbox" id="c-thejustinwelsh" aria-label="watched">
@@ -127,19 +250,19 @@
   <input type="checkbox" id="c-levelsio" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/levelsio">Pieter Levels — @levelsio</a></h2>
   <p><b>Character:</b> The solo-founder totem. 12 startups in 12 months; Nomad List + Remote OK; claims millions a year solo. Contrarian, blunt, always building.</p><p class="zh"><b>人设：</b>一人公司图腾。12 个月做 12 个产品；Nomad List + Remote OK；自称一人年入数百万美元。反共识、直率、永远在做。</p>
-  <p><b>Signature:</b> The 12-in-12 project — the original "ship fast" legend. / His 2026 AI pivot — helping real-world businesses adopt AI and automation; solo-founder scale thinking. / The "software is dead" debate threads — moats and differentiation still matter.</p><p class="zh"><b>代表作：</b>12-in-12——"快速上线"的原始传说。/ 2026 年 AI 转向——帮传统企业上 AI/自动化，一人公司的规模思维。/ "软件已死"辩论帖——护城河和差异化依然重要。</p></div>
+  <p><b>Signature:</b> The 12-in-12 project — the original “ship fast” legend. / His 2026 AI pivot — helping real-world businesses adopt AI and automation; solo-founder scale thinking. / The “software is dead” debate threads — moats and differentiation still matter.</p><p class="zh"><b>代表作：</b>12-in-12——“快速上线”的原始传说。/ 2026 年 AI 转向——帮传统企业上 AI/自动化，一人公司的规模思维。/ “软件已死”辩论帖——护城河和差异化依然重要。</p></div>
 </div>
 <div class="item" data-id="drurly">
   <input type="checkbox" id="c-drurly" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/DruRly">Dru Riley — @DruRly</a></h2>
   <p><b>Character:</b> The trend dissector. Trends.vc founder — one deep report per trend: history, players, tools, opportunities, risks. Paid newsletter done right.</p><p class="zh"><b>人设：</b>趋势解剖师。Trends.vc 创始人——每个趋势一份深报告：历史、玩家、工具、机会、风险。付费 newsletter 的正确做法。</p>
-  <p><b>Signature:</b> Individual trend reports — each one a mini-MBA on a niche business trend. / The report format itself — "history → players → opportunities" structured as a paid product. / Community + paid research bundle — the business model behind Trends.vc.</p><p class="zh"><b>代表作：</b>单期趋势报告——每期都是一堂细分赛道 mini-MBA。/ 报告格式本身——"历史→玩家→机会"怎么做成付费产品。/ 社区+付费研究打包——Trends.vc 背后的生意模式。</p></div>
+  <p><b>Signature:</b> Individual trend reports — each one a mini-MBA on a niche business trend. / The report format itself — “history → players → opportunities” structured as a paid product. / Community + paid research bundle — the business model behind Trends.vc.</p><p class="zh"><b>代表作：</b>单期趋势报告——每期都是一堂细分赛道 mini-MBA。/ 报告格式本身——“历史→玩家→机会”怎么做成付费产品。/ 社区+付费研究打包——Trends.vc 背后的生意模式。</p></div>
 </div>
 <div class="item" data-id="thesamparr">
   <input type="checkbox" id="c-thesamparr" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/thesamparr">Sam Parr — @thesamparr</a></h2>
   <p><b>Character:</b> The hustle storyteller. Sold The Hustle to HubSpot (8 figures). Co-hosts My First Million — turns business breakdowns into entertainment.</p><p class="zh"><b>人设：</b>hustle 故事家。The Hustle 8 位数卖给 HubSpot。My First Million 联合主持——把生意拆解做成娱乐。</p>
-  <p><b>Signature:</b> My First Million episodes — one business idea or breakdown per episode, high energy. / The Hustle growth story — newsletter to 8-figure exit. / His "steal this idea" segments — raw business ideas, free to take.</p><p class="zh"><b>代表作：</b>My First Million 单集——每期一个生意或拆解，能量拉满。/ The Hustle 增长史——newsletter 到 8 位数退出。/ "偷走这个点子"环节——现成的生意点子，免费拿。</p></div>
+  <p><b>Signature:</b> My First Million episodes — one business idea or breakdown per episode, high energy. / The Hustle growth story — newsletter to 8-figure exit. / His “steal this idea” segments — raw business ideas, free to take.</p><p class="zh"><b>代表作：</b>My First Million 单集——每期一个生意或拆解，能量拉满。/ The Hustle 增长史——newsletter 到 8 位数退出。/ “偷走这个点子”环节——现成的生意点子，免费拿。</p></div>
 </div>
 <div class="item" data-id="shaanvp">
   <input type="checkbox" id="c-shaanvp" aria-label="watched">
@@ -150,14 +273,14 @@
 <div class="item" data-id="codie_sanchez">
   <input type="checkbox" id="c-codie_sanchez" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/Codie_Sanchez">Codie Sanchez — @Codie_Sanchez</a></h2>
-  <p><b>Character:</b> The boring-business buyer. Contrarian Thinking founder, "Main Street Millionaire" author. Buys laundromats and car washes while everyone chases SaaS.</p><p class="zh"><b>人设：</b>无聊生意买家。Contrarian Thinking 创始人，《Main Street Millionaire》作者。别人追 SaaS，她买洗衣店和洗车行。</p>
+  <p><b>Character:</b> The boring-business buyer. Contrarian Thinking founder, “Main Street Millionaire” author. Buys laundromats and car washes while everyone chases SaaS.</p><p class="zh"><b>人设：</b>无聊生意买家。Contrarian Thinking 创始人，《Main Street Millionaire》作者。别人追 SaaS，她买洗衣店和洗车行。</p>
   <p><b>Signature:</b> The boring-business acquisition playbook — how to buy, operate, and roll up main-street businesses. / Contrarian Thinking newsletter — numbers-first, anti-hype. / Her deal breakdowns — purchase price, cash flow, the math laid bare.</p><p class="zh"><b>代表作：</b>无聊生意收购手册——怎么买、怎么管、怎么连锁。/ Contrarian Thinking newsletter——数字优先，反炒作。/ 她的交易拆分——收购价、现金流，数学摊开算。</p></div>
 </div>
 <div class="item" data-id="tibo_maker">
   <input type="checkbox" id="c-tibo_maker" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/tibo_maker">Tibo Louis-Lucas — @tibo_maker</a></h2>
   <p><b>Character:</b> The quiet executor. Built and sold TweetHunter/Taplio ($10M), now runs an AI app portfolio claiming $1M/mo. Naval's first kind: built first, shares second. No courses.</p><p class="zh"><b>人设：</b>安静实干家。做出并卖掉 TweetHunter/Taplio（$10M），现在跑 AI 应用矩阵，自称 $1M/月。Naval 第一类：先建成再分享，不卖课。</p>
-  <p><b>Signature:</b> The TweetHunter sale story — building a Twitter tool to a $10M exit. / His AI portfolio build posts — shipping AI apps in public, numbers attached. / The "no courses" stance — monetizes through products, not teaching.</p><p class="zh"><b>代表作：</b>TweetHunter 出售故事——Twitter 工具做到 $10M 退出。/ 他的 AI 矩阵建造帖——公开做 AI 应用，带数字。/ "不卖课"立场——靠产品赚钱，不靠教人。</p></div>
+  <p><b>Signature:</b> The TweetHunter sale story — building a Twitter tool to a $10M exit. / His AI portfolio build posts — shipping AI apps in public, numbers attached. / The “no courses” stance — monetizes through products, not teaching.</p><p class="zh"><b>代表作：</b>TweetHunter 出售故事——Twitter 工具做到 $10M 退出。/ 他的 AI 矩阵建造帖——公开做 AI 应用，带数字。/ “不卖课”立场——靠产品赚钱，不靠教人。</p></div>
 </div>
 <div class="item" data-id="watreejane">
   <input type="checkbox" id="c-watreejane" aria-label="watched">
@@ -169,7 +292,7 @@
   <input type="checkbox" id="c-arvidkahl" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/arvidkahl">Arvid Kahl — @arvidkahl</a></h2>
   <p><b>Character:</b> The bootstrapping author. Grew FeedbackPanda $0 to $55K MRR, then a seven-figure exit. Now writes The Bootstrapped Founder — the books came after the exits, not before.</p><p class="zh"><b>人设：</b>不融资派作者。FeedbackPanda 从 $0 做到 $55K MRR，七位数退出。现在写 The Bootstrapped Founder——书是退出之后才写的。</p>
-  <p><b>Signature:</b> "Zero to Sold" (book) — the full arc: build, grow, sell, and what comes after. / His bootstrapping essays — audience building, pricing, selling a business. / The "books after exits" credibility — teaches only what he lived.</p><p class="zh"><b>代表作：</b>《Zero to Sold》——完整弧线：做、长大、卖、卖之后。/ 他的不融资散文——做受众、定价、卖公司。/ "退出之后才写书"的可信度——只教自己活过的。</p></div>
+  <p><b>Signature:</b> “Zero to Sold” (book) — the full arc: build, grow, sell, and what comes after. / His bootstrapping essays — audience building, pricing, selling a business. / The “books after exits” credibility — teaches only what he lived.</p><p class="zh"><b>代表作：</b>《Zero to Sold》——完整弧线：做、长大、卖、卖之后。/ 他的不融资散文——做受众、定价、卖公司。/ “退出之后才写书”的可信度——只教自己活过的。</p></div>
 </div>
 <div class="item" data-id="trungtphan">
   <input type="checkbox" id="c-trungtphan" aria-label="watched">
@@ -181,7 +304,7 @@
   <input type="checkbox" id="c-lennysan" aria-label="watched">
   <div class="body"><h2><a href="https://x.com/lennysan">Lenny Rachitsky — @lennysan</a></h2>
   <p><b>Character:</b> The product professor. Lenny's Newsletter — deeply researched product, growth, and career advice. Data over opinions, every claim sourced.</p><p class="zh"><b>人设：</b>产品教授。Lenny's Newsletter——深度产品、增长、职业建议。数据大于观点，每条有出处。</p>
-  <p><b>Signature:</b> "How the biggest consumer apps got their first 1,000 users" — the famous growth deep-dive. / His retention and pricing pieces — benchmarks you can actually use. / The newsletter format — how deep research became a paid subscription business.</p><p class="zh"><b>代表作：</b>"最大消费级应用怎么拿到前 1000 用户"——著名的增长深挖。/ 他的留存与定价篇——能直接用的基准数据。/ newsletter 格式本身——深度研究怎么做成付费订阅生意。</p></div>
+  <p><b>Signature:</b> “How the biggest consumer apps got their first 1,000 users” — the famous growth deep-dive. / His retention and pricing pieces — benchmarks you can actually use. / The newsletter format — how deep research became a paid subscription business.</p><p class="zh"><b>代表作：</b>“最大消费级应用怎么拿到前 1000 用户”——著名的增长深挖。/ 他的留存与定价篇——能直接用的基准数据。/ newsletter 格式本身——深度研究怎么做成付费订阅生意。</p></div>
 </div>
 <div class="item" data-id="packym">
   <input type="checkbox" id="c-packym" aria-label="watched">
@@ -191,6 +314,8 @@
 </div>
 
   <div class="foot">CURTAINRAISER · 内部资料</div>
+
+
 </div>
 <script>
 (function(){

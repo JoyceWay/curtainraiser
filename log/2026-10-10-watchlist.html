@@ -1,55 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
 <title>Watchlist — 内部 — 卷帘人 CurtainRaiser</title>
+<meta name="robots" content="noindex, nofollow">
+
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   body {
-    margin: 0; background-color: #FCFCFC;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M30 .5H0v30' fill='none' stroke='%2385622D' stroke-opacity='.13'/%3E%3C/svg%3E");
-    background-size: 30px 30px; background-position: center top;
-    font-family: 'Inter','Noto Sans SC',sans-serif; color: #342C2C;
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
   }
-  @media (max-width: 767.98px) {
-    body { background-size: 22px 22px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M22 .5H0v22' fill='none' stroke='%2385622D' stroke-opacity='.13'/%3E%3C/svg%3E"); }
-  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
   .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
-  .kicker { font-size: 14px; letter-spacing: 4px; color: #B08D3E; margin-bottom: 20px; }
-  h1 { font-size: 34px; font-weight: 700; margin: 0 0 8px; }
-  .progress { font-size: 15px; color: #8A6D2F; margin-bottom: 40px; font-weight: 500; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+
+  .progress { font-family: 'Inter', sans-serif; font-size: 15px; color: #4E8A28; margin-bottom: 40px; font-weight: 500; }
   .item { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid rgba(52,44,44,.09); }
   .item:last-child { border-bottom: none; }
-  .item input[type="checkbox"] { width: 22px; height: 22px; margin-top: 3px; accent-color: #8A6D2F; cursor: pointer; flex-shrink: 0; }
+  .item input[type="checkbox"] { width: 22px; height: 22px; margin-top: 3px; accent-color: #4E8A28; cursor: pointer; flex-shrink: 0; }
   .item .body { flex: 1; }
   .item .body h2 { font-size: 17px; font-weight: 700; margin: 0 0 6px; line-height: 1.4; }
-  .item .body h2 a { color: #8A6D2F; }
+  .item .body h2 a { color: #4E8A28; }
   .item .body p { font-size: 15px; line-height: 1.7; color: #3E3838; margin: 0 0 4px; }
   .item .body p.zh { font-family: 'Noto Sans SC',sans-serif; font-size: 13px; color: #8B8B8B; }
   .item.done .body h2, .item.done .body p { opacity: .45; }
-  .item.done .body h2 { text-decoration: line-through; text-decoration-color: rgba(138,109,47,.6); }
-  .foot { margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(52,44,44,.12); font-size: 14px; letter-spacing: 2px; color: #8B8B8B; }
-  .hermes-head { background: #FAF7F1; }
-  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
-  .wordmark { display: inline-block; text-decoration: none; color: #342C2C; font-weight: 600; font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
-  .wordmark span { display: block; font-weight: 500; font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
-  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100; background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
-  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px; display: flex; align-items: center; justify-content: center; gap: 36px; }
-  .nav-links > a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #342C2C; text-decoration: none; padding: 6px 0; white-space: nowrap; }
-  .nav-links > a > b { font-size: 12px; font-weight: 500; letter-spacing: 2px; }
-  .nav-links > a > span { font-family: 'Noto Sans SC',sans-serif; font-size: 10px; letter-spacing: 3px; color: #8B8B8B; }
-  .nav-toggle { display: none; }
-  @media (max-width: 640px) {
-    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
-    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
-    .nav-strip { display: none; } .nav-strip.open { display: block; }
-    .nav-links { flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
-    .nav-links > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
-  }
+  .item.done .body h2 { text-decoration: line-through; text-decoration-color: rgba(78,138,40,.6); }
+
 </style>
 </head>
 <body>
@@ -60,24 +163,45 @@
   </div>
 </header>
 <nav class="nav-strip">
-  <div class="nav-links">
-    <a href="../index.html"><b>HOME</b><span>首页</span></a>
-    <a href="../library/index.html"><b>LIBRARY</b><span>资料库</span></a>
-    <a href="index.html"><b>NOTEBOOK</b><span>笔记本</span></a>
-    <a href="../fundamentals/index.html"><b>FLASHCARDS</b><span>字卡</span></a>
-    <a href="../design/index.html"><b>DESIGN</b><span>设计分析</span></a>
-  </div>
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+      <div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+    </div>
 </nav>
 <div class="wrap">
-  <div class="kicker">内部 · 不公开 · INTERNAL</div>
+
+
+  <div class="kicker">WATCHLIST · 2026-10-10</div>
   <h1>Watchlist</h1>
+  <div class="sub">按对你的有用度排序 · Sorted by value to you.<br>内部——不被搜索引擎收录。勾选框状态保存在本机浏览器。</div>
   <div class="progress" id="progress"></div>
 
-  <div class="kicker" style="margin-top:8px">按对你的有用度排序 · SORTED BY VALUE TO YOU</div>
 <div class="item" data-id="ayi-1011">
     <input type="checkbox" id="c-ayi-1011" aria-label="watched">
-    <div class="body"><h2><a href="https://x.com/ayi_ainotes/status/2109306660090962312">@ayi_ainotes — Wang × Senra 72分钟对谈</a></h2>
-    <p>Meta's contrarian bet: personal agents for billions of everyday people, not coding agents for millions of coders.</p><p class="zh">Alexandr Wang 对谈 David Senra：Meta 反共识押注"给普通人的个人 agent"而非 coding agent；AGI 最动人的是把时间和精力还给人。</p></div>
+    <div class="body"><h2><a href="https://x.com/ayi_ainotes/status/2109306660090962312">@ayi_ainotes — Wang × Senra 72 分钟对谈</a></h2>
+    <p>Meta's contrarian bet: personal agents for billions of everyday people, not coding agents for millions of coders.</p><p class="zh">Alexandr Wang 对谈 David Senra：Meta 反共识押注“给普通人的个人 agent”而非 coding agent；AGI 最动人的是把时间和精力还给人。</p></div>
   </div>
 <div class="item" data-id="wang">
     <input type="checkbox" id="c-wang" aria-label="watched">
@@ -87,7 +211,7 @@
 <div class="item" data-id="tan">
     <input type="checkbox" id="c-tan" aria-label="watched">
     <div class="body"><h2><a href="https://www.youtube.com/watch?v=eRrc1pUY5oU">Garry Tan — Own Your Intelligence</a></h2>
-    <p>"Markdown is code" — skill files as owned cognition.</p><p class="zh">"Markdown 就是代码"——skill 文件是拥有的认知。</p></div>
+    <p>“Markdown is code” — skill files as owned cognition.</p><p class="zh">“Markdown 就是代码”——skill 文件是拥有的认知。</p></div>
   </div>
 <div class="item" data-id="dean">
     <input type="checkbox" id="c-dean" aria-label="watched">
@@ -106,6 +230,8 @@
   </div>
 
   <div class="foot">CURTAINRAISER · 内部资料</div>
+
+
 </div>
 <script>
 (function(){

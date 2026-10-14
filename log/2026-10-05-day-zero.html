@@ -4,11 +4,141 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>开学：我的 AI 学习计划 — 卷帘人 CurtainRaiser</title>
-<link rel="stylesheet" href="../styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  .article p { font-size: 16px; }
-  .article p.en { font-size: 14px; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
 </style>
 </head>
 <body>
@@ -21,7 +151,7 @@
 <nav class="nav-strip">
     <div class="nav-links">
       <a href="../index.html"><b>首页</b><span>HOME</span></a>
-<div class="has-menu">
+      <div class="has-menu">
       <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
       <div class="mega">
         <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
@@ -49,33 +179,40 @@
 <div class="wrap">
 
 
-  <a class="back" href="index.html">← 返回学习日志</a>
+  <div class="kicker">STUDY PLAN · 2026-10-05</div>
+  <h1>开学：我的 AI 学习计划</h1>
+  <div class="sub">Day 0 of learning AI in public. The goal: a one-person AI business. The method: spiral learning — revisit, deepen, ship.</div>
 
-  <article class="article">
-    <div class="date">2026-10-05 · Day 0</div>
-    <h1>开学：我的 AI 学习计划</h1>
+  <div class="note-item">
+    <h3>1. 我是谁</h3>
+    <p><span class="topic">背景</span></p>
+    <p>46 岁，二十多年前拿的 CS 学位，中间在上海做过三年市场研究（数据分析，Excel / VBA）。现在重学 AI，目标不是找工作，是建立自己的王国。</p>
+    <p class="en">46, CS degree from twenty years ago, three years of market research in Shanghai (data analysis, Excel/VBA). Relearning AI now — not for a job, but to build my own kingdom.</p>
+  </div>
 
-    <p>今天是第一天。我给自己定了一个计划：学 AI，做一人公司。</p>
-
-    <h3>我是谁</h3>
-    <p>46 岁，二十多年前拿的 CS 学位，中间在上海做过三年市场研究（数据分析，Excel/VBA）。现在重学 AI，目标不是找工作，是建立自己的王国。</p>
-
-    <h3>目标</h3>
+  <div class="note-item">
+    <h3>2. 目标</h3>
+    <p><span class="topic">目标</span></p>
     <p>月入 $50k，每周工作不超过 10 小时，80% 被动收入。听起来很远，所以拆成三步：先学透，再做出东西，最后赚到钱。</p>
+    <p class="en">$50k/month, ≤10 hours a week, 80% passive income. Far away — so three steps: learn deeply first, then build, then earn.</p>
+  </div>
 
-    <h3>方法：螺旋式学习</h3>
+  <div class="note-item">
+    <h3>3. 方法：螺旋式学习</h3>
+    <p><span class="topic">方法</span></p>
     <p>同一个概念，过几遍，一遍比一遍深。第一遍跑通，第二遍加深，第三遍做出东西。不追求一遍学会——小步快走，摩擦力小才能坚持。</p>
+    <p class="en">Spiral learning: revisit the same concept in passes, each deeper than the last. Pass one: get it running. Pass two: deepen. Pass three: ship. Small steps, low friction, sustainable.</p>
+  </div>
 
-    <h3>这个网站是干什么的</h3>
+  <div class="note-item">
+    <h3>4. 这个网站是干什么的</h3>
+    <p><span class="topic">网站</span></p>
     <p>记录我的学习过程和总结。写给小白看——包括过去的我自己。能把难的东西讲简单，才算真学会。</p>
+    <p class="en">This site records my learning process and summaries, written for beginners — including my past self. If you can explain hard things simply, you've truly learned them.</p>
+  </div>
 
-    <p class="en" style="color:#6B6560; font-style: italic;">Day 0 of learning AI in public. The goal: a one-person AI business. The method: spiral learning — revisit, deepen, ship.</p>
-  </article>
+  <div class="foot">CURTAINRAISER · 卷帘人 📜</div>
 
-  <footer>
-    <p>卷帘人 CurtainRaiser 📜</p>
-    <p class="en">Go Big, Then Never Stop Running.</p>
-  </footer>
 
 </div>
 <script>

@@ -3,34 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
 <title>一人公司情报组 · 完整档案（内部） — 卷帘人 CurtainRaiser</title>
+<meta name="robots" content="noindex, nofollow">
+
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   body {
     margin: 0;
     background-color: #FCFCFC;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M30 .5H0v30' fill='none' stroke='%2385622D' stroke-opacity='.13'/%3E%3C/svg%3E");
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
     background-size: 30px 30px;
     background-position: center top;
     font-family: 'Noto Sans SC', sans-serif;
     color: #342C2C;
   }
-  @media (max-width: 767.98px) { body { background-size: 22px 22px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M22 .5H0v22' fill='none' stroke='%2385622D' stroke-opacity='.13'/%3E%3C/svg%3E"); } }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
   .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
   .kicker {
     font-family: 'Inter', sans-serif;
     font-size: 14px; letter-spacing: 4px;
-    color: #B08D3E; margin-bottom: 20px;
+    color: #66AC35; margin-bottom: 20px;
   }
   h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
   .sub {
     font-family: 'Inter', sans-serif;
-    font-size: 16px; color: #8B8B8B; margin-bottom: 56px; line-height: 1.7;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
   }
-  h2 { font-size: 22px; font-weight: 700; margin: 0 0 6px; padding-top: 48px; }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
   .en-label {
     font-family: 'Inter', sans-serif;
     font-size: 14px; letter-spacing: 2px;
@@ -38,38 +43,59 @@
   }
   .note-item { margin-bottom: 40px; }
   .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
-  .note-item h3 a { font-size: 14px; font-weight: 400; margin-left: 8px; }
   .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
   .note-item p.en {
     font-family: 'Inter', sans-serif;
     font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
   }
-  .note-item a { color: #8A6D2F; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
   .note-item blockquote {
     margin: 0 0 8px; padding: 4px 0 4px 16px;
-    border-left: 3px solid #B08D3E;
-    font-size: 17px; font-weight: 500; line-height: 1.7; color: #342C2C;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
   }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
   .topic {
     display: inline-block; font-size: 13px; letter-spacing: 1px;
-    color: #8A6D2F; border: 1px solid rgba(176,141,62,.45);
-    border-radius: 20px; padding: 2px 12px; margin: 0 8px 12px 0;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
     text-decoration: none; font-weight: 500;
   }
-  .topic.gold { color: #A8894F; border-color: rgba(168,137,79,.45); }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
   .pts { list-style: none; margin: 0 0 12px; padding: 0; }
   .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
             padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
   .pts li:last-child { border-bottom: none; }
   .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
-                    width: 5px; height: 5px; border-radius: 50%; background: #B08D3E; }
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
   .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
   .foot {
     margin-top: 72px; padding-top: 24px;
     border-top: 1px solid rgba(52,44,44,.12);
     font-family: 'Inter', sans-serif;
     font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
   }
+
+  /* Hermès-style two-tier header */
   body { padding-top: 0; }
   .hermes-head { background: #FAF7F1; }
   .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
@@ -87,6 +113,8 @@
   .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
   .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
   .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
   .nav-toggle { display: none; }
   @media (max-width: 640px) {
     .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
@@ -96,7 +124,10 @@
     .nav-strip.open { display: block; }
     .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
     .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
   }
+
+  /* mega menu — hover dropdown */
   .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
   .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
     background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
@@ -131,7 +162,7 @@
     </div>
       <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
       <div class="has-menu">
-      <a href="index.html"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
       <div class="mega">
         <a href="index.html"><b>列表</b><span>内容目录</span></a>
         <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
@@ -148,12 +179,10 @@
 </nav>
 <div class="wrap">
 
-  <div class="kicker">内部 · 不公开 · 完整版</div>
-  <h1>一人公司情报组 · 完整档案</h1>
-  <div class="sub">管"怎么赚钱"：收入数字、变现打法、定价参考。<br>每天 06:40 自动扫描 16 人近 24 小时帖子，有真实数字或可复用打法才推送。<br>此页不进导航、不进列表、不被搜索引擎收录——只有链接能打开。<br>收入数字多为本人自述，未独立审计。</div>
 
-  <h2>16 位成员</h2>
-  <div class="en-label">16 MEMBERS</div>
+  <div class="kicker">INTEL · 2026-10-10</div>
+  <h1>一人公司情报组 · 完整档案</h1>
+  <div class="sub">Watching how they earn: revenue numbers, monetization plays, pricing references.<br>每天 06:40 自动扫描 16 人近 24 小时帖子，有真实数字或可复用打法才推送。<br>此页不进导航、不进列表、不被搜索引擎收录——只有链接能打开。收入数字多为本人自述，未独立审计。</div>
 
   <div class="note-item">
     <p><span class="topic">第一类</span></p>
@@ -172,15 +201,15 @@
   <div class="note-item">
     <p><span class="topic">第一类</span></p>
     <h3>3. Daniel Vassallo</h3>
-    <blockquote>"小赌注组合"：3 年 $1M 产品级收入拆解。多产品 vs 单产品的参照系。</blockquote>
+    <blockquote>“小赌注组合”：3 年 $1M 产品级收入拆解。多产品 vs 单产品的参照系。</blockquote>
     <p class="en">Portfolio of small bets; 3-year $1M product-level revenue breakdown.</p>
   </div>
 
   <div class="note-item">
     <p><span class="topic">第一类</span></p>
     <h3>4. Jack Butcher</h3>
-    <blockquote>Visualize Value。"Build once, sell twice"——设计产品化的鼻祖，"sell your sawdust" 概念源头。</blockquote>
-    <p class="en">Visualize Value — "Build once, sell twice", design productization.</p>
+    <blockquote>Visualize Value。“Build once, sell twice”——设计产品化的鼻祖，“sell your sawdust”概念源头。</blockquote>
+    <p class="en">Visualize Value — “Build once, sell twice”, design productization.</p>
   </div>
 
   <div class="note-item">
@@ -191,7 +220,7 @@
   </div>
 
   <div class="note-item">
-    <p><span class="topic gold">第二类</span></p>
+    <p><span class="topic">第二类</span></p>
     <h3>6. Dickie Bush</h3>
     <blockquote>Ship 30 for 30：课程产品化（定价、邮件漏斗、训练营转自学）。分享即生意，学手艺。</blockquote>
     <p class="en">Course productization — pricing, funnels, cohort to self-paced.</p>
@@ -205,9 +234,9 @@
   </div>
 
   <div class="note-item">
-    <p><span class="topic gold">第二类</span></p>
+    <p><span class="topic">第二类</span></p>
     <h3>8. Justin Welsh <a href="https://x.com/thejustinwelsh">x.com/thejustinwelsh</a></h3>
-    <blockquote>solo newsletter 作家。自述 $1,370/天叠加小收入流——"钱是副产品"路线的具体锚点。</blockquote>
+    <blockquote>solo newsletter 作家。自述 $1,370/天叠加小收入流——“钱是副产品”路线的具体锚点。</blockquote>
     <p class="en">$1,370/day in stacked small streams — the money-as-byproduct anchor.</p>
   </div>
 
@@ -228,7 +257,7 @@
   <div class="note-item">
     <p><span class="topic">第一类</span></p>
     <h3>11. Sam Parr</h3>
-    <blockquote>The Hustle 卖给 HubSpot（八位数）。播客把"拆解"做成娱乐。</blockquote>
+    <blockquote>The Hustle 卖给 HubSpot（八位数）。播客把“拆解”做成娱乐。</blockquote>
     <p class="en">Sold The Hustle to HubSpot (8 figures) — teardowns as entertainment.</p>
   </div>
 
@@ -242,8 +271,8 @@
   <div class="note-item">
     <p><span class="topic">第一类</span></p>
     <h3>13. Codie Sanchez <a href="https://x.com/Codie_Sanchez">x.com/Codie_Sanchez</a></h3>
-    <blockquote>专买"无聊"生意。数字派，反共识。</blockquote>
-    <p class="en">Buys "boring" businesses — numbers-first contrarian.</p>
+    <blockquote>专买“无聊”生意。数字派，反共识。</blockquote>
+    <p class="en">Buys “boring” businesses — numbers-first contrarian.</p>
   </div>
 
   <div class="note-item">
@@ -267,42 +296,46 @@
     <p class="en">FeedbackPanda $0→$55K MRR, 7-figure exit — books came after.</p>
   </div>
 
-  <h2>怎么长到 16 人的</h2>
-  <div class="en-label">GROWTH TIMELINE</div>
   <div class="note-item">
+    <h3>17. 怎么长到 16 人的</h3>
+    <p><span class="topic">复盘</span></p>
     <ul class="pts">
-      <li><b>2026-10-04 建组</b>：先批 2 人，一句"多扫点"，一晚长到 7 人。入选铁律：真实数字或具体打法，二者无一不收。</li>
-      <li><b>10-07 第 8 人 Justin Welsh</b>：曾因"只讲鸡汤"被拒绝，后自己推翻——他的 $1,370/天印证了"钱是副产品"路线。</li>
+      <li><b>2026-10-04 建组</b>：先批 2 人，一句“多扫点”，一晚长到 7 人。入选铁律：真实数字或具体打法，二者无一不收。</li>
+      <li><b>10-07 第 8 人 Justin Welsh</b>：曾因“只讲鸡汤”被拒绝，后自己推翻——他的 $1,370/天印证了“钱是副产品”路线。</li>
       <li><b>10-08 第 9 人 Pieter Levels</b>：图腾型加入。</li>
-      <li><b>10-09 第 10–13 人</b>：要"更多拆解型的人"，一次加四个（Dru Riley、Sam Parr、Shaan Puri、Codie Sanchez）。</li>
+      <li><b>10-09 第 10–13 人</b>：要“更多拆解型的人”，一次加四个（Dru Riley、Sam Parr、Shaan Puri、Codie Sanchez）。</li>
       <li><b>10-10 第 14–16 人</b>：Tibo、小耳朵sir、Arvid Kahl——全是 Naval 第一类（先做成再分享）。</li>
       <li><b>曾被拒绝</b>：@yongfook（Bannerbear）——2024 年后不再披露数字，stale，不要。</li>
     </ul>
+    <p class="en">Group growth timeline: 2 → 7 in one night, then curated additions. Entry rule: real numbers or concrete plays.</p>
   </div>
 
-  <h2>主题线</h2>
-  <div class="en-label">THEMES</div>
   <div class="note-item">
+    <h3>18. 主题线</h3>
+    <p><span class="topic">主题</span></p>
     <ul class="pts">
       <li><b>收入透明</b>：月度账本、产品级收入拆分、真实获客渠道——Marc Lou 的账本是基准线。</li>
-      <li><b>规模取舍</b>：多产品组合 vs "最多两条线"（模板 + 常青课）。</li>
+      <li><b>规模取舍</b>：多产品组合 vs “最多两条线”（模板 + 常青课）。</li>
       <li><b>课程产品化</b>：定价、邮件漏斗、训练营转自学。</li>
-      <li><b>第一单的形状</b>：免费目录 + 付费墙 + 订阅；叠加小收入流——Welsh 的 $1,370/天是"每周 ≤10 小时"模型的具体锚。</li>
+      <li><b>第一单的形状</b>：免费目录 + 付费墙 + 订阅；叠加小收入流——Welsh 的 $1,370/天是“每周 ≤10 小时”模型的具体锚。</li>
       <li><b>X 创作者变现</b>：2026-10-10 双信源印证——双账号变现预期的第一个数据点。</li>
     </ul>
+    <p class="en">Themes: revenue transparency, portfolio vs focus, course productization, the shape of the first dollar.</p>
   </div>
 
-  <h2>待办</h2>
-  <div class="en-label">OPEN THREADS</div>
   <div class="note-item">
+    <h3>19. 待办</h3>
+    <p><span class="topic">待办</span></p>
     <ul class="pts">
       <li>5 位新成员的 X 时间线复核（live 验证），然后定关注。</li>
       <li>Justin Welsh、Pieter Levels 的关注决定待定。</li>
     </ul>
-    <p class="en">Naval 标签：第一类 = 先把事业做成功再分享（优先学）；第二类 = 分享本身是生意（学手艺，数字打折）。收藏此链接即可，以后都在这一页更新。</p>
+    <p>Naval 标签：第一类 = 先把事业做成功再分享（优先学）；第二类 = 分享本身是生意（学手艺，数字打折）。收藏此链接即可，以后都在这一页更新。</p>
+    <p class="en">Open threads: verify 5 new members' timelines live, then decide follows.</p>
   </div>
 
   <div class="foot">CURTAINRAISER · 内部资料</div>
+
 
 </div>
 <script>
