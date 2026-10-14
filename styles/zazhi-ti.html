@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>杂志体 — 体库 · 卷帘人 CurtainRaiser</title>
+<link rel="stylesheet" href="../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@900&display=swap" rel="stylesheet">
+<style>
+  /* 杂志体：本页即活例子。色值全部从原版截图逐像素实测，不许改。 */
+  body { background: #f5f4f0; }
+  .hermes-head, .nav-strip { background: #f5f4f0; }
+  .mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+  .mag { background: #f5f4f0; color: #110f12; padding: 0 0 60px; }
+  .mag-top { max-width: 100%; padding: 34px 70px 0; }
+  .mag-topbar { display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 9px; letter-spacing: .2em; color: #82817f; text-transform: uppercase; }
+  .mag-topbar em { font-style: normal; color: #ae6557; }
+  .mag-rule { height: 2px; background: #1a1915; margin: 14px 70px 0; }
+  .mag-meta { margin: 18px 70px 0; font-size: 9px; letter-spacing: .2em; color: #82817f; text-transform: uppercase; }
+  .mag-tags { margin: 26px 70px 0; }
+  .mag-tags span { display: inline-block; font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
+    color: #82817f; border: 1px solid #d6d5d1; background: #f5f4f0; padding: 7px 14px; margin-right: 10px; }
+  .mag-hero { margin: 0 70px; }
+  .mag-title { font-family: "Noto Serif SC", serif; font-weight: 900; color: #110f12;
+    font-size: clamp(38px, 5vw, 72px); letter-spacing: -.045em; line-height: 1.25;
+    margin: 170px 10% 0 10%; }
+  .mag-sub { color: #696864; font-size: 16px; line-height: 1.9; margin: 64px 10% 0 10%; }
+  .mag-div { height: 1px; background: #d6d5d1; margin: 60px 70px 0; }
+  .mag-source { background: #e6e5e0; border-left: 3px solid #8a8987; color: #696864;
+    font-size: 14px; line-height: 2; padding: 22px 28px; margin: 150px 70px 0; }
+  .mag-live { margin: 40px 10% 0 10%; font-size: 14px; letter-spacing: .2em; color: #ae6557; }
+  .mag-body { margin: 100px 13% 0 10%; font-size: 16px; line-height: 2; color: #110f12; }
+  .mag-body h2 { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 28px;
+    letter-spacing: .02em; margin: 70px 0 18px 6.7%; color: #110f12; }
+  .mag-body h3 { font-size: 17px; font-weight: 700; margin: 34px 0 10px; color: #110f12; }
+  .mag-body p { margin: 0 0 18px; }
+  .mag-body ul { margin: 0 0 18px 1.2em; }
+  .mag-body li { margin-bottom: 8px; }
+  .mag-body code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px;
+    background: #e6e5e0; padding: 1px 7px; border-radius: 3px; color: #110f12; }
+  .mag-quote { background: #e6e5e0; border-left: 3px solid #8a8987; color: #696864;
+    font-size: 15px; line-height: 2; padding: 20px 26px; margin: 34px 11% 34px 10%; }
+  .mag-foot { margin: 90px 70px 0; padding-top: 26px; border-top: 1px solid #d6d5d1;
+    font-size: 9px; letter-spacing: .2em; color: #82817f; text-transform: uppercase;
+    display: flex; justify-content: space-between; }
+  footer.site { text-align: center; padding: 40px 0 30px; color: #82817f; font-size: 14px; }
+  footer.site .en { font-family: "Inter", sans-serif; font-size: 12px; letter-spacing: 2px; margin-top: 6px; }
+  @media (max-width: 640px) {
+    .mag-top, .mag-hero { padding-left: 24px; padding-right: 24px; }
+    .mag-rule, .mag-meta, .mag-tags { margin-left: 24px; margin-right: 24px; }
+    .mag-title { margin: 90px 6% 0 6%; }
+    .mag-sub { margin: 36px 6% 0 6%; }
+    .mag-div { margin: 40px 24px 0; }
+    .mag-source { margin: 70px 24px 0; }
+    .mag-live { margin: 30px 6% 0 6%; }
+    .mag-body { margin: 60px 6% 0 6%; }
+    .mag-body h2 { margin-left: 0; }
+    .mag-quote { margin: 26px 6% 26px 6%; }
+    .mag-foot { margin: 60px 24px 0; }
+  }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+<div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="../log/index.html"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="../log/index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="../log/2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="../log/2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="../log/2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+      <a href="index.html" class="active"><b>体库</b><span>STYLE LIBRARY</span></a>
+    </div>
+</nav>
+
+<div class="mag">
+  <div class="mag-top">
+    <div class="mag-topbar mono"><span><em>ARTICLE</em> &nbsp;—&nbsp; FINAL</span><span>体库 PAGE &nbsp;—&nbsp; 2026.10.14</span></div>
+  </div>
+  <div class="mag-rule"></div>
+  <div class="mag-meta mono">AUTHOR 卷帘人 整理 &nbsp;·&nbsp; DATE 2026.10.14 &nbsp;·&nbsp; READING 约 5 分钟</div>
+  <div class="mag-tags mono"><span>杂志体</span><span>magazine</span><span>style library</span></div>
+
+  <div class="mag-hero">
+    <h1 class="mag-title">杂志体</h1>
+    <p class="mag-sub">对标 @op7418 的长文排版规范 —— 暖纸底、唯一赭红点缀的黑白杂志风。以后做网页，说"用杂志体"，即按这一页出。</p>
+  </div>
+  <div class="mag-div"></div>
+  <div class="mag-source">来源：对标 @op7418 文章排版 100% 复原；全部色值 2026-10-14 从原版截图逐像素实测。调用语："用黑白杂志风" 或 "按 demo 那套风格"。</div>
+  <p class="mag-live mono">● 本页即按杂志体渲染的活例子</p>
+
+  <div class="mag-body">
+    <h2>一、名字</h2>
+    <p>杂志体 · MAGAZINE STYLE。2026-10-14 定稿，Joyce 亲定为网页默认风格之一。</p>
+
+    <h2>二、一句话定位</h2>
+    <p>黑白杂志风的长文排版：暖纸底色、唯一赭红点缀，大标题配小字顶栏，克制、留白、有呼吸感。</p>
+
+    <h2>三、要求</h2>
+    <h3>色彩（实测值，不许改）</h3>
+    <ul>
+      <li>页面背景 <code>#f5f4f0</code> 暖纸色（<b>不是纯白</b>）</li>
+      <li>大标题 <code>#110f12</code>，副标题 <code>#696864</code>，顶栏/元信息小字 <code>#82817f</code></li>
+      <li>顶栏 ARTICLE 点缀 <code>#ae6557</code>（全页唯一的彩色）</li>
+      <li>顶部黑线 <code>#1a1915</code> 2px；标签描边 <code>#d6d5d1</code></li>
+      <li>来源框背景 <code>#e6e5e0</code>，左竖线 <code>#8a8987</code></li>
+    </ul>
+    <h3>字体</h3>
+    <ul>
+      <li>大标题：Noto Serif SC，字重 900，<code>clamp(38px, 5vw, 72px)</code>，字距 -0.045em，左对齐</li>
+      <li>正文：Noto Sans SC</li>
+      <li>顶栏/元信息/标签：等宽 mono，9px，字距 0.2em，大写</li>
+    </ul>
+    <h3>版式</h3>
+    <ul>
+      <li>顶栏：左 "ARTICLE — FINAL"（ARTICLE 赭红），右 "归藏 PAGE — 日期"；下方 2px 黑线通栏</li>
+      <li>元信息行：<code>AUTHOR 整理 · DATE 日期 · READING 约 X 分钟</code>，灰色 mono 小字</li>
+      <li>标签：方形描边 pill，mono 大写</li>
+      <li>大标题左对齐 + 灰色副标题 + 浅灰分隔线 + 灰底来源框（左竖线）+ 通栏首图</li>
+      <li>页边距：首屏 70px；正文栏左 10%、右 13–15%；引用块左 10%、右 11%；小节标题左缩进 15%</li>
+    </ul>
+    <h3>不要做的</h3>
+    <ul>
+      <li>无右侧边栏、无多余装饰线、无彩色点缀（赭红除外）</li>
+      <li>正文插图与封面区分色系（封面可深色大气，正文图浅色）</li>
+      <li>移动端保持同一视觉语言，自然重排</li>
+    </ul>
+
+    <div class="mag-quote">引用块长这样：灰底 + 左竖线。教训：背景不是纯白——第一版凭观感写了 #ffffff，被 Joyce 两次纠正，实测是暖纸色 #f5f4f0。</div>
+
+    <h2>四、例子</h2>
+    <p>本页即按杂志体渲染的活例子。另有单文件样张模板 <code>magazine-bw-sample.html</code>（不依赖网络，打开即看）。</p>
+  </div>
+
+  <div class="mag-foot mono"><span>体库 STYLE LIBRARY</span><span>2026.10.14</span></div>
+</div>
+
+<footer class="site">
+  <p>卷帘人 CurtainRaiser 📜</p>
+  <p class="en">Go Big, Then Never Stop Running.</p>
+</footer>
+
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>

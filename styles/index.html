@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>体库 — 卷帘人 CurtainRaiser</title>
+<link rel="stylesheet" href="../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  .badge {
+    display: inline-block; font-size: 12px; letter-spacing: 1px;
+    border: 1px solid var(--line); border-radius: 20px;
+    padding: 2px 12px; margin-right: 8px; color: var(--ink-soft);
+  }
+  .badge.done { color: #4E8A28; border-color: rgba(102,172,53,.45); }
+  .badge.todo { color: #B07C2A; border-color: rgba(176,124,42,.45); }
+  .lib-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+              padding: 24px 28px; margin-bottom: 18px; }
+  .lib-card h3 { font-size: 19px; margin: 10px 0 6px; letter-spacing: 1px; }
+  .lib-card h3 .en { font-family: "Inter", sans-serif; font-size: 13px; color: var(--ink-soft);
+                     letter-spacing: 2px; margin-left: 8px; font-weight: 400; }
+  .lib-card .one { font-size: 15px; color: var(--ink-soft); margin-bottom: 12px; }
+  .lib-card .go a { color: var(--gold); text-decoration: none; letter-spacing: 1px; font-size: 14px; }
+  .intro { text-align: center; color: var(--ink-soft); font-size: 15px; letter-spacing: 1px; margin: 2px 0 16px; }
+  .intro b { color: var(--gold); font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+<div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="../log/index.html"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="../log/index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="../log/2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="../log/2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="../log/2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+      <a href="index.html" class="active"><b>体库</b><span>STYLE LIBRARY</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+  <section class="section">
+    <h2>体库</h2>
+    <div class="sub en">STYLE LIBRARY</div>
+    <p class="intro">我的内容"体"都在这里：<b>名字</b> · <b>要求</b> · <b>例子</b>。以后立一个新体，就往里加一条。</p>
+
+    <div class="lib-card">
+      <div><span class="badge done">已收录</span></div>
+      <h3>杂志体<span class="en">MAGAZINE STYLE</span></h3>
+      <div class="one">对标 @op7418 的长文排版：暖纸底、唯一赭红点缀的黑白杂志风，色值全部从原版逐像素实测。</div>
+      <div class="go"><a href="zazhi-ti.html">进入 →</a></div>
+    </div>
+
+    <div class="lib-card">
+      <div><span class="badge todo">待收录</span></div>
+      <h3>自夸体<span class="en">SELF-PRAISE CARDS</span></h3>
+      <div class="one">横向卡片信息图，每篇文章配一张讲清"好在哪儿"，版式完全一致只换文字，最后一句永远是"为什么我需要它"。</div>
+    </div>
+
+    <div class="lib-card">
+      <div><span class="badge todo">待收录</span></div>
+      <h3>格言体<span class="en">APHORISM CARDS</span></h3>
+      <div class="one">一两句格言做成图片卡；图片上的翻译必须 Joyce 亲自核对后才发。</div>
+    </div>
+
+    <div class="lib-card">
+      <div><span class="badge todo">待收录</span></div>
+      <h3>文章体<span class="en">ARTICLE FORMAT</span></h3>
+      <div class="one">X Article 排版规范：翻译精确、简洁易懂，原版图+汉化图并用，开门见山，关键词中英双面。</div>
+    </div>
+
+    <div class="lib-card">
+      <div><span class="badge todo">待收录</span></div>
+      <h3>审核体<span class="en">REVIEW CHECKLIST</span></h3>
+      <div class="one">文章+配图审核标准 12 条：逐条给通过/不通过 + 具体问题 + 改法，不只说好话。</div>
+    </div>
+
+    <div class="lib-card">
+      <div><span class="badge todo">待收录</span></div>
+      <h3>格子体<span class="en">GRID CHECKLIST</span></h3>
+      <div class="one">学习打卡/清单项专用卡：网格纸背景 + 绿色圆角复选框，一句中文主行 + 一句英文次行。</div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>卷帘人 CurtainRaiser 📜</p>
+    <p class="en">Go Big, Then Never Stop Running.</p>
+  </footer>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
