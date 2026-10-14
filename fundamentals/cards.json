@@ -502,5 +502,61 @@
     "en": "import 语句",
     "explain": "文件开头的 import 是配料表，告诉你这段代码借了哪些工具",
     "example": "看到 import json 就知道：下面要处理 JSON 数据，比如读写字卡 cards.json"
+  },
+  {
+    "day": 9,
+    "topic": "Shell",
+    "term": "tail -n",
+    "en": "tail, show end of file",
+    "explain": "看文件尾巴：只显示最后 N 行，查日志、看结果最顺手。",
+    "example": "tail -20 ~/memory/2026-10-14.md，看今天日志最后 20 行，不用整篇翻"
+  },
+  {
+    "day": 9,
+    "topic": "Git",
+    "term": ".gitignore",
+    "en": "ignore file",
+    "explain": "让 git 自动忽略某些文件，比如 Mac 的 .DS_Store 和带密码的文件。",
+    "example": "在 curtainraiser-site 里新建 .gitignore，写一行 .DS_Store，以后它再也不出现在 git status 里"
+  },
+  {
+    "day": 9,
+    "topic": "Python",
+    "term": "for i in range(n)",
+    "en": "range loop",
+    "explain": "从 0 数到 n-1 的固定次数循环，是最常用的计数循环。",
+    "example": "for i in range(7): print(f'第{i+1}张卡')，跑起来打印 第1张卡 到 第7张卡"
+  },
+  {
+    "day": 9,
+    "topic": "HTML/CSS",
+    "term": "font-size",
+    "en": "CSS property",
+    "explain": "管字号的 CSS 属性，想调大调小一句话搞定。",
+    "example": "<p style='font-size:22px;'>今天的大标题</p>，这段字立刻变大一号"
+  },
+  {
+    "day": 9,
+    "topic": "Prompt",
+    "term": "限定长度",
+    "en": "length limit",
+    "explain": "直接告诉 AI 回答多长：省字、省时间，手机上读着也轻松。",
+    "example": "问题结尾加一句『请用 50 字以内回答』，长篇大论立刻变短句"
+  },
+  {
+    "day": 9,
+    "topic": "AI 概念",
+    "term": "微调",
+    "en": "fine-tuning",
+    "explain": "在成型模型上再加练一批你的数据，让它学你的风格或专业知识。",
+    "example": "喂它 50 篇你的 X 文章做微调，它写出的短句开始有你的味道"
+  },
+  {
+    "day": 9,
+    "topic": "读代码",
+    "term": "= vs ==",
+    "en": "assignment vs comparison",
+    "explain": "一个等号是『存进去』，两个等号是『比一比』，新手最常写错的一对。",
+    "example": "score = 5 是把 5 存进 score；if score == 5: 才是问它是不是等于 5"
   }
 ]
