@@ -558,5 +558,61 @@
     "en": "assignment vs comparison",
     "explain": "一个等号是『存进去』，两个等号是『比一比』，新手最常写错的一对。",
     "example": "score = 5 是把 5 存进 score；if score == 5: 才是问它是不是等于 5"
+  },
+  {
+    "day": 10,
+    "topic": "Shell",
+    "term": "head -n",
+    "en": "head (print the first n lines)",
+    "explain": "tail 看末尾，head 看开头——大文件先瞥一眼头几行，心里有数再细看。",
+    "example": "head -n 5 ~/workspace/curtainraiser-site/fundamentals/cards.json 就能看到字卡文件的前 5 行"
+  },
+  {
+    "day": 10,
+    "topic": "Git",
+    "term": "git stash",
+    "en": "stash (hide unfinished changes temporarily)",
+    "explain": "一个临时抽屉：没做完的改动先藏起来，文件恢复干净；忙完再拿回来继续。",
+    "example": "正改着 curtainraiser-site 样式，想先拉最新代码看看——git stash 藏好，完事 git stash pop 恢复"
+  },
+  {
+    "day": 10,
+    "topic": "Python",
+    "term": "in",
+    "en": "membership operator",
+    "explain": "查'有没有在里面'——列表里有没有这个元素，字符串里有没有这个片段，一句搞定。",
+    "example": "word = '小猫咪'；print('猫' in word) 会打出 True，问的就是'猫在不在里面'"
+  },
+  {
+    "day": 10,
+    "topic": "HTML/CSS",
+    "term": "color",
+    "en": "text color",
+    "explain": "style 里改文字颜色的一把钥匙——她'黑白杂志风'唯一的点缀色暖纸红 #ae6557 就这么用。",
+    "example": "<p style='color:#ae6557'>这行是暖纸红</p> ——颜色一变，整句气质就变了"
+  },
+  {
+    "day": 10,
+    "topic": "Prompt",
+    "term": "目标优先",
+    "en": "goal first",
+    "explain": "第一句话先说清你要什么结果，别先铺半天背景——AI 按目标组织回答，命中率高一截。",
+    "example": "'帮我把这段话改成短句，我要贴 X 帖子用'，开头就亮明目标，胜过先讲半天来龙去脉"
+  },
+  {
+    "day": 10,
+    "topic": "AI 概念",
+    "term": "多模态",
+    "en": "multimodal",
+    "explain": "不只读字，还能看图、听声音、读文档的模型——她发截图让我看排版，靠的就是这个。",
+    "example": "把单词卡截图丢给我说'这里太挤了'，我能看图回话，就是因为我是多模态模型"
+  },
+  {
+    "day": 10,
+    "topic": "读代码",
+    "term": "()",
+    "en": "parentheses mean calling",
+    "explain": "看到圆括号就是'喊它干活'——print 是名字，print('嗨') 才是真的让它执行；括号里放的是原料。",
+    "example": "len('abc') 里 'abc' 是原料，len 是干活的机器，括号就是按下开关"
   }
 ]
