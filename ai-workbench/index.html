@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🤝 双 AI 会诊工作台</title>
+<title>🤝 双 AI 会诊手册</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0;}
 body { background: #0F141C; color: #EDE8DC; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.8; padding: 24px 16px 80px;}
@@ -11,115 +11,70 @@ body { background: #0F141C; color: #EDE8DC; font-family: -apple-system, "PingFan
 header { text-align: center; padding: 36px 0 24px; border-bottom: 1px solid rgba(212,175,55,.25); margin-bottom: 28px;}
 header h1 { font-size: 28px; color: #D4AF37; letter-spacing: 2px; margin-bottom: 8px;}
 header p { color: #9a937f; font-size: 14px;}
+.dead { background: rgba(180,60,60,.1); border: 1px solid rgba(180,60,60,.45); border-radius: 12px; padding: 14px 18px; margin-bottom: 28px; font-size: 14px; color: #d8a0a0;}
+.dead b { color: #e07a7a;}
 .progress { display: flex; gap: 6px; margin-bottom: 28px; flex-wrap: wrap;}
-.pstep { flex: 1; min-width: 100px; text-align: center; font-size: 12.5px; padding: 10px 6px; border-radius: 10px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); cursor: pointer; color: #9a937f;}
-.pstep.active { border-color: #D4AF37; color: #D4AF37; background: rgba(212,175,55,.08); font-weight: 700;}
-.pstep.done { color: #7fc97f; border-color: rgba(127,201,127,.4);}
+.pstep { flex: 1; min-width: 110px; text-align: center; font-size: 13px; padding: 12px 6px; border-radius: 10px; background: rgba(212,175,55,.07); border: 1px solid rgba(212,175,55,.35); color: #D4AF37; font-weight: 600;}
 .panel { background: rgba(255,255,255,.04); border: 1px solid rgba(212,175,55,.22); border-radius: 16px; padding: 26px 24px; margin-bottom: 24px;}
 .panel h2 { font-size: 19px; color: #fff; margin-bottom: 6px;}
-.panel.sub { font-size: 13.5px; color: #9a937f; margin-bottom: 14px;}
+.panel .sub { font-size: 13.5px; color: #9a937f; margin-bottom: 14px;}
 label { display: block; font-size: 14px; color: #D4AF37; margin: 12px 0 6px; font-weight: 600;}
-input[type=text], textarea { width: 100%; background: #0a0e14; border: 1px solid rgba(212,175,55,.3); border-radius: 10px; color: #EDE8DC; padding: 12px 14px; font-size: 14.5px; font-family: inherit;}
-textarea { min-height: 120px; resize: vertical; line-height: 1.7;}
-input[type=text]:focus, textarea:focus { outline: none; border-color: #D4AF37;}
+input[type=text], textarea, select { width: 100%; background: #0a0e14; border: 1px solid rgba(212,175,55,.3); border-radius: 10px; color: #EDE8DC; padding: 12px 14px; font-size: 14.5px; font-family: inherit;}
+textarea { min-height: 80px; resize: vertical; line-height: 1.7;}
+input[type=text]:focus, textarea:focus, select:focus { outline: none; border-color: #D4AF37;}
 .btn { display: inline-block; background: #D4AF37; color: #0F141C; border: none; font-weight: 800; font-size: 15px; padding: 12px 28px; border-radius: 10px; cursor: pointer; margin-top: 16px;}
 .btn:active { transform: scale(.97);}
 .btn.ghost { background: transparent; color: #D4AF37; border: 1px solid #D4AF37;}
-.out { position: relative; background: #0a0e14; border: 1px solid rgba(212,175,55,.3); border-radius: 12px; margin-top: 14px;}
-.out pre { padding: 20px; font-size: 13.5px; line-height: 1.7; white-space: pre-wrap; word-break: break-word; color: #d8d2c0; font-family: ui-monospace, Menlo, monospace; max-height: 420px; overflow-y: auto;}
-.copy-btn { position: absolute; top: 10px; right: 10px; background: #D4AF37; color: #0F141C; border: none; font-weight: 700; font-size: 13px; padding: 8px 18px; border-radius: 8px; cursor: pointer;}
-.check { list-style: none; padding: 0;}
-.check li { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; cursor: pointer; font-size: 14.5px;}
-.check li.done { text-decoration: line-through; opacity:.45;}
-.check li::before { content: "☐ "; color: #D4AF37; font-size: 17px;}
-.check li.done::before { content: "☑ ";}
 details { margin-top: 10px;}
 details summary { cursor: pointer; color: #D4AF37; font-weight: 700; font-size: 15px; padding: 8px 0;}
-details.body { font-size: 14px; padding: 6px 0 12px 4px;}
-details.body ul { padding-left: 20px;} details.body li { margin-bottom: 6px;}
-.round { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; font-size: 13.5px;}
-.round b { color: #D4AF37;}
+details .body { font-size: 14px; padding: 6px 0 12px 4px;}
+details .body ul { padding-left: 20px;} details .body li { margin-bottom: 6px;}
 .pit { display: flex; gap: 8px; margin-bottom: 8px; align-items: flex-start;}
 .pit span { font-size: 14px;}
-footer { text-align: center; color: #6b6555; font-size: 13px; margin-top: 36px;}
+.round { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; font-size: 13.5px;}
+.round b { color: #D4AF37;}
+.round .tag { display: inline-block; font-size: 12px; padding: 1px 10px; border-radius: 20px; margin-left: 8px;}
+.tag.good { background: rgba(127,201,127,.15); color: #7fc97f; border: 1px solid rgba(127,201,127,.4);}
+.tag.mid { background: rgba(212,175,55,.12); color: #D4AF37; border: 1px solid rgba(212,175,55,.4);}
+.tag.bad { background: rgba(180,60,60,.12); color: #e07a7a; border: 1px solid rgba(180,60,60,.4);}
+.howto li { margin-bottom: 8px; font-size: 14.5px;}
 code.inline { background: rgba(212,175,55,.12); color: #D4AF37; padding: 2px 8px; border-radius: 6px; font-size: 13px;}
+footer { text-align: center; color: #6b6555; font-size: 13px; margin-top: 36px;}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-<h1>🤝 双 AI 会诊工作台</h1>
-<p>Muse 有记忆做终审 · Gemini 没记忆做参谋 · 你只做 1%：定目标、转交、拍板</p>
+<h1>🤝 双 AI 会诊手册</h1>
+<p>零转交：你说一句话目标 → Muse 跑完初版 → 调 Gemini API → 终审报告 → 你拍板</p>
 </header>
 
-<div class="progress" id="progress">
-<div class="pstep" data-s="0">① 定目标</div>
-<div class="pstep" data-s="1">② Muse 初版</div>
-<div class="pstep" data-s="2">③ 生成转交包</div>
-<div class="pstep" data-s="3">④ 发给 Gemini</div>
-<div class="pstep" data-s="4">⑤ 贴回输出</div>
-<div class="pstep" data-s="5">⑥ Muse 终审</div>
-<div class="pstep" data-s="6">⑦ 执行验收</div>
+<div class="dead">
+<b>🪦 手动转交流程已作废（2026-10-14）。</b><br>
+Gemini API 已接通（custom.gemini），转交包生成、贴回输出这两步不再需要——Muse 在后台直接调 Gemini。旧工具已从本页移除，存档备查。
+</div>
+
+<div class="progress">
+<div class="pstep">① 你说目标（一句话）</div>
+<div class="pstep">② Muse 初版 + 调 Gemini</div>
+<div class="pstep">③ 终审报告（观点/分歧/判断/选择题）</div>
+<div class="pstep">④ 你拍板</div>
 </div>
 
 <div class="panel">
-<h2>① 定目标 + 硬约束</h2>
-<div class="sub">一句话说清要什么，硬约束最多 5 条（多了 Gemini 记不住）</div>
-<label>目标（一句话）</label>
-<input type="text" id="goal" placeholder="例如：给历史游戏写 Step 1 代码指令">
-<label>硬约束（每行一条，最多 5 条）</label>
-<textarea id="constraints" placeholder="例如：&#10;纯英文&#10;3 个事件&#10;localStorage 键名 LIVING_HISTORY_SAVE_V1"></textarea>
-<label>你要 Gemini 做的事</label>
-<input type="text" id="task" placeholder="审查 / 补强 / 重写（三选一）">
-<label>你最担心的 1-2 个点</label>
-<input type="text" id="worries" placeholder="例如：答错状态机有没有死档">
-</div>
-
-<div class="panel">
-<h2>② Muse 初版粘贴区</h2>
-<div class="sub">去聊天里复制 Muse 给你的初版全文，粘贴到这里</div>
-<textarea id="draft" placeholder="粘贴 Muse 的初版全文…"></textarea>
-</div>
-
-<div class="panel">
-<h2>③ 生成转交包</h2>
-<div class="sub">点一下，自动按合同模板拼好，直接复制发给 Gemini</div>
-<button class="btn" onclick="genPackage()">⚡ 生成转交包</button>
-<div class="out" id="pkgOut" style="display:none">
-<button class="copy-btn" onclick="copyText('pkgPre', this)">一键复制</button>
-<pre id="pkgPre"></pre>
-</div>
-</div>
-
-<div class="panel">
-<h2>⑤ 贴回 Gemini 的输出 + 终审检查点</h2>
-<div class="sub">把 Gemini 的回复粘贴到这里（留档），对照检查点过一遍，再转给 Muse 终审</div>
-<textarea id="geminiOut" placeholder="粘贴 Gemini 的输出全文…"></textarea>
-<label>终审检查点（转给 Muse 前先自查）</label>
-<ul class="check">
-<li>逻辑有没有 bug（状态机、边界条件）</li>
-<li>有没有编造的内容（找不到就说没找到？）</li>
-<li>内部标注有没有混进 UI（参照梗 #X 之类）</li>
-<li>有没有违反硬约束</li>
-<li>有没有漏掉验收边界（Step 1 测不了的有没有标出来）</li>
-</ul>
-<button class="btn ghost" onclick="saveRound()">💾 存档本轮</button>
-<div id="rounds" style="margin-top:14px"></div>
-</div>
-
-<div class="panel">
-<h2>📜 合同 v2（速查）</h2>
+<h2>📜 合同 v3（零转交·速查）</h2>
 <details open>
 <summary>展开 / 折叠</summary>
 <div class="body">
 <ul>
-<li><b>一句话原则</b>：Muse 有记忆做终审；Gemini 没记忆做参谋；你只做 1%。</li>
-<li><b>分级</b>：L1 小事直接问 Muse；L2 中事 Muse 独立做；L3 大事（代码 prompt/架构/发版前）走会诊；赶时间用紧急模式跳过 Gemini。</li>
-<li><b>标准 Loop</b>：你定目标 → Muse 初版 → 你转交 Gemini → Gemini 输出 → 你转回 Muse → Muse 终审 → 你拍板 → 执行 → Muse 验收。</li>
-<li><b>分歧处理</b>：Muse 摆出双方观点+证据+判断，你拍板，不和稀泥。</li>
-<li><b>成本</b>：你的时间只花在"转交"（1 分钟）和"拍板"。</li>
+<li><b>一句话原则</b>：你说一句话目标；Muse 跑完初版、调 Gemini API、做终审；你只看报告拍板。</li>
+<li><b>标准 Loop</b>：你定目标（一句话）→ Muse 初版 → Muse 调 Gemini API → Muse 终审报告（①我的要点 ②Gemini 的意见 ③分歧+证据 ④我的判断 ⑤你的选择题）→ 你拍板 → 执行 → Muse 验收。</li>
+<li><b>分级</b>：L1 小事直接问 Muse；L2 中事 Muse 独立做；L3 大事（代码 prompt / 架构 / 发版前检查）走会诊；赶时间用紧急模式跳过 Gemini。</li>
+<li><b>分歧处理</b>：Muse 摆出双方观点 + 证据 + 判断，你拍板，不和稀泥。</li>
+<li><b>你的时间</b>：只花在"说目标"和"拍板"上。转交次数：0。</li>
 <li><b>触发语</b>：<code class="inline">双 AI 会诊</code></li>
+<li><b>更新手册</b>：直接跟 Muse 说"手册加一条：xxx"，Muse 改完重新部署，你不用碰代码。</li>
 </ul>
 </div>
 </details>
@@ -132,7 +87,33 @@ code.inline { background: rgba(212,175,55,.12); color: #D4AF37; padding: 2px 8px
 <div class="pit"><input type="text" id="newPit" placeholder="新坑描述，例如：会把…"><button class="btn ghost" style="margin:0;padding:8px 16px;font-size:13px" onclick="addPit()">追加</button></div>
 </div>
 
-<footer>🤝 双 AI 会诊工作台 · 合同 v2 · 2026-10-14</footer>
+<div class="panel">
+<h2>📝 实战记录（loop sharpen）</h2>
+<div class="sub">每次会诊后记一笔：Gemini 这次有用吗？沉淀进坑清单或合同</div>
+<label>目标</label>
+<input type="text" id="logGoal" placeholder="例如：历史游戏 Step 1 指令">
+<label>这次 Gemini 有用吗</label>
+<select id="logVerdict">
+<option value="good">有用——补了我想不到的东西</option>
+<option value="mid">一般——没犯错但也没加分</option>
+<option value="bad">没用——有坑/瞎答/添乱</option>
+</select>
+<label>一句话复盘（新坑 / 好用的问法 / 教训）</label>
+<textarea id="logNote" placeholder="例如：问边界条件时要把状态机全文贴进去，否则它瞎猜"></textarea>
+<button class="btn ghost" onclick="saveLog()">💾 记一笔</button>
+<div id="logs" style="margin-top:14px"></div>
+</div>
+
+<div class="panel">
+<h2>🔄 怎么更新这本手册</h2>
+<ul class="howto">
+<li>① 你在聊天里直接说：<code class="inline">手册加一条：xxx</code></li>
+<li>② Muse 改完页面、重新部署，告诉你一声</li>
+<li>③ 你全程不用碰代码、不用点按钮</li>
+</ul>
+</div>
+
+<footer>🤝 双 AI 会诊手册 · 合同 v3 · 2026-10-14</footer>
 </div>
 
 <script>
@@ -140,13 +121,13 @@ const DEFAULT_PITS = [
 "会编流行梗 → 必须加"找不到就说没找到，不许编"",
 "会把内部标注写进 UI → 标注只放代码注释",
 "战略问题会一本正经瞎答 → 它的战略意见只当参谋，决策权在 Muse",
-"没有上下文 → 每次必须贴全目标+约束+初版全文"
+"没有上下文 → 每次 prompt 必须带全目标+约束+初版全文（Muse 负责拼）"
 ];
 function loadPits(){ try { return JSON.parse(localStorage.getItem('wb_pits')) || DEFAULT_PITS.slice();} catch(e){ return DEFAULT_PITS.slice();}}
 function renderPits(){
 const pits = loadPits();
 document.getElementById('pits').innerHTML = pits.map((p,i) =>
-`<div class="pit"><span style="color:#D4AF37">▪</span><span>${p}</span></div>`).join('');
+'<div class="pit"><span style="color:#D4AF37">▪</span><span>'+p.replace(/</g,'&lt;')+'</span></div>').join('');
 }
 function addPit(){
 const v = document.getElementById('newPit').value.trim();
@@ -156,59 +137,25 @@ localStorage.setItem('wb_pits', JSON.stringify(pits));
 document.getElementById('newPit').value = '';
 renderPits();
 }
-function genPackage(){
-const goal = document.getElementById('goal').value.trim() || "（未填目标）";
-const cons = document.getElementById('constraints').value.trim().split('\n').map(s=>s.trim()).filter(Boolean).slice(0,5);
-const task = document.getElementById('task').value.trim() || "审查";
-const worries = document.getElementById('worries').value.trim() || "（无）";
-const draft = document.getElementById('draft').value.trim() || "（未粘贴初版）";
-const pkg =
-`${goal}
-
-${cons.map((c,i)=>`${i+1}. ${c}`).join('\n')}
-
-${draft}
-${task}
-${worries}
-你是工程参谋，只抠实现细节、找 bug、补边界条件；不要给战略意见。如果某个来源打不开或找不到，就如实说"没找到"，不许编造。`;
-document.getElementById('pkgPre').innerText = pkg;
-document.getElementById('pkgOut').style.display = 'block';
-setStep(3);
+const VERDICT_LABEL = { good: '有用', mid: '一般', bad: '没用' };
+function loadLogs(){ try { return JSON.parse(localStorage.getItem('wb_logs'))||[];} catch(e){ return [];}}
+function saveLog(){
+const goal = document.getElementById('logGoal').value.trim() || "未命名";
+const verdict = document.getElementById('logVerdict').value;
+const note = document.getElementById('logNote').value.trim();
+const logs = loadLogs();
+logs.unshift({ goal, verdict, note, date: new Date().toLocaleString('zh-CN')});
+localStorage.setItem('wb_logs', JSON.stringify(logs.slice(0,50)));
+document.getElementById('logGoal').value = '';
+document.getElementById('logNote').value = '';
+renderLogs();
 }
-function copyText(id, btn){
-navigator.clipboard.writeText(document.getElementById(id).innerText).then(()=>{
-const old = btn.innerText; btn.innerText = '已复制 ✓';
-setTimeout(()=>btn.innerText = old, 1500);
-});
+function renderLogs(){
+const logs = loadLogs();
+document.getElementById('logs').innerHTML = logs.map(r=>
+'<div class="round"><b>'+r.goal.replace(/</g,'&lt;')+'</b><span class="tag '+r.verdict+'">'+VERDICT_LABEL[r.verdict]+'</span> · '+r.date+(r.note?'<br><span style="color:#9a937f">'+r.note.replace(/</g,'&lt;')+'</span>':'')+'</div>').join('') || '<div style="color:#6b6555;font-size:13px">暂无记录——第一次会诊后记第一笔</div>';
 }
-function setStep(n){
-document.querySelectorAll('.pstep').forEach(el=>{
-const s = +el.dataset.s;
-el.classList.toggle('active', s===n);
-el.classList.toggle('done', s<n);
-});
-try{ localStorage.setItem('wb_step', n);}catch(e){}
-}
-document.querySelectorAll('.pstep').forEach(el=>{
-el.addEventListener('click', ()=>setStep(+el.dataset.s));
-});
-document.querySelectorAll('.check li').forEach(li=>{
-li.addEventListener('click', ()=>li.classList.toggle('done'));
-});
-function saveRound(){
-const goal = document.getElementById('goal').value.trim() || "未命名";
-const rounds = JSON.parse(localStorage.getItem('wb_rounds')||'[]');
-rounds.unshift({ goal, date: new Date().toLocaleString('zh-CN')});
-localStorage.setItem('wb_rounds', JSON.stringify(rounds.slice(0,20)));
-renderRounds();
-}
-function renderRounds(){
-const rounds = JSON.parse(localStorage.getItem('wb_rounds')||'[]');
-document.getElementById('rounds').innerHTML = rounds.map(r=>
-`<div class="round"><b>${r.goal}</b> · ${r.date}</div>`).join('') || '<div style="color:#6b6555;font-size:13px">暂无存档</div>';
-}
-renderPits(); renderRounds();
-setStep(+(localStorage.getItem('wb_step')||0));
+renderPits(); renderLogs();
 </script>
 </body>
 </html>
