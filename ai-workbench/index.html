@@ -51,8 +51,10 @@ footer { text-align: center; color: #6b6555; font-size: 13px; margin-top: 36px;}
 </header>
 
 <div class="dead">
-<b>🪦 手动转交流程已作废（2026-10-14）。</b><br>
-Gemini API 已接通（custom.gemini），转交包生成、贴回输出这两步不再需要——Muse 在后台直接调 Gemini。旧工具已从本页移除，存档备查。
+<b>📢 双模式（2026-10-14 晚 Joyce 定）</b><br>
+<b>快速模式</b>：API 直连 gemini-3.8-flash，零转交，适合日常小事。<br>
+<b>最强模式</b>：Antigravity 里手动转交 <b>gemini-4-argon</b>（最新最强、代码水平最高），1 分钟转交，适合 L3 代码大事。<br>
+原则：前期用最好的，后期改才是真麻烦。
 </div>
 
 <div class="progress">
@@ -63,12 +65,31 @@ Gemini API 已接通（custom.gemini），转交包生成、贴回输出这两�
 </div>
 
 <div class="panel">
+<h2>🚀 最强模式：转交包生成器</h2>
+<div class="sub">Antigravity + gemini-4-argon 用。填好点一下，复制发给 Antigravity 里的 Gemini，输出贴回聊天给 Muse 终审</div>
+<label>目标（一句话）</label>
+<input type="text" id="goal" placeholder="例如：给历史游戏写 Step 1 代码指令">
+<label>硬约束（每行一条，最多 5 条）</label>
+<textarea id="constraints" placeholder="例如：&#10;纯英文&#10;3 个事件&#10;localStorage 键名 LIVING_HISTORY_SAVE_V1"></textarea>
+<label>你要 Gemini 做的事</label>
+<input type="text" id="task" placeholder="审查 / 补强 / 重写（三选一）">
+<label>你最担心的 1-2 个点</label>
+<input type="text" id="worries" placeholder="例如：答错状态机有没有死档">
+<button class="btn" onclick="genPackage()">⚡ 生成转交包</button>
+<div class="out" id="pkgOut" style="display:none;position:relative;background:#0a0e14;border:1px solid rgba(212,175,55,.3);border-radius:12px;margin-top:14px">
+<button class="copy-btn" style="position:absolute;top:10px;right:10px;background:#D4AF37;color:#0F141C;border:none;font-weight:700;font-size:13px;padding:8px 18px;border-radius:8px;cursor:pointer" onclick="copyText('pkgPre', this)">一键复制</button>
+<pre id="pkgPre" style="padding:20px;font-size:13.5px;line-height:1.7;white-space:pre-wrap;word-break:break-word;color:#d8d2c0;font-family:ui-monospace,Menlo,monospace;max-height:420px;overflow-y:auto"></pre>
+</div>
+</div>
+
+<div class="panel">
 <h2>📜 合同 v3（零转交·速查）</h2>
 <details open>
 <summary>展开 / 折叠</summary>
 <div class="body">
 <ul>
-<li><b>一句话原则</b>：你说一句话目标；Muse 跑完初版、调 Gemini API、做终审；你只看报告拍板。</li>
+<li><b>一句话原则</b>：你说一句话目标；Muse 跑完初版、调 Gemini、做终审；你只看报告拍板。</li>
+<li><b>双模式</b>：<b>快速模式</b>（默认）= API 直连 gemini-3.8-flash，零转交，日常小事；<b>最强模式</b> = Antigravity 手动转交 gemini-4-argon，1 分钟，L3 代码大事。Joyce 原则：前期用最好的，后期改才是真麻烦。</li>
 <li><b>标准 Loop</b>：你定目标（一句话）→ Muse 初版 → Muse 调 Gemini API → Muse 终审报告（①我的要点 ②Gemini 的意见 ③分歧+证据 ④我的判断 ⑤你的选择题）→ 你拍板 → 执行 → Muse 验收。</li>
 <li><b>分级</b>：L1 小事直接问 Muse；L2 中事 Muse 独立做；L3 大事（代码 prompt / 架构 / 发版前检查）走会诊；赶时间用紧急模式跳过 Gemini。</li>
 <li><b>分歧处理</b>：Muse 摆出双方观点 + 证据 + 判断，你拍板，不和稀泥。</li>
@@ -118,7 +139,7 @@ Gemini API 已接通（custom.gemini），转交包生成、贴回输出这两�
 
 <script>
 const DEFAULT_PITS = [
-"会编流行梗 → 必须加"找不到就说没找到，不许编"",
+"会编流行梗 → 必须加“找不到就说没找到，不许编”",
 "会把内部标注写进 UI → 标注只放代码注释",
 "战略问题会一本正经瞎答 → 它的战略意见只当参谋，决策权在 Muse",
 "没有上下文 → 每次 prompt 必须带全目标+约束+初版全文（Muse 负责拼）"
@@ -136,6 +157,25 @@ const pits = loadPits(); pits.push(v);
 localStorage.setItem('wb_pits', JSON.stringify(pits));
 document.getElementById('newPit').value = '';
 renderPits();
+}
+function genPackage(){
+const goal = document.getElementById('goal').value.trim() || "（未填目标）";
+const cons = document.getElementById('constraints').value.trim().split('\n').map(s=>s.trim()).filter(Boolean).slice(0,5);
+const task = document.getElementById('task').value.trim() || "审查";
+const worries = document.getElementById('worries').value.trim() || "（无）";
+const pkg =
+"目标：" + goal + "\n\n" +
+"硬约束：\n" + cons.map((c,i)=>(i+1)+". "+c).join('\n') + "\n\n" +
+"我最担心的点：" + worries + "\n\n" +
+"请你做：" + task + "。你是工程参谋，只抠实现细节、找 bug、补边界条件；不要给战略意见。如果某个来源打不开或找不到，就如实说“没找到”，不许编造。";
+document.getElementById('pkgPre').innerText = pkg;
+document.getElementById('pkgOut').style.display = 'block';
+}
+function copyText(id, btn){
+navigator.clipboard.writeText(document.getElementById(id).innerText).then(()=>{
+const old = btn.innerText; btn.innerText = '已复制 ✓';
+setTimeout(()=>btn.innerText = old, 1500);
+});
 }
 const VERDICT_LABEL = { good: '有用', mid: '一般', bad: '没用' };
 function loadLogs(){ try { return JSON.parse(localStorage.getItem('wb_logs'))||[];} catch(e){ return [];}}
