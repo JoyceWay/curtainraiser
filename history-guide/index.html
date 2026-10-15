@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🗺️ Living History Atlas · 四步上线指南</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0F141C; color: #EDE8DC; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.8; padding: 24px 16px 80px; }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  header { text-align: center; padding: 40px 0 30px; border-bottom: 1px solid rgba(212,175,55,.25); margin-bottom: 36px; }
+  header h1 { font-size: 30px; color: #D4AF37; letter-spacing: 2px; margin-bottom: 10px; }
+  header p { color: #9a937f; font-size: 15px; }
+  .step { background: rgba(255,255,255,.04); border: 1px solid rgba(212,175,55,.22); border-radius: 16px; padding: 28px 26px; margin-bottom: 28px; }
+  .step-num { display: inline-block; background: #D4AF37; color: #0F141C; font-weight: 800; font-size: 14px; padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 1px; }
+  .step h2 { font-size: 21px; margin-bottom: 14px; color: #fff; }
+  .step h3 { font-size: 16px; color: #D4AF37; margin: 18px 0 8px; }
+  .step ul, .step ol { padding-left: 22px; margin-bottom: 10px; }
+  .step li { margin-bottom: 8px; font-size: 15px; }
+  .warn { background: rgba(212,175,55,.08); border-left: 3px solid #D4AF37; padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 14px 0; font-size: 14.5px; }
+  .warn b { color: #D4AF37; }
+  .prompt-box { position: relative; background: #0a0e14; border: 1px solid rgba(212,175,55,.3); border-radius: 12px; margin-top: 14px; }
+  .prompt-box pre { padding: 20px; font-size: 13px; line-height: 1.7; white-space: pre-wrap; word-break: break-word; color: #d8d2c0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; max-height: 480px; overflow-y: auto; }
+  .copy-btn { position: absolute; top: 10px; right: 10px; background: #D4AF37; color: #0F141C; border: none; font-weight: 700; font-size: 13px; padding: 8px 18px; border-radius: 8px; cursor: pointer; }
+  .copy-btn:active { transform: scale(.96); }
+  .check { list-style: none; padding-left: 0; }
+  .check li { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; cursor: pointer; font-size: 14.5px; }
+  .check li.done { text-decoration: line-through; opacity: .45; }
+  .check li::before { content: "☐ "; color: #D4AF37; font-size: 17px; }
+  .check li.done::before { content: "☑ "; }
+  code.inline { background: rgba(212,175,55,.12); color: #D4AF37; padding: 2px 8px; border-radius: 6px; font-size: 13.5px; }
+  footer { text-align: center; color: #6b6555; font-size: 13px; margin-top: 40px; }
+  a { color: #D4AF37; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🗺️ Living History Atlas</h1>
+  <p>四步上线指南 · 从 prompt 到见证奇迹，每一步做什么、注意什么，都写在这了</p>
+</header>
+
+<div class="step">
+  <span class="step-num">第一步</span>
+  <h2>复制 Step 1 指令，发给 Antigravity</h2>
+  <h3>🖱️ 你做什么</h3>
+  <ol>
+    <li>在电脑上打开 <b>Antigravity</b>，点左上角 <code class="inline">File → Open Folder</code>，选中你的<b>网站根目录</b>（点进去能看到 <code class="inline">vocab</code> 文件夹的那个）。</li>
+    <li>点下面金色按钮，<b>一键复制</b>整段 Step 1 指令。</li>
+    <li>粘贴到 Antigravity 右侧/底部的 AI 聊天框，按回车发送。</li>
+  </ol>
+  <div class="warn"><b>⚠️ 注意：</b>① 左侧文件列表必须能看到 <code class="inline">vocab</code> 文件夹——<code class="inline">history</code> 要和它并列，开错文件夹就全错；② 发完先等它汇报"抓到了哪 5 个流行梗"（或哪个网站被拦了），确认梗没问题再让它生成文件；③ 生成过程中不要催，让它一次写完。</div>
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt('p1', this)">一键复制</button>
+    <pre id="p1">请在当前网站根目录下（与 `vocab` 文件夹并列），帮我创建 `history` 文件夹，采用最稳健的**"界面与数据分离架构"**：
+1. `./history/index.html`（完整实现所有 UI、SVG 地图、语音、赚币/花币闭环、localStorage 存档与闯关逻辑，使用 Tailwind CSS CDN + Lucide Icons CDN + 原生 JS，无需编译，双击即可运行）
+2. `./history/data.js`（负责存放 `window.HISTORICAL_EVENTS` 数据）
+3. `./history/audio/`（空文件夹，用于存放配音 mp3）
+
+## 🛑 分步执行契约（Step 1 of 2）：
+为了确保 100% 零报错，**第一步请先完整写好 `index.html` 的全部功能，并在 `data.js` 中只写入第 1 个事件（`hammurabi`）的完整数据**。等我双击验收跑通闭环后，第二步再让你补充 `terracotta` 和 `caesar` 的数据！
+
+---
+
+## 🔥 0. 写 `groupChat` 前的必做前置步骤："流行梗采矿"
+在写 `groupChat` 笑话之前，先做一轮"流行梗采矿"，按以下网址找（不要自己发挥去别处找）：
+- https://knowyourmeme.com/memes/trending（梗百科，今日热门）
+- TikTok Creative Center 的 Trends 页（官方趋势看板：热门话题/音乐/视频）
+- https://www.reddit.com/r/teenagers/top/?t=week（美国青少年本周最热帖）
+
+请在对话框回复中（或 `data.js` 顶部注释里）先总结 5 个当前美国 12–15 岁青少年中正在流行的梗，每个用一句话写清"梗是什么+为什么好笑"，并附上来源链接。然后用这些梗的**结构和语气**来写 3 条古人群聊——只借鉴梗的灵魂，严禁照搬任何原文。每条群聊后面在代码注释 `// (参照梗 #X)` 或对话框回复中注明参照的是哪个梗（注意：不要把"参照梗 #X"这几个字渲染到网页前台气泡里，保持前台纯正英文体验）。
+
+如果某个网址打不开或找不到内容，就如实说"没找到"，不许编造流行梗。若受限，可用内置网页搜索工具检索上述站点的最新趋势；若依然受限，则如实说明并使用当前公认的 Gen-Z/Gen-Alpha 经典语感（如 aura points, cooked, left on read, side-eye 等）。
+
+---
+
+## 📐 1. `data.js` 严格字段契约（Schema Contract — 缺一不可，字段名严禁拼错）
+`window.HISTORICAL_EVENTS` 数组中的每个事件对象，必须严格包含以下字段，`index.html` 也必须严格按这些字段名读取：
+```js
+{
+  id: "hammurabi", // string
+  title: "Code of Hammurabi", // string
+  year: "1754 BC", // string
+  place: "Babylon, Mesopotamia", // string
+  mapX: 58, // number (0-100 SVG 地图横坐标百分比)
+  mapY: 42, // number (0-100 SVG 地图纵坐标百分比)
+  story: [
+    "Paragraph 1...", // 必须包含 2 段英文，每段不少于 80 个英文单词！故事中用 &lt;span class="sat-word" data-word="codify"&gt;codify&lt;/span&gt; 高亮嵌入对应的 SAT 词
+    "Paragraph 2..."
+  ],
+  satWords: [ // 必须包含 2 个对象
+    { word: "codify", pos: "v.", definition: "arrange laws or rules into a systematic code", example: "Hammurabi decided to codify the chaotic rules of Babylon into stone." },
+    { word: "retaliation", pos: "n.", definition: "the action of returning a military attack; counterattack or revenge", example: "The law of 'an eye for an eye' was built on the principle of exact retaliation." }
+  ],
+  groupChat: [ // 必须包含 3 条仿 iMessage 幽默群聊，每条不少于 1 个完整且戳中 12 岁初中生笑点的英文梗
+    { sender: "King Hammurabi 👑", text: "..." }, // 注释注明：(参照梗 #X)
+    { sender: "Babylonian Builder 🧱", text: "..." }, // 注释注明：(参照梗 #X)
+    { sender: "Royal Scribe 🪶", text: "..." } // 注释注明：(参照梗 #X)
+  ],
+  trivia: "Did you know? ...", // string (真实有趣的历史冷八卦，不少于 2 句话)
+  takeaways: { // 每项不少于 2 句完整的 AP 历史级准确解析
+    cause: "...",
+    turningPoint: "...",
+    impact: "..."
+  },
+  quiz: [ // 必须包含 2 道四选一题（Q1考历史因果，Q2考本篇 SAT 词 codify 或 retaliation 的语境词义）
+    { question: "...", options: ["A...", "B...", "C...", "D..."], answerIndex: 1, explain: "..." },
+    { question: "...", options: ["A...", "B...", "C...", "D..."], answerIndex: 2, explain: "..." }
+  ],
+  stampName: "👑 King Poppy of Babylon" // string
+}
+```
+
+## 💾 2. localStorage 状态持久化契约（防刷新丢失）
+所有玩家进度必须实时存入 localStorage（使用统一键名 LIVING_HISTORY_SAVE_V1），确保刷新页面或重新打开浏览器绝不丢失：
+- coins: Chrono-Coins 余额（初始值 0）
+- unlockedWords: 已点击收集的 SAT 单词数组（防止重复刷币，每个单词仅首次点击奖励 +10 🪙）
+- unlockedTrivia: 已翻转过的冷八卦事件 ID 数组（每个仅首次翻转奖励 +10 🪙）
+- completedEvents: 已通关的地图金星事件 ID 数组（首次无伤通关两道题奖励 +50 🪙）
+- stamps: 已解锁的猫咪印章名称数组
+- hasShield: 是否已购买激活答错保护盾（boolean）
+
+## 🎮 3. index.html 核心界面与游戏闭环要求（Pure English Only）
+- **视觉与跨端自适应**：
+  - 大英博物馆黑金策展风（背景 #0F141C + 经纬网格，毛玻璃卡片 + 香槟金 #D4AF37）。
+  - 电脑端为左侧 SVG 星图 + 右侧滑出抽屉；手机/iPad 竖屏自动变为上半屏地图 + 下半屏 Bottom Sheet（触控区 ≥ 44px）。
+  - 地图上根据 window.HISTORICAL_EVENTS 动态渲染发光黄金坐标点（哪怕第一步只有 1 个点也要完美高亮显示，后面追加第 2、3 个点时自动用虚线按顺序连接）。
+- **顶部导航栏**：
+  - 品牌标题 + 传送门 🐾 Cat SAT Vocab ↗（指向 /vocab/）。
+  - 实时显示：🪙 Chrono-Coins 余额、🛡️ Shield Status、🏆 Stamps (0/3)。
+- **抽屉内 60 秒体验闭环**：
+  - 🔊 语音条：优先播放 ./audio/${event.id}.mp3；若无本地文件（onerror），自动调用浏览器 window.speechSynthesis（en-US, rate=1.08, pitch=1.18 活力少年音，优选 Samantha/Nicky）朗读 story 两段正文（需先剥离 HTML 标签再朗读）。
+  - 📖 Story &amp; SAT Vocab：展示 2 段故事，点击高亮的 .sat-word 弹出释义气泡（含词性、英文定义、例句 + 底部跳转 /vocab/ 链接），首次点击触发 +10 🪙 飞入动画并存入 localStorage。
+  - 💬 Historical Group Chat：仿 iMessage 聊天气泡展示 groupChat。
+  - 🎴 Secret Trivia Flip-Card：点击翻转展示 trivia，首次翻转 +10 🪙。
+  - 🧠 3 Core Takeaways：3 张 Bento 卡片展示 cause, turningPoint, impact。
+  - ⚡ 2-Question Mastery Check + 花币与答错处理：
+    - 答题区顶部提供两个花币按钮：💡 30 🪙 Eliminate Wrong Answer（点击扣 30 币并随机灰掉当前题目的 1 个错误选项）和 🛡️ 50 🪙 Buy Mistake Shield（点击扣 50 币激活护盾）。
+    - 答错处理（Wrong Answer UX）：答错题目时，显示该题的 explain 解析，不扣币；该事件本轮无法获得 +50 🪙 通关金币奖励，但可立即重答（重答全对后依然正常点亮地图金星并解锁该事件的 stampName 猫咪印章，防止收集死档）。若 hasShield 为 true：本次答错不计为失败、不中断连击（仍可拿满 +50 🪙），然后护盾消耗掉（hasShield 置为 false 并同步更新 localStorage）。每购买一次护盾仅抵消下一次答错，用完需重新购买。
+    - 全集齐大奖海报：当集齐全部 3 枚印章时，自动弹出可截图分享的黑金《Master Time-Traveler Scholar Card》通关海报！
+
+## ✅ 4. Step 1 交付与验收边界说明
+- 请立即执行"流行梗采矿"，并生成完整的 ./history/index.html 以及只包含第 1 个事件（hammurabi）的 ./history/data.js。
+- 注意：集齐 3 枚印章弹出《Master Time-Traveler Scholar Card》海报的逻辑请在 index.html 中完整实现（判断 stamps.length &gt;= 3），但因为 Step 1 只有 1 个事件，无法触发——我在 Step 1 验收时会跳过此项，等 Step 2 补完 terracotta 和 caesar 数据后再测！</pre>
+  </div>
+</div>
+
+<div class="step">
+<span class="step-num">第二步</span>
+<h2>本地双击验收（扮演 12 岁玩家）</h2>
+<h3>🖱️ 你做什么</h3>
+<ol>
+<li>在 Antigravity 左侧文件列表里找到 <code class="inline">history/index.html</code>，右键选择"在浏览器中打开"（或直接去电脑文件夹里双击它）。</li>
+<li>照着下面的清单，一项一项点一点（点一条，它会划掉）。</li>
+</ol>
+<h3>✅ 验收清单（点一项划一项）</h3>
+<ul class="check" id="checklist">
+<li>🗺️ 地图：黑金博物馆风，hammurabi 的黄金坐标点在发光</li>
+<li>🔊 点语音条：没有 mp3 时，浏览器语音自动朗读故事（听一下有没有读出奇怪的标签音）</li>
+<li>📖 点金色 SAT 单词 codify：弹出释义气泡，+10 🪙 飞入，顶部币数变成 10</li>
+<li>🔄 刷新页面：币数还在，没有清零（localStorage 生效）</li>
+<li>💬 群聊：3 条 iMessage 气泡，拿给 Ella 看——她笑出声才算过</li>
+<li>🎴 点冷八卦卡：翻转 + 音效，+10 🪙</li>
+<li>⚡ 答题：2 道全对 → 胜利音效 +50 🪙，地图金星点亮，解锁 👑 King Poppy of Babylon</li>
+<li>💡 花 30 币买提示卡：随机灰掉一个错误选项，币扣掉 30</li>
+<li>🛡️ 花 50 币买护盾：故意答错一题，不中断、护盾消失</li>
+<li>⏭️ 海报项跳过：集齐 3 枚才弹窗，Step 1 只有 1 个事件，Step 2 再测</li>
+</ul>
+<div class="warn"><b>⚠️ 注意：</b>① 验收的是<b>闭环跑通</b>，不是美术满分——小瑕疵记下来 Step 2 一起修；② 哪项没过，<b>截图发我</b>，我写成返工指令你贴回 Antigravity；③ 全部通过才进第三步。</div>
+</div>
+
+<div class="step">
+<span class="step-num">第三步</span>
+<h2>部署上线（git 三连 + 发布）</h2>
+<h3>🖱️ 你做什么</h3>
+<ol>
+<li>在 Antigravity 里打开终端（或 Mac 的 Terminal，进到网站根目录）。</li>
+<li>逐行运行下面三条命令（点按钮复制）：</li>
+</ol>
+<div class="prompt-box">
+<button class="copy-btn" onclick="copyPrompt('p2', this)">一键复制</button>
+<pre id="p2">git add history/
+git commit -m "feat: launch Living History Atlas MVP with Hammurabi and game loop"
+git push origin main</pre>
+</div>
+<ol start="3">
+<li>发布到网上（和你上次发布 vocab 同样的流程）。</li>
+<li>等 1–2 分钟，手机和电脑打开 <a href="https://hustleaesthetics.net/history/" target="_blank">hustleaesthetics.net/history/</a> 验证。</li>
+</ol>
+<div class="warn"><b>⚠️ 注意：</b>① 如果 push 后访问是 404，先等一分钟再刷新，或清一下浏览器缓存；② 确认 Cloudflare 那边是 push 自动部署——如果不是，push 后还要跑一遍你上次用的部署命令（和 vocab 同样）；③ 主分支如果叫 <code class="inline">master</code> 不叫 <code class="inline">main</code>，第三条改成 <code class="inline">git push origin master</code>。</div>
+</div>
+
+<div class="step">
+<span class="step-num">第四步</span>
+<h2>Step 2：补齐秦始皇和凯撒</h2>
+<h3>🖱️ 你做什么</h3>
+<ol>
+<li>确认第三步：线上 <code class="inline">/history/</code> 已经能玩，hammurabi 闭环正常。</li>
+<li>复制下面的 Step 2 指令，发给 Antigravity。</li>
+<li>生成后重复第二步的验收（3 个事件都要点一遍），重点测：<b>3 枚印章集齐弹黑金海报</b>。</li>
+<li>没问题 → 重复第三步的 git 三连 + 发布。</li>
+</ol>
+<div class="warn"><b>⚠️ 注意：</b>指令里第一句就是"绝对不要修改 index.html"——如果它手痒改了界面，立刻叫停，让它只动 <code class="inline">data.js</code>。</div>
+<div class="prompt-box">
+<button class="copy-btn" onclick="copyPrompt('p3', this)">一键复制</button>
+<pre id="p3">第一步的 `index.html` 和 `hammurabi` 已经测试通过！
+现在请执行：**绝对不要修改 `index.html` 的任何代码**，请只打开 `./history/data.js`，在 `window.HISTORICAL_EVENTS` 数组中保留 `hammurabi`，并在后面严格按照一模一样的字段契约和字数标准（每段故事不少于 80 词、群聊 3 条且每条标注 (参照梗 #X) 在代码注释里、takeaways 每项不少于 2 句话、2 道 quiz），完整追加以下第 2 个和第 3 个事件：
+
+2. `id: "terracotta"`
+- `title`: "Qin Shi Huang's Terracotta Army"
+- `year`: "210 BC"
+- `place`: "Xi'an, China"
+- `mapX`: 78, `mapY`: 40
+- `satWords`: `monumental` (adj.) 和 `meticulous` (adj.)
+- `stampName`: "⚔️ Emperor Mocchi"
+
+3. `id: "caesar"`
+- `title`: "The Ides of March &amp; Julius Caesar"
+- `year`: "44 BC"
+- `place`: "Rome, Italy"
+- `mapX`: 50, `mapY`: 35
+- `satWords`: `conspiracy` (n.) 和 `nonchalant` (adj.)
+- `stampName`: "🏛️ Caesar Poppy"</pre>
+</div>
+</div>
+
+<div class="step">
+  <span class="step-num">📋 TO-DO</span>
+  <h2>今晚所有没闭环的事（点一项划一项）</h2>
+  <h3>🗺️ Atlas 游戏</h3>
+  <ul class="check" id="checklist2">
+    <li>本指南已上线：joyceway.github.io/history-guide/（永久地址，随时打开）</li>
+    <li>给 Antigravity 发 Step 1 指令（本页第一步，一键复制）</li>
+    <li>本地双击验收（本页第二步清单）</li>
+    <li>确认 Cloudflare 是 push 自动部署（不是的话 push 后要跑部署命令）</li>
+    <li>发 Step 2 指令，补 terracotta + caesar，测 3 印章海报，上线</li>
+  </ul>
+  <h3>🤝 双 AI 协作</h3>
+  <ul class="check" id="checklist3">
+    <li>双 AI 使用合同 v2：等 Joyce 点头 → 记入 10/14 晚笔记（本页下方全文）</li>
+    <li>双 AI 会诊工作台：建不建，等她一句话</li>
+  </ul>
+  <h3>📕 小红书</h3>
+  <ul class="check" id="checklist4">
+    <li>卡片试点选哪篇 Article（三选一，待她定）</li>
+    <li>注册小红书账号（可行性已确认，待她定时间）</li>
+  </ul>
+  <div class="warn"><b>⚠️ 注意：</b>这个清单是活的——做完一项点一下划掉，Muse 会同步更新跟踪。10/21 早上有提醒带你回来继续。</div>
+</div>
+
+<div class="step">
+  <span class="step-num">📜 合同 v2</span>
+  <h2>双 AI 使用合同（Muse × Gemini）</h2>
+  <h3>0. 一句话原则</h3>
+  <ul><li>Muse 有记忆、做终审；Gemini 没记忆、做参谋。你只做 1%：定目标、做选择、验收。</li></ul>
+  <h3>1. 分级——什么事走什么流程</h3>
+  <ul>
+    <li><b>L1 小事</b>（查词、翻译、简单解释）：直接问 Muse，不用 Gemini</li>
+    <li><b>L2 中事</b>（写卡片、改文案、日常分析）：Muse 独立做，你验收</li>
+    <li><b>L3 大事</b>（写代码 prompt、定架构、发版前检查）：走完整双 AI 会诊</li>
+    <li><b>紧急模式</b>：赶时间跳过 Gemini，Muse 直接做你验收，事后再补</li>
+  </ul>
+  <h3>2. 标准 Loop（L3）</h3>
+  <ul><li>你定目标（一句话）→ Muse 出初版 → 你转交 Gemini → Gemini 输出 → 你转回给 Muse → Muse 终审（双方观点+证据+判断）→ 你拍板 → 执行 → Muse 验收（对照最初那句话逐条打勾）</li></ul>
+  <h3>3. 上下文包模板（给 Gemini 的固定格式）</h3>
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt('p4', this)">一键复制</button>
+    <pre id="p4">【目标】一句话说清要什么
+【硬约束】1. 2. 3.（上限 5 条，多了它记不住）
+【当前版本全文】（粘贴 Muse 的初版）
+【请你做的事】审查 / 补强 / 重写（三选一）
+【具体问题】你最担心的 1-2 个点</pre>
+  </div>
+  <h3>4. 分歧处理</h3>
+  <ul><li>Muse 和 Gemini 不一致时，Muse 不和稀泥，直接摆出：他的观点+证据 / 我的观点+证据 / 我的判断+理由，然后你拍板。</li></ul>
+  <h3>5. Gemini 已知坑清单（活的，发现就追加）</h3>
+  <ul>
+    <li>会编流行梗 → 必须加"找不到就说没找到，不许编"</li>
+    <li>会把内部标注写进 UI → 标注只放代码注释</li>
+    <li>战略问题会一本正经瞎答 → 它的战略意见只当参谋，决策权在 Muse</li>
+  </ul>
+  <h3>6. 合同本身是活的</h3>
+  <ul><li>版本号 v1/v2……每发现一个新坑或新分工，Muse 追加一条。你只管用，维护是 Muse 的活。</li></ul>
+  <h3>7. 成本</h3>
+  <ul><li>你的时间只花在两处："转交"（复制粘贴，1 分钟）和"拍板"。其他全 Muse 包。</li></ul>
+  <div class="warn"><b>⚠️ 状态：</b>待 Joyce 点头 → 记入 2026-10-14 晚笔记。触发语：<b>"双 AI 会诊"</b></div>
+</div>
+
+<footer>🗺️ Living History Atlas · 见证奇迹 · 2026-10-14</footer>
+
+</div>
+<script>
+function copyPrompt(id, btn) {
+const text = document.getElementById(id).innerText;
+navigator.clipboard.writeText(text).then(() => {
+const old = btn.innerText;
+btn.innerText = '已复制 ✓';
+setTimeout(() => btn.innerText = old, 1500);
+});
+}
+document.querySelectorAll('#checklist li').forEach(li => {
+li.addEventListener('click', () => li.classList.toggle('done'));
+});
+document.querySelectorAll('.check li').forEach(li => {
+li.addEventListener('click', () => li.classList.toggle('done'));
+});
+</script>
+</body>
+</html>
