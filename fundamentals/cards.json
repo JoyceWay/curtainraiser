@@ -614,5 +614,61 @@
     "en": "parentheses mean calling",
     "explain": "看到圆括号就是'喊它干活'——print 是名字，print('嗨') 才是真的让它执行；括号里放的是原料。",
     "example": "len('abc') 里 'abc' 是原料，len 是干活的机器，括号就是按下开关"
+  },
+  {
+    "day": 11,
+    "topic": "Shell",
+    "term": "find",
+    "en": "find",
+    "explain": "找文件：在一大堆文件夹里按名字/类型把文件翻出来。",
+    "example": "find ~/workspace/curtainraiser-site -name 'fundamentals.html' 一秒找到那张字卡页"
+  },
+  {
+    "day": 11,
+    "topic": "Git",
+    "term": "git restore 文件名",
+    "en": "restore",
+    "explain": "后悔药：把还没 git add 的改动打回原形，文件回到上一次 commit 的样子。",
+    "example": "改坏了 index.html 又没 add？git restore index.html 直接复原"
+  },
+  {
+    "day": 11,
+    "topic": "Python",
+    "term": "int()",
+    "en": "int",
+    "explain": "把字符串转成整数：input() 拿回来永远是文字，想做加减先转 int。",
+    "example": "age = int(input('你几岁？'))；print(age + 1) 就能算出明年的岁数"
+  },
+  {
+    "day": 11,
+    "topic": "HTML/CSS",
+    "term": "background-color",
+    "en": "background-color",
+    "explain": "刷墙色：给一块区域上背景颜色，黑白杂志风的暖纸底就是这么来的。",
+    "example": "style='background-color: #f5f4f0' 就是你网站那张暖纸色背景"
+  },
+  {
+    "day": 11,
+    "topic": "Prompt",
+    "term": "先给背景资料",
+    "en": "provide context first",
+    "explain": "先喂料再提问：把你的现状、目标、限制先告诉 AI，它答得准得多。",
+    "example": "别直接问'帮我写个学习计划'，先说'我每天1小时、会Excel、目标是AI接单'再让它写"
+  },
+  {
+    "day": 11,
+    "topic": "AI 概念",
+    "term": "流式输出",
+    "en": "streaming",
+    "explain": "回答一字一字往外蹦：模型是逐个 token 生成的，网站把每生成一个就立刻显示给你。",
+    "example": "ChatGPT 回答时光标后面的字一个个冒出来，那就是 streaming，不是它在'思考打字'"
+  },
+  {
+    "day": 11,
+    "topic": "读代码",
+    "term": "[] 下标",
+    "en": "index / subscript",
+    "explain": "从 0 开始数：list[0] 是第一个元素，不是 list[1]——新手最常栽的坑。",
+    "example": "words = ['abandon', 'keen']；words[0] 是 abandon，words[1] 才是 keen"
   }
 ]
