@@ -670,5 +670,61 @@
     "en": "index / subscript",
     "explain": "从 0 开始数：list[0] 是第一个元素，不是 list[1]——新手最常栽的坑。",
     "example": "words = ['abandon', 'keen']；words[0] 是 abandon，words[1] 才是 keen"
+  },
+  {
+    "day": 12,
+    "topic": "Shell",
+    "term": "echo",
+    "en": "echo",
+    "explain": "往屏幕上输出一句话，常和 > 搭伙用，一句话就能往文件里写东西。",
+    "example": "echo 'Day 12 打卡' > today.txt 一句话建个小文件"
+  },
+  {
+    "day": 12,
+    "topic": "Git",
+    "term": "git config user.name",
+    "en": "config",
+    "explain": "告诉 Git 这次提交是谁干的：第一次用 Git 必备一步，以后每次 commit 自动署名你。",
+    "example": "git config user.name 'Joyce' 一次配置，终身署名"
+  },
+  {
+    "day": 12,
+    "topic": "Python",
+    "term": "float()",
+    "en": "float",
+    "explain": "把文字转成小数：int() 的亲戚，只不过它认识小数点，价格计算少不了它。",
+    "example": "price = float('19.9')；print(price + 1) 得到 20.9"
+  },
+  {
+    "day": 12,
+    "topic": "HTML/CSS",
+    "term": "padding",
+    "en": "padding",
+    "explain": "内边距：字和边框之间的距离，卡片里的字不贴边、看起来有呼吸感就靠它。",
+    "example": "style='padding: 20px' 四个边都留出 20 像素空隙"
+  },
+  {
+    "day": 12,
+    "topic": "Prompt",
+    "term": "先让它复述一遍",
+    "en": "confirm understanding",
+    "explain": "开工前让 AI 用自己的话重复一遍需求：理解错了现在改，不返工。",
+    "example": "'开工前先复述一遍你要做的事，确认对了再开始'"
+  },
+  {
+    "day": 12,
+    "topic": "AI 概念",
+    "term": "few-shot",
+    "en": "few-shot prompting",
+    "explain": "给 2–3 个例子，AI 照着葫芦画瓢：格式基本不会跑偏，比干讲规则管用。",
+    "example": "想让它写格言卡文案，先甩 3 张你做过的卡说'照这个风格'"
+  },
+  {
+    "day": 12,
+    "topic": "读代码",
+    "term": "elif",
+    "en": "elif",
+    "explain": "if 的续集：第一个条件没命中就试下一个，写菜单、写分级最顺手。",
+    "example": "if score >= 90: 优秀 elif score >= 60: 及格 else: 加油"
   }
 ]
