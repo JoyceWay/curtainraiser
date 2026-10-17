@@ -38,5 +38,85 @@
   "title": "GitHub Skills",
   "type": "链接简介",
   "url": "https://skills.github.com/"
+ },
+ {
+  "chapter": "M2",
+  "title": "提示词工程官方指南",
+  "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview",
+  "oneline": "Anthropic 官方提示词工程指南，免费，写提示词的“说明书”",
+  "summary": "Anthropic 官方文档：怎么写出专业级提示词。对应学习计划 Part A（地基）· Context engineering。概念不绑定 Claude 家，换 Gemini 同样用得上：提示词是跟所有大模型对话的基本功。",
+  "take": "提示词是“指挥 AI”的第一课，我的 #1 学习优先级。先读这一篇，再看别的。（初稿，待 Joyce 改）",
+  "type": "链接简介",
+  "status": "准备中"
+ },
+ {
+  "chapter": "M2",
+  "title": "交互式提示词教程",
+  "url": "https://github.com/anthropics/prompt-eng-interactive-tutorial",
+  "oneline": "Anthropic 官方 GitHub 互动教程，动手练提示词",
+  "summary": "Anthropic 官方开源的交互式教程（anthropics 组织），一边学一边练。跟上面那篇官方指南是“理论+习题”的关系。英文，免费。",
+  "take": "理论看一篇就够，这本当习题册，学到 Part A 时刷。（初稿，待 Joyce 改）",
+  "type": "链接简介",
+  "status": "准备中"
+ },
+ {
+  "chapter": "M2",
+  "title": "MCP 协议官方文档",
+  "url": "https://code.claude.com/docs/en/mcp",
+  "oneline": "MCP 官方文档：让 AI 连上 Slack / GitHub / 数据库的标准协议",
+  "summary": "Anthropic 官方 MCP 文档。MCP 是“AI 的 USB 接口”：一套标准协议，让 agent 连上你每天用的工具和数据库。对应学习计划 Part B（Agent 实战）· 工具设计。这是 2026 年 agent 绕不开的一块。",
+  "take": "一人公司最值钱的就是“把 AI 接进我的工作流”，MCP 是那座桥。Part B 必读。（初稿，待 Joyce 改）",
+  "type": "链接简介",
+  "status": "准备中"
+ },
+ {
+  "chapter": "M2",
+  "title": "Skills 官方文档",
+  "url": "https://code.claude.com/docs/en/skills",
+  "oneline": "Skills 官方文档：把重复工作流教给 AI，一次写好反复用",
+  "summary": "Anthropic 官方 Skills 文档：把“怎么做一件事”写成可复用的技能包，AI 下次自动照做。对应学习计划 Part B · Skills。我的“打工天团”agent 组织，本质上就是 skills 的思想。",
+  "take": "这就是我给 agent 们“写 SOP”的官方版。学 Part B 时对照着看。（初稿，待 Joyce 改）",
+  "type": "链接简介",
+  "status": "准备中"
+ },
+ {
+  "chapter": "M2",
+  "title": "CLAUDE.md 与记忆机制",
+  "url": "https://code.claude.com/docs/en/memory",
+  "oneline": "官方记忆机制文档：让 AI 记住项目的规则和上下文",
+  "summary": "Anthropic 官方文档：CLAUDE.md + 记忆系统，让 AI 记住“这个项目是什么、按什么规矩办事”。对应学习计划 Part B · 记忆与状态。我的 MEMORY.md 和项目 GOAL.md 就是这一思想的手工版。",
+  "take": "原来我的 MEMORY.md 不是土办法，是官方推荐模式的人肉版。学到 Part B 来验证。（初稿，待 Joyce 改）",
+  "type": "链接简介",
+  "status": "准备中"
+ },
+ {
+  "chapter": "M2",
+  "title": "Subagents 多智能体文档",
+  "url": "https://code.claude.com/docs/en/sub-agents",
+  "oneline": "官方 Subagents 文档：一个主 agent 如何指挥多个子 agent",
+  "summary": "Anthropic 官方文档：主 agent 拆任务、子 agent 并行干活的机制。对应学习计划 Part B · 多 agent 铁律。我的“侦察兵/挖矿工/写手/访谈员/账房”分工，用的就是这套思想。",
+  "take": "打工天团的组织架构，官方文档里叫 subagents。两边对照着学，互相验证。（初稿，待 Joyce 改）",
+  "type": "链接简介",
+  "status": "准备中"
+ },
+ {
+  "chapter": "M2",
+  "title": "Claude Code 101 免费课程",
+  "url": "https://anthropic.skilljar.com/claude-code-101",
+  "oneline": "Anthropic 官方入门课，免费，学 AI 结对编程",
+  "summary": "Anthropic Academy（skilljar）官方免费课程，Claude Code 从零入门。视频+练习。Claude Code 本体是 Anthropic 家的工具，但“AI 结对编程”的工作流概念通用；同站还有十多门免费课（提示词、MCP 等），有证书。",
+  "take": "我的 P0 是“AI 结对编程”开局，这门课是官方版的同一课。Part B 阶段当参考。（初稿，待 Joyce 改）",
+  "type": "链接简介",
+  "status": "准备中"
+ },
+ {
+  "chapter": "M2",
+  "title": "awesome-claude-code 社区精选",
+  "url": "https://github.com/hesreallyhim/awesome-claude-code",
+  "oneline": "社区维护的精选合集：最好用的脚本、技能和插件都在这",
+  "summary": "GitHub 社区精选（awesome 系列），收录实战验证过的 Claude Code 脚本、skills、插件。官方文档是“说明书”，这个是“老司机清单”。社区来源，用前自己先试，star 数和更新时间是筛选器。",
+  "take": "官方文档打地基，这个当“缺什么来翻”的工具箱。不逐个学，当字典查。（初稿，待 Joyce 改）",
+  "type": "链接简介",
+  "status": "准备中"
  }
 ]
