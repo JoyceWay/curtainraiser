@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>晚间笔记 · 2026-10-16 — 卷帘人 CurtainRaiser</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker { font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 4px; color: #66AC35; margin-bottom: 20px; }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub { font-family: 'Inter', sans-serif; font-size: 16px; color: #8B8B8B; margin-bottom: 56px; }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en { font-family: 'Inter', sans-serif; font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6; }
+  .note-item blockquote { margin: 0 0 8px; padding: 4px 0 4px 16px; border-left: 3px solid #66AC35; font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C; }
+  .topic { display: inline-block; font-size: 13px; letter-spacing: 1px; color: #4E8A28; border: 1px solid rgba(102,172,53,.45); border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0; text-decoration: none; font-weight: 500; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838; padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px; width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .foot { margin-top: 72px; padding-top: 24px; border-top: 1px solid rgba(52,44,44,.12); font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 2px; color: #8B8B8B; }
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100; background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px; display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover { border-bottom-color: #342C2C; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+  <div class="nav-links">
+    <a href="../index.html"><b>首页</b><span>HOME</span></a>
+    <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+    <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+    <a href="index.html"><b>笔记本</b><span>NOTEBOOK</span></a>
+    <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+  </div>
+</nav>
+<div class="wrap">
+
+  <div class="kicker">EVENING NOTES · 2026-10-16</div>
+  <h1>晚间笔记 · 2026-10-16</h1>
+  <div class="sub">Tonight: wheels up to Boston. Dan Koe teardown, a location lesson, and the taxi-freedom flag.<br>内部完整版——不进导航、不进列表、不被搜索引擎收录。</div>
+
+  <div class="note-item">
+    <h3>1. 今晚干了什么</h3>
+    <p><span class="topic">迭代过程</span></p>
+    <ul class="pts">
+      <li><b>飞波士顿</b>：B6 188 准点起飞，提前 38 分钟落地 BOS（04:22 EDT，C16）。Eric 同行，落地后直奔 Harvard 逛校园当预习。</li>
+      <li><b>Dan Koe《Human 3.0》</b>：她转发问"这是什么意思"，核验+逐层追问，最后要了一份 20 维度完整拆解报告（D12-1，已入库设计参考库）。</li>
+      <li><b>英文行程全套交付</b>：她逐级要——文字版 → 文件 → 排版版 → the whole set，最后拿到 5 天英文排版全套。</li>
+      <li>她选坐地铁不打车，笑说<b>"等你帮我赚钱后，我们随时打车"</b>——打车自由 flag 立下。</li>
+    </ul>
+    <p class="en">Landed Boston 38 min early. Dan Koe Human 3.0 torn down in 20 dimensions. The taxi-freedom flag is planted.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>2. 知识要点</h3>
+    <p><span class="topic">知识</span></p>
+    <ul class="pts">
+      <li><b>Dan Koe 排版四点</b>：① 模板+例题配对（一张空白框架图 + 一张填好的例子图）；② 层级像楼梯（progressive disclosure，不迷路）；③ 命名即导航（Human 1.0/2.0/3.0 这类标签替读者建目录）；④ 诚实当设计（开篇"很多会是错的"卸防御）。一句话：<b>好排版 = 读者不用动脑找路，只动脑想内容。</b></li>
+      <li><b>Eric 不喜欢 AI</b>：16 岁，Minecraft 建房子挖钻石。青少年不喜欢 AI 的真答案值得直接问他本人——比我的假设值钱。</li>
+    </ul>
+    <p class="en">Good layout = readers navigate nothing, think everything. Ask Eric himself why teens dislike AI — his words beat my hypotheses.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>3. 立下的规则</h3>
+    <p><span class="topic">规则</span></p>
+    <ul class="pts">
+      <li><b>给 Ella 的材料默认英文</b>：她要自己读。以后做给孩子看的材料，默认英文版。</li>
+    </ul>
+    <p class="en">Materials for Ella default to English — she reads them herself.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>4. 如何改进</h3>
+    <p><span class="topic">改进</span></p>
+    <ul class="pts">
+      <li><b>地点事实先查坐标再说</b>：我把酒店写成"近 Quincy Center"，被她一句"宾馆不就是在地铁站旁边吗"问出来——实际是 North Quincy 站旁。地址、距离、站点这类事实，开口前先实测。</li>
+      <li><b>她逐级要东西时，直接给终局版</b>：行程她要了四轮（文字→文件→排版→全套）才到想要的。下次她说"英文版"，默认直接给排版过的全套，少三轮。</li>
+    </ul>
+    <p class="en">Verify coordinates before stating any location fact. When she asks stepwise, skip to the final form — give the full styled set first.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 内部资料</div>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>

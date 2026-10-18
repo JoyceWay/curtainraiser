@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>晚间笔记 · 2026-10-15 — 卷帘人 CurtainRaiser</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker { font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 4px; color: #66AC35; margin-bottom: 20px; }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub { font-family: 'Inter', sans-serif; font-size: 16px; color: #8B8B8B; margin-bottom: 56px; }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en { font-family: 'Inter', sans-serif; font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6; }
+  .note-item blockquote { margin: 0 0 8px; padding: 4px 0 4px 16px; border-left: 3px solid #66AC35; font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C; }
+  .topic { display: inline-block; font-size: 13px; letter-spacing: 1px; color: #4E8A28; border: 1px solid rgba(102,172,53,.45); border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0; text-decoration: none; font-weight: 500; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838; padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px; width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .foot { margin-top: 72px; padding-top: 24px; border-top: 1px solid rgba(52,44,44,.12); font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 2px; color: #8B8B8B; }
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100; background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px; display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover { border-bottom-color: #342C2C; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+  <div class="nav-links">
+    <a href="../index.html"><b>首页</b><span>HOME</span></a>
+    <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+    <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+    <a href="index.html"><b>笔记本</b><span>NOTEBOOK</span></a>
+    <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+  </div>
+</nav>
+<div class="wrap">
+
+  <div class="kicker">EVENING NOTES · 2026-10-15</div>
+  <h1>晚间笔记 · 2026-10-15</h1>
+  <div class="sub">Tonight: the bilingual experiment begins. Case 04 ships in two languages; new rules for writing, jokes, and money.<br>内部完整版——不进导航、不进列表、不被搜索引擎收录。</div>
+
+  <div class="note-item">
+    <h3>1. 今晚干了什么</h3>
+    <p><span class="topic">迭代过程</span></p>
+    <ul class="pts">
+      <li>副号 <b>Case 04（Sabrina Ramonov）中英双版发布</b>：英文版先发一小会儿，中文版随后。当晚中文版破 300 浏览——副号历史新高，但 <b>0 新增关注</b>。她决定回头自己调关注引导。</li>
+      <li>主号 LLM 五步文章流量复盘：中文从一开始就领先英文（2h 中文 144 vs 英文 49），北京时间下午一点发的，中文区正活跃，符合预期。</li>
+      <li>她把"市场化"这个难题正式抛出来：工具都简单，marketing 难。路径待定，不硬给答案。</li>
+    </ul>
+    <p class="en">Case 04 shipped bilingual; Chinese hit a side-account record (300 views, 0 new followers). The monetization question is now on the table.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>2. 立下的规则</h3>
+    <p><span class="topic">规则</span></p>
+    <ul class="pts">
+      <li><b>中英分开发浏览对比实验</b>：以后同一内容做"一个中文版 + 一个英文版"两个独立版本，不一定做对照版；攒够 5–6 组再判读哪种打法好。首组样本 Case 03：双语版 112 vs 纯中文版 17。</li>
+      <li><b>英文版翻译铁律</b>：针对英文文化重写梗，不生硬直译，不必和中文版完全一样；中英两版各自独立核对。</li>
+      <li><b>bridge 方法论</b>：她没懂的地方直接写进文章——"我不懂的可能其他人也不懂"。</li>
+      <li><b>写作红线</b>：涉及她的个人实战，不许脑补场景——只写她亲口告诉过的事。（strawberry 数 r 的"亲历版"是假的，已改公开案例口径。）</li>
+      <li><b>笑点验收</b>：陌生人测试——不认识她的人能笑出来才留；她自认偏冷幽默；"basic"标签不许出现在文章里。</li>
+      <li><b>案例拆解加"金句"提取</b>：每篇从创始人故事里提金句，备以后做金句卡。</li>
+      <li><b>$50K 写法</b>：卡片和文章里写 "$50K"，不用 50,000。</li>
+    </ul>
+    <p class="en">Rules set: bilingual A/B experiment, rewrite-don't-translate, bridge method, no invented personal stories, stranger-test for jokes, $50K style.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>3. 知识要点</h3>
+    <p><span class="topic">知识</span></p>
+    <ul class="pts">
+      <li><b>流量 ≠ 粉丝</b>：Case 04 中文 300+ 浏览、0 涨粉——阅读型读者和关注转化是两回事，转化是下一阶段的事。</li>
+      <li><b>发文时间是变量</b>：判读流量必须记下"发文时间对哪个时区友好"——中文版吃的是北京时间白天红利。</li>
+      <li><b>Co-Intelligence 长文 spec</b>：详细不妥协（服务她自己）；开篇先给"使用价值总览"；每个概念后跟"拿来即用"的做法。</li>
+    </ul>
+    <p class="en">Traffic is not followers. Publish time is a variable in every readout. Longform spec: value-overview first, actionable after every concept.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>4. 如何改进</h3>
+    <p><span class="topic">改进</span></p>
+    <ul class="pts">
+      <li><b>流量数字不许凭记忆</b>：我记错了 LLM 文章的初期数据（说英文领先，实际中文从一开始就领先），被她当场纠正。以后所有数字从 traffic.db 读，不开口头数。</li>
+      <li><b>n=3 不下结论</b>："后发版本胜"三组一致也只是现象，样本太小。攒到 5–6 组再判，之前只记录不立论。</li>
+      <li><b>她的难题不替她拍板</b>：市场化路径、视频转文章路线——只给选项+判断，不推结论，等她点头。</li>
+    </ul>
+    <p class="en">Never quote traffic from memory — read the DB. n=3 is a phenomenon, not a conclusion. Her hard questions get options, not verdicts.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 内部资料</div>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
