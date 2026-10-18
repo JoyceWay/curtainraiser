@@ -726,5 +726,61 @@
     "en": "elif",
     "explain": "if 的续集：第一个条件没命中就试下一个，写菜单、写分级最顺手。",
     "example": "if score >= 90: 优秀 elif score >= 60: 及格 else: 加油"
+  },
+  {
+    "day": 13,
+    "topic": "Shell",
+    "term": "open .",
+    "en": "open current folder (macOS)",
+    "explain": "在 Mac 终端里打开当前文件夹的窗口，命令行和图形界面无缝衔接。",
+    "example": "在 ~/workspace/curtainraiser-site 里敲 open .，访达窗口直接弹出来看文件"
+  },
+  {
+    "day": 13,
+    "topic": "Git",
+    "term": "git fetch",
+    "en": "fetch (download without merging)",
+    "explain": "把远端的最新动态拿回来先看一眼，但不合并：先瞄一眼，再动手，安全感拉满。",
+    "example": "改字卡前先 git fetch origin，看 GitHub 上有没有新东西再决定要不要 pull"
+  },
+  {
+    "day": 13,
+    "topic": "Python",
+    "term": "split()",
+    "en": "split string into list",
+    "explain": "按分隔符把字符串切成列表：处理词表、CSV 的小剪刀。",
+    "example": "'abandon,keen,frugal'.split(',') 跑出来 → ['abandon', 'keen', 'frugal']，词表秒变列表"
+  },
+  {
+    "day": 13,
+    "topic": "HTML/CSS",
+    "term": "margin",
+    "en": "margin (outer spacing)",
+    "explain": "外边距：元素和'别人'之间的距离；padding 是和自己的边框留白，margin 是和邻居保持距离。",
+    "example": "style='margin: 24px auto' 让卡片上下留白、左右居中"
+  },
+  {
+    "day": 13,
+    "topic": "Prompt",
+    "term": "追问迭代",
+    "en": "iterate with follow-ups",
+    "explain": "第一版不满意别推倒重来：直接追一句，告诉它哪里再改一版。",
+    "example": "加一句'结尾再短一点，语气更轻松'，改一版比从零写快得多"
+  },
+  {
+    "day": 13,
+    "topic": "AI 概念",
+    "term": "API",
+    "en": "Application Programming Interface",
+    "explain": "程序调用 AI 的专线通道：不用打开网页聊天，代码直接发问题、收答案。",
+    "example": "单词卡后端让 AI 出题走的就是 API：把词表发进去，把题目拿回来"
+  },
+  {
+    "day": 13,
+    "topic": "读代码",
+    "term": "None",
+    "en": "None (null value)",
+    "explain": "Python 的'空'：函数没写 return，交出来的就是 None；变量还没拿到值也常是它。",
+    "example": "result = 打招呼('Joyce') 后 print(result) → None，说明这个函数光干活没交货"
   }
 ]
