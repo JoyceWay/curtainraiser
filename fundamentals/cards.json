@@ -782,5 +782,61 @@
     "en": "None (null value)",
     "explain": "Python 的'空'：函数没写 return，交出来的就是 None；变量还没拿到值也常是它。",
     "example": "result = 打招呼('Joyce') 后 print(result) → None，说明这个函数光干活没交货"
+  },
+  {
+    "day": 14,
+    "topic": "Shell",
+    "term": "ls -la",
+    "en": "",
+    "explain": "ls 的完整版：连隐藏文件（如 .git、.nojekyll）一起列出来，一眼看清目录的真实家底。",
+    "example": "在 curtainraiser-site 里跑 ls -la，确认 .nojekyll 在不在——它决定了下划线开头的文件夹能不能上线。"
+  },
+  {
+    "day": 14,
+    "topic": "Git",
+    "term": "git diff --staged",
+    "en": "staged diff",
+    "explain": "git add 之后、commit 之前，先看一眼暂存区里到底改了什么，防止把不想交的东西顺手交出去。",
+    "example": "同步字卡时：git add fundamentals/cards.json && git diff --staged，看完没问题再 commit，不怕手滑。"
+  },
+  {
+    "day": 14,
+    "topic": "Python",
+    "term": "str()",
+    "en": "",
+    "explain": "把数字变成文字。Python 里数字和文字是两种类型，不能直接相加，str() 就是翻译官。",
+    "example": "print('今天是第' + str(14) + '天，7 张字卡')  # 跑一下看：今天是第14天，7 张字卡"
+  },
+  {
+    "day": 14,
+    "topic": "HTML/CSS",
+    "term": "text-align",
+    "en": "text alignment",
+    "explain": "控制文字在格子里左对齐、居中还是右对齐。做标题居中就靠它，一行见效。",
+    "example": "<h1 style='text-align:center'>学习计划</h1>  # 标题居中，页面立刻体面三成"
+  },
+  {
+    "day": 14,
+    "topic": "Prompt",
+    "term": "先亮假设",
+    "en": "",
+    "explain": "让 AI 先列出它回答时依赖的关键假设，你确认对了它再往下写——避免它在错误的猜测上盖楼。",
+    "example": "写推广文案前先说：先列出你关于我受众的 5 个假设，我点头后再写。假设错了，文案全白写。"
+  },
+  {
+    "day": 14,
+    "topic": "AI 概念",
+    "term": "记忆 ≠ 上下文",
+    "en": "memory vs context",
+    "explain": "模型本身没有长期记忆，每次对话都是新大脑。所谓的记得你，是外挂的记忆系统在每轮开头把摘要塞进上下文。",
+    "example": "我记得你的暖纸底色值 #f5f4f0，不是因为模型天生记得，是 MEMORY.md 这类外挂记忆每次开工前被读进来。"
+  },
+  {
+    "day": 14,
+    "topic": "读代码",
+    "term": "try / except",
+    "en": "",
+    "explain": "读到这对关键字就知道：这里在防错。try 里是可能翻车的代码，except 里是翻车后的兜底方案。",
+    "example": "try: 打开 cards.json；except: 文件不存在也不崩，直接提示文件还没建。读到它=作者考虑过失败。"
   }
 ]
