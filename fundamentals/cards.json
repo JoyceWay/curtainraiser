@@ -838,5 +838,61 @@
     "en": "",
     "explain": "读到这对关键字就知道：这里在防错。try 里是可能翻车的代码，except 里是翻车后的兜底方案。",
     "example": "try: 打开 cards.json；except: 文件不存在也不崩，直接提示文件还没建。读到它=作者考虑过失败。"
+  },
+  {
+    "day": 15,
+    "topic": "Shell",
+    "term": "history",
+    "en": "command history",
+    "explain": "以前敲过的命令都记着，不用重新打一遍。",
+    "example": "history | grep git 找回上次的 git 命令；懒人直接按 ↑ 键翻。"
+  },
+  {
+    "day": 15,
+    "topic": "Git",
+    "term": "git merge 分支名",
+    "en": "merge branch",
+    "explain": "把一个分支的成果并进当前分支，分支就长到一起了。",
+    "example": "在 main 上跑 git merge feature，新功能就合进来了。"
+  },
+  {
+    "day": 15,
+    "topic": "Python",
+    "term": "else",
+    "en": "else",
+    "explain": "if 条件不成立时，走另一条路。",
+    "example": "if age >= 18:\n    print('成年')\nelse:\n    print('未成年')"
+  },
+  {
+    "day": 15,
+    "topic": "HTML/CSS",
+    "term": "border",
+    "en": "border",
+    "explain": "给元素加边框，像给画装框。",
+    "example": "style='border: 2px solid #c2a568' 加一条香槟金细线。"
+  },
+  {
+    "day": 15,
+    "topic": "Prompt",
+    "term": "指定语气",
+    "en": "set the tone",
+    "explain": "告诉它用什么语气写，出来的味道差很多。",
+    "example": "'像跟朋友聊天一样轻松' vs '用正式商务语气'。"
+  },
+  {
+    "day": 15,
+    "topic": "AI 概念",
+    "term": "参数量（params）",
+    "en": "parameters",
+    "explain": "模型脑子里的旋钮数量，越多通常越聪明、也越贵。",
+    "example": "70B = 700 亿个参数；手机端小模型只有几 B。"
+  },
+  {
+    "day": 15,
+    "topic": "读代码",
+    "term": "docstring",
+    "en": "docstring",
+    "explain": "函数头顶三引号里的说明书，讲这个函数是干嘛的。",
+    "example": "def 后面第一行写 '''算平均分的'''，help() 能读到它。"
   }
 ]
