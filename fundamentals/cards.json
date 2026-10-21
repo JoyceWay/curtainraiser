@@ -894,5 +894,61 @@
     "en": "docstring",
     "explain": "函数头顶三引号里的说明书，讲这个函数是干嘛的。",
     "example": "def 后面第一行写 '''算平均分的'''，help() 能读到它。"
+  },
+  {
+    "day": 16,
+    "topic": "Shell",
+    "term": "wc -l",
+    "en": "word count - lines",
+    "explain": "数一个文件有多少行",
+    "example": "wc -l fundamentals/cards.json"
+  },
+  {
+    "day": 16,
+    "topic": "Git",
+    "term": "git show <短码>",
+    "en": "git show",
+    "explain": "把某次提交到底改了什么，完整摊开给你看",
+    "example": "git log 先抄下短码，再 git show <短码> 看它改了哪些行"
+  },
+  {
+    "day": 16,
+    "topic": "Python",
+    "term": "join",
+    "en": "str.join",
+    "explain": "把列表里的项用胶水粘成一个字符串",
+    "example": "', '.join(['苹果', '香蕉'])  # 跑出来是 '苹果, 香蕉'"
+  },
+  {
+    "day": 16,
+    "topic": "HTML/CSS",
+    "term": "border-radius",
+    "en": "border-radius",
+    "explain": "给方块磨圆角，卡片瞬间变柔和",
+    "example": "<div style='border-radius: 12px'>圆角卡片</div>"
+  },
+  {
+    "day": 16,
+    "topic": "Prompt",
+    "term": "分段交付",
+    "en": "deliver in sections",
+    "explain": "让 AI 一节一节给，讲完一节停住，等你点头再继续",
+    "example": "prompt 里加一句：'写完第一节就停下，等我说继续再写第二节'"
+  },
+  {
+    "day": 16,
+    "topic": "AI 概念",
+    "term": "超参数",
+    "en": "hyperparameter",
+    "explain": "模型开跑前人调好的旋钮，比如 temperature",
+    "example": "temperature=0.9 更发散、更敢编；=0.2 更保守、更靠谱"
+  },
+  {
+    "day": 16,
+    "topic": "读代码",
+    "term": "方法",
+    "en": "method",
+    "explain": "点后面跟的东西就是方法，是在叫前面的对象'干活'",
+    "example": "cards.append(x) 里，append 就是 list 的方法：'嘿，list，把 x 加进去'"
   }
 ]
