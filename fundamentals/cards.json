@@ -950,5 +950,61 @@
     "en": "method",
     "explain": "点后面跟的东西就是方法，是在叫前面的对象'干活'",
     "example": "cards.append(x) 里，append 就是 list 的方法：'嘿，list，把 x 加进去'"
+  },
+  {
+    "day": 17,
+    "topic": "Shell",
+    "term": "sort",
+    "en": "sort lines",
+    "explain": "把文件里的每一行按字母或数字排序，乱序立刻变整齐。",
+    "example": "sort 生词本.txt > 生词本-排序.txt —— 乱序单词按字母排好，复习更快"
+  },
+  {
+    "day": 17,
+    "topic": "Git",
+    "term": "git blame 文件名",
+    "en": "blame: who wrote each line",
+    "explain": "标出文件每一行是谁写的、哪次提交改的，出问题先看是谁的锅。",
+    "example": "git blame fundamentals/cards.json —— 看某张字卡是谁加的"
+  },
+  {
+    "day": 17,
+    "topic": "Python",
+    "term": "strip()",
+    "en": "string.strip()",
+    "explain": "吃掉字符串首尾的空格和换行，是 input() 的最佳搭档。",
+    "example": "试试：'  早安  '.strip() 会得到 '早安' —— 首尾空格全没了"
+  },
+  {
+    "day": 17,
+    "topic": "HTML/CSS",
+    "term": "line-height",
+    "en": "line height",
+    "explain": "设置行高，给文字留呼吸感，行距太挤谁都读不下去。",
+    "example": "style='line-height: 2' —— 你的阅读页用的就是行高 2.0，长文看着不累"
+  },
+  {
+    "day": 17,
+    "topic": "Prompt",
+    "term": "先出大纲再写",
+    "en": "outline first",
+    "explain": "先让 AI 只出结构大纲，你点头它再展开写，返工直接少一半。",
+    "example": "‘先给我这篇文章的大纲，我点头后再写正文’"
+  },
+  {
+    "day": 17,
+    "topic": "AI 概念",
+    "term": "智能体",
+    "en": "AI agent",
+    "explain": "能自己规划、自己用工具、一步步干完多步任务的 AI，不只是陪聊。",
+    "example": "‘查最新论文、做成卡片、push 到 GitHub’——能一口气干完这串活的，就是智能体"
+  },
+  {
+    "day": 17,
+    "topic": "读代码",
+    "term": "print 调试",
+    "en": "print debugging",
+    "explain": "读不懂某段代码时，在中间插个 print，直接看变量到底是什么。",
+    "example": "print('这里的 x 是：', x) —— 跑一下，真相自己跳出来，比瞎猜快十倍"
   }
 ]
