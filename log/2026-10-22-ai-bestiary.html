@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>召唤师图鉴：我现在能召唤的全部法力 — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+      <div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+        <a href="2026-10-21-ai-summoner.html"><b>召唤师</b><span>指挥 AI 笔记</span></a>
+        <a href="2026-10-21-top-summoner.html"><b>顶级召唤师</b><span>协奏与记录</span></a>
+        <a href="2026-10-22-ai-bestiary.html"><b>召唤师图鉴</b><span>全部法力盘点</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+      <a href="../styles/index.html"><b>体库</b><span>STYLE LIBRARY</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+  <div class="kicker">AI BESTIARY · 2026-10-22</div>
+  <h1>召唤师图鉴：我现在能召唤的全部法力</h1>
+  <div class="sub">Every AI she can actually call on in October 2026 — what each does, what it costs, and which few are worth adding. 配套：<a href="../summoner/index.html" style="color:#4E8A28">《召唤师手册》</a> · <a href="2026-10-21-top-summoner.html" style="color:#4E8A28">《顶级召唤师》</a></div>
+
+  <div class="note-item">
+    <h3>1. 总论：缺的不是模型，是分工</h3>
+    <p><span class="topic">全景</span></p>
+    <p>2026 年 10 月，四家的竞争轴心已经从「谁的模型最聪明」变成「订阅里打包了什么」：价格带统一收敛到 $8 / $20 / $30 / $100–200 四段，模型之间是各有所长，不是谁碾压谁。</p>
+    <p>所以她的法力缺口不在数量，在三处：<b>① 已付费的装备没用满；② 缺一支不同家族的施工队（会诊和备份都靠它）；③ 缺几个专长召唤物（搜索、短剧视频、配音）。</b>本图鉴逐个点名、标价、定岗位，最后给新增排序和两套配置。</p>
+    <p>口径：2026-10-22 四路调研（前沿 / 专长 / 创意 / 仆从）+ Gemini 会诊（Flash 已回，Argon 盲评待补）+ Muse 终审。价格为美国区月价，变动极快，付款前以官网为准；未核实处文中标注。</p>
+    <blockquote>法力不在召唤得多，在分工得清、验收得住。</blockquote>
+    <p class="en">By October 2026 the frontier race is no longer about the smartest model — it is about what each subscription bundles. Her gaps are not numerical: paid gear she underuses, no second model family for cross-checks and backup, and a few missing specialists. This bestiary names, prices, and assigns every summon she can actually call.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>2. 在役阵容：已经付了钱的法力</h3>
+    <p><span class="topic">已有</span></p>
+    <ul class="pts">
+      <li><b>Gemini 订阅（现役主力）</b>——Gemini 4 Argon（2026-09-30 发布，付费档可达）+ Antigravity + NotebookLM 高配 + Nano Banana Pro 生图 + Flow 每月 1,000 积分（Veo 3.1 视频）。两个提醒：<b>Flow 积分按月清零，不用就是白扔</b>；她的确切档位（AI Pro $19.99 / Ultra $99.99 起）待她本人确认——能在 Antigravity 里调 Argon，按官方口径是 Ultra 的强信号。</li>
+      <li><b>X Premium $8（祖父档，别退）</b>——2026-10-12 xAI 把 Grok 与 X 订阅合并成新体系（Plus $8 / Premium $30 / Super $100 / Ultra $200，全家共用一个周额度池）。她这份旧档按原价原权益保留：X 内 Grok 上限约为免费档的 4 倍量级（官方未公布精确条数）。<b>退了就买不回来。</b></li>
+      <li><b>Muse（经本应用，总指挥在役）</b>——但没有 Claude 付费订阅，就等于没有 Claude Code、没有 Cowork、没有 Opus 直连。这是 §7 把 Claude Pro 排第一的原因。</li>
+      <li><b>免费在役</b>——NotebookLM 免费额度、DeepSeek / Qwen 免费聊天（只聊天，敏感内容不进消费版 App，见 §4）。</li>
+    </ul>
+    <p class="en">Already paid for: a Gemini subscription (Argon, Antigravity, high-tier NotebookLM, Nano Banana Pro, 1,000 monthly Flow credits that expire unused), a grandfathered $8 X Premium (never cancel — it cannot be bought back after the October 12 plan merger), and Muse via this app — but no Claude plan, which means no Claude Code, no Cowork, no direct Opus.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>3. 四大前沿图鉴</h3>
+    <p><span class="topic">前沿</span></p>
+    <ul class="pts">
+      <li><b>ChatGPT（GPT-6.1 Sol，Plus $20）</b>——岗位：全能副手 + 语音陪练。独门：实时语音四家最成熟（GPT-Live，练口语正对口）；Plus 含 Codex 云端派活和办公 agent（Work）。坑：<b>Sora 已于 2026-09-24 彻底关停</b>，别再拿它规划视频；型号换得最快，教程最容易过期；免费 / Go 档带广告。</li>
+      <li><b>Claude（Opus 5.5 / Fable 5.1，Pro $20）</b>——岗位：长文与逻辑终审 + 第二施工队。独门：Artifacts + Projects；<b>Pro 档直接含 Claude Code，四家唯一</b>；Cowork 桌面 agent 最贴「指挥型」用户。坑：限额最不透明（5 小时窗 + 周上限双重计量），重度使用要 Max $100 起；Fable 在 Pro 上另烧 credits；无原生生图 / 视频。</li>
+      <li><b>Grok（4.7，她的 $8 旧档已覆盖基础）</b>——岗位：X 实时雷达。独门：唯一原生吃 X 全量信息流的模型——热帖、舆情、正在发生什么，无对手；Imagine 生图 + 图转视频，尺度最宽。坑：新体系额度只给倍数不给数字；写作与施工不是最强项；常驻 agent（Grok Bot）要新 Premium $30 才含。<b>裁决：基础档够用，不升级。</b></li>
+      <li><b>Gemini（4 Argon，已订阅）</b>——岗位：现役主力 + 生态中枢。独门：一个订阅打包搜索 AI Mode、Gmail / Docs 内嵌、5 TB 存储、NotebookLM、Veo——单是存储（2 TB 单买 $9.99）就回本一半；API 价格四家最低。坑：最强能力被 Ultra 分档墙挡住一部分；限额是「算力制」，不透明。</li>
+    </ul>
+    <p class="en">The big four, assigned: ChatGPT (GPT-6.1 Sol) — all-rounder plus the best voice mode for speaking practice; Codex included at Plus; Sora is shut down for good. Claude (Opus 5.5 / Fable 5.1) — long-form judgment and the second build crew; Pro uniquely bundles Claude Code; quotas are the murkiest. Grok (4.7) — the X real-time radar, already covered by her $8 legacy plan; do not upgrade. Gemini (4 Argon) — the incumbent hub whose bundle (search, mail, storage, NotebookLM, Veo) pays for itself.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>4. 专长召唤物：搜索、学习与国产模型</h3>
+    <p><span class="topic">专长</span></p>
+    <ul class="pts">
+      <li><b>Perplexity（免费可打，Pro $20）</b>——引用优先的答案引擎，是查证工具不是写作工具。独门是 <b>Focus 模式</b>：查痛点切 Social（只搜论坛与社媒）、查论文切 Academic——这一步比升 Pro 更值钱，免费档就有。Pro 给不限量 Pro Search 与 Deep Research；Max $200 买的是额度与多模型会诊，不是「更真的答案」，不买。</li>
+      <li><b>NotebookLM（她订阅内已提额）</b>——只读你给的资料的学习机：回答严格限定在信源内并标引用，幻觉最低。把长文、访谈、论文喂进去，生成双人播客讲解、闪卡、测验、思维导图。<b>这是全场最常被漏掉的一格法力</b>——「读不懂」的问题，一半靠它解决。</li>
+      <li><b>DeepSeek（API 按量，月均几美元）</b>——正确打开方式是 API，不是 App。V4 系列谷时入价约 $0.15 / 百万 token，比旗舰便宜约一个数量级，还带缓存折扣；批量杂活、逻辑挑刺走它。红线：数据合规是真雷区（2026-10-19 美国 DHS 下令联邦机构移除；普通公众在美国使用仍合法），敏感内容不进消费版 App，走 API 或美国境内部署。</li>
+      <li><b>Kimi（会员 $19 起）</b>——国产里综合体验最「国际化」：1M 上下文、中文长文理解第一梯队、美国可直达，自带 agent 与深度研究。坑：积分池把聊天 / 研究 / 编程混在一起烧；消费版隐私政策写明对话用于训练且无退出选项——机密不放。</li>
+      <li><b>Qwen（聊天免费免注册）</b>——开放权重最彻底的家族（大量 Apache 2.0 可商用），价值在「到处都是它」：无数第三方工具内置，你常常已经在用而不自知。不必专门订阅，知道它在那儿即可。</li>
+      <li><b>GLM / 豆包 / Meta AI / Copilot 裁决</b>——GLM 是程序员向的平替引擎，与她的工作流不重叠，略过；豆包本体美国区被锁（海外版对美锁定），用不上，它的 Seedance / Seedream 将来可经第三方 API 间接调用；Meta AI 自 2025-12 起对话默认用于广告定向，商业想法别在那儿聊；Copilot 只有重度 Office 用户才值，她不买。</li>
+    </ul>
+    <p class="en">Specialists: Perplexity is a citation-first research tool — its Focus modes (Social for pain points, Academic for papers) matter more than the Pro tier. NotebookLM is the most-missed power in the whole list: a source-bound study machine that turns long reads into podcasts, flashcards, and quizzes. DeepSeek's value is its API (an order of magnitude cheaper), not its consumer app. Kimi is the most international Chinese model; Qwen wins by being everywhere for free. GLM, Doubao, Meta AI, and Copilot all get a pass, each for a stated reason.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>5. 创意系图鉴：图、视频、声音</h3>
+    <p><span class="topic">创意</span></p>
+    <p><b>图像</b></p>
+    <ul class="pts">
+      <li><b>Nano Banana Pro（Gemini 3 Pro Image，她订阅内已含）</b>——综合首选：改图保主体的一致性最强、图内短文字约 95% 准、API 可出 4K。卡面美术与封面改图，先走它。</li>
+      <li><b>Midjourney V8.1（$10 起）</b>——美学天花板，「第一眼哇」的封面氛围图仍是标杆。短板：图内文字差、默认公开（Pro 档才私密）、无免费档。按需月订，不必常驻。</li>
+      <li><b>Ideogram 4.0（$20）/ Recraft V4.1（$10 起）</b>——带文字的设计（海报、标题图）找 Ideogram；要可编辑 SVG 矢量与成套品牌资产找 Recraft。</li>
+      <li><b>Flux 2 / Grok Imagine</b>——写实标杆与宽松尺度的梗图，各备一格即可；Imagine 她的 X 档内就有额度，不必另付。</li>
+    </ul>
+    <p><b>视频</b></p>
+    <ul class="pts">
+      <li><b>Kling 3.0 可灵（国际版 Standard 约 $10 起）</b>——姐姐短剧的主力：一次最多 6 个连贯镜头、参考图锁脸锁服装、原生音频 + 多语种唇形。关键一条：<b>中美两边都能直连</b>，姐姐在国内可直接用，省掉整套跨境执行的复杂度。积分烧得快，按生产节奏上 Pro（约 $33）。</li>
+      <li><b>Veo 3.1（Flow，她订阅内）</b>——单条质感与原生声音首选。每月 1,000 积分 ≈ 10 条 Quality 或 50 条 Fast——<b>先把每月送的积分用满，再谈买别家</b>。</li>
+      <li><b>Hailuo H3（MiniMax，约 $10.5 起）</b>——参考驱动的编辑与性价比，国内可用，姐姐的第二选择。Runway Gen-4.5（$15 起）是专业工作流与多模型聚合，等真有剪辑量再说。附注：字节 Seedance（即梦）在国内短剧圈口碑极强、角色一致性出众，姐姐可一并试（细节未核实）。</li>
+      <li><b>⚠️ Sora 已停运</b>——App 2026 年 4 月关闭、API 9 月 24 日下线，OpenAI 无继任视频产品。旧教程、旧价格一律作废。</li>
+    </ul>
+    <p><b>声音</b></p>
+    <ul class="pts">
+      <li><b>ElevenLabs（Starter $6 / Creator $22）</b>——配音与声音克隆的默认答案，90+ 语言，克隆音色可跨语种说话。姐姐短剧的角色配音走它。</li>
+      <li><b>ChatGPT 语音 / Suno（Pro $10）/ NotebookLM 音频</b>——语音是陪练（练口语），不是配音生产；Suno 管音乐，注意 2026-09 起下载数成了新瓶颈；NotebookLM 音频概览管「听懂资料」，免费。</li>
+    </ul>
+    <p class="en">Creative bench: Nano Banana Pro (already in her Gemini plan) is the all-round image pick; Midjourney rents the aesthetic ceiling by the month; Ideogram and Recraft cover text-in-image and editable vectors. For video, Kling 3.0 is the sister's drama workhorse — multi-shot consistency, and it works natively in both the US and China; Veo 3.1 in Flow is already paid for, so burn the monthly credits first. Sora is dead — retire every old tutorial. ElevenLabs owns voice; ChatGPT voice is a speaking coach, not a dubbing studio.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>6. 仆从系图鉴：agent、bots 与编程</h3>
+    <p><span class="topic">仆从</span></p>
+    <ul class="pts">
+      <li><b>Antigravity（在役主力，增量成本 0）</b>——agent 优先的指挥台：多 agent 并行、产出可核查的 artifacts，与她的「派活—验收」打法同构。提醒：产品仍新、额度规则变动频繁，重要仓库留 git 备份，别把唯一生产流程全押一家。</li>
+      <li><b>Claude Code（含在 Claude Pro $20）</b>——不同家族的第二施工队 + 代码终审。这正是 §7 第一名的核心理由：买的不是聊天，是冗余与会诊。</li>
+      <li><b>Codex（含在 ChatGPT Plus $20）</b>——云端批量派活型：把边界清楚的小任务排队丢出去，回来逐个验收 PR。与指挥官模式合拍；若订 Plus，它和语音是两根付费支柱。</li>
+      <li><b>Cursor / Windsurf / Copilot（不买）</b>——编辑器型工具，价值大头属于「坐在编辑器里写代码的人」；她不坐编辑器，边际价值打三折。且 Cursor 2026-10-12 起并入 X 订阅体系、与 Grok 共用额度池，账更难算。</li>
+      <li><b>Replit Agent（Core $25）</b>——零配置出原型本类最快，但 agent、算力、部署共用一个 credit 池，失败的尝试也扣费——偶尔验证想法可以，不做长期产品的家。</li>
+      <li><b>Manus（$20 起）/ Genspark（$25）/ Lindy（$30 起）</b>——Manus 最像「多雇一个助理」，成套调研与一次性小网站能交活，但费用不可预估、无预算护栏，只当偶尔外包；Genspark 是交付物杂货铺（报告、幻灯、表格一站出），成品只算第一稿；Lindy 管行政自动化（邮件分诊、会议跟进），功能真实，但她现在的业务量喂不饱它——时机未到。</li>
+      <li><b>Devin（明确不买）</b>——它假设你已有正经仓库、CI 和审 PR 的工程纪律；探索期「做出来、看一眼、推翻一半」的循环，恰恰是它烧钱最快的形状。等有稳定仓库和明确 backlog 再议。</li>
+      <li><b>Poe（$19.99）/ ChatHub（约 $19）</b>——会诊弹药库二选一：Poe 胜在模型全（100+ 模型与自建 bots，冷门模型当陪审），ChatHub 胜在同屏并排（一次最多 6 个模型，正是她的会诊习惯）。会诊量大了再买一个，先用免费档。</li>
+      <li><b>Make / n8n（自动化）</b>——第一条真流水线（订单通知、内容分发）出现时，先用 Make 练手（免费 1,000 credits / 月，模板多）；复杂了再迁 n8n（自托管近乎免费，但要自己运维）。现在先收藏，不启用。</li>
+    </ul>
+    <p class="en">The servant class: Antigravity stays the command deck at zero marginal cost. Claude Code (inside Claude Pro) is the second crew from a different family; Codex (inside ChatGPT Plus) takes queued, well-scoped tasks. Editor-centric tools (Cursor, Windsurf, Copilot) lose two-thirds of their value for a director who never sits in the editor. Replit rents speed at unpredictable credit cost; Manus is an occasional contractor, not staff; Genspark and Lindy are real but premature; Devin is a clear no. Poe and ChatHub are the consultation armory — buy one when consultation volume justifies it. Make first, n8n later, when the first real pipeline exists.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>7. 新增召唤排序（带分数）</h3>
+    <p><span class="topic">决策</span></p>
+    <ul class="pts">
+      <li><b>1 · Claude Pro $20 — 9 分</b>：一笔钱买三样：第二施工队（Claude Code）、桌面仆从（Cowork）、异族终审脑（Opus / Fable 直连）。她的系统冗余从 0 到 1，就差这一笔。</li>
+      <li><b>2 · DeepSeek API 约 $3 / 月 — 8.5 分</b>：不是订阅是按量。批量杂活与挑刺的成本砍一个数量级，专职廉价杂役。</li>
+      <li><b>3 · Kling（姐姐线，$10 起）— 8.5 分</b>：这是给短剧生产线的投资，不记她的工具账；国内直连一项，就值回票价。</li>
+      <li><b>4 · ChatGPT Plus $20 — 7.5 分</b>：买的是语音陪练（她要练口语，这是四家最成熟的）+ Codex 派活。扣分项：与 Gemini 重叠面最大，且会诊里有「浪费」裁决（见 §9）——值不值，取决于她练口语的决心有多真。</li>
+      <li><b>5 · Perplexity Pro $20 — 7 分</b>：先免费跑两周，Focus 模式先用起来；当「查痛点、查竞品」变成每周固定动作，再升 Pro。</li>
+      <li><b>6 · ElevenLabs Starter $6 — 7 分</b>：等姐姐短剧进入配音阶段再开，小钱大用。</li>
+      <li><b>7 · ChatHub 或 Poe $20 — 6.5 分</b>：会诊弹药库，等会诊频率上来再二选一，现在买是闲置。</li>
+    </ul>
+    <p class="en">The summoning order: Claude Pro first (9/10) — one payment buys a second crew, a desktop servant, and a foreign-family judge. DeepSeek API (8.5) for near-free grunt work. Kling (8.5) belongs to the sister's production line. ChatGPT Plus (7.5) is really a voice coach plus Codex. Perplexity Pro, ElevenLabs, and a consultation gateway follow, each gated on a real trigger rather than curiosity.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>8. 两套法力配置</h3>
+    <p><span class="topic">配置</span></p>
+    <ul class="pts">
+      <li><b>省钱版 ≈ $51 / 月</b>：Gemini Pro $19.99 + X Premium $8（均已在付）+ Claude Pro $20（新）+ DeepSeek API 约 $3（新）。新增支出只有 $23，法力结构从「单核」变「双核 + 廉价杂役」。</li>
+      <li><b>全力版 ≈ $166 / 月</b>：省钱版 + ChatGPT Plus $20 + Perplexity Pro $20 + ChatHub / Poe $20 + ElevenLabs Creator $22 + Kling Pro 约 $33（姐姐线）。每一格都有明确岗位，没有一件是「买了再说」。</li>
+      <li><b>中间态（推荐走法）</b>：先上省钱版，跑一个月看账本——哪格额度先见底，哪格就是下一笔钱的去向。用额度账说话，不靠想象加购。</li>
+    </ul>
+    <p class="en">Two loadouts: the lean build (~$51/mo, only $23 of it new) turns a single-core setup into dual-core plus cheap labor. The full build (~$166/mo) fills every specialist seat. Recommended path: run the lean build for a month and let the quota ledger — not imagination — decide the next purchase.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>9. 会诊分歧（事实与观点分开）</h3>
+    <p><span class="topic">会诊</span></p>
+    <ul class="pts">
+      <li><b>分歧一 · ChatGPT Plus</b>：Gemini Flash 裁「完全浪费」（观点）；调研事实是语音与 Codex 均为独门、无替代。Muse 终审：Flash 的判断对纯聊天用户成立，对「要练口语 + 要派活」的她不成立，7.5 分维持。</li>
+      <li><b>分歧二 · Poe</b>：Flash 裁「智商税」（观点）；调研显示它是冷门模型陪审的最低成本入口。Muse 终审：她现阶段会诊量不大，两边各对一半——先免费，不付费。</li>
+      <li><b>分歧三 · Cursor</b>：Flash 称它是「自然语言指挥写产品的唯一工业级工具」（观点）；四路调研一致认为它是编辑器型工具，且新定价已并入 X 订阅体系。Muse 终审：她的主场是指挥台不是编辑器——不买。</li>
+      <li><b>三方共识</b>：Claude Pro 是第一新增；Grok 不升级（实时雷达的价值在「有」，不在「多」）；多模型协作最危险的坑是传话失真（见 §10）。</li>
+      <li><b>Argon 盲评</b>：她手工调用中——它没看过以上任何一稿，意见回来后补入本节。盲评的价值，正在于这份独立。</li>
+    </ul>
+    <p class="en">Where the council disagreed: Gemini Flash called ChatGPT Plus a total waste and Poe a fool's tax, and crowned Cursor the one industrial tool — the research record and the final review side against all three, for stated reasons (voice and Codex are unique; Poe is the cheapest jury pool; Cursor serves people who sit in editors). Consensus held on Claude Pro first, no Grok upgrade, and the relay-distortion pitfall. Argon's blind review is still out; it will be appended here, unedited.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>10. 一个坑：传话失真</h3>
+    <p><span class="topic">协议</span></p>
+    <p>Flash 的原话要点：把 A 模型的输出直接复制给 B 继续做，B 会默认 A 全对，顺着细微的逻辑漂移一路推下去，最终南辕北辙——模型有讨好倾向，接棒者不天然质疑上一棒。</p>
+    <p>这正是她的协奏协议 (2)「文件就是会议室」要防的事：<b>AI 之间不传话，只读写提炼过的规格文件；人做状态机，剔掉修饰词再喂下一棒。</b>手册已经写对了，图鉴只负责给新成员立规矩：每一个新召唤的 AI，入职第一件事是读标准文件，不是读上一位的聊天记录。</p>
+    <blockquote>召唤的礼仪：先读标准，再接活。传话会失真，文件不会。</blockquote>
+    <p class="en">The one pitfall every source agreed on: relay distortion. Paste model A's output into model B and B treats it as gospel, compounding small drifts into a wrong destination. Her protocol already answers it — AIs never relay messages; they read and write distilled spec files, and the human stays the state machine. Every new summon reads the standards first, not the previous model's chat log.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>11. 结论</h3>
+    <p><span class="topic">结论</span></p>
+    <blockquote>法力 = 在役用满 + 异族冗余 + 专长补位。其余都是收藏欲。</blockquote>
+    <p>下一步只有一件事是确定的：Claude Pro 开了之后，她的系统第一次有常驻的「第二双眼睛」。其余的格子，按 §8 的账本节奏一格一格点亮——每点亮一格，都要能说清它接管了哪类活。</p>
+    <p class="en">Power equals paid gear fully used, plus a foreign-family backup, plus specialists filling real seats — everything else is collecting. One move is certain: Claude Pro gives her system its first permanent second pair of eyes. Every slot after that gets lit one at a time, each with a named job.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 卷帘人 📜 · 配套手册 <a href="../summoner/index.html" style="color:#4E8A28">《召唤师手册》</a> · 系统篇 <a href="2026-10-21-top-summoner.html" style="color:#4E8A28">《顶级召唤师》</a> · 数据口径 2026-10-22</div>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
