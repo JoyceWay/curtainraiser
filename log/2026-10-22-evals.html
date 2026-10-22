@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>给 AI 打分：Evals 入门 — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* checklist */
+  .check-progress {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; letter-spacing: 1px; color: #4E8A28;
+    margin: 0 0 18px; font-weight: 600;
+  }
+  .check-group { margin-bottom: 26px; }
+  .check-group h4 {
+    font-size: 16px; font-weight: 700; margin: 0 0 8px; color: #342C2C;
+  }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 9px 0 9px 2px; border-bottom: 1px solid rgba(52,44,44,.07);
+    font-size: 16px; line-height: 1.7; color: #3E3838;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-item input[type="checkbox"] {
+    accent-color: #66AC35; width: 18px; height: 18px;
+    margin: 4px 0 0; flex: none; cursor: pointer;
+  }
+  .check-item label { cursor: pointer; }
+  .check-item.done label { color: #8B8B8B; text-decoration: line-through; }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+      <div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+        <a href="2026-10-21-ai-summoner.html"><b>召唤师</b><span>指挥 AI 笔记</span></a>
+        <a href="2026-10-21-top-summoner.html"><b>顶级召唤师</b><span>协奏与记录</span></a>
+        <a href="2026-10-22-ai-bestiary.html"><b>召唤师图鉴</b><span>全部法力盘点</span></a>
+        <a href="2026-10-22-notebooklm.html"><b>工具入门</b><span>NotebookLM</span></a>
+        <a href="2026-10-22-evals.html"><b>评估</b><span>Evals 入门</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+      <a href="../styles/index.html"><b>体库</b><span>STYLE LIBRARY</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+
+  <div class="kicker">EVALS · 2026-10-22</div>
+  <h1>给 AI 打分：Evals 入门</h1>
+  <div class="sub">EVALS — HOW TOP SUMMONERS GRADE THEIR AI</div>
+
+  <div class="note-item">
+    <h3>1. 它是什么</h3>
+    <p><span class="topic">概念</span></p>
+    <p><b>Evals</b> 是 evaluations 的简称：给 AI 的产出一套打分、挑错的方法。不是考一次试，是长期盯着它干活、记账、算账。</p>
+    <p>这套方法最有名的布道者是 <b>Hamel Husain</b>——前 GitHub 的机器学习负责人，现在专门给 AI 产品团队当顾问。他的长文 <a href="https://hamel.dev/blog/posts/evals.html">《Your AI Product Needs Evals》</a>（你的 AI 产品需要评估）里有一句话是全篇的地基：<b>AI 产品失败，多半不是模型不行，是没人认真看过它的错误。</b></p>
+    <p>先把三个词说清，后面全靠它们：</p>
+    <ul class="pts">
+      <li><b>评估（eval）</b>——给 AI 的产出打分、判好坏的整套做法。一次打分是评估，一套常年运转的打分流程也是评估</li>
+      <li><b>错误分析（error analysis）</b>——把 AI 犯的错一条条翻出来、归类，看它主要错在哪一类。先看错，才知道修什么</li>
+      <li><b>评估器（evaluator）</b>——真正执行打分的那个东西。可以是一份人工清单，可以是一段检查脚本，也可以是另一个 AI——让 AI 当裁判打分，行话叫 <b>LLM-as-judge</b></li>
+    </ul>
+    <p class="en">Evals = a system for grading AI output, not a one-off test. Hamel Husain's claim: most AI products fail not because the model is weak, but because nobody ever looked carefully at its errors. Three terms: eval (the grading practice), error analysis (sorting failures into categories), evaluator (whatever does the grading — a checklist, a script, or another AI as judge).</p>
+  </div>
+
+  <div class="note-item">
+    <h3>2. 为什么召唤师必须会</h3>
+    <p><span class="topic">分析</span></p>
+    <p>你现在的验收，靠的是直觉加经验。你给单词卡例句设的「三道门」——用到目标词、配得上图、好笑够 8 分——其实就是一套手工评估，只是没记账。</p>
+    <p>Evals 做的事，是把验收从「感觉」变成「仪表盘」：</p>
+    <ul class="pts">
+      <li><b>哪类错最多</b>——数出来，而不是隐约觉得「最近老翻车」</li>
+      <li><b>改完有没有变好</b>——修了一个问题，别的问题有没有被带坏，要有数字作证</li>
+      <li><b>AI 的判断和你的判断差多少</b>——这是能不能放心把验收交给 AI 的前提</li>
+    </ul>
+    <p>按《顶级召唤师》的坐标，验收力是你当前这一级的短板，evals 就是这一级的功课。没有 evals 的迭代是凭感觉改：改一处，坏一处，还不知道坏在哪。</p>
+    <p class="en">Your acceptance checks run on intuition today — your three gates for vocab examples are already a manual eval, just unrecorded. Evals turn acceptance into a dashboard: which failure type is most common, whether a fix actually helped, and how far AI judgment sits from yours. No evals, and every iteration is guesswork.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>3. 核心三动作</h3>
+    <p><span class="topic">方法</span></p>
+    <ul class="pts">
+      <li><b>① 看数据（look at your data）</b>——亲手翻 AI 的产出，一条一条看。Hamel 说这是不可跳过的一步：不看数据，后面所有自动化都是空中楼阁。看的时候不评判，先记录</li>
+      <li><b>② 错误分类计数</b>——把翻到的错误归类、计数，哪类最多先修哪类。你已经干过一次教科书级的：单词卡例句审计，91 条里数出 28 条「例句没用到目标词」——一个失败类别被数出来，然后逐条修到清零。这就叫错误分析</li>
+      <li><b>③ 建评估器并对齐</b>——把你的标准写成可复用的打分规则：先是清单，再是脚本检查，最后可以让 AI 当裁判。关键指标叫<b>人机判断对齐率</b>：同一批产出，AI 打的分和你打的分，一致的占多少。不一致的条目逐条看——分歧不在 AI 笨，多半是你的标准没写清。那是把品味写成文字的地方</li>
+    </ul>
+    <p class="en">Three moves: (1) Look at your data — read the outputs yourself, no skipping. (2) Count failures by category — your vocab audit found 28 of 91 examples missing the target word; that category got counted, then zeroed. (3) Build an evaluator and align it — the key metric is human–AI agreement rate; every disagreement is a place where your standard wasn't written clearly enough.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>4. 成熟度三级</h3>
+    <p><span class="topic">坐标</span></p>
+    <ul class="pts">
+      <li><b>Level 1 · 人肉评估</b>——看产出、记错误，全靠人眼。你的三道门在这里。这一级不丢人，是所有人的地基</li>
+      <li><b>Level 2 · 半自动</b>——错误分类成体系，再加简单的自动检查。比如用脚本查「例句里有没有目标词」，机器先筛一遍，人只看筛出来的</li>
+      <li><b>Level 3 · 评估器闭环</b>——AI 裁判日常打分，定期拿你的判断校准对齐；每次改动流水线，先跑一遍评估再上线，行话叫<b>回归测试</b>——确认旧问题没复活</li>
+    </ul>
+    <p>三级不是跳着上的。每一级都建立在上一级的账本上：没有 Level 1 数出来的失败类别，Level 3 的裁判不知道该查什么。</p>
+    <p class="en">Three levels: Level 1 manual review (your three gates live here). Level 2 adds a failure taxonomy plus simple automated checks. Level 3 closes the loop — an AI judge scoring daily, recalibrated against your judgment, with a regression run before any pipeline change ships. Each level stands on the bookkeeping of the one below.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>5. 学习路径</h3>
+    <p><span class="topic">路径</span></p>
+    <ul class="pts">
+      <li><b>第一级 · 读懂</b>——读 Hamel 原文。配 NotebookLM 第一本：先听它的双人播客版，再读原文，最后用问答自测。读完能用自己的话讲清「什么是错误分析」，才算过</li>
+      <li><b>第二级 · 动手</b>——拿单词卡流水线做一次完整错误分析：翻最近一批产出，归类，计数，写出你的<b>失败分类表 v1</b>。这是你的第一本评估账</li>
+      <li><b>第三级 · 上裁判</b>——做第一次人机对齐实验：让 NotebookLM 按你的审核标准给今天的高盛稿打分，你自己也独立打一份，再对答案、记分歧、算对齐率</li>
+      <li><b>第四级 · 闭环</b>——给一个流水线装上自动检查，从最简单的一条规则开始。一条就好，跑通了再加</li>
+    </ul>
+    <p class="en">The path: (1) Read Hamel — via NotebookLM: listen, read, self-quiz. (2) Do one full error analysis on the vocab pipeline and write failure taxonomy v1. (3) Run your first human–AI alignment experiment: NotebookLM grades today's Goldman draft against your rubric, you grade it too, compare. (4) Close the loop with one automated check on one pipeline.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>6. 学习清单</h3>
+    <p><span class="topic">清单</span></p>
+    <p>学完一项勾一项。进度存在这台设备的浏览器里，换设备不跟随。</p>
+    <p class="check-progress" id="check-progress">已完成 0 / 共 14</p>
+
+    <div class="check-group">
+      <h4>第一级 · 读懂</h4>
+      <div class="check-item"><input type="checkbox" id="ev-01"><label for="ev-01">用 NotebookLM 建第一本笔记本，来源只放 Hamel 的《Your AI Product Needs Evals》</label></div>
+      <div class="check-item"><input type="checkbox" id="ev-02"><label for="ev-02">听完这篇的 Audio Overview 双人播客</label></div>
+      <div class="check-item"><input type="checkbox" id="ev-03"><label for="ev-03">读完 Hamel 原文一遍</label></div>
+      <div class="check-item"><input type="checkbox" id="ev-04"><label for="ev-04">用自己的话讲一遍什么是错误分析——讲回来才算过</label></div>
+    </div>
+
+    <div class="check-group">
+      <h4>第二级 · 动手</h4>
+      <div class="check-item"><input type="checkbox" id="ev-05"><label for="ev-05">把单词卡最近一批产出从头翻完，不跳着看</label></div>
+      <div class="check-item"><input type="checkbox" id="ev-06"><label for="ev-06">翻到的错误逐条记下来，先记录不评判</label></div>
+      <div class="check-item"><input type="checkbox" id="ev-07"><label for="ev-07">给错误归类、计数，写出失败分类表 v1</label></div>
+      <div class="check-item"><input type="checkbox" id="ev-08"><label for="ev-08">挑数量最多的那一类，先修它</label></div>
+    </div>
+
+    <div class="check-group">
+      <h4>第三级 · 上裁判</h4>
+      <div class="check-item"><input type="checkbox" id="ev-09"><label for="ev-09">把文章审核标准整理成一份能照着打分的规则</label></div>
+      <div class="check-item"><input type="checkbox" id="ev-10"><label for="ev-10">让 NotebookLM 按这份规则给高盛稿打分</label></div>
+      <div class="check-item"><input type="checkbox" id="ev-11"><label for="ev-11">自己独立给同一篇打分，再和 AI 的分对答案</label></div>
+      <div class="check-item"><input type="checkbox" id="ev-12"><label for="ev-12">分歧条逐条看完，记下这次的人机对齐率</label></div>
+    </div>
+
+    <div class="check-group">
+      <h4>第四级 · 闭环</h4>
+      <div class="check-item"><input type="checkbox" id="ev-13"><label for="ev-13">给单词卡流水线加一条自动检查（如：例句必须包含目标词）</label></div>
+      <div class="check-item"><input type="checkbox" id="ev-14"><label for="ev-14">流水线每次改动后，先跑一遍检查再上线</label></div>
+    </div>
+
+    <p class="en">The checklist mirrors the path: read it, do it once by hand, let an AI judge and align it, then close the loop. Progress is stored locally in this browser.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>7. 一句话</h3>
+    <p><span class="topic">结论</span></p>
+    <blockquote>不看数据的迭代，是闭着眼睛开车。</blockquote>
+    <p>顶级召唤师和普通玩家的区别，不在咒语念得多花哨，在账记得多清楚：错在哪、错多少、修好了没有——全有数。</p>
+    <p class="en">Iterating without looking at your data is driving with your eyes closed. The gap between a top summoner and everyone else isn't fancier prompts — it's cleaner books: what failed, how often, and whether the fix worked.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 卷帘人 📜</div>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+
+(function(){
+  var KEY="evals-checklist-v1";
+  var boxes=Array.prototype.slice.call(document.querySelectorAll('.check-item input[type="checkbox"]'));
+  var progress=document.getElementById("check-progress");
+  function load(){
+    try{ return JSON.parse(localStorage.getItem(KEY)||"{}"); }catch(e){ return {}; }
+  }
+  function save(state){
+    try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
+  }
+  function render(state){
+    var done=0;
+    boxes.forEach(function(b){
+      var on=!!state[b.id];
+      b.checked=on;
+      b.closest(".check-item").classList.toggle("done", on);
+      if(on) done++;
+    });
+    if(progress){ progress.textContent="已完成 "+done+" / 共 "+boxes.length; }
+  }
+  var state=load();
+  render(state);
+  boxes.forEach(function(b){
+    b.addEventListener("change", function(){
+      state[b.id]=b.checked;
+      if(!b.checked) delete state[b.id];
+      save(state);
+      render(state);
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>用起来：NotebookLM — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* 学习清单 checklist */
+  .progress {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; font-weight: 600; letter-spacing: 1px;
+    color: #4E8A28; margin: 2px 0 8px;
+  }
+  .phase {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; font-weight: 600; letter-spacing: 2px;
+    color: #4E8A28; margin: 24px 0 4px;
+  }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 11px 4px; border-bottom: 1px solid rgba(52,44,44,.07);
+    font-size: 16px; line-height: 1.6; color: #3E3838; cursor: pointer;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-item input {
+    flex: none; width: 19px; height: 19px; margin-top: 3px;
+    accent-color: #66AC35; cursor: pointer;
+  }
+  .check-item.done span { color: #8B8B8B; text-decoration: line-through; }
+  .check-item b { color: #342C2C; }
+  .check-item.done b { color: #8B8B8B; }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+      <div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+        <a href="2026-10-21-ai-summoner.html"><b>召唤师</b><span>指挥 AI 笔记</span></a>
+        <a href="2026-10-21-top-summoner.html"><b>顶级召唤师</b><span>协奏与记录</span></a>
+        <a href="2026-10-22-ai-bestiary.html"><b>召唤师图鉴</b><span>全部法力盘点</span></a>
+        <a href="2026-10-22-notebooklm.html"><b>工具入门</b><span>NotebookLM</span></a>
+        <a href="2026-10-22-evals.html"><b>评估</b><span>Evals 入门</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+      <a href="../styles/index.html"><b>体库</b><span>STYLE LIBRARY</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+
+  <div class="kicker">READING TOOL · 2026-10-22</div>
+  <h1>用起来：NotebookLM</h1>
+  <div class="sub">NOTEBOOKLM — THE SOURCE-GROUNDED NOTEBOOK</div>
+
+  <div class="note-item">
+    <h3>1. 它是什么</h3>
+    <p><span class="topic">定义</span></p>
+    <p>Google 的 AI 笔记本，底层是 Gemini。现在有些界面把它显示为 Gemini Notebook，入口没变，还是 <code>notebooklm.google.com</code>。</p>
+    <p><b>它和普通聊天 AI 的核心区别：只读你喂给它的资料。</b>这叫 source-grounded——有据可依。它不靠自己的记忆答题，只在你给的来源里找答案。</p>
+    <ul class="pts">
+      <li><b>每个回答带引用标注</b>——点一下数字，跳回原文出处，哪句话从哪来，一清二楚</li>
+      <li><b>一本笔记本最多 50 个来源</b>——PDF、网页链接、YouTube、Google Docs、粘贴文本、音频，都能喂</li>
+      <li><b>一本 = 一个主题</b>——一篇文章一本、一门课一本、一个研究题目一本，互不串味</li>
+    </ul>
+    <p class="en">NotebookLM is Google's AI notebook, powered by Gemini. The key difference: it is source-grounded — it answers only from the sources you feed it, and every answer carries citations that jump back to the original text. Up to 50 sources per notebook: PDFs, web links, YouTube, Google Docs, pasted text, audio.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>2. 为什么对你重要</h3>
+    <p><span class="topic">分析</span></p>
+    <ul class="pts">
+      <li><b>它是读长文的入口，不是终点</b>——先喂进去问一遍、听一遍，再决定哪部分值得细读。注意力只花在刀刃上</li>
+      <li><b>引用标注 = 天然的事实核查</b>——它说的每句话都能溯源，正好接上你的三遍核实：先有出处，再谈采信</li>
+      <li><b>这是你已经付过费的资产</b>——你的 Google AI Pro（学生免费年）自带 NotebookLM 高配额，来源数、提问次数都比免费版宽得多。不用，就是浪费</li>
+      <li><b>边界要写清</b>——生成物带 NotebookLM 标识，适合自学和内部研究，不直接当对外产品素材</li>
+      <li><b>它不会替你判断价值</b>——它只帮你读懂。哪篇值得读、读完信几分，仍然是你的活。桥不是电梯</li>
+    </ul>
+    <p class="en">Why it matters: it is the front door to long reading, not the destination — skim with it first, then decide what deserves your attention. Citations make fact-checking built-in. Your Google AI Pro already includes the high tier, so it is a paid-for asset. Boundaries: outputs carry NotebookLM branding — fine for study and internal research, not for shipping as product material. And it never judges value for you; it only helps you understand.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>3. 核心用法：四件套</h3>
+    <p><span class="topic">用法</span></p>
+    <ul class="pts">
+      <li><b>对话问答（带引用）</b>——直接问：这篇在讲什么？作者最反对什么？哪几句是原话？答完点引用核对</li>
+      <li><b>Audio Overview 双人播客</b>——把一本笔记本变成一段两人对谈音频。通勤、做家务时听一遍，长文先有个全貌</li>
+      <li><b>Studio 生成</b>——闪卡（Flashcards）背概念、自测（Quiz）考自己、思维导图（Mind Map）看结构、报告（Reports）出简报、学习指南、FAQ、时间线</li>
+      <li><b>保存笔记</b>——好答案、播客、生成物都能存成笔记，攒着就是你自己的材料库</li>
+    </ul>
+    <p class="en">The core four: chat with citations; Audio Overview, a two-host podcast of your sources for the commute; Studio outputs — flashcards, quizzes, mind maps, and reports (briefing docs, study guides, FAQs, timelines); and saved notes, so good answers become your own material library.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>4. 学习路径：三级台阶</h3>
+    <p><span class="topic">路径</span></p>
+    <ul class="pts">
+      <li><b>第一级 · 入门</b>——建第一本：Hamel Husain 的 evals 长文。只喂这 1 个来源，问 3 个问题，点开一次引用核对原文。十分钟，摸清脾气</li>
+      <li><b>第二级 · 活用</b>——给这本生成 Audio Overview 听一遍；再用闪卡 + 自测考自己，看它出的题准不准。顺手把 PCC 的课程 PDF 建一本「课本」，以后复习只问它</li>
+      <li><b>第三级 · 工作流</b>——规矩立下来：每篇要深读的长文，先过 NotebookLM，再进细读。今天就有一件实操：给高盛稿建一本「评分本」——稿子 + 你的审核标准两个来源，让它逐项打分，再把它的分和你的判断逐条对比。这就是 evals 的第一次练手。做案例研究时，同一主题的多个来源放进一本，交叉着问</li>
+    </ul>
+    <p class="en">Three steps up: (1) Start — one notebook, one source (Hamel's evals essay), three questions, one citation checked. (2) Use it — listen to the Audio Overview, quiz yourself with flashcards and a quiz, build a PCC course notebook. (3) Make it workflow — every deep read goes through NotebookLM first; build a "grading notebook" for the Goldman draft (draft + your review standards) and compare its scores with your own judgment — that is evals, practiced for real.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>5. 学习清单</h3>
+    <p><span class="topic">清单</span></p>
+    <p>学过一项，勾一项。勾选会存在这台设备的浏览器里，下次打开还在。</p>
+    <p class="progress" id="cl-progress">已完成 0 / 共 15</p>
+
+    <div class="phase">第一级 · 入门 GETTING STARTED</div>
+    <label class="check-item"><input type="checkbox" id="cl-1"><span>打开 <b>notebooklm.google.com</b>，新建第一本笔记本</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-2"><span>把 <b>Hamel 的 evals 长文</b>加为来源（链接或 PDF 都行）</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-3"><span>提 3 个问题：这篇在讲什么 / 作者最反对什么 / 对我有什么用</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-4"><span>点开任意一条回答的<b>引用标注</b>，跳回原文核对一次</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-5"><span>把一段最有用的回答<b>存成笔记</b></span></label>
+
+    <div class="phase">第二级 · 活用 PUT IT TO WORK</div>
+    <label class="check-item"><input type="checkbox" id="cl-6"><span>生成一次 <b>Audio Overview</b>，完整听一遍</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-7"><span>生成一套<b>闪卡（Flashcards）</b>，自己过一遍</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-8"><span>生成一次<b>自测（Quiz）</b>，做完看错题</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-9"><span>生成一份<b>思维导图（Mind Map）</b>，看它怎么拆结构</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-10"><span>把 <b>PCC 的课程 PDF</b> 建成一本「课本」，问它一个考试式问题</span></label>
+
+    <div class="phase">第三级 · 工作流 MAKE IT WORKFLOW</div>
+    <label class="check-item"><input type="checkbox" id="cl-11"><span>给<b>高盛稿</b>建一本「评分本」：稿子 + 我的审核标准，两个来源</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-12"><span>让它<b>按标准逐项打分</b>，并把分数和自己的判断逐条对比</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-13"><span>挑一篇要深读的长文：<b>先过 NotebookLM</b>，再决定细读哪部分</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-14"><span>做一次<b>案例研究</b>：同一主题 3 个以上来源放进一本，交叉提问</span></label>
+    <label class="check-item"><input type="checkbox" id="cl-15"><span>用 <b>Reports</b> 生成一份简报（Briefing Doc），存进自己的材料</span></label>
+
+    <p class="en">Check each item as you learn it. Your checks are saved in this browser and will still be here next time you open the page.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>6. 一句话</h3>
+    <p><span class="topic">结论</span></p>
+    <blockquote>它负责读完，你负责读懂——判断永远不外包。</blockquote>
+    <p>工具再顺手，也只是桥。走过去的，永远是自己。</p>
+    <p class="en">It reads everything; you understand what matters. Judgment is never outsourced. The tool is a bridge, not an elevator — you still walk it yourself.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 卷帘人 📜</div>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+<script>
+(function(){
+  var KEY="notebooklm-checklist-v1";
+  var boxes=Array.prototype.slice.call(document.querySelectorAll('.check-item input[type="checkbox"]'));
+  var progress=document.getElementById("cl-progress");
+  var state={};
+  try{ state=JSON.parse(localStorage.getItem(KEY)||"{}")||{}; }catch(e){ state={}; }
+  function render(){
+    var done=0;
+    boxes.forEach(function(b){
+      b.checked=!!state[b.id];
+      if(b.checked){ done++; b.parentNode.classList.add("done"); }
+      else{ b.parentNode.classList.remove("done"); }
+    });
+    if(progress){ progress.textContent="已完成 "+done+" / 共 "+boxes.length; }
+  }
+  boxes.forEach(function(b){
+    b.addEventListener("change",function(){
+      state[b.id]=b.checked;
+      try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){}
+      render();
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
