@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="data:," />
+<title>召唤师手册 · 卷帘人</title>
+<meta name="description" content="Joyce 的指挥 AI 实战手册 v1：真实图鉴（每个 AI 能帮你做什么、怎么召唤、哪里翻车）+ 核心 12 咒。全部来自自己的实战，不收传说。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+SC:wght@400;500;600&amp;family=Noto+Serif+SC:wght@700;900&amp;display=swap" rel="stylesheet" />
+<style>
+:root {
+color-scheme: light only;
+--paper:#f5f4f0;
+--ink:#110f12;
+--bar:#1a1915;
+--gray:#82817f;
+--sub:#696864;
+--accent:#ae6557;
+--hair:#d6d5d1;
+--tag-line:#d6d5d1;
+--tag-text:#82817f;
+--source:#e6e5e0;
+--source-line:#8a8987;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-width:320px;background:var(--paper)!important;color:var(--ink);color-scheme:light only!important}
+body{font-family:"Noto Sans SC","PingFang SC",sans-serif;-webkit-text-size-adjust:100%;font-size:16px;line-height:1.85}
+.sheet{width:100%;padding:20px 70px 86px;background:var(--paper)!important}
+.topbar{height:34px;display:flex;align-items:flex-start;justify-content:space-between;color:var(--gray);font:500 9px/1.2 "IBM Plex Mono",monospace;letter-spacing:.2em;white-space:nowrap}
+.topbar>div{display:flex;align-items:center;gap:14px}
+.article-word{color:var(--accent)}
+.dash{display:inline-block;width:21px;height:1px;background:var(--hair)}
+.black-rule{height:1px;background:var(--bar);width:calc(100% + 140px);margin-left:-70px}
+.meta{height:56px;display:flex;align-items:flex-start;gap:22px;padding-top:16px;border-bottom:1px solid var(--hair);color:var(--gray);font:500 9px/1.4 "IBM Plex Mono",monospace;letter-spacing:.2em}
+.meta span+span:before{content:"·";padding-right:22px;color:var(--gray)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding-top:14px}
+.tag{display:inline-flex;align-items:center;height:25px;padding:0 11px;border:1px solid var(--tag-line);background:var(--paper);color:var(--tag-text);font:500 9px/1 "IBM Plex Mono",monospace;letter-spacing:.2em}
+.headline{margin:110px 0 0 8.4%;max-width:1100px}
+h1{margin:0;color:var(--ink);font-family:"Noto Serif SC",serif;font-size:clamp(38px,5vw,72px);font-weight:900;line-height:1.13;letter-spacing:-.045em;text-align:left}
+.dek{max-width:820px;margin:27px 0 0;color:var(--sub);font-size:16px;line-height:1.85}
+.section-rule{height:1px;margin:78px 0 0;background:var(--hair)}
+.source{max-width:850px;margin:44px auto 0;padding:17px 20px 18px;border-left:3px solid var(--source-line);background:var(--source);color:var(--sub);font-size:13px;line-height:1.75}
+.article-content{max-width:none;margin:88px -70px 0;position:relative}
+.kicker{position:relative;margin:76px 14% 26px 10%!important;color:var(--gray)!important;font:500 9px/1.4 "IBM Plex Mono",monospace!important;letter-spacing:.2em}
+.kicker:first-child{margin-top:0!important}
+.chapter-no{position:absolute;left:-7.6vw;right:auto;color:var(--ink)}
+.chapter-label:before{content:"— ";color:var(--gray)}
+.article-content p{margin:0 14% 1.55em 10%;color:#333333;font-size:16px;line-height:2}
+.article-content h2{margin:0 14% 26px 15%;color:var(--ink);font-family:"Noto Serif SC",serif;font-size:clamp(28px,3.2vw,42px);font-weight:900;line-height:1.28;letter-spacing:-.04em}
+.article-content h3{margin:2.2em 14% 14px 10%;color:var(--ink);font-family:"Noto Serif SC",serif;font-size:clamp(20px,2.2vw,26px);font-weight:900;line-height:1.35;letter-spacing:-.03em}
+.article-content h3:first-of-type{margin-top:.4em}
+.article-content blockquote{margin:54px 11% 54px 10%;padding:28px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);color:var(--ink);font-family:"Noto Serif SC",serif;font-size:clamp(22px,2.5vw,31px);font-weight:700;line-height:1.65;letter-spacing:-.03em}
+.beast{margin:0 14% 0 10%;border-top:1px solid var(--hair);padding:26px 0 6px}
+.beast:last-of-type{border-bottom:1px solid var(--hair)}
+.beast .role{font:500 9px/1.4 "IBM Plex Mono",monospace;letter-spacing:.2em;color:var(--gray);margin:0 0 10px}
+.beast dl{margin:0;display:grid;grid-template-columns:86px 1fr;row-gap:8px}
+.beast dt{font:500 10px/2 "IBM Plex Mono",monospace;letter-spacing:.14em;color:var(--gray)}
+.beast dd{margin:0;color:#333333;font-size:15.5px;line-height:1.95}
+.spell{margin:0 14% 44px 10%}
+.spell h3{margin-left:0;margin-right:0}
+.spell .use{margin:0 0 14px;color:var(--sub);font-size:15px}
+.spell pre{margin:0 0 14px;padding:18px 20px;background:#fff;border:1px solid var(--hair);color:#26241f;font-family:"Noto Sans SC",sans-serif;font-size:14.5px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
+.spell .why,.spell .note{margin:0 0 8px;font-size:14.5px;line-height:1.9;color:#3d3b36}
+.spell .why b,.spell .note b{font:500 10px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;color:var(--gray);margin-right:10px}
+.teaser{margin:0 14% 0 10%;list-style:none;padding:0}
+.teaser li{padding:15px 0;border-bottom:1px solid var(--hair);color:#333333;font-size:15.5px;line-height:1.9}
+.teaser li:first-child{border-top:1px solid var(--hair)}
+.teaser li b{color:var(--ink);font-family:"Noto Serif SC",serif}
+.article-content a{color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--source-line)}
+.byline-end{margin-top:68px!important;text-align:right;color:var(--sub)!important;font-family:"Noto Serif SC",serif;font-weight:700}
+.end-rule{width:min(780px,calc(100% - 140px));height:2px;margin:30px auto 0;background:var(--bar)}
+.signoff{display:flex;justify-content:space-between;gap:20px;width:min(780px,calc(100% - 140px));margin:0 auto;padding-top:19px;color:var(--gray);font:500 9px/1.5 "IBM Plex Mono",monospace;letter-spacing:.2em}
+.signoff strong{color:var(--ink);font-weight:500}
+.signoff a{color:var(--gray)}
+@media(max-width:760px){
+.sheet{padding:16px 22px 54px}
+.topbar{height:30px}
+.black-rule{width:calc(100% + 44px);margin-left:-22px}
+.topbar>div{gap:8px}.dash{width:12px}.right span:first-child{display:none}
+.meta{height:auto;min-height:56px;flex-wrap:wrap;gap:5px 12px;padding:14px 0}
+.meta span+span:before{padding-right:12px}
+.headline{margin:72px 0 0 0}
+h1{font-size:clamp(38px,11vw,54px);line-height:1.16}
+.dek{margin-top:22px;font-size:15px}
+.section-rule{margin-top:52px}
+.source{margin-top:32px;padding:15px 16px;font-size:12px}
+.article-content{margin:60px -22px 0}
+.kicker,.article-content p,.article-content h3,.beast,.spell,.teaser{margin-left:22px!important;margin-right:22px!important}
+.kicker{margin-bottom:26px!important}
+.kicker:not(:first-child){margin-top:58px!important}
+.chapter-no{left:-16px;right:auto}
+.article-content h2{margin:0 22px 26px}
+.article-content blockquote{margin:42px 22px;padding:24px 0}
+.beast dl{grid-template-columns:74px 1fr}
+.end-rule,.signoff{width:calc(100% - 44px);margin-left:22px;margin-right:22px}
+.signoff{flex-direction:column;gap:8px}
+}
+@media(max-width:420px){.right{display:none}.topbar{justify-content:flex-start}.meta{font-size:8px}.tag{font-size:8px}}
+</style>
+</head>
+<body>
+<main class="sheet">
+<header>
+<div class="topbar">
+<div><span class="article-word">MANUAL</span><span class="dash"></span><span>SUMMONER'S HANDBOOK · V1</span></div>
+<div class="right"><span>卷帘人</span><span class="dash"></span><span>2026.10.21</span></div>
+</div>
+<div class="black-rule" aria-hidden="true"></div>
+<div class="meta" aria-label="手册信息">
+<span>作者 JOYCE 与 MUSE</span><span>日期 2026.10.21</span><span>阅读 约 15 分钟</span>
+</div>
+<div class="tags" aria-label="标签">
+<span class="tag">指挥 AI</span><span class="tag">咒语库</span><span class="tag">双 AI 会诊</span><span class="tag">实战手册</span>
+</div>
+</header>
+
+<section class="headline">
+<h1>召唤师手册</h1>
+<p class="dek">不讲传说，只讲你麾下真实的兵：每个 AI 能帮你做什么、怎么召唤、哪里翻车；十二条咒语全部来自我们自己的实战，条条带战报。这是一本活的手册——每打赢一场仗，它就厚一页。</p>
+</section>
+
+<div class="section-rule" aria-hidden="true"></div>
+
+<aside class="source">来源与口径：本手册 v1 整理自 2026 年 10 月 21 日一晚的真实工作——Gemini 应 Joyce 原题生成的《AI 大召唤师魔典》、Muse 对该魔典的批判（当娱乐读物 7 分，当操作手册 5 分），以及当晚真实跑完的双 AI 写梗流水线。图鉴只收我们实际在用的 AI，模型与能力以实测为准，不收"秘密触发词"之类的传说。</aside>
+
+<article class="article-content">
+
+<p class="kicker"><span class="chapter-no">01</span><span class="chapter-label">卷一</span></p>
+<h2>图鉴：你麾下的兵</h2>
+<p>新手问一个 AI 要一切，老手组一支乐队。这支乐队现在有六个位置，每个位置的脾气、价钱和翻车方式都不一样。召唤之前先认人——派错岗位，再强的 AI 也只会给你平庸的产出。</p>
+
+<div class="beast">
+<h3>Muse</h3>
+<p class="role">主笔 · 总指挥 · 终审</p>
+<dl>
+<dt>能帮你做什么</dt><dd>战略判断、写作定稿、把大任务拆成可执行的分工、最后验收。你只负责点头、摇头和关键纠偏。</dd>
+<dt>怎么召唤</dt><dd>一句话说清目标和验收标准即可，拆解、执行、复核是它的活。重要任务开头加一句"先反驳我"（见第 ⑦ 咒）。</dd>
+<dt>神奇点</dt><dd>判断与品味。它知道哪句例句是 8 分、哪句是套路，知道什么时候该推翻你。</dd>
+<dt>翻车点</dt><dd>会顺着你说。你越笃定，它越容易附和——所以合伙人合同里写死了：不同意，当场带证据说。</dd>
+</dl>
+</div>
+
+<div class="beast">
+<h3>Gemini Flash（API 直连）</h3>
+<p class="role">侦察兵 · 供料机</p>
+<dl>
+<dt>能帮你做什么</dt><dd>批量发散、找梗供料、独立盲审、长文粗筛。便宜、快、量大。</dd>
+<dt>怎么召唤</dt><dd>通过 API 调用器批量投喂：任务切小、格式定死，一次只要一个明确产出。</dd>
+<dt>神奇点</dt><dd>速度与产量。一个晚上能给 60 个词各供一批候选梗，成本几乎可以忽略。</dd>
+<dt>翻车点</dt><dd>限流。今晚实测：60 个词的侦察跑到第 40 个，被 429 打停，顾问意见和 K-pop 两节没拿到。召唤它必须自带降级预案（见第 ⑫ 咒）。</dd>
+</dl>
+</div>
+
+<div class="beast">
+<h3>Gemini 最强版（Antigravity 转交）</h3>
+<p class="role">重臣 · 第二意见</p>
+<dl>
+<dt>能帮你做什么</dt><dd>L3 大事的双 AI 会诊（最强模式），以及建站与代码执行。</dd>
+<dt>怎么召唤</dt><dd>通过 Antigravity 手动转交：把目标、材料、验收标准一次打包成自包含的转交包。</dd>
+<dt>神奇点</dt><dd>换一颗最强的脑子从头审你的方案——和主笔不同源，盲区不重叠。</dd>
+<dt>翻车点</dt><dd>贵，且要人工转交。只在影响大、错了贵的事情上请它；L1 / L2 小事不请。</dd>
+</dl>
+</div>
+
+<div class="beast">
+<h3>生图</h3>
+<p class="role">画师</p>
+<dl>
+<dt>能帮你做什么</dt><dd>单词卡场景图、封面、配图。它只画无字画面，全部文字由代码排版——文字和图分家，图才不会写错字。</dd>
+<dt>怎么召唤</dt><dd>三段锁定公式（见第 ⑤ 咒）：画面每张变，风格引擎和负面守卫全批锁定。</dd>
+<dt>神奇点</dt><dd>一次抽成率可以很高。今晚的 dilemma 试点：4 种风格 4 张图，4 次抽成、零重画。</dd>
+<dt>翻车点</dt><dd>爱往图里塞假文字、爱把风格画飘。每张必须过目检：无字、主体完整、比例对。</dd>
+</dl>
+</div>
+
+<div class="beast">
+<h3>浏览器代理</h3>
+<p class="role">只读侦察员</p>
+<dl>
+<dt>能帮你做什么</dt><dd>打开真实网页核查——账号状态、帖子数据、页面渲染，只看不碰。</dd>
+<dt>怎么召唤</dt><dd>任务正文第一行写清目标 URL；动作限定为打开、滚动、截图回报，零点击。</dd>
+<dt>神奇点</dt><dd>它看到的是 live 的真实页面：不是搜索摘要，不是缓存，是你账号此刻的真实状态。</dd>
+<dt>翻车点</dt><dd>绝不点击。X 的某些元素在访客视图下一点就跳进编辑器。只读检查 = 零点击，这条写死在每一个任务里。</dd>
+</dl>
+</div>
+
+<div class="beast">
+<h3>子代理群</h3>
+<p class="role">并行工厂</p>
+<dl>
+<dt>能帮你做什么</dt><dd>把大任务拆成多条线同时跑：侦察、生产、核查互不等待。</dd>
+<dt>怎么召唤</dt><dd>每条线给一份自包含的任务书——背景、规格、交付物、禁区一次写全；结果回到总指挥处汇总验收。</dd>
+<dt>神奇点</dt><dd>并行。今晚同一时段跑着四条线：写梗、Gemini 侦察、试点出图、数据上线，互不阻塞。</dd>
+<dt>翻车点</dt><dd>子代理的自述不能当验收。它们的"已完成"必须由独立复核证实——干活的手，不能验收自己的活。</dd>
+</dl>
+</div>
+
+<p class="kicker"><span class="chapter-no">02</span><span class="chapter-label">卷二</span></p>
+<h2>核心 12 咒</h2>
+<p>咒语不是文学，是接口。每条咒语给全四样东西：咒名、用途、咒语原文（可直接复制投喂）、为什么有效、实测注脚。注脚里的事都是真的——这套咒语不是编出来的，是打出来的。</p>
+
+<div class="spell">
+<h3>① 先列禁区</h3>
+<p class="use">用途：任何发散任务的第一步，先封死套路，再谈创意。</p>
+<pre>在给任何方案之前，先列出这个任务最常见、最套路、最平庸的 5 种做法，放进「禁区」清单。接下来的全部产出，不许使用清单里的任何概念、意象和措辞，也不许换个说法绕回来。</pre>
+<p class="why"><b>为什么有效</b>AI 默认往统计平均掉。你没法只命令它"去好的地方"，但你可以把平庸的路堵死——剩下的方向自然是边缘的好东西。</p>
+<p class="note"><b>实测注脚</b>写梗审稿的"反套路"规则就是这一咒：Eric 一句"套路味"，从此每个梗先过禁区关。</p>
+</div>
+
+<div class="spell">
+<h3>② 转换器</h3>
+<p class="use">用途：把抽象的词或概念，变成能画、能搜、能笑的场景。</p>
+<pre>我需要用幽默画面帮学生记住单词：[词]。给我三样东西：① 搞笑场景拆解——一句话，用猫、打工日常或历史名人干蠢事演出来，拒绝说教；② 搜图关键词——3 个英文大白话动作短语，能去 Giphy / Pinterest 搜到现成搞笑图的那种；③ 生图 prompt——用 [风格] 写成可直接投喂的版本。不要直接拿生僻词本身搜图，先把词翻译成身体反应或生活场景。</pre>
+<p class="why"><b>为什么有效</b>难词本身搜不到图，身体反应搜得到。先翻译成场景，找资源和生图同时有路走。</p>
+<p class="note"><b>实测注脚</b>出自 Joyce 2026-10-21 发来的找梗方法论原式；当晚即并入梗脚本格式，每个词带「搜图词」字段。</p>
+</div>
+
+<div class="spell">
+<h3>③ 双审</h3>
+<p class="use">用途：写的人审不了自己——让没参与创作的 AI 盲审，主笔终审。</p>
+<pre>你是盲审员。你没有看过这批稿子的写作过程。按 [评分标准] 逐条打分（满分 10 分），挑出撞梗、套路和低于 8 分的条目，并给出你认为更好的替代方案。不要客气，不要给平均分。</pre>
+<p class="why"><b>为什么有效</b>写作者对自己的套路是盲的；没参与创作的眼睛才挑得出。两个不同源的 AI，盲区不重叠。</p>
+<p class="note"><b>实测注脚</b>2026-10-21 写梗流水线：Muse 写 60 条火柴梗，Gemini 独立盲审打分，终审在 Muse——双审过的版本才交付。</p>
+</div>
+
+<div class="spell">
+<h3>④ 红队新窗口</h3>
+<p class="use">用途：产出定稿前，换一个没有包袱的窗口来拆台。</p>
+<pre>（在全新对话里发）你是红队审查员。附件是刚完成的一份产出。不要夸它。找出它最可能翻车的三处：事实错误、逻辑跳跃、对目标读者没用。每处给出证据和具体的改法。</pre>
+<p class="why"><b>为什么有效</b>在同一个窗口里，AI 会护着自己刚写的东西；换一个新窗口，它没有包袱，才下得了手。</p>
+<p class="note"><b>实测注脚</b>本站铁律：干活的任务不能验收自己的活——验收永远另开只读任务，独立复核。</p>
+</div>
+
+<div class="spell">
+<h3>⑤ 生图三段锁定</h3>
+<p class="use">用途：批量生图保持同一画风，只换画面不变风格。</p>
+<pre>[具体画面：谁、在哪、正在做什么荒谬的事]，[锁定风格引擎：画风、线条、色板、质感——一字不改，全批复用]，[负面守卫：no text, no letters, no watermark, no cluttered background]。三段里只有第一段随图变，后两段全批锁定。</pre>
+<p class="why"><b>为什么有效</b>风格靠第二段锁死，变化靠第一段完成。不锁风格，批量出图必然一张一个样。</p>
+<p class="note"><b>实测注脚</b>词汇卡管线全批共用风格后缀；dilemma 试点 4 张图 4 次抽成、零重画，就是这条公式的战绩。</p>
+</div>
+
+<div class="spell">
+<h3>⑥ 数据合同先行</h3>
+<p class="use">用途：多个 AI 或多个环节接力之前，先冻结字段合同。</p>
+<pre>先不要写任何内容。我们先定数据合同：列出每个条目必须有的字段、每个字段的类型、长度上限和缺省值。合同定稿后，所有生成都严格按合同输出，字段名一个字不许改。</pre>
+<p class="why"><b>为什么有效</b>接力翻车几乎都翻在字段对不上：上游写 title，下游找 header_text。合同先行，接力不断链。</p>
+<p class="note"><b>实测注脚</b>词汇卡的 data/l1-60.json 就是全管线的合同——数据、渲染、部署三方只认这一份。</p>
+</div>
+
+<div class="spell">
+<h3>⑦ 反驳我</h3>
+<p class="use">用途：要真实判断，不要啦啦队——决策类问题开场必备。</p>
+<pre>先别顺着我。先用最强的论证攻击我的前提：我哪里可能错了、有什么我没看见的。攻击完，再给出你的真实判断，并标注哪些是事实、哪些是推断、哪些是观点。</pre>
+<p class="why"><b>为什么有效</b>AI 被训练成讨人喜欢。不先命令它攻击，它会一路鼓掌，哪怕你正走下悬崖。</p>
+<p class="note"><b>实测注脚</b>出自 Joyce 与 Muse 的合伙人合同原条——"你不是来附和我的"；事实、推断、观点三层分开说。</p>
+</div>
+
+<div class="spell">
+<h3>⑧ 挖机制不搬图</h3>
+<p class="use">用途：上网找灵感时，只带回可再生的机制，不带回版权风险。</p>
+<pre>去网上找和 [主题] 有关的真实梗图、名场面和经典桥段。只许带回机制：它为什么好笑、结构是什么、能迁移到什么场景。不许搬原图、不许抄原文案。每个机制注明出处。</pre>
+<p class="why"><b>为什么有效</b>搬图有版权风险，搬机制没有；而且一个机制能再生一百个新梗，一张图只能用一次。</p>
+<p class="note"><b>实测注脚</b>找梗方法论铁律"借梗不搬图"；今晚的侦察兵按此规矩带回 18 个可用机制。</p>
+</div>
+
+<div class="spell">
+<h3>⑨ 一节一节来</h3>
+<p class="use">用途：长文总结、翻译、改写——拒绝整篇赶工。</p>
+<pre>长文不要一次写完。一节一节来：每写完一节，先对照原文自查三项——论点归属对吗、关键引文逐字对吗、数字和例子一致吗——自查通过再写下一节。结构与原文 1:1 映射，不合并、不调序。</pre>
+<p class="why"><b>为什么有效</b>整篇赶工时，错误全藏在衔接处；逐节核对，错误没地方藏。</p>
+<p class="note"><b>实测注脚</b>2026-10-06 立的规矩：Dan Koe 长文整篇改写翻车之后，所有长文总结与翻译改走逐节制。</p>
+</div>
+
+<div class="spell">
+<h3>⑩ 小样先行</h3>
+<p class="use">用途：任何批量生产之前，先用小样测难度、算单价。</p>
+<pre>先不要全量做。先用 [样本] 做一个完整成品出来，让我看难度、看效果、算单价。我点头之后，你再按同样的规格全量生产。</pre>
+<p class="why"><b>为什么有效</b>全量翻车的成本是小样的几十倍。小样先行，错也只错一个。</p>
+<p class="note"><b>实测注脚</b>dilemma 先用一个词试点四种风格——测出火柴人最好量产、中世纪只配当特色，60 个词的排产因此改了。</p>
+</div>
+
+<div class="spell">
+<h3>⑪ 验收清单</h3>
+<p class="use">用途：交付前的最后一道关——质量不是感觉，是清单。</p>
+<pre>交付前，按这张单子逐项自查并报告结果：① 每条打分，低于 8 分的不许交，注明理由；② 全批查重，机制和道具撞车的列出来；③ 三秒测试——每条三秒内读不懂的，重写；④ 图与文逐条对位，图里没有的东西不许写进文案。</pre>
+<p class="why"><b>为什么有效</b>把标准写成可勾选的项，AI 就没办法用形容词糊弄过去；分数和查重结果都是硬证据。</p>
+<p class="note"><b>实测注脚</b>线条版 60 张单词卡上线前的验收就是这张单子：18 条例句保留、42 条重写，全有分数记录。</p>
+</div>
+
+<div class="spell">
+<h3>⑫ 降级预案</h3>
+<p class="use">用途：调用失败、限流、工具报错时的标准动作。</p>
+<pre>如果调用失败、被限流（429）或工具报错：立刻停，不许换个入口反复重试同一个动作。先报告失败在哪一步、已经完成了什么，然后按预案降级：换更轻的模型、缩小批量、或改走人工。每一步都要留痕。</pre>
+<p class="why"><b>为什么有效</b>硬重试会把限流越撞越死。先停、先报、先降级——进度不丢，账号不伤。</p>
+<p class="note"><b>实测注脚</b>2026-10-21 当晚实测：Gemini 侦察 60 个词，跑到 40 个被 429 打停；按预案停手存档、缺口标明待补，没有一条数据是硬凑的。</p>
+</div>
+
+<blockquote>召唤师的法力不在咒语长，在知道派谁、卡什么标准、错了怎么收。</blockquote>
+
+<p class="kicker"><span class="chapter-no">03</span><span class="chapter-label">卷三</span></p>
+<h2>协奏：让它们一起干活</h2>
+<p>单咒是招式，协奏是阵法。v1 先立卷纲，案例逐个补成正文——每个案例都必须是我们真实跑完的一仗，不写想象中的流水线。</p>
+<ul class="teaser">
+<li><b>案例一 · 写梗双审流水线（已实战，待成文）</b>——今晚刚跑完的一仗：网上侦察与 Gemini 供料双路并行 → 主笔写脚本 → 查重打分 → 出图 → 独立验收。它将是卷三的第一篇正文。</li>
+<li><b>案例二 · 双 AI 会诊（预告）</b>——零转交日常版与 Antigravity 最强版的分工：什么级别的事，请哪一档的脑子。</li>
+<li><b>案例三 · 建站流水线（预告）</b>——Muse 写码推仓、Antigravity 在真项目上执行、真机验收的接力规格。</li>
+</ul>
+
+<p class="kicker"><span class="chapter-no">04</span><span class="chapter-label">卷四</span></p>
+<h2>翻车急救</h2>
+<p>法力再高也会翻车。区别只在收拾得快不快。v1 先立卷纲，每条都对应一次真实事故，正文随事故复盘逐个补。</p>
+<ul class="teaser">
+<li><b>429 限流</b>——停手、存档、标缺口待补。今晚实测，见第 ⑫ 咒。</li>
+<li><b>套路味</b>——生成合格但不好笑，是内容产品最常见的死法。用禁区咒封源头，用双审把关口。</li>
+<li><b>上下文污染</b>——长对话里旧错误复活、新指令被旧结论带偏。解法：一任务一净室。</li>
+<li><b>同窗自审</b>——创作者审不了自己的作品。红队永远开新窗口，见第 ④ 咒。</li>
+</ul>
+
+<p class="byline-end">—— Joyce 与 Muse</p>
+
+<div class="end-rule" aria-hidden="true"></div>
+<footer class="signoff">
+<span><strong>卷帘人</strong> — 召唤师手册 V1</span>
+<span>配套笔记 <a href="../log/2026-10-21-ai-summoner.html">召唤师之道 · 学习笔记</a> · <a href="../index.html">回首页</a></span>
+</footer>
+
+</article>
+</main>
+</body>
+</html>

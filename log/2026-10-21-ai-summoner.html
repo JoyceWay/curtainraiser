@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>召唤师之道：指挥 AI 学习笔记 — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+      <div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+        <a href="2026-10-21-ai-summoner.html"><b>召唤师</b><span>指挥 AI 笔记</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+      <a href="../styles/index.html"><b>体库</b><span>STYLE LIBRARY</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+
+  <div class="kicker">AI SUMMONING · 2026-10-21</div>
+  <h1>召唤师之道：指挥 AI 学习笔记</h1>
+  <div class="sub">Dots first, then the line — tonight's grimoire, its corrections, the orthodox framework, and the ladder from novice to master. 配套手册：《召唤师手册》v1。</div>
+
+  <div class="note-item">
+    <h3>1. 今天的点：先把素材摆上桌</h3>
+    <p><span class="topic">盘点</span></p>
+    <p>学习的第一步不是总结，是盘点。今晚一共产生了四个"点"，这一篇笔记的任务是把它们连成线：</p>
+    <ul class="pts">
+      <li><b>点一 · Gemini 魔典</b>：Joyce 把原题——"让我成为顶级召唤师，给我写一本 1000 页的书"——发给 Gemini，得到一本奇幻包装的《AI 大召唤师魔典》：精灵图鉴、四条法则、五条咒语、七阶段流水线、故障急救矩阵，一套俱全。</li>
+      <li><b>点二 · Muse 的批判</b>：同一份魔典，Muse 的评分是——当娱乐读物 7 分，当操作手册 5 分。真金四条，戏服不少（详见第 2 节）。</li>
+      <li><b>点三 · 双 AI 写梗实战</b>：当晚真实跑完一整条流水线——先上网挖回 18 个搞笑机制、写下 60 个词的火柴梗脚本、Gemini 独立供料、双审打分；dilemma 一个词先试点四种风格，4 张图 4 次抽成。</li>
+      <li><b>点四 · 限流事件</b>：Gemini API 的侦察跑到 60 个词里的第 40 个，被 429 限流打停，顾问意见和 K-pop 两节缺席。魔典里没有的一课：<b>真实编排的八成功夫，在限流、验收、降级这些不性感的地方</b>。</li>
+    </ul>
+    <p>配套产出：把实战沉淀成<a href="../summoner/index.html">《召唤师手册》v1</a>——真实图鉴 + 核心 12 咒，挂在本站常驻更新。</p>
+    <p class="en">Tonight's dots: Gemini's fantasy grimoire, Muse's critique of it (7/10 as entertainment, 5/10 as a manual), a real dual-AI gag pipeline run end to end, and a rate-limit failure no grimoire warned about. This note connects them into one line.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>2. Gemini 魔典：精华与修正</h3>
+    <p><span class="topic">拆解</span></p>
+    <p><b>留下的精华</b>（剥掉奇幻戏服之后，真金是这些）：</p>
+    <ul class="pts">
+      <li><b>精灵分工</b>：不同的 AI 干不同的活，产出接力——大方向是对的，这正是编排的起点。</li>
+      <li><b>统计平均引力</b>：AI 默认产出平庸，因为它往钟形曲线的正中间掉。对策不是喊"要创意"，是先列禁区，把平庸的路堵死。</li>
+      <li><b>上下文污染</b>：长对话里旧错误会复活。一任务一净室，是真的。</li>
+      <li><b>Schema 先行 + 风格锁定</b>：先定数据合同再生成；生图用"主体 + 锁定风格 + 负面守卫"。这两条我们的管线每天都在用。</li>
+    </ul>
+    <p><b>必须的三处修正</b>：</p>
+    <ul class="pts">
+      <li><b>名单过期</b>：它的模型清单停在 Claude 3.5/4、Gemini 2.5、o1/o3——拿旧地图讲现行世界；所谓"秘密触发词"多为传说。图鉴只能以实测为准。</li>
+      <li><b>缺质量关</b>：整条流水线审代码、审 UX，唯独没有一关审"内容本身好不好"。对内容产品，审笑点、审分数才是命门——魔典恰好漏了这一关。</li>
+      <li><b>同窗自审矛盾</b>：它一边立"上下文污染"，一边让咒语在同一个窗口里自我批判。我们的规矩相反：<b>红队永远开新窗口</b>，创作者审不了自己的作品。</li>
+    </ul>
+    <p>还有一句产量幻觉要点名："50 个关卡 20 秒生成"——生成从来不是瓶颈，判断才是。今晚的限流就是现场证据。</p>
+    <p class="en">Keep from the grimoire: specialist division of labor, the gravity of the statistical average (ban clichés first), context pollution, schema-first, and locked style formulas. Correct three things: its model roster is a generation old, it has no quality gate for content itself, and its self-critique spell contradicts its own context law — red teams always open a fresh window.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>3. 正统框架：Anthropic 五模式</h3>
+    <p><span class="topic">框架</span></p>
+    <p>魔典的七阶段之外，还有一个更冷静的源头：Anthropic 的工程文章 <b>《Building Effective Agents》</b>（2024 年 12 月 19 日）。它先划一条线——<b>workflow 是预先写定的路径，agent 是模型自己决定流程</b>——然后给出五种可组合的编排模式：</p>
+    <ul class="pts">
+      <li><b>Prompt chaining（链式）</b>：把任务拆成固定步骤，每一步吃上一步的产出。适合步骤清楚的活。</li>
+      <li><b>Routing（路由）</b>：先给输入分类，再送进专门的处理路径。适合输入有明显类别的活。</li>
+      <li><b>Parallelization（并行）</b>：独立的子任务拆开同时跑，或多路产出投票。适合赶时间、要覆盖面的活。</li>
+      <li><b>Orchestrator-workers（总指挥—工人）</b>：一个总指挥动态拆活、派给工人、汇总结果。适合事先列不全子任务的活。</li>
+      <li><b>Evaluator-optimizer（评估—优化）</b>：一个生成、一个按标准挑错，循环到达标。适合质量标准明确的活。</li>
+    </ul>
+    <p>全文的第一原则：<b>从最简单的方案开始，只有效果可测量地变好时，才加复杂度。</b></p>
+    <p><b>点连成线</b>——今晚的写梗流水线，就是五模式的活标本：网上侦察与 Gemini 供料双路齐发，是 parallelization；Muse 拆任务、派子代理、收结果，是 orchestrator-workers；写梗 → 盲审 → 按分数改，是 evaluator-optimizer；脚本按固定步骤推进，是 prompt chaining；按词性和风格分槽位，是 routing。框架不是背来考试的，是给自己已经跑通的做法起名字——有了名字，下次才能主动调用。</p>
+    <p class="en">The orthodox source: Anthropic's "Building Effective Agents" (Dec 19, 2024) — five composable patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer) and one rule: start with the simplest thing that works. Tonight's gag pipeline turns out to be all five at once. Naming what you already do is how dots become a line.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>4. 进阶梯：从新手到老手</h3>
+    <p><span class="topic">进阶</span></p>
+    <p>指挥 AI 不是一门玄学，是五级台阶。每级都标了：这一级在干什么、Joyce 现在在哪、下一步练什么。</p>
+    <ul class="pts">
+      <li><b>L1 会问</b>：把问题说清楚，一次一个任务，拿到像样的答案。<b>已过关</b>——这是很早以前的事了。</li>
+      <li><b>L2 会约束</b>：禁区、格式、长度、验收标准在动手之前就定好；咒语从"请帮我"变成"按这些规矩"。<b>进行中</b>——今晚的转换器咒语、搜图词字段，都是这一级的动作。练习：每次派活前，先写验收标准再写任务。</li>
+      <li><b>L3 会分工</b>：知道什么活派给谁——主笔、侦察、画师、红队各就其位，不让一个 AI 干一切。<b>已在实操</b>——今晚那句"你们谁找的好就用谁的"，就是分工判断。练习：派活时顺口说出"为什么是它"。</li>
+      <li><b>L4 会验收</b>：打分、查重、独立复核，不拿执行者的自述当完成。<b>规则已立全，待成习惯</b>——双审、三秒测试、另开只读任务复核都在跑。练习：每周挑一次交付，亲自复走一遍验收清单。</li>
+      <li><b>L5 会设计流水线</b>：把一次成功的做法沉淀成可复用的管线——手册、模板、合同文件，下次不必从头想。<b>已在门口</b>——《召唤师手册》就是这一级的产物。练习：每跑通一条新流水线，当晚写进手册再睡觉。</li>
+    </ul>
+    <p class="en">Five rungs: asking → constraining → delegating → verifying → designing pipelines. Joyce stands between L3 and L5 tonight: delegation is live, verification is codified, and the handbook itself is the first pipeline artifact. Each rung has one drill — small, repeatable, unglamorous.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>5. 书单与名家方法</h3>
+    <p><span class="topic">阅读</span></p>
+    <p><b>新书（指挥 AI 与 agent 工程这一摊，近两年出的）</b>：</p>
+    <ul class="pts">
+      <li><b>Chip Huyen《AI Engineering》（O'Reilly，2025）</b>：全书的魂是评估纪律——怎么判断一个 AI 系统到底好不好而不靠感觉。建产品的人只买一本，买这本。</li>
+      <li><b>Antonio Gulli《Agentic Design Patterns》（Springer，2025）</b>：21 个 agent 设计模式，一章一个。等于把 Anthropic 五模式展开成完整图谱，查着用。</li>
+      <li><b>Micheal Lanham《AI Agents in Action》第 2 版（Manning）</b>：跟着 2026 年的生产栈走（Agents SDK、MCP、A2A），偏工程实操，想看代码怎么落地时翻它。</li>
+      <li><b>John Berryman &amp; Albert Ziegler《Prompt Engineering for LLMs》（O'Reilly，2024）</b>：GitHub Copilot 团队写的提示工程——从一线产品里长出来的经验，不是讲座里编的。</li>
+      <li><b>回到自己的书单</b>：Ethan Mollick《Co-Intelligence》仍是下一本（"把 AI 当人来管理"的方法原产地），Salman Khan《Brave New Words》其后。顺序不变，新书排队，不插队。</li>
+    </ul>
+    <p><b>名家方法（每人偷一招就够）</b>：</p>
+    <ul class="pts">
+      <li><b>Karpathy——给 AI 拴绳</b>：小步、可验证、随时能接管。他的 Software 3.0 说法值得记住：prompt 就是新时代的程序，你写的每条指令都在"编程"。</li>
+      <li><b>Simon Willison——把 agent 当实习生</b>：聪明、快、但会自信地犯错；给明确任务、给检查点、公开记录失败。他的博客是长期实测日志，不是观点专栏。</li>
+      <li><b>Ethan Mollick——把 AI 当人来管理</b>：给角色、给背景、给反馈，像带一个聪明但没经验的下属；管理动作比咒语辞藻重要。</li>
+      <li><b>Andrew Ng——四模式</b>：reflection（自我反思）、tool use（使用工具）、planning（先规划再执行）、multi-agent（多智能体协作）。与 Anthropic 五模式互相印证，两个框架对得上，说明这摊东西正在沉淀成常识。</li>
+    </ul>
+    <p>来源标注：书目与版本信息经出版社页面（O'Reilly / Springer / Manning）与 2026 年 agentic AI 书单评测（KDnuggets、dev.to 对比文）核对于 2026-10-21；Anthropic 文为《Building Effective Agents》，2024-12-19，anthropic.com 工程博客。</p>
+    <p class="en">Reading: Huyen's AI Engineering for evaluation discipline, Gulli's 21 agentic patterns as the expanded map, Lanham for the 2026 production stack, Berryman &amp; Ziegler for field-grown prompt craft — then back to her own queue, Mollick first. Methods worth stealing: Karpathy's leash, Willison's intern rule, Mollick's manage-it-like-a-person, Ng's four patterns.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>6. 反刍问题：每周回来看一遍</h3>
+    <p><span class="topic">反刍</span></p>
+    <p>这一节不是读的，是用的。指挥 AI 的进步不在读新东西，在把同样的错误认出第二遍、第三遍，直到不再犯。每周挑一晚，拿这六个问题过一遍本周的实战：</p>
+    <ul class="qa">
+      <li><span class="q">我这周哪次指挥失败，是输在没验收，而不是输在 AI 不行？</span></li>
+      <li><span class="q">我派活的时候，验收标准是说在动手之前，还是做完之后才想起来补？</span></li>
+      <li><span class="q">哪个 AI 这周被我用错了岗位？它其实更适合干什么？</span></li>
+      <li><span class="q">我有没有哪条咒语用了三次以上、值得写进手册成为定式？</span></li>
+      <li><span class="q">生成越来越快之后，我的瓶颈是不是只剩判断？我这周把时间花在判断上了吗？</span></li>
+      <li><span class="q">下次再遇到 429，我的第一反应会是停手存档，还是硬重试？</span></li>
+    </ul>
+    <p class="en">Rumination, weekly: Which failure this week was a verification failure, not a model failure? Did the acceptance criteria come before the task or after? Who was miscast? Which spell earned a permanent place in the handbook? Is judgment now my only bottleneck — and did I spend my time there?</p>
+  </div>
+
+  <div class="note-item">
+    <h3>7. 今晚的结论</h3>
+    <p><span class="topic">结论</span></p>
+    <blockquote>生成从来不是瓶颈，判断才是。</blockquote>
+    <p>魔典可以扔了，这句留下。召唤师的法力从来不在咒语有多长，而在三件事：知道派谁、卡什么标准、错了怎么收。今晚这三件都真实地发生了一遍——这才是这一页笔记存在的理由：不是学会召唤，是把召唤变成手艺。</p>
+    <p class="en">Keep one line and throw the grimoire away: generation is never the bottleneck — judgment is. A summoner's power is knowing who to send, what standard to enforce, and how to recover. Tonight, all three actually happened.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 卷帘人 📜 · 配套手册 <a href="../summoner/index.html" style="color:#4E8A28">《召唤师手册》V1</a></div>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
