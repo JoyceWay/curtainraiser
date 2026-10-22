@@ -309,22 +309,38 @@
       <li><b>分歧二 · Poe</b>：Flash 裁「智商税」（观点）；调研显示它是冷门模型陪审的最低成本入口。Muse 终审：她现阶段会诊量不大，两边各对一半——先免费，不付费。</li>
       <li><b>分歧三 · Cursor</b>：Flash 称它是「自然语言指挥写产品的唯一工业级工具」（观点）；四路调研一致认为它是编辑器型工具，且新定价已并入 X 订阅体系。Muse 终审：她的主场是指挥台不是编辑器——不买。</li>
       <li><b>三方共识</b>：Claude Pro 是第一新增；Grok 不升级（实时雷达的价值在「有」，不在「多」）；多模型协作最危险的坑是传话失真（见 §10）。</li>
-      <li><b>Argon 盲评</b>：她手工调用中——它没看过以上任何一稿，意见回来后补入本节。盲评的价值，正在于这份独立。</li>
+      <li><b>Argon 盲评 · 共识区</b>：它独立给出的判断里，与图鉴一致的有：Grok 不升级（理由几乎同词）；Kling 是短剧第一梯队（它排总榜第 1，图鉴放姐姐线第 1——会计口径不同，判断相同）；NotebookLM 零成本必用；Manus / Genspark 现阶段不值。三方军师在这些格子上完全同构。</li>
+      <li><b>Argon 盲评 · 最大分歧：Claude Pro</b>：它把 Claude 官方订阅直接列进浪费清单，理由是「已有 Muse（本应用）+ Antigravity + Gemini 已覆盖，偶发高阶需求走 OpenRouter 按量，每月花不到 $2」。Muse 终审分两层：<b>模型层它对</b>——纯聊天、长文调用，OpenRouter 按量确实便宜得多，为聊天开 $20 订阅是浪费；<b>产品层它错</b>——Claude Code 与 Cowork 是 agent 产品（读全仓改代码、操作本地文件），OpenRouter 只给模型 API，给不了这两个，她经本应用使用的 Muse 也不等于 Claude.ai 的 Projects / Artifacts。<b>裁决：§7 第一名维持，但理由收窄为「只为 Claude Code + Cowork 付钱」</b>；下周试用若发现她只拿它聊天，立即降级为 OpenRouter 方案——试用三件事正是为此设的闸。</li>
+      <li><b>Argon 盲评 · 分歧：ChatGPT Plus</b>：它列浪费，图鉴给 7.5 分。差在一个权重——它没把「练口语」计入她的目标清单。维持 7.5，注脚不变：值不值取决于练口语的决心。</li>
+      <li><b>Argon 盲评 · 它捞回来的</b>：OpenRouter、Lovable / Bolt、即梦、Exa / Felo——四路调研的真遗漏，核实后补入 §11。它还给 ElevenLabs 加了一个图鉴漏掉的用法：<b>单词卡朗读</b>（产品 roadmap 的 ② 号功能本来就是发音按钮）——这一条认账，它的 $5 入门档口径与调研的 $6 差 $1，以官网为准。它的两套配置（省钱 ≈ $23–28、力 ≈ $113）与图鉴的差异只在「算不算已有订阅」的口径，分工判断大体同构；唯一真正的路线分歧就是 C 位给 Kling 还是给 Claude Pro，留给她的试用数据裁决。</li>
     </ul>
     <p class="en">Where the council disagreed: Gemini Flash called ChatGPT Plus a total waste and Poe a fool's tax, and crowned Cursor the one industrial tool — the research record and the final review side against all three, for stated reasons (voice and Codex are unique; Poe is the cheapest jury pool; Cursor serves people who sit in editors). Consensus held on Claude Pro first, no Grok upgrade, and the relay-distortion pitfall. Argon's blind review is still out; it will be appended here, unedited.</p>
   </div>
 
   <div class="note-item">
-    <h3>10. 一个坑：传话失真</h3>
+    <h3>10. 一个坑：交接不设闸——传话失真 + 格式雪崩</h3>
     <p><span class="topic">协议</span></p>
     <p>Flash 的原话要点：把 A 模型的输出直接复制给 B 继续做，B 会默认 A 全对，顺着细微的逻辑漂移一路推下去，最终南辕北辙——模型有讨好倾向，接棒者不天然质疑上一棒。</p>
     <p>这正是她的协奏协议 (2)「文件就是会议室」要防的事：<b>AI 之间不传话，只读写提炼过的规格文件；人做状态机，剔掉修饰词再喂下一棒。</b>手册已经写对了，图鉴只负责给新成员立规矩：每一个新召唤的 AI，入职第一件事是读标准文件，不是读上一位的聊天记录。</p>
+    <p>Argon 从完全不同的方向撞上同一个坑，它的那层叫<b>格式契约雪崩</b>：A 输出的字段名一会儿是 word、一会儿是 vocabulary，层级和标点每次都抖，B 写好的代码就频频崩——非程序员看不懂报错，只会误判「AI 写代码太蠢」，陷进无休止的修 bug 循环。它的解法是「Schema 闸口」：模型之间流转的数据一律写死 JSON 契约，字段名不许漂移。<b>合并裁决：这是同一个病根的两层——语义层的意思会漂，结构层的格式会抖。</b>而她其实已经在做了：单词卡的 <code>l1-60.json</code> 就是数据合同，断行点逐字对齐就是闸口。两位军师绕了一圈，撞上的是她自己的实践。以后新流水线立项，先问两句：意思会不会漂？格式会不会抖？</p>
     <blockquote>召唤的礼仪：先读标准，再接活。传话会失真，文件不会。</blockquote>
     <p class="en">The one pitfall every source agreed on: relay distortion. Paste model A's output into model B and B treats it as gospel, compounding small drifts into a wrong destination. Her protocol already answers it — AIs never relay messages; they read and write distilled spec files, and the human stays the state machine. Every new summon reads the standards first, not the previous model's chat log.</p>
   </div>
 
   <div class="note-item">
-    <h3>11. 结论</h3>
+    <h3>11. 补遗：盲评捞回来的名字</h3>
+    <p><span class="topic">补遗</span></p>
+    <ul class="pts">
+      <li><b>OpenRouter（按量，无月租）— 8.5 分</b>：一个 API key 调 500+ 模型，价格 = 各家原价透传 + 充值时 5.5% 手续费，另有免费模型池（已核实，2026-10）。岗位：召唤冷门模型、临时评测、给产品接多模型的统一底座。定位校准：它替代的是「为模型开订阅」，替代不了 Claude Code 这类 agent 产品；DeepSeek 直连 API 比它再省那 5.5%，它胜在广度。排位上它插在 §7 的第 2 名与第 3 名之间——API 层的召唤，归它管。</li>
+      <li><b>Lovable / Bolt.new（$25 / 月起，按需开）— 7 分</b>：非程序员出「好看的全栈原型」最快的两个（已核实：Lovable Pro $25，学生 5 折；Bolt 年付约 $18 / 月）。与 Antigravity 的分工是「它出脸，Antigravity 出骨」。Argon 没提的坑：Lovable 的 credits 烧得凶，一个完整 MVP 能吃 150–300 credits，而 Pro 只含 100 / 月。等她做需要卖相的产品前台时再开，不常驻。</li>
+      <li><b>即梦 AI（姐姐线）</b>：剪映生态的国内短剧工作流（图 / 视频 / 配音一体），与 Kling 并列姐姐的国内直连选项，试产时同题对比。</li>
+      <li><b>Exa / Felo（线头）</b>：程序化抓取高质量网页数据 / 跨语种跨信源研究整合——未深核，进线头库，等真有需求再验。</li>
+    </ul>
+    <p class="en">Recovered by the blind review and verified after the fact: OpenRouter (8.5) — one key, 500+ models, provider prices passed through plus a 5.5% top-up fee; it replaces model subscriptions, never agent products. Lovable and Bolt (7) — the fastest pretty-prototype builders, rented on demand, with a credit-burn warning Argon omitted. Jimeng joins Kling on the sister's China-direct bench. Exa and Felo go to the leads file, unverified.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>12. 结论</h3>
     <p><span class="topic">结论</span></p>
     <blockquote>法力 = 在役用满 + 异族冗余 + 专长补位。其余都是收藏欲。</blockquote>
     <p>下一步只有一件事是确定的：Claude Pro 开了之后，她的系统第一次有常驻的「第二双眼睛」。其余的格子，按 §8 的账本节奏一格一格点亮——每点亮一格，都要能说清它接管了哪类活。</p>
