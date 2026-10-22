@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>顶级召唤师：多 AI 协奏与记录系统 — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+      <div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+        <a href="2026-10-21-ai-summoner.html"><b>召唤师</b><span>指挥 AI 笔记</span></a>
+        <a href="2026-10-21-top-summoner.html"><b>顶级召唤师</b><span>协奏与记录</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+      <a href="../styles/index.html"><b>体库</b><span>STYLE LIBRARY</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+  <div class="kicker">AI ORCHESTRATION · 2026-10-21</div>
+  <h1>顶级召唤师：多 AI 协奏与记录系统</h1>
+  <div class="sub">How a top AI summoner runs many AIs as one team — and the seven kinds of records that make the system compound. 配套：<a href="../summoner/index.html" style="color:#4E8A28">《召唤师手册》</a> · <a href="2026-10-21-ai-summoner.html" style="color:#4E8A28">《召唤师之道》学习笔记</a></div>
+
+  <div class="note-item">
+    <h3>1. 顶级召唤师不是咒语背得多</h3>
+    <p><span class="topic">定义</span></p>
+    <p>先给「顶级」下个可检验的定义：<b>系统比本人更强</b>。她不在场，流水线照跑；标准在文件里，不在她脑子里；新来的 AI 读完文件就能上岗。</p>
+    <p>她本人只出现在两个点：<b>开头给方向，结尾做验收</b>。这就是 1%/99% 分工的落地形态——1% 是方向与判断，99% 是系统执行。</p>
+    <p>所以法力不在咒语长短。咒语是料，框架是骨。真正的法力在两处：<b>验收</b>（能在产出里发现问题）和<b>品味</b>（知道什么叫好）。生成从来不是瓶颈，判断才是。</p>
+    <p class="en">A top summoner is not the one who memorizes the most spells. The test: the system is stronger than the person. It runs while she is away; she appears only twice — direction at the start, judgment at the end. Power lives in verification and taste, not in prompt length.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>2. 四根支柱</h3>
+    <p><span class="topic">能力模型</span></p>
+    <p>顶级召唤师的能力拆开是四根支柱，缺一根，系统就晃：</p>
+    <ul class="pts">
+      <li><b>① 兵器库图鉴</b>——知道每个 AI 的长处、翻车点、成本与额度。派活之前先看图鉴，不凭印象。</li>
+      <li><b>② 协调协议</b>——分工靠文件与标准，不靠传话。谁和谁怎么配合，写死在协议里（第 3 节）。</li>
+      <li><b>③ 验收力</b>——能独立于生成者发现问题。今晚的实例：60 张卡的例句里有一批没用到目标词，全量审计漏了，是她读的时候抓出来的。验收力不是检查清单，是对账的本能。</li>
+      <li><b>④ 档案系统</b>——每次实战沉淀成标准，下一次自动变强。没有档案，打一百仗还是新兵（第 5 节）。</li>
+    </ul>
+    <p class="en">Four pillars: a bestiary of every AI (strengths, failure modes, cost, quota); a coordination protocol built on files, not messages; verification skill independent of the generator; and an archive that turns every battle into a standard, so the next run starts stronger.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>3. 协奏协议六条</h3>
+    <p><span class="topic">协议</span></p>
+    <p>多 AI 协作靠的不是让它们互相聊天，是这六条协议。今晚全部实跑过一遍：</p>
+    <ul class="pts">
+      <li><b>(1) 一个总指挥</b>——拿全局、标准与终审。没有指挥的多 AI，只是多份互相矛盾的意见，成不了产品。</li>
+      <li><b>(2) 文件就是会议室</b>——AI 之间不传话，读写同一批文件：数据文件是合同（如单词卡的 <code>l1-60.json</code>），<code>DECISIONS.md</code> 是纪要，脚本文件是工单。新成员先读文件入职，不读聊天记录。</li>
+      <li><b>(3) 故意信息不对称</b>——盲审时不给审查者看主图和原稿，它才抓得到撞车与盲区；喂一样的输入，只会得到两份一样的答案。今晚实例：Gemini 盲审火柴梗脚本，抓出了与主图的撞梗。但它没见过主图，也误判过两条——所以信息不对称要<b>故意设计、双向校验</b>，不是随便遮。</li>
+      <li><b>(4) 标准外置</b>——评分线（笑料 ≥ 8 分才画）、禁区、格式规范，全写进文件。谁来接班，都收敛到同一把尺。</li>
+      <li><b>(5) 留痕与降级</b>——谁做了什么、多少分、为什么替换，全记账。某个 AI 被限流就降级顶上：今晚 Gemini API 撞 429，贴纸槽改内部审——流程不停，账不烂。</li>
+      <li><b>(6) 人只出现在两个点</b>——方向（开头）与验收（结尾）。中间全是协议在跑。</li>
+    </ul>
+    <blockquote>协调不是让 AI 互相聊天，是让它们读写同一套标准。</blockquote>
+    <p class="en">The six-article protocol: one conductor holding the whole picture and final review; files as the meeting room (data = contract, decisions = minutes, scripts = work orders); deliberate information asymmetry for blind review — designed on purpose, cross-checked both ways; standards externalized into files; full logging with graceful degradation when an AI hits its limit; and the human appearing only at direction and acceptance.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>4. 新 AI 入职流程</h3>
+    <p><span class="topic">入职</span></p>
+    <p>新 AI 不凭名气入职，走和真人一样的试用流程：</p>
+    <ul class="pts">
+      <li><b>读标准文件</b>——先读图鉴、协议、禁区，对齐同一把尺。</li>
+      <li><b>领一个边界清楚的小任务</b>——范围小、验收标准明确，翻车也可控。</li>
+      <li><b>产出落到文件</b>——不落文件的产出等于没发生，无法验收、无法复用。</li>
+      <li><b>被打分验收</b>——和在岗 AI 同题 A/B，用分数说话，不用感觉。</li>
+      <li><b>过关才进图鉴</b>——拿到正式岗位，岗位卡写清长处与翻车点；不过关，记试用判决后离场。</li>
+    </ul>
+    <p>待试用名单已经排好：Perplexity 做情报官（带出处的检索）、ChatGPT 做英语口语陪练与第二画师、Grok 看 X 实时热度。每个都用真实任务试，不看发布会。</p>
+    <p class="en">New AIs onboard like people: read the standards, take one small bounded task, deliver into files, get scored against the incumbent on the same task, and only then earn a card in the bestiary and a real post. Trials are real work, never demos.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>5. 记录系统：记七类</h3>
+    <p><span class="topic">记录系统</span></p>
+    <p>这是全篇的重点。系统能不能复利，全看记什么。七类记录，每类写清：记什么、存在哪、今晚的实例。</p>
+    <ul class="pts">
+      <li><b>① 图鉴</b>——每个 AI 一张岗位卡：能做什么、怎么召唤、神奇点、翻车点、成本与额度。存：《召唤师手册》卷一。实例：今晚立册，Muse、Gemini、子代理群各就其位。</li>
+      <li><b>② 咒语库</b>——实测有效的指令原文 + 为什么有效 + 实测注脚。没实测过的不收。存：手册卷二。实例：核心 12 咒，每条都带今晚的实测出处。</li>
+      <li><b>③ 战报</b>——每次多 AI 协作的流水：谁干了什么、产出什么、分数多少。存：项目仓的 <code>DECISIONS.md</code> 决策账。实例：今晚火柴梗流水线——脚本、盲审、换梗、打分，全程留痕。</li>
+      <li><b>④ 失败档案</b>——翻车事件 + 原因 + 防再犯的规则。失败不记，等于白翻。实例：Gemini 429 硬停写进档案；「例句没用到目标词」事故升级为三道门硬规则——用到词、配得上图、≥ 8 分，缺一不过。</li>
+      <li><b>⑤ 标准文件</b>——评分线、禁区、格式规范，所有 AI 的共同尺。存：vocab-cards 仓的 <code>DECISIONS.md</code> / <code>PRODUCTION.md</code>。实例：卡面版式、例句规则、换梗原则，全部外置成文，新 AI 读完即对齐。</li>
+      <li><b>⑥ 机制库</b>——从真实素材提炼的可复用机制，存机制不存素材本身。实例：笑料库 H01–H22（死鱼脸、后果先行等）与设计参考库——她随手发素材，机制被提炼入库。</li>
+      <li><b>⑦ 成本与试用账</b>——订阅与 API 花费、额度水位、每个新 AI 的试用判决（留 / 走 + 证据）。钱和额度是召唤师的粮草，要有账。</li>
+      <li><b>⑧ 复盘结论</b>——每日复盘沉淀的那一条结论，可并入战报单列。管道已经接通：每晚约 21:15 的「每日一起复盘」，无料时一句话，从不缺席。</li>
+    </ul>
+    <p class="en">Record seven things (plus one): the bestiary — one post card per AI; the spellbook — only tested spells, with why they work; battle reports — who did what, what came out, what score; a failure archive — every crash with cause and the rule that prevents a repeat; the standards files every AI is measured by; mechanism libraries — distilled patterns, never raw material; and the cost &amp; trial ledger — spend, quotas, and keep-or-cut verdicts with evidence. Daily review conclusions flow in as the eighth stream.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>6. 记录的纪律</h3>
+    <p><span class="topic">纪律</span></p>
+    <ul class="pts">
+      <li><b>只记三样</b>——迭代过程、知识要点、可复用的结论。流水账不记，那是噪音不是资产。</li>
+      <li><b>记结论，不记过程噪音</b>——过程只在能提炼出结论时留痕。</li>
+      <li><b>每条带证据</b>——分数、链接、文件路径。没有证据的结论，下次没法对账。</li>
+      <li><b>能改变下一次行为，才入册</b>——一条记录如果不影响任何后续决策，写它就是浪费。</li>
+      <li><b>记录零操作</b>——她随手发，Muse 提炼入库（笑料库模式）。记录系统如果需要她动手维护，迟早会废。</li>
+    </ul>
+    <p class="en">Discipline: record only three things — how the work evolved, the knowledge points, and reusable conclusions. Every entry carries evidence (a score, a link, a file path). If a note would not change the next run's behavior, it doesn't get filed. And recording costs her zero effort: she drops material in, Muse distills it into the library.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>7. 反刍节奏</h3>
+    <p><span class="topic">反刍</span></p>
+    <p>记录不是写完就完，要有固定的回嚼节奏：</p>
+    <ul class="pts">
+      <li><b>每日</b>——晚间复盘，一次只沉淀一条结论（「每日一起复盘」，约 21:15）。</li>
+      <li><b>每周</b>——回看本周战报，更新图鉴与标准文件；过时的标准当场改，不等它误导下一次。</li>
+      <li><b>每有新 AI</b>——走入职流程，记试用判决，图鉴增删。</li>
+    </ul>
+    <p>她的学习法就是反刍：同一点带着新输入反复过。今晚的点是协奏与记录；下周带着新战报再过一遍，点就连成了线。</p>
+    <p class="en">Rumination rhythm: daily — one conclusion from the evening review; weekly — re-read the week's battle reports and refresh the bestiary and standards; per new AI — run onboarding and file the verdict. Same points, new inputs, until the dots become a line.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>8. 今晚的结论</h3>
+    <p><span class="topic">结论</span></p>
+    <blockquote>协调不是让 AI 互相聊天，是让它们读写同一套标准。</blockquote>
+    <p>顶级召唤师的终局很安静：她的时间只花在方向和判断上——给方向、抓对账、逼每个 AI 拿证据。其余的，图鉴、协议、标准、档案组成的系统自己复利。她不在场的那部分，才是她真正的作品。</p>
+    <p class="en">The endgame is quiet: her time goes only to direction and judgment — setting the course, reconciling the accounts, making every AI show evidence. Everything else compounds inside the system. What runs without her is the real work of art.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 卷帘人 📜 · 配套手册 <a href="../summoner/index.html" style="color:#4E8A28">《召唤师手册》V1</a> · 学习笔记 <a href="2026-10-21-ai-summoner.html" style="color:#4E8A28">《召唤师之道》</a></div>
+
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
