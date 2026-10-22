@@ -286,7 +286,52 @@
   </div>
 
   <div class="note-item">
-    <h3>8. 今晚的结论</h3>
+    <h3>8. 他山之石：顶级玩家怎么协奏</h3>
+    <p><span class="topic">对照</span></p>
+    <p>2026-10-22 凌晨补研。六条协议不是闭门造的——拿六位顶级玩家的公开做法逐条对照：谁印证了，谁补了她还没有的一条，谁的打法和她不同。每人只留三样：他怎么做、能偷的一条、与六条协议的关系。</p>
+
+    <p><b>Karpathy — LLM Council（模型议会）</b>。他开源的 <a href="https://github.com/karpathy/llm-council">llm-council</a> 把同一个问题发给多个模型，分三轮：各答各的 → 互评排名 → 一个 Chairman（主席）模型汇总终审。互评这一轮有个关键设计——<b>身份匿名</b>，README 原话："the LLM identities are anonymized so that the LLM can't play favorites when judging their outputs"（身份一匿名，评委就没法偏袒自己人）。</p>
+    <ul class="pts">
+      <li><b>能偷的一条</b>——互评时把「这是谁写的」也抹掉，不只是不给看原稿。</li>
+      <li><b>与协议</b>：印证第（3）条（信息不对称）+ 第（1）条（主席就是总指挥终审）。补充：不对称有两种——不向被审对象公开（她已有：盲审不看主图），和不向评审公开作者（她还没有，可补进盲审流程）。</li>
+    </ul>
+
+    <p><b>Anthropic 官方 — 多代理研究系统</b>。Claude 官方 Research 功能就是 orchestrator-worker（总指挥—工人）架构：lead agent 拆题，派 3–5 个子代理并行查，再汇总。他们在<a href="https://www.anthropic.com/engineering/multi-agent-research-system">官方工程博客</a>里给了硬数字：多代理 "outperformed single-agent Claude Opus 4 by 90.2% on our internal research eval"（内部评测高出 90.2%）；代价同样写明："multi-agent systems use about 15× more tokens than chats"（约 15 倍 token），结论是 "For economic viability, multi-agent systems require tasks where the value of the task is high enough to pay for the increased performance"（任务的价值必须配得上这笔开销）。还有两条工程经验：派活要交代四件套——"an objective, an output format, guidance on the tools and sources to use, and clear task boundaries"（目标、输出格式、用哪些工具和来源、边界），交代不清就会重复劳动；编制要按复杂度定刻度，他们早期的翻车就是给简单问题 "spawning 50 subagents"（一口气开 50 个子代理）。</p>
+    <ul class="pts">
+      <li><b>能偷的一条</b>——开多代理之前先算成本账：只有广度型、高价值的任务才值得升编。</li>
+      <li><b>与协议</b>：印证第（1）（2）条（总指挥拆题、边界写清即合同）。<b>补了她协议里缺的一条：规模刻度</b>——她的协议有降级（第 5 条）、有额度日历，但没明文写「小任务不许开大阵仗」。这是本节对她最重要的一条增补（见本节末尾的综合判断）。</li>
+    </ul>
+
+    <p><b>Boris Cherny — Claude Code 创始人</b>。他在终端里同时跑 5 个 Claude 实例，每个占一个独立 git checkout（代码副本），标签编号 1–5，靠系统通知知道哪个需要他；另有 5–10 个会话在网页端。他的第一号建议，原话："give Claude a way to verify its work. If Claude has that feedback loop, it will 2-3x the quality of the final result."（给 Claude 一条自验的回路，成品质量涨 2–3 倍。）他的团队还常驻一个叫 verify-app 的验收子代理，专做端到端测试；错误管理也成文："Anytime we see Claude do something incorrectly we add it to the CLAUDE.md, so Claude knows not to do it next time."（来源：他 2026 年 1 月的 <a href="https://howborisusesclaudecode.com/">X 长帖汇编页</a>，每条都链回原帖。）</p>
+    <ul class="pts">
+      <li><b>能偷的一条</b>——把验收从人肉环节变成常驻岗位：配一个专职验收代理，干活的交活前先过它这一关。</li>
+      <li><b>与协议</b>：印证第（4）条（CLAUDE.md 就是标准外置的团队版）+ 第（6）条（他只在被通知时出现）。补充：她的验收目前靠她本人加 Muse 终审；Cherny 的做法是把验收下放给常驻代理——这正是「判断力下放」的现成样板。</li>
+    </ul>
+
+    <p><b>Simon Willison — 独立开发者、agentic engineering 的长期记录者</b>。他把 coding agent 的工作模型写得很冷静（<a href="https://simonwillison.net/2025/Jun/18/coding-agents/">《Coding agents require skilled operators》</a>）：一个熟练的人给出清晰任务，agent 写码、跑测试、改错，循环到接近完成，然后熟练的人审查、用自己的专业再推一轮。结论原话："Without the skilled individual, the 'agent' is useless. It may as well not exist."（没有那个熟练的操作者，agent 等于不存在。）</p>
+    <ul class="pts">
+      <li><b>能偷的一条</b>——瓶颈不是 agent 的数量，是操作员的专业深度：派活之前，先补上自己「看得懂产出」的那部分功课。</li>
+      <li><b>与协议</b>：印证第（6）条，但比她的版本更尖锐——人出现在验收点不是走形式，那个点上的人必须真的懂；验收力是练出来的，不是职位。这和她「学习不外包」是同一件事。</li>
+    </ul>
+
+    <p><b>Ethan Mollick — 沃顿商学院教授</b>。他的判断是：和 agent 共事的技能已经从「写提示词」变成「做管理」。据他的<a href="https://www.valence.co/ai-and-the-workforce/ai-agents-agentic-work-the-future-of-work-ethan-mollick">演讲实录</a>，给 agent 派几小时的长活，指令的写法已经像在写 PRD（产品需求文档）或 SOP（标准作业流程）；他原话："The better you are at explaining what you need, designing the kind of test you want, and assessing the work — the better the results are going to be."（你越会讲清需求、设计验收、评估产出，结果越好。）</p>
+    <ul class="pts">
+      <li><b>能偷的一条</b>——派长活之前写岗位说明书（目标、交付格式、怎么验收），而不是写一句长提示词。她的「工单」就是这个，Mollick 给它起了名字：管理。</li>
+      <li><b>与协议</b>：印证第（2）条（文件即合同）+ 第（4）条。另补一个定位：她练的不是 prompt 工程，是管理学——这也是她的市场调研功底能直接迁移过来的原因。</li>
+    </ul>
+
+    <p><b>Peter Steinberger — OpenClaw（原 Clawdbot）作者，一人舰队</b>。他一个人维护约 30 万行代码的产品，常开 3–8 个 codex 实例并行，原话："I run between 3-8 in parallel in a 3x3 terminal grid"（见他的博客 <a href="https://steipete.me/posts/just-talk-to-it">《Just Talk To It》</a>）。他的审查回路用另一个<b>全新上下文</b>的同模型实例专攻刚改完的东西，正反两方来回辩；每合并 5–10 个改动，他做一次总验收，收割 agent 们共同漏掉的盲区，再调指令（据<a href="https://frontiernow.dev/en/resources/articles/openclaw-prompt-request-interview/">访谈整理</a>）。但他也公开泼冷水，原话："Don't waste your time on stuff like RAG, subagents, Agents 2.0 or other things that are mostly just charade. Just talk to it."（别在花架子上浪费时间，直接跟它说话。）子代理他宁可换成自己开的独立窗口，理由是："This gives me complete control and visibility over the context I engineer"（上下文看得见、控制得住）。</p>
+    <ul class="pts">
+      <li><b>能偷的一条</b>——全新上下文的「找茬实例」：审查者不带作者的记忆和沉没成本。这和 Karpathy 的匿名互评是同一个原理的两面。</li>
+      <li><b>与协议</b>：印证第（3）条（不对称）+ 第（6）条。<b>不同</b>：他警惕「协议化」本身，怕仪式吃掉干活。他的规模红利要分清——每月约 $1k 的订阅、30 万行代码、他本人是资深工程师，这些她不必学；要学的是审查回路和仪式从简。Muse 的判断：她的六条是写在文件里的轻协议，不是框架，离 charade 还远；但这盆冷水值得钉在协议旁边——协议每加一条，先问它省了哪次翻车，说不出来就不加。</li>
+    </ul>
+
+    <p><b>Muse 的综合判断（观点）</b>：六个人，没有一个靠「让 AI 自由聊天」取胜，骨架全是同一个——一个综合者做终审、标准写进文件、留一条能自跑的验证回路、并行只开在真能并行的地方。她今晚的六条，这个骨架全中。只差一条：<b>规模刻度</b>。她的协议管了「怎么协奏」，还没管「什么时候不协奏」；Anthropic 用 15 倍成本和「给简单题开 50 个子代理」的翻车，把这条写进了官方经验。建议补一条：先单代理；任务的广度和价值撑得起，才升编；升编先算成本账。加不加，她醒了拍板。</p>
+    <p class="en">Benchmarked against six top practitioners: Karpathy's LLM Council anonymizes peer review and ends with a Chairman's synthesis; Anthropic's official numbers put multi-agent gains at +90.2% on research evals for roughly 15x the tokens — worth it only when the task's value pays for it, with effort scaled to complexity; Boris Cherny runs five parallel instances, a standing verification agent, and a shared CLAUDE.md that absorbs every mistake as a rule; Simon Willison insists the skilled operator is the system — without one, the agent "may as well not exist"; Ethan Mollick reframes the skill as management: write the job spec and the test, not a longer prompt; Peter Steinberger runs a one-person fleet with fresh-context reviewer instances, but warns against orchestration theater — "just talk to it." Common skeleton: one synthesizer with final say, standards in files, a self-running verification loop, parallelism only where work truly splits. The one article her protocol still lacks: a scale rule — start single-agent, and only staff up when breadth and value justify the cost.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>9. 今晚的结论</h3>
     <p><span class="topic">结论</span></p>
     <blockquote>协调不是让 AI 互相聊天，是让它们读写同一套标准。</blockquote>
     <p>顶级召唤师的终局很安静：她的时间只花在方向和判断上——给方向、抓对账、逼每个 AI 拿证据。其余的，图鉴、协议、标准、档案组成的系统自己复利。她不在场的那部分，才是她真正的作品。</p>
