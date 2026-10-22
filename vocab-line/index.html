@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>第二版 · 第一组 — Line Edition 单词卡</title>
+<title>第二版 · 全 60 词 — Line Edition 单词卡</title>
 <style>
   :root { --paper:#f5f4f0; --ink:#22201c; --red:#ae6557; --gray:#8a8880; }
   * { box-sizing:border-box; }
@@ -27,15 +27,15 @@
 </head>
 <body>
 <header>
-  <div class="kicker">LINE EDITION · L1 · 01–10</div>
-  <h1>第二版 · 第一组</h1>
+  <div class="kicker">LINE EDITION · L1 · 01–60</div>
+  <h1>第二版 · 全部六十词</h1>
   <div class="sub">杂志线条版单词卡 — 同一组词，另一种打开方式</div>
 </header>
 <main>
   <img id="card" src="cards/01-procrastinate.webp" alt="vocab card">
   <div class="nav">
     <button id="prev">← 上一张</button>
-    <span id="counter">1 / 10</span>
+    <span id="counter">1 / 60</span>
     <button id="next">下一张 →</button>
   </div>
   <div id="wordname">procrastinate</div>
@@ -46,7 +46,7 @@
   第一版水彩卡在 <a href="/vocab/" style="color:#ae6557">/vocab/</a>
 </footer>
 <script>
-  const words = ["procrastinate","serendipity","ephemeral","dilemma","chaos","irony","myth","genius","disaster","legend"];
+  const words = ["procrastinate","serendipity","ephemeral","dilemma","chaos","irony","myth","genius","disaster","legend","victory","mystery","trap","rumor","treasure","enemy","excuse","feast","marathon","phenomenon","exaggerate","hesitate","celebrate","multitask","cram","snooze","eavesdrop","doodle","binge","vanish","stumble","brag","panic","resist","jinx","daydream","fumble","chaotic","hilarious","awkward","suspicious","dramatic","epic","brutal","savage","clueless","exhausted","starving","obsessed","flawless","doomed","iconic","relatable","paradox","nemesis","plummet","thrive","vivid","relentless","bittersweet"];
   const files = words.map((w,i)=> "cards/" + String(i+1).padStart(2,"0") + "-" + w + ".webp");
   let i = 0;
   const img = document.getElementById("card"), counter = document.getElementById("counter"), name = document.getElementById("wordname");
