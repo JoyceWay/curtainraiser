@@ -331,7 +331,83 @@
   </div>
 
   <div class="note-item">
-    <h3>9. 今晚的结论</h3>
+    <h3>9. 他山之手册：别人成文的打法</h3>
+    <p><span class="topic">手册</span></p>
+    <p>2026-10-22 凌晨续补。上一节看人，这一节看书——别人把打法写成了手册的，逐本翻原文核过。读法先说清：这些书不是拿来通读的，是<b>查阅型 + 抄作业型</b>——派活前翻对照卡，改咒时查清单。每本只留四样：定位与难度、能直接用的三点、先跳过的部分、对照她的《召唤师手册》还缺什么。难度星级是 Muse 按「她现在读，卡在哪」打的，依据写在每本后面。</p>
+
+    <p><b>Andrew Ng —《Agentic Design Patterns》系列信（The Batch，2024 年 3 月起连载五封）</b>。<a href="https://charonhub.deeplearning.ai/how-agents-can-improve-llm-performance/">第一封</a>把全行业后来都在用的四个词定了名：Reflection（自省）、Tool Use（用工具）、Planning（先计划）、Multi-agent collaboration（多代理协作）。定位：写给所有人的公开信，无代码，每封几分钟。难度 ★☆☆☆☆——依据：通篇生活类比，没有一行代码。</p>
+    <ul class="pts">
+      <li><b>能直接用 1 · 拒绝一遍过</b>：他说零样本直出就像要求人 "compose an essay from start to finish, typing straight through with no backspacing allowed"（一口气写完、不许退格）。以后给 AI 的活默认拆五步：列大纲 → 查资料 → 写初稿 → 自读找毛病 → 改。她今晚的流水线已经是这个形，缺的是把五步写成固定模板。</li>
+      <li><b>能直接用 2 · 派活前先点名模式</b>：这活缺哪一味——缺自省？缺工具？缺计划？还是缺协作？四个词当派活的口头禅，先诊断再开工。</li>
+      <li><b>能直接用 3 · 记住这组数字，当不追新模型的底气</b>：HumanEval 上 "GPT-3.5 (zero shot) was 48.1% correct. GPT-4 (zero shot) does better at 67.0%."，而 "wrapped in an agent loop, GPT-3.5 achieves up to 95.1%"（套上工作流的旧模型反超新模型裸跑）。工作流比换模型更值钱——这是她打磨流水线、不追型号的官方背书。</li>
+      <li><b>先跳过</b>：每封文末的推荐论文清单先跳过；哪个模式在实战里卡住，再回头查对应那封。</li>
+      <li><b>对照她的手册</b>：三段锻造约等于 Reflection + Planning 的合成，已有；缺一张「四模式对照卡」贴在派活入口——派活先点名，模式才不会漏。</li>
+    </ul>
+
+    <p><b>OpenAI —《A Practical Guide to Building Agents》</b>（<a href="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf">官方 PDF</a>，34 页）。定位：给「第一次做 agent 的产品与工程团队」，从客户部署里蒸馏出来的实操框架。难度 ★★☆☆☆——依据：官方定位入门、约 45 分钟读完；难只难在夹着 Python 代码示例，可整段跳过，概念与框架无关。</p>
+    <ul class="pts">
+      <li><b>能直接用 1 · 派 agent 之前先过三道资格题</b>：复杂判断（complex decision-making）、规则多到维护不动（difficult-to-maintain rules）、重度依赖非结构化材料（heavy reliance on unstructured data）——三条都不沾的活，用固定流程甚至一张清单就行，别升编。和上一节 Anthropic 的「规模刻度」互相印证。</li>
+      <li><b>能直接用 2 · 工单照三件套写</b>：一个 agent 就是 Model（用哪个 AI）+ Tools（能动什么）+ Instructions（规矩）。她的工单已有目标和边界，补一行「可用工具清单」，能少一半 AI 选错工具的翻车。什么时候才拆成多个 agent，原文给了触发线："Our general recommendation is to maximize a single agent's capabilities first."（先把单个 agent 用到头）——指令里的 if-then 堆到看不过来、或工具互相太像老选错，才拆。</li>
+      <li><b>能直接用 3 · 给每个 AI 的权限标风险等级</b>：护栏一节要求给每个工具按只读/可写、可不可逆、影响大小评 low / medium / high，高风险动作先暂停过审——正对她的红线（发布、花钱、删除先问）。配套的叫人规则只有两条：失败次数超限（exceeding failure thresholds）、高风险动作（high-risk actions）。译成她的版本：同一件事失败超过约定次数，停下来叫人，不许自己硬闯。</li>
+      <li><b>先跳过</b>：Agents SDK 的全部 Python 代码（天气 agent、翻译经理、护栏 tripwire 示例）整段跳；「声明式图 vs 代码优先」之争跳过，等她真要自己搭多代理系统再回来看。</li>
+      <li><b>对照她的手册</b>：manager 模式就是她的总指挥制，已有；「先列禁区 + 降级预案」已有。缺一张成文的<b>工具风险评级表</b>——每个岗位能碰什么、碰之前要不要过审，现在靠默契，没落纸。</li>
+    </ul>
+
+    <p><b>Google —《Prompt Engineering》白皮书（Lee Boonstra，2025 年 2 月版，69 页）</b>。Google 官方提示词手册，从零讲起（Kaggle 与 Google Cloud 免费发布）。开篇原话先给她定心："You don't need to be a data scientist or a machine learning engineer – everyone can write a prompt." 难度 ★★☆☆☆——依据：前半是技巧清单、人人能抄；难在采样参数一章有公式，那章可跳。</p>
+    <ul class="pts">
+      <li><b>能直接用 1 · 给例子排第一</b>：最佳实践清单的第一条就是 Provide examples（给示例）。派活时先贴一个「就要长这样」的样本，比堆十句形容词管用——她给生图和写稿派活时已经在这么做，这本手册给了它官方名分。</li>
+      <li><b>能直接用 2 · 说要什么，不说不要什么</b>：Use Instructions over Constraints——指令写正面的目标状态。Anthropic 文档里是同一句话的另一个版本："Tell Claude what to do instead of what not to do." 两家官方异口同声，这条可以钉死。</li>
+      <li><b>能直接用 3 · 咒语要留版本账</b>：最后一章叫 Document the various prompt attempts（把每次尝试都记下来）。咒语每次改版留一行：改了什么、为什么、效果如何。她的咒语库有「为什么有效 + 实测注脚」，缺的正是版本对比这一笔。</li>
+      <li><b>先跳过</b>：输出配置一章的 temperature / top-K / top-P 公式先跳过——她日常用聊天界面，碰不到这些旋钮；等用 API 批量跑卡时再回来看起始档位。Tree of Thoughts、Automatic Prompt Engineering 两节也跳，实战用不上，名字认识即可。</li>
+      <li><b>对照她的手册</b>：咒语库的体例与这本的记录法同构，已有；缺「版本账」——同一条咒 v1/v2 差在哪、哪版赢，没有成文对比。</li>
+    </ul>
+
+    <p><b>Anthropic —《Prompting best practices》官方文档</b>（<a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">文档站</a>，持续更新的活文档）。定位：Claude 官方的现行最佳实践清单，按模型代际滚动修订。难度 ★★☆☆☆——依据：清单体、每条独立可抄；只有各型号差异表偏工程，可跳。</p>
+    <ul class="pts">
+      <li><b>能直接用 1 · 新员工测试法</b>：原文给了一个自检标准——"Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they'd be confused, Claude will be too."（把工单给一个没上下文的同事看，他会懵，Claude 也会。）这正是她审稿时「不 assume 读者知道任何东西」的同款标准，派活前自检一遍即可。</li>
+      <li><b>能直接用 2 · 给理由，不只给命令</b>：文档说，讲清一条指令背后的为什么，Claude 能把信息推广到没写到的地方。她的工单补一行「为什么」，AI 的临场判断会贴着目标走，不只贴格式。</li>
+      <li><b>能直接用 3 · 长材料先引文、再干活</b>："Ground responses in quotes"——处理长文档时，先让 Claude 把相关原文摘出来，再动手做任务。这是她「引文逐字核对、标识符去 live 源核实」的官方版打法，可以直接写进审稿类工单的第一行。</li>
+      <li><b>先跳过</b>：各型号（Fable / Opus / Sonnet 各代）的专属小节与迁移说明先跳过——那是给 API 开发者的；临用哪个模型，查对应一节即可。预填充（prefill）迁移一节也跳，新模型已不支持，与她无关。</li>
+      <li><b>对照她的手册</b>：验收清单里已有「引文逐字对」；缺的是工单里固定的「为什么」一行——和 OpenAI 三件套的 Instructions 互补，两本一起补同一处。</li>
+    </ul>
+
+    <p><b>Hamel Husain —《Your AI Product Needs Evals》</b>（<a href="https://hamel.dev/blog/posts/evals/">原文长文</a>，2024 年 3 月）。定位：评估（evals）这个领域被引用最多的实战文，案例是房产 AI 助手 Lucy 从「感觉不错」爬到系统化评估的全过程。难度 ★★★☆☆——依据：面向产品与工程读者，夹少量 JS 断言代码（可跳读）；概念密度高，但每条都能落到她的三道门上。</p>
+    <ul class="pts">
+      <li><b>能直接用 1 · 把三道门写成能机械判定的断言</b>：他的 Level 1 就是一组跑得快、判得准的检查（示例：用正则查输出里有没有漏出不该出现的 UUID）。她的第一道门「例句必须用到目标词」本质就是一条断言——已经在做。今晚 91 条例句的全量审计，就是手工版 Level 1；下一步是把三道门逐门写成「机器能判的句子」，能查的交给脚本。</li>
+      <li><b>能直接用 2 · 失败先分类计数，再动手修</b>：Lucy 的平台期症状被他总结为修一个错冒出另一个错，"resembling a game of whack-a-mole"（像打地鼠）。解法不是修得更快，是先攒失败样本、按类统计、挑最大的一类先下手。她的失败档案有事件、有规则，缺的是<b>计数</b>：同类翻车出现第二次，自动升级成规则——和上一节 Cherny「写进 CLAUDE.md」的做法严丝合缝。</li>
+      <li><b>能直接用 3 · 人评先打二值，AI 评审先和人对齐再放权</b>：原文建议标注从 good / bad 二值起步，因为 "assigning scores or more granular ratings is more onerous to manage than binary ratings"（细分数的管理成本高得多）；用一张电子表格把 AI 评审和人的评审逐条并排，对齐了才让 AI 独立打分。落到她这儿：天天选梗、Gemini 盲审先简化成「过 / 不过」，对齐率有账了，再恢复 8 分制。</li>
+      <li><b>先跳过</b>：Level 3 的 A/B 测试整节跳过——那是产品有真实用户流量之后的事；RAG 评估、微调数据合成两节跳过，等单词卡真用上检索或微调再回来。工具名（LangSmith 等）不用记，他自己的结论就是："Keep it simple. Don't buy fancy LLM tools. Use what you have first."</li>
+      <li><b>对照她的手册</b>：三道门 = Level 1 雏形，已打勾；Level 2 的「人机对齐率」从没统计过——盲审给的分和她的终审差多少，没账。这是本节给她最具体的一条增补。</li>
+    </ul>
+
+    <p><b>Eugene Yan —《Patterns for Building LLM-based Systems &amp; Products》</b>（<a href="https://eugeneyan.com/writing/llm-patterns/">原文</a>，2023 年 7 月）。定位：从业者综述，把做 LLM 产品要过的七关排成一张地图：Evals、RAG、Fine-tuning、Caching、Guardrails、Defensive UX、Collect user feedback。难度 ★★★★☆——依据：含 BLEU / ROUGE 等指标公式与大量论文引用，写给工程师；她的读法是只读每节的「怎么应用」，公式整段跳。</p>
+    <ul class="pts">
+      <li><b>能直接用 1 · 验收排第一位，不是洁癖是共识</b>：七模式里 Evals 居首，理由原话——没有评估，每次改动就只能 "visually inspect LLM outputs with each change"（靠肉眼逐个看）。和 Hamel 互证：她的三道门站在行业共识这边。</li>
+      <li><b>能直接用 2 · 输出按四类检查再交付</b>：他的护栏落地清单分四类——结构（格式对不对）、句法（取值在不在允许范围）、内容安全、语义事实（和来源对不对得上）。她的验收清单可以照这四格补全，尤其第四类正是她的引文核对。</li>
+      <li><b>能直接用 3 · 防御式 UX 只学一招：提前管理预期</b>：把「AI 会犯错、这部分降级了」明说在交付里，信任反而更长久。她已经在用——审阅页上标注「贴纸槽未经 Gemini 复审」就是这一招；这本手册给它起了名、给了出处。</li>
+      <li><b>先跳过</b>：Evals 一节的指标公式（BLEU / ROUGE / BERTScore 的数学）整段跳过——他自己也写了这些指标与人类判断相关性差；RAG、微调、缓存三节等产品真需要时再读，今晚认识名字和位置就够。</li>
+      <li><b>对照她的手册</b>：验收与降级已有；缺一张「输出检查四分法」的表。预期管理已有实战、未成文——补一句进手册即可，不必大动。</li>
+    </ul>
+
+    <p><b>Every 团队 —《Compound Engineering》插件仓</b>（<a href="https://github.com/EveryInc/compound-engineering-plugin">GitHub README</a> + 文档站）。定位：Dan Shipper 团队把自家「怎么和 agent 一起写代码」的打法做成了开源插件（36 个 skills），README 本身就是操作手册。难度 ★★★☆☆——依据：理念部分全是白话；真上手要装 Claude Code 插件，她的主力环境不在此，所以先抄流程、不抄工具。</p>
+    <ul class="pts">
+      <li><b>能直接用 1 · 六步回路照抄成工单节奏</b>：brainstorm → plan → work → simplify → review → compound（想 → 定计划 → 干 → 瘦身 → 审 → 沉淀）。最后一步的定义原话："Capture the learning into docs/solutions/ so the next loop starts smarter."（把教训写进文件，让下一轮起点更高。）她的记录系统就是这一步，但 Every 把它钉成了不可跳过的固定站位。</li>
+      <li><b>能直接用 2 · 审查只出报告，不许自动改</b>：他们的审查命令是 "Report-only multi-agent review against the plan before merging; local apply is explicit"（多代理审查只对照计划出报告，真要动手改必须显式批准）。和她的红线——干活的不能自己定改、发布删除先问——是同一条军规，可以直接写进双审咒语。</li>
+      <li><b>能直接用 3 · 80 / 20 的时间观</b>：他们明说 "80% is in planning and review, 20% is in execution"（八成功夫在计划和审查，执行只占两成），纲领句是 "Each unit of engineering work should make subsequent units easier -- not harder."（每件活都要让下一件更省力。）这给她的「先文字后画图、一节一节来」提供了外部标尺：在计划和审查上慢，是对的。</li>
+      <li><b>先跳过</b>：安装与 14 种宿主（Cursor / Codex / Cline 等）的配置整段跳过；全自动模式 /lfg 跳过——它能自动开 PR、盯 CI、循环修复，和她「对外动作先问」的红线冲突，想试点时单独评估。</li>
+      <li><b>对照她的手册</b>：回路（七阶段流水线）与记录系统都有；缺的是把「沉淀」从习惯升成站位——现在靠她和 Muse 记得，Every 靠流程强制。哪种更适合一人公司，她醒了可以想想。</li>
+    </ul>
+
+    <p><b>短注 A — Anthropic《Building Effective Agents》补遗</b>（<a href="https://www.anthropic.com/research/building-effective-agents">原文</a>，2024-12-19）。五种模式已在《召唤师之道》里映射过，不重复；只补附录里两条可操作的。其一，附录 1 给了「什么样的活值得上 agent」的四格筛子：任务要 "require both conversation and action, have clear success criteria, enable feedback loops, and integrate meaningful human oversight"（又要对话又要动手、成功标准清楚、能形成反馈回路、留了人类监督位）——以后评估一条新流水线值不值得搭，先过这四格。其二，附录 2 讲怎么给工具做提示工程：他们做 SWE-bench agent 时 "spent more time optimizing our tools than the overall prompt"（花在优化工具上的时间比优化提示词还多），解法是防呆（poka-yoke）——把相对路径改成强制绝对路径，一整类错误从此消失。对照她的手册：她的「工具」就是渲染脚本和工单模板，字段必填、枚举、禁区就是防呆，她已有实践（数据合同先行、人工断行点），缺的是这条意识——<b>改模板比改咒语更治本</b>。除此之外无增量，一句带过。</p>
+
+    <p><b>短注 B — Karpathy《llm-council》README，当手册看</b>（<a href="https://github.com/karpathy/llm-council">仓库</a>）。上一节已按「人」拆过它的三段式，这里只补手册角度一句：这份 README 就是一份<b>最小可抄的协奏模板</b>——结构只有三段（各答 → 匿名互评排名 → 主席汇总），可调的只有两个变量（议会名单 COUNCIL_MODELS、主席 CHAIRMAN_MODEL）。应用本身先跳过（要 OpenRouter 密钥、要在本地跑服务）；要抄的是形：任何一次双 AI 会诊，都按「名单 + 匿名互评 + 主席终审」排——她的会诊工作台已经是这个形的网页版。</p>
+
+    <p><b>Muse 的综合判断（观点，更新版）</b>：上一节末尾的精读推荐要改——这周只精读一本的话，读 <b>Hamel 的 evals 长文</b>。理由：这九本里，其余八本讲的东西（四模式、护栏、提示词清单、六步回路），她的手册里都有等价物在跑，读了是印证；唯独「评估怎么系统化」是真空——三道门是 Level 1 的手工版，Level 2 的失败分类计数、人机对齐率，她都还没有。她下一课不在召唤，在验收，这本是唯一直接补这课的。其余定位：Ng 的信和 OpenAI、Anthropic 两份官方文档当<b>查阅型</b>（派活前翻对照卡）；Google 白皮书当咒语库的工具书（改咒时查清单）；Eugene Yan 与 Every 当季度反刍读物；Anthropic 长文与 llm-council 已内化，不必再读。</p>
+    <p class="en">The manuals shelf, all read at the source: Andrew Ng's Batch letters name the four patterns — Reflection, Tool Use, Planning, Multi-agent collaboration — and his HumanEval numbers (GPT-3.5 zero-shot 48.1%, GPT-4 67.0%, GPT-3.5 in an agent loop up to 95.1%) argue the workflow beats the model upgrade. OpenAI's 34-page guide adds a three-question gate before building an agent, the Model/Tools/Instructions spec sheet, and per-tool risk ratings with two human-escalation triggers. Google's Prompt Engineering whitepaper (Boonstra) puts examples first, positive instructions over constraints, and ends with documenting every prompt attempt — a version log her spell library still lacks. Anthropic's living best-practices doc contributes the colleague test, give-the-why, and quote-first grounding for long documents. Hamel Husain's evals post is the one true gap: assertions as Level 1 (her three gates are a manual version), failure taxonomy before fixes, binary labels and judge-alignment before fine-grained scores. Eugene Yan's seven patterns supply a four-way output-check taxonomy and defensive UX as expectation management. Every's Compound Engineering makes the compound step a mandatory station and review report-only. Two short notes: Anthropic's appendices (a four-box test for agent-worthy tasks; poka-yoke your tools — templates beat spells) and llm-council's README as the minimal copyable council template. Verdict: the one book to read closely this week is Hamel — everything else she already runs an equivalent of; systematic evaluation is the missing course.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>10. 今晚的结论</h3>
     <p><span class="topic">结论</span></p>
     <blockquote>协调不是让 AI 互相聊天，是让它们读写同一套标准。</blockquote>
     <p>顶级召唤师的终局很安静：她的时间只花在方向和判断上——给方向、抓对账、逼每个 AI 拿证据。其余的，图鉴、协议、标准、档案组成的系统自己复利。她不在场的那部分，才是她真正的作品。</p>
