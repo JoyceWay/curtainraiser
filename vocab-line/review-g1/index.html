@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>第一组备用卡评审 · Vocab Line Review G1</title>
+<style>
+  :root{
+    --paper:#f5f4f0; --ink:#26241f; --red:#ae6557; --line:#d8d5cc;
+    --box:#e6e5e0; --gray:#6f6a5e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",serif;line-height:1.7;}
+  .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;}
+  header{border-bottom:1px solid var(--line);padding:14px 28px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:12px;letter-spacing:.18em;color:var(--gray);}
+  header .brand{color:var(--ink);font-weight:700}
+  header .brand b{color:var(--red)}
+  main{max-width:1240px;margin:0 auto;padding:44px 28px 80px}
+  .kicker{color:var(--red);font-size:13px;letter-spacing:.34em;margin-bottom:14px}
+  h1{font-size:42px;font-weight:900;line-height:1.25;margin-bottom:14px}
+  .lede{font-size:16px;color:#3c382f;max-width:760px;margin-bottom:8px}
+  .lede b{color:var(--red)}
+  .notes{background:var(--box);border-left:3px solid #8a8987;
+    padding:18px 22px;margin:30px 0 10px;font-size:14.5px}
+  .notes h2{font-size:15px;letter-spacing:.12em;margin-bottom:8px}
+  .notes ul{margin-left:20px}
+  .notes li{margin:4px 0}
+  section.word{margin-top:54px}
+  .whead{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+    border-bottom:2px solid var(--ink);padding-bottom:10px}
+  .wno{color:var(--red);font-size:13px;letter-spacing:.3em}
+  .wname{font-size:34px;font-weight:900}
+  .wmeta{font-size:12.5px;color:var(--gray);letter-spacing:.08em}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:20px}
+  figure{background:#fff;border:1px solid var(--line);padding:10px}
+  figure img{width:100%;display:block}
+  figcaption{margin-top:10px;font-size:12px;letter-spacing:.14em;color:var(--gray);
+    display:flex;justify-content:space-between}
+  figcaption .tag{border:1px solid var(--ink);color:var(--ink);padding:1px 8px}
+  figcaption .tag.alt{border-color:var(--red);color:var(--red)}
+  footer{border-top:1px solid var(--line);padding:18px 28px;font-size:12px;
+    letter-spacing:.16em;color:var(--gray);text-align:center}
+  @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}h1{font-size:32px}}
+</style>
+</head>
+<body>
+<header class="mono">
+  <div class="brand">VOCAB LINE <b>/</b> REVIEW</div>
+  <div>GROUP 1 · WORDS 01–10 · INTERNAL</div>
+</header>
+<main>
+  <div class="kicker mono">ALTERNATE CARDS · G1</div>
+  <h1>第一组备用卡评审</h1>
+  <p class="lede">每词一张主卡 + <b>三张不重复的搞笑备用图</b>：火柴人（V2）· 团子（V3）· 贴纸（V4）。
+  三十个梗先与 Gemini 商量过一轮，再由内部量表复核，全部 ≥ 8 分才进生产。</p>
+
+  <div class="notes">
+    <h2 class="mono">商量后换掉的 5 个梗</h2>
+    <ul>
+      <li><b>03 ephemeral · 火柴人</b>：融化冰雕 → 纸牌屋 + 兴奋的狗（冰雕与主卡「沙堡被浪冲走」同属一碰就没家族，撞梗）</li>
+      <li><b>07 myth · 火柴人</b>：幸运地砖 → 护士站 X 光片里的西瓜藤（原梗需要读题才懂）</li>
+      <li><b>01 procrastinate · 团子</b>：纸飞机作业 → 铅笔屑博物馆（纸飞机与主卡「one more game」同题材）</li>
+      <li><b>05 chaos · 团子</b>：龙卷风里看书 → 爆米花洪水（原梗离知名 meme 太近）</li>
+      <li><b>02 serendipity · 贴纸</b>：巨型幸运饼干 → 旧大衣破口袋（原梗先是幻想、不是真实发现）</li>
+    </ul>
+    <p style="margin-top:8px;color:var(--gray)">注：贴纸槽 03–10 因 Gemini 免费额度当晚限流，只过了内部复核，待额度恢复后补一轮商量。</p>
+  </div>
+
+  <div id="words"></div>
+</main>
+<footer class="mono">内部评审页 · 未公开链接 · VOCAB LINE</footer>
+
+<script>
+const WORDS = [
+ ["01","procrastinate","/prəˈkræs.tɪ.neɪt/ · VERB"],
+ ["02","serendipity","/ˌser.ənˈdɪp.ə.ti/ · NOUN"],
+ ["03","ephemeral","/ɪˈfem.ər.əl/ · ADJECTIVE"],
+ ["04","dilemma","/dɪˈlem.ə/ · NOUN"],
+ ["05","chaos","/ˈkeɪ.ɑːs/ · NOUN"],
+ ["06","irony","/ˈaɪ.rə.ni/ · NOUN"],
+ ["07","myth","/mɪθ/ · NOUN"],
+ ["08","genius","/ˈdʒiː.ni.əs/ · NOUN"],
+ ["09","disaster","/dɪˈzæs.tɚ/ · NOUN"],
+ ["10","legend","/ˈledʒ.ənd/ · NOUN"],
+];
+const SLOTS = [["","主卡","MAIN"],["-v2","火柴人","V2 · STICK"],["-v3","团子","V3 · BLOB"],["-v4","贴纸","V4 · STICKER"]];
+const host = document.getElementById("words");
+for (const [no, word, meta] of WORDS) {
+  const sec = document.createElement("section");
+  sec.className = "word";
+  let figs = "";
+  for (const [sfx, zh, tag] of SLOTS) {
+    figs += `<figure><img loading="lazy" src="cards/${no}-${word}${sfx}.webp" alt="${word} ${tag}">
+      <figcaption><span>${zh}</span><span class="tag${sfx ? " alt" : ""}">${tag}</span></figcaption></figure>`;
+  }
+  sec.innerHTML = `<div class="whead"><span class="wno mono">NO. ${no}</span>
+    <span class="wname">${word}</span><span class="wmeta mono">${meta}</span></div>
+    <div class="grid">${figs}</div>`;
+  host.appendChild(sec);
+}
+</script>
+</body>
+</html>
