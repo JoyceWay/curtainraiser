@@ -1062,5 +1062,61 @@
   "en": "self",
   "explain": "类里的方法第一个参数都是 self，指的就是'这个对象自己'。",
   "example": "看到 def greet(self): 别慌，self 只在说'我的这个方法'，调用时不用传，Python 自动填"
+ },
+ {
+  "day": 19,
+  "topic": "Shell",
+  "term": "which",
+  "en": "which",
+  "explain": "查一个命令到底在用哪个程序，路径一目了然。",
+  "example": "which python3——输出 /usr/bin/python3 就知道现在调的是系统自带的 Python"
+ },
+ {
+  "day": 19,
+  "topic": "Git",
+  "term": "git commit --amend",
+  "en": "commit amend",
+  "explain": "改上一次提交：补漏文件或改提交说明，不用多一次提交。",
+  "example": "git add 漏掉的文件 && git commit --amend——提交说明写错字了也能直接改，不用将错就错"
+ },
+ {
+  "day": 19,
+  "topic": "Python",
+  "term": "enumerate()",
+  "en": "enumerate",
+  "explain": "循环时同时拿到序号和元素，不用自己数数。",
+  "example": "for i, word in enumerate(['apple','pear']): print(i, word)——直接打出 0 apple、1 pear"
+ },
+ {
+  "day": 19,
+  "topic": "HTML/CSS",
+  "term": "<ol>",
+  "en": "ordered list",
+  "explain": "有序列表，浏览器自动编号，步骤类内容就用它。",
+  "example": "<ol><li>打开终端</li><li>cd 到 curtainraiser-site</li></ol>——步骤自动排成 1、2，不用手写数字"
+ },
+ {
+  "day": 19,
+  "topic": "Prompt",
+  "term": "给 AI 一张自查清单",
+  "en": "self-check checklist",
+  "explain": "回答前先列几条检查项，让 AI 自己先验一遍再交卷。",
+  "example": "写完后按这三条自查：数字都带来源了吗、中文术语配英文了吗、有没有超 200 字——漏项自己补上再给我"
+ },
+ {
+  "day": 19,
+  "topic": "AI 概念",
+  "term": "提示注入",
+  "en": "prompt injection",
+  "explain": "外来内容里藏指令，偷偷改 AI 的行为，是 AI 应用最常见的安全坑。",
+  "example": "让 AI 总结网友帖子时，帖子里一句『忽略之前指令』就可能被当真——所以外来文本只当资料读，不当指令听"
+ },
+ {
+  "day": 19,
+  "topic": "读代码",
+  "term": "__init__",
+  "en": "dunder init",
+  "explain": "类的构造函数，创建对象时自动跑，负责把初始数据装进去。",
+  "example": "看到 def __init__(self, name): 就知道这是『出生登记处』，WordCard('apple') 一创建，name 就存好了"
  }
 ]
