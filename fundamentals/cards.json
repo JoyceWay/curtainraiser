@@ -1118,5 +1118,61 @@
   "en": "dunder init",
   "explain": "类的构造函数，创建对象时自动跑，负责把初始数据装进去。",
   "example": "看到 def __init__(self, name): 就知道这是『出生登记处』，WordCard('apple') 一创建，name 就存好了"
+ },
+ {
+  "day": 20,
+  "topic": "Shell",
+  "term": "|",
+  "en": "pipe",
+  "explain": "管道：把上一个命令的输出直接送进下一个命令，不用中间文件。",
+  "example": "在 curtainraiser-site 里敲 sort words.txt | uniq，排序去重一步到位"
+ },
+ {
+  "day": 20,
+  "topic": "Git",
+  "term": "git tag",
+  "en": "tag",
+  "explain": "给某个提交贴个版本标签，像给书钉个书签，发布时好找。",
+  "example": "字卡第 20 天收官时敲 git tag v0.1-basics，以后想回看基础段直接找这个标签"
+ },
+ {
+  "day": 20,
+  "topic": "Python",
+  "term": "open()",
+  "en": "open file",
+  "explain": "打开文件：读文件内容的第一步，常和 with 搭伙用，读完自动关。",
+  "example": "with open('words.txt') as f: print(f.read())，跑一下就把词表全文打出来"
+ },
+ {
+  "day": 20,
+  "topic": "HTML/CSS",
+  "term": "<button>",
+  "en": "button",
+  "explain": "按钮标签：页面上能点的按钮，字卡的翻面按钮就是它。",
+  "example": "<button>翻面</button> 页面上出现一个可点的小按钮，点它再配 JS 就能翻卡"
+ },
+ {
+  "day": 20,
+  "topic": "Prompt",
+  "term": "一次给三个版本",
+  "en": "generate multiple options",
+  "explain": "让 AI 一次出多个版本给你挑，比一版一版改快得多。",
+  "example": "结尾加一句‘同一个意思给三个版本：正式版、轻松版、俏皮版’，挑一个最顺眼的"
+ },
+ {
+  "day": 20,
+  "topic": "AI 概念",
+  "term": "开源 vs 闭源模型",
+  "en": "open-weight vs closed models",
+  "explain": "开源模型权重公开、能自己部署；闭源模型只能调 API，能力强但看不见内部。",
+  "example": "做单词卡后端调 API 用闭源模型省事；想离线跑、改模型，就得找开源模型"
+ },
+ {
+  "day": 20,
+  "topic": "读代码",
+  "term": "class",
+  "en": "class",
+  "explain": "类：把数据和操作打包成一个模板，读到 class 就知道这里在定义一种东西。",
+  "example": "看到 class WordCard: 就猜‘这是在定义一张单词卡的模板’，下面的 def 都是它的本领"
  }
 ]
