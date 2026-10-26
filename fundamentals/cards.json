@@ -1174,5 +1174,61 @@
   "en": "class",
   "explain": "类：把数据和操作打包成一个模板，读到 class 就知道这里在定义一种东西。",
   "example": "看到 class WordCard: 就猜‘这是在定义一张单词卡的模板’，下面的 def 都是它的本领"
+ },
+ {
+  "day": 21,
+  "topic": "Shell",
+  "term": "history | grep",
+  "en": "history piped to grep",
+  "explain": "组合：历史记录 + 过滤，找回以前敲过的命令，不用从头翻。",
+  "example": "history | grep git push 就能找回上次推送用的那条命令，直接照抄"
+ },
+ {
+  "day": 21,
+  "topic": "Git",
+  "term": "git log --oneline",
+  "en": "log in one-line format",
+  "explain": "组合：日志 + 单行格式，一行一个版本，提交历史一眼看完。",
+  "example": "在 curtainraiser-site 里敲 git log --oneline，最近的字卡提交一屏看完"
+ },
+ {
+  "day": 21,
+  "topic": "Python",
+  "term": "for + if",
+  "en": "loop with condition",
+  "explain": "组合：循环 + 条件，边遍历边筛，只留下合条件的。",
+  "example": "for w in words: if len(w) > 3: print(w) —— 只打印长度大于 3 的词"
+ },
+ {
+  "day": 21,
+  "topic": "HTML/CSS",
+  "term": "class + CSS",
+  "en": "class selector combo",
+  "explain": "组合：HTML 挂 class，CSS 按 class 统一化妆，一处改全站变。",
+  "example": "卡片都写 class='card'，样式表里 .card 配暖纸底色，全站卡片一次换装"
+ },
+ {
+  "day": 21,
+  "topic": "Prompt",
+  "term": "角色 + 格式 + 例子",
+  "en": "role + format + example combo",
+  "explain": "组合：三件套一次给全，AI 不用猜你的口味，出活一次到位。",
+  "example": "你是小学老师，用三句话讲清楚光合作用，再给一个生活例子——角色、格式、例子全齐了"
+ },
+ {
+  "day": 21,
+  "topic": "AI 概念",
+  "term": "RAG 三步",
+  "en": "retrieve, then generate",
+  "explain": "组合：embedding 查资料 + 检索 + 生成，AI 先翻书再回答，少编答案。",
+  "example": "问 AI 天天最喜欢哪张卡，它先检索投票记录再回答，而不是凭空编一个"
+ },
+ {
+  "day": 21,
+  "topic": "读代码",
+  "term": "if __name__ == '__main__':",
+  "en": "main guard",
+  "explain": "组合：入口标记，读到它就知道程序从这里开始跑，前面都是准备工作。",
+  "example": "打开一个 .py 文件先搜 __main__，找到它就找到了程序的起点"
  }
 ]
