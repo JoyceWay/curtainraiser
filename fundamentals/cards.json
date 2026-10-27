@@ -1230,5 +1230,61 @@
   "en": "main guard",
   "explain": "组合：入口标记，读到它就知道程序从这里开始跑，前面都是准备工作。",
   "example": "打开一个 .py 文件先搜 __main__，找到它就找到了程序的起点"
+ },
+ {
+  "day": 22,
+  "topic": "Shell",
+  "term": "cat 文件 | grep 关键词",
+  "en": "pipe cat output into grep",
+  "explain": "组合：先 cat 倒出文件内容，再用管道送进 grep 过滤，只看含关键词的行。",
+  "example": "在 curtainraiser-site 里敲 cat fundamentals/cards.json | grep Day 21，一屏只剩昨天的卡"
+ },
+ {
+  "day": 22,
+  "topic": "Git",
+  "term": "git commit -am “备注”",
+  "en": "commit all tracked changes with message",
+  "explain": "组合：-a 自动把已追踪文件的改动加进暂存区，-m 直接写备注，一条命令完成 add 加 commit。",
+  "example": "改完字卡样式后敲 git commit -am “字卡 Day 22”，不用先 git add；注意新文件还是要先 git add"
+ },
+ {
+  "day": 22,
+  "topic": "Python",
+  "term": "[x for x in 列表 if 条件]",
+  "en": "list comprehension",
+  "explain": "组合：循环加条件写进一行方括号，边遍历边筛，筛完直接得到一个新列表。",
+  "example": "words = ['a', 'apple', 'pear']\nlong = [w for w in words if len(w) > 3]\nprint(long)  # 跑出来是 ['apple', 'pear']"
+ },
+ {
+  "day": 22,
+  "topic": "HTML/CSS",
+  "term": "display: flex",
+  "en": "flexbox layout",
+  "explain": "组合：给父盒子写 display: flex，里面的卡片自动排成一行，再配 gap 留间距，横排布局一句话搞定。",
+  "example": "<div style='display:flex; gap:12px;'><div>卡1</div><div>卡2</div></div>  # 两张卡并排站，中间留 12 像素空隙"
+ },
+ {
+  "day": 22,
+  "topic": "Prompt",
+  "term": "背景 + 任务 + 输出格式",
+  "en": "context + task + format",
+  "explain": "组合：三段一次给全——先说背景，再说要干什么，最后说按什么格式交，AI 基本不用返工。",
+  "example": "“我是新手读者，正在学 Python（背景）。请解释列表推导式（任务）。用三句话加一个例子（格式）。”"
+ },
+ {
+  "day": 22,
+  "topic": "AI 概念",
+  "term": "工具调用",
+  "en": "function calling / tool use",
+  "explain": "组合：大模型加工具——模型自己判断该调哪个工具、传什么参数，拿到结果再继续回答，智能体就是这么干活的。",
+  "example": "你说“把字卡推上 GitHub”，智能体先调 git 命令推上去，再回你一句“推好了”，而不是只告诉你步骤"
+ },
+ {
+  "day": 22,
+  "topic": "读代码",
+  "term": "从调用跳到定义",
+  "en": "jump from call site to definition",
+  "explain": "组合读法：先在调用处看它传了什么、要什么结果，再跳到 def 那行看它到底怎么算，两边一对就读懂了。",
+  "example": "看到 total = sum_price(cart) 先别猜，搜 def sum_price 找到定义，看它怎么加总，回来再读调用处就通了"
  }
 ]
