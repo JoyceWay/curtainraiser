@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今天的笔记：为 AI 时代重做学校 — Alpha School — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 16px; line-height: 1.6;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item p b, .pts li b { color: #342C2C; }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .use-box {
+    margin: 14px 0 0; padding: 14px 18px;
+    border-left: 3px solid #B08D3E;
+    background: rgba(176,141,62,.08);
+  }
+  .use-box .use-kicker {
+    font-family: 'Inter', sans-serif; font-size: 13px; letter-spacing: 2px;
+    color: #8A6D2F; margin: 0 0 8px; font-weight: 600;
+  }
+  .use-box p { font-size: 15px; line-height: 1.7; margin: 0 0 8px; color: #3E3838; }
+  .use-box p:last-child { margin-bottom: 0; }
+  .use-box p b { color: #342C2C; }
+  .src-box {
+    margin: 0 0 40px; padding: 14px 18px;
+    border: 1px solid rgba(52,44,44,.12); background: #FAF7F1;
+  }
+  .src-box p { font-size: 15px; line-height: 1.7; margin: 0 0 8px; color: #3E3838; }
+  .src-box p:last-child { margin-bottom: 0; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 48px 20px 72px; }
+    h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">TODAY'S NOTES · 2026-10-27</div>
+  <h1>今天的笔记：为 AI 时代重做学校</h1>
+  <p class="sub">a16z Show 56 分钟：Alpha School 的 Joe Liemandt × Horowitz and Andreessen Academy 联合创始人 Gagan Biyani × Erik Torenberg。主题：AI 把学术压缩到每天 2 小时之后，学校剩下的时间应该用来干什么。</p>
+
+  <div class="src-box">
+    <p><b>先说数字口径（读整篇之前）：</b>这集里大部分亮眼数字（90% 多爱学校、top 1%、10 倍速、一年 13→50 校区）都是 <b>Joe 自己说的</b>，Alpha 没有公开过底层数据。独立核查一栏写在第 08 节。引用时只写“Alpha 自称”，不写“Alpha 证明”。</p>
+    <p><b>节目事实：</b>2026 年 10 月 27 日发布，56 分钟。Joe Liemandt 是 Alpha School 的校长（principal），也是 Trilogy 创始人；Gagan Biyani 是 Udemy、Maven 联合创始人，现任 Horowitz and Andreessen Academy（HAA）创始人兼 CEO。</p>
+  </div>
+
+  <h2>01 · 总览</h2>
+  <div class="en-label">THE THESIS</div>
+  <div class="note-item">
+    <h3><span class="topic">论点</span>省下的时间不补课</h3>
+    <p>Joe 的核心论点：<b>教学设计一百年没变过——一个老师、一个教室、三十个学生</b>；而认知科学加大型语言模型，让学习引擎可以<b>大约快 10 倍</b>地教。如果这是真的，学校的一天必须从头重建——因为<b>没有家长会接受孩子只上两小时学就回家</b>。</p>
+    <p>所以 Alpha 对家庭的三个承诺是：<b>孩子会爱上学校；在每天 2 小时里学得比 6 小时加作业更多；剩下的时间全部用来学生活技能。</b>这三个承诺的顺序很重要：爱学校在前，学得快在中，生活技能在后——爱是前提，不是装饰。</p>
+    <div class="use-box">
+      <p class="use-kicker">对我有什么用 · 下一步</p>
+      <p>这集不做 Article：时效新但数字未核实，先当机制库收着。<b>下一步：</b>把下面提炼的机制（80–85% 区、Time Back、可评分的软技能）写进单词卡和 Atlas 的设计原则清单各一行，先占位，后面做产品时直接对照。</p>
+    </div>
+  </div>
+
+  <h2>02 · 学术压缩：2 小时是怎么来的</h2>
+  <div class="en-label">TWO-HOUR ACADEMICS</div>
+  <div class="note-item">
+    <h3><span class="topic">引擎</span>AI 导师 + 学习科学，不是 ChatGPT</h3>
+    <ul class="pts">
+      <li>学生每天花 <b>约 2 小时</b>和一个基于学习科学的 AI 导师学习（Joe 强调“不是 ChatGPT 那种”），完成后界面<b>变绿</b>，转入生活技能工作坊。</li>
+      <li>Joe 的说法：2 小时里学到的<b>超过</b>传统 6 小时加作业的孩子；所有班级都是 <b>top 1%</b>，自称“全国表现最好的学术学校”；系统能把<b>后 25% 的学生两年内带到前 25%</b>。</li>
+      <li>关键不是“学得快”，而是<b>按知识年级（knowledge grade）而不是年龄</b>分层：入学诊断经常发现成绩单会骗人——<b>“A”学生实际在超前 1 年到落后 3 年之间，“B”学生落后 3 到 7 年</b>。一个年级的掌握通常只要 <b>20–30 小时</b>，落后 3 年约等于 60 小时专注学习（每天多加一小时即可）。</li>
+      <li>老师的角色改叫 <b>Guides（向导）</b>：不是讲课的人，是导师和激励者。成年人管动机和陪伴，引擎管知识传授。</li>
+      <li>Joe 的红线：<b>不能把引擎直接塞进传统时间表——“放进正常学校的一天它会失败”</b>，2 小时学术块只有在剩下一天全部重建的前提下才成立。</li>
+    </ul>
+    <div class="use-box">
+      <p class="use-kicker">对我有什么用 · 下一步</p>
+      <p>“按知识年级而不是年龄”可以直接偷：单词卡和 Atlas 不要按年级标签排词，按<b>孩子实际掌握程度</b>排；<b>下一步：</b>下一批单词卡先做一次难度分级，标出每词的“知识年级”，太简单和太难的先筛一遍再进生产。</p>
+    </div>
+  </div>
+
+  <h2>03 · 动机机制：为什么孩子愿意学</h2>
+  <div class="en-label">MOTIVATION IS 90% OF THE SOLUTION</div>
+  <div class="note-item">
+    <h3><span class="topic">机制</span>Time Back + 80–85% 正确区 + 轻激励</h3>
+    <ul class="pts">
+      <li><b>Time Back（时间返还）是最高杠杆：</b>学得快不是目的，省下的午后才是奖励——学完就能去做自己喜欢的项目。Joe 说动机是 <b>“90% 的解法”</b>。</li>
+      <li><b>80–85% 正确区：</b>“基本想让孩子处在 80% 到 85% 答对的区间。100% 全对就是太简单，只是在复读已经会的东西；”掉到三分之二以下就彻底脱离——“任何游戏开发者都认这个阈值”。一个老师管 30 个学生没法逐人持续校准难度，引擎可以：八年级缺五年级概念，就补五年级那课，过了再往前；太难加脚手架，太简单就加速。</li>
+      <li><b>轻激励：</b>“100 for 100”（满分奖励）、付钱给学生、礼品卡解锁、屏幕时间交换。作用不是贿赂，而是<b>扭转自我认知</b>：在掌握制里，努力而不是智商决定谁拿满分。</li>
+      <li><b>爱学校的数据（Alpha 自述）：</b>90% 多的学生说爱学校；50% 说宁愿上学也不度假，某校区达 65%；Alpha 高中应学生要求<b>全年开放</b>。</li>
+      <li>Joe 的育儿哲学句：“<b>孩子快乐的关键是高标准。孩子想去做难的事，而且喜欢和朋友一起做难的事。</b>”不挑战的学校的替代品不是更好的学校，是在家打游戏。</li>
+    </ul>
+    <div class="use-box">
+      <p class="use-kicker">对我有什么用 · 下一步</p>
+      <p>80–85% 区是现成的难度校准标尺：单词卡每关、Atlas 每关的目标正确率就锚在这里，太简单无聊、太难脱离，两头都要调。Time Back 和你的“快乐是学习的工作方式”是同款论证：<b>学得快→省时间→做喜欢的事，动机不是奖品，是时间本身。</b><b>下一步：</b>LAB 里加一句“学完就能去玩”的时间回馈提示，先做一处，别全量改。</p>
+    </div>
+  </div>
+
+  <h2>04 · 下午的生活技能：软技能可以评分</h2>
+  <div class="en-label">LIFE SKILLS, GRADED LIKE SUBJECTS</div>
+  <div class="note-item">
+    <h3><span class="topic">五类</span>领导力与团队 · 创业与财商 · 社交 · 演讲 · grit</h3>
+    <p>下午是小组项目制，由成年人带队。五类生活技能：<b>领导力与团队、创业与金融素养、社交与关系建立、讲故事与公开演讲、grit 与吃苦</b>。</p>
+    <h3><span class="topic">团队</span>密室逃脱 transcript 评分法</h3>
+    <p>Joe 对学校小组作业的批判很尖锐：“大多数学校团队项目都很糟糕。一个人干活，其他人坐着——你学到的是团队合作的反面。”他的证据链一路到商学院：Wharton MBA 的 Everest 模拟里，<b>50% 的 MBA 在团队部分挂掉</b>。</p>
+    <p>Alpha 的做法是把团队当一门有及格线的课：每个三年级孩子在密室逃脱时<b>戴麦克风</b>，AI 分析 transcript 里团队导向语言 vs 推自己想法的语言占比，<b>起始基线不到 20%</b>；八周工作坊后必须达到 <b>85% 团队导向行为</b>才算过；过关后团队完成密室的速度快了三倍；四五年级直接去过 Wharton MBA 一半人挂掉的那个挑战。</p>
+    <h3><span class="topic">创业</span>从幼儿园到 $1M 台阶</h3>
+    <p>创业从幼儿园开始：用学校货币 <b>alphas</b> 学赚、存、花、投资、捐赠。高中阶段是 Founders School（2025 年 8 月开学），带一个硬保证：<b>学生在高中期间建成一家利润 $1M 的企业，否则退学费</b>。台阶是刻意分段的——<b>$100 → $1,000 → $10,000 → $100,000 → $1M</b>。Joe 说学生已经在“速通”，他手里已经没有大一新生的课程了。</p>
+    <p>底层信念句：“<b>创业不是一道闪电劈下来就有了——它是一套可以教的技能。</b>”</p>
+    <h3><span class="topic">故事</span>14 岁冷电话打给 Jensen Huang</h3>
+    <p>Founders School 一个 14 岁学生冷电话打给 NVIDIA 的 Jensen Huang，对方接了，给了他 90 秒 pitch，然后告诉他：你问的那些资格问题，本可以自己查或者问组织里其他人——<b>“你刚刚把你唯一的子弹用掉了。”</b>Joe 说这是这孩子一生中最好的一课。背后的复制逻辑：Joe 自己从斯坦福退学，记住的不是讲座，是见到 Steve Jobs、Bill Joy、Scott McNealy，和朋友一起做出公司——<b>接近那些后来发现也不过是普通人物的杰出者，会让大事变的可及</b>，尤其在年轻、自大、无畏的时候。他还引用 Tyler Cowen 的话：老师能做的第一重要的事，是<b>提高学生对自己的抱负</b>。</p>
+    <div class="use-box">
+      <p class="use-kicker">对我有什么用 · 下一步</p>
+      <p>团队 transcript 评分法可以偷：Atlas 里的小组任务也可以用“团队导向语言占比”当完成标准，而不是“做完了没有”。创业台阶可以直接对照你的产品阶梯：<b>免费 → $5 → $39 → $69</b>，每级都是一次“赚到下一个数字”的证明。<b>下一步：</b>把价格阶梯画成 $100→$1M 式台阶图贴在自己墙上，看一级缺什么证据。</p>
+    </div>
+  </div>
+
+  <h2>05 · 采用与扩张：第一批永远是真信徒</h2>
+  <div class="en-label">ADOPTION, NOT HEADCOUNT</div>
+  <div class="note-item">
+    <h3><span class="topic">扩张</span>一年 13→50 校区，但质量先于人数</h3>
+    <ul class="pts">
+      <li>Alpha 自称一年内从 <b>13 个校区扩张到 50 个</b>。Joe 的扩张口号是“我们越大越好”（we get better as we get bigger），归因于 AI 让组织规模化而不稀释：考试成绩、客户满意度、学生快乐度、工作坊质量每年都在提高。</li>
+      <li>纽约校区开学时只有 <b>10–12 个学生，现在满员约 150 人</b>。更早的开学：说明会来 <b>1000 多人，最后只报 10–25 人</b>。Joe 的建议是 <b>magnet marketing（磁铁营销）</b>：吸引对的家庭、赶走错的家庭——包括反对 AI 或屏幕时间的家长——对契合度严格，而不是对人数宽松。</li>
+      <li>他自己的滞后也很诚实：孩子本来在天主教学校，他 dismissed Alpha 早期的“车库”校区，<b>花了两年才转过去</b>，孩子到现在还抱怨他太慢。</li>
+      <li>历史类比 1910 年：当时约 90% 的美国人只有八年级学历，基本没有高中，30% 多的人务农；然后 Case 拖拉机来了，广告词堪比今天的 AI 营销——“顶 50 个农场工人”——所有人都看得出 30% 的工作要消失；<b>13 万个镇投票给自己加税，去资助一种他们自己都没体验过的学校模式</b>。Joe 的 point：新机构必须说服家庭去买一种和他们自己受过的教育不同的教育，正如那些农民当年做的。</li>
+    </ul>
+    <div class="use-box">
+      <p class="use-kicker">对我有什么用 · 下一步</p>
+      <p>“第一批永远是真信徒”就是你的前 3 单免费换评价：那不是赔本，是找真信徒。1000→10–25 提醒你<b>转化率低是正常的，别因此怀疑产品</b>。magnet marketing 直接可用：小红书内容只写给“认同快乐学习”的妈妈，不向所有人解释。<b>下一步：</b>下一篇小红书帖子开头就亮立场（快乐学习、孩子说了算），不写讨好所有人的话。</p>
+    </div>
+  </div>
+
+  <h2>06 · 大学与 HAA：bundle 大多很好，除了它卖的那部分</h2>
+  <div class="en-label">THE UNIVERSITY BUNDLE, UNBUNDLED</div>
+  <div class="note-item">
+    <h3><span class="topic">批判</span>大课是 charade，研讨会和社团才是喜欢的部分</h3>
+    <p>Joe 不认为所有人都该跳过大学，他认为大学应该被重做。证据：2025 年夏天在 Alpha 的 <b>70 多名 MIT 和斯坦福实习生</b>被问“大学有没有为这个世界做好准备”时，<b>只有 1 个孩子举手</b>，其余都害怕 AI 让他们预期的入门级工作消失。这些实习生那个夏天每周工作约 80 小时，研究学习科学、建一个打算免费向全球开放的教育 LLM，成果会发表。</p>
+    <p>Alpha 第一届高中毕业生圣诞节回校：大学第一学期全 A，但一致抱怨大课是“<b>彻头彻尾的 charade</b>”（学生在刷 TikTok 或缺席）；五个人给校报写了社论。喜欢的是小研讨会、俱乐部和活动——<b>恰恰是大学不正式提供的部分</b>。</p>
+    <h3><span class="topic">HAA</span>Horowitz and Andreessen Academy</h3>
+    <ul class="pts">
+      <li>定位：a16z 2025 年 9 月 22 日推出的<b>非认证、私立、全日制、线下</b>学校，面向 18–22 岁想创业的高中毕业生，Joe 是投资人和顾问，希望 Alpha 毕业生有地方去。</li>
+      <li>规模与钱：已募 <b>$42M</b>（a16z 领投，含 Shopify、DoorDash、Palantir、Alpha School 等高管）；创始班约 <b>50 人</b>，<b>2027 年秋</b>旧金山入学，<b>首年免学费</b>；之后两年制收费“与精英私立大学类似”。</li>
+      <li>时间分配：<b>75–80% 的时间做项目和建造</b>；创始合作伙伴包括 Anthropic、Anduril、Coinbase、Google、Meta、NVIDIA、OpenAI、Palantir、Replit、Stripe；每人 <b>$50,000+ 算力额度 + $5,000 旅行与研究预算</b>。</li>
+      <li>设计原则（Biyani）：<b>每个年龄段要不同对待——K-8、高中、大学不能互相照抄</b>；大多数大学领导 90% 的时间花在学生周围的成年人身上，而不是学生身上；一年免学费结构降低了风险——学生可以延期或再申请，不像错过八年级那样不可逆。</li>
+      <li>申请时间点：早期申请 <b>11 月 5 日截止</b>（2026 年），这是本集发布时正在发生的窗口。</li>
+    </ul>
+    <div class="use-box">
+      <p class="use-kicker">对我有什么用 · 下一步</p>
+      <p>“小研讨 + 社团才是喜欢的部分”说明：你的产品里<b>“和真人一起做”比“大课讲授”值钱</b>。单词卡的藏猫、投票、天天 7 选 4 都是“一起做”的部分，要保住权重，别被“讲授量”挤掉。<b>下一步：</b>Atlas 里给“和朋友一起做”的环节单独留一个权重位，不写具体形式，先占位。</p>
+    </div>
+  </div>
+
+  <h2>07 · 预测与赌注：建造者进攻，不对冲</h2>
+  <div class="en-label">BUILDERS ON OFFENSE</div>
+  <div class="note-item">
+    <h3><span class="topic">预测</span>大公司变小，创业爆炸，学生写软件</h3>
+    <ul class="pts">
+      <li>Joe 的两个中等信心预测：<b>AI 会让大 Fortune 500 公司变小，同时触发创业爆炸</b>；因为学生不再整天坐教室，学校能在比以前小得多的年龄教团队、领导力这类复杂生活技能。如果他是对的，创始人技能会从课外变成核心课程，需求会转向<b>按结果担保的专业学校</b>。</li>
+      <li>约两年内，<b>大多数学习软件将由学生写、给同龄人用</b>。例子：一个叫 Austin 的学生给 Alpha 写了 AP 课程——把世界史包进 GeoGuessr 式游戏，加 S-tier 排名和一个毒舌 AI——上课的学生考了 5 分。Joe 说：“我和原来的成人团队永远做不出来。”</li>
+      <li>18 岁重做教育的拆法：第一，<b>认知卸载</b>——AI 让人变得快得多地成为领域专家，相当于硕士的内容大约一年可以吸收（高中生重建 Time Back 软件栈局部、学习学习科学就是例子）；第二，更重要的，<b>AI 把学生变成有超能力的建造者</b>。</li>
+      <li>Biyani 的进攻论：问“哪个领域最不怕 AI”是错问题——任何领域的 AI 原生实践者都会过得很好，用黑板数学的老派做法才是“cooked”，而新一代数学家会做出没人想过的事。学生应该在进攻，不是对未来做防御性下注。他拿自己举证：在教育这个据说 15 年只有约四个赢家的坏市场，仍然可以在一个领域做到前 1% 并过得很好。</li>
+      <li>价值观收束：Alpha 学生读《The Rational Optimist》，被教导他们是<b>在建造世界，而不是被世界强加</b>。Joe 的原话目标：要一代“乐观地有能力使用 AI、说我们要建造一个很棒的未来”的毕业生。</li>
+    </ul>
+    <div class="use-box">
+      <p class="use-kicker">对我有什么用 · 下一步</p>
+      <p>“学生写软件”对应你的召唤师哲学（你定标准，AI 执行）：<b>下一步：</b>Odyssey 里找一处让学生自己改一个小工具（哪怕改一个按钮），先占位，不急着做。Biyani 的进攻论可以直接当你的提问模板：以后选题先问“孩子关心到愿意去建造什么”，不问“哪个方向最安全”。</p>
+    </div>
+  </div>
+
+  <h2>08 · 争议与未证实：先分层，再引用</h2>
+  <div class="en-label">WHAT IT CAN'T YET PROVE</div>
+  <div class="note-item">
+    <h3><span class="topic">来源</span>Alpha 的数字是自述，底层数据没公开</h3>
+    <ul class="pts">
+      <li>Alpha 报告的 <b>2.6 倍速增长、top 1% 成绩来自它自己的 MAP 测试，没有公开底层数据</b>；批评者说乘数计算夸大了数字。</li>
+      <li>反例：<b>同模式的亚利桑那特许学校第一年数学达标率只有 10%</b>——模式复制到不同生源和监管环境时，结果可以差很多。</li>
+      <li>争议报道：WIRED、404 Media、The 74 报道过 <b>webcam 监控、有缺陷的 AI 生成课程、高中训练营配心率带</b>；Alpha 否认 404 Media 的报道，并说任何训练营挑战都可以替换。</li>
+      <li>学费与可及性（这是模型最硬的短板）：已公布校区学费从德州 Brownsville 的 <b>$10,000/年</b>到旧金山/帕洛阿尔托的 <b>$75,000/年</b>，40 个已公布价格中的 40 个落在 $40,000–$65,000 之间；两个新项目（纽约 Founders School、Alpha World School）<b>$150,000</b>。低价路线是 <b>$15,000 微校</b>（如德州体育学院），代金券（约 $12,000）抵后家长自付约 <b>$300–400/月</b>。</li>
+      <li>规模愿景与钱：Joe 说已投入 <b>$1B</b>启动，目标是 <b>sub-$1,000 平板</b>上的本机 AI 辅导，覆盖<b>十亿孩子</b>；另有配套项目如基于学习引擎的 AAA 游戏（免费学、可变现）。面向“任何人、任何地方”的在线项目已<b>暂停新招生至 2026 年底</b>。美国之外目前没有校区（肯尼亚、厄瓜多尔的高中项目在广告中）。</li>
+      <li>校区数口径：2025–26 学年约十几家，目录现列 47 家（含未开业）；ProPublica 与 Texas Tribune 统计为 17 州加波多黎各的私立学校。引用“50 家”时要注明是 Joe 在播客里的说法。</li>
+    </ul>
+    <div class="use-box">
+      <p class="use-kicker">对我有什么用 · 下一步</p>
+      <p>这节是“事实 / 推断 / 观点分层”的现成教材：<b>下一步：</b>以后引用 Alpha 只写“Alpha 自称”，不写“Alpha 证明”；给 Ella 讲这集时，先讲机制（可偷），再讲数字（未证实），顺序不能反。</p>
+    </div>
+  </div>
+
+  <h2>09 · 金句</h2>
+  <div class="en-label">LINES WORTH KEEPING</div>
+  <div class="note-item">
+    <blockquote>“孩子快乐的关键是高标准。孩子想去做难的事，而且喜欢和朋友一起做难的事。”</blockquote>
+    <p class="origin">JOE LIEMANDT · 本集</p>
+    <blockquote>“创业不是一道闪电劈下来就有了——它是一套可以教的技能。”</blockquote>
+    <p class="origin">JOE LIEMANDT · 本集</p>
+    <blockquote>“你基本上想让孩子处在 80% 到 85% 答对的区间。100% 全对就是太简单，只是在复读已经会的东西。”</blockquote>
+    <p class="origin">JOE LIEMANDT · 本集，80–85% 正确区</p>
+    <blockquote>“最重要的问题可能不是哪个领域最不怕 AI，而是你关心到愿意去建造什么。”</blockquote>
+    <p class="origin">本集结尾论点 · GAGAN BIYANI 的进攻论</p>
+    <blockquote>“老师能做的第一重要的事，是提高学生对自己的抱负。”</blockquote>
+    <p class="origin">JOE 引用 TYLER COWEN · 本集</p>
+    <div class="use-box">
+      <p class="use-kicker">对我有什么用 · 下一步</p>
+      <p>第一句可以直接当单词卡 / Atlas 的墙上一句话。<b>下一步：</b>挑一句先问 Ella 喜欢哪句，她点头再贴，不直接替她定。</p>
+    </div>
+  </div>
+
+  <h2>10 · 来源</h2>
+  <div class="en-label">SOURCES</div>
+  <div class="note-item">
+    <ul class="pts">
+      <li>节目本体：<a href="https://podcasts.apple.com/us/podcast/reinventing-school-for-the-ai-era-joe-liemandt-gagan/id842818711?i=1000798331053">Apple Podcasts · Reinventing School for the AI Era | Joe Liemandt, Gagan Biyani &amp; Erik Torenberg</a>（2026-10-27，56 分钟）。</li>
+      <li>本集长篇转述：<a href="https://finance.biggo.com/news/43ec59f799a6810b">BigGo Finance · Alpha School's Joe Liemandt</a>（含 13→50 校区、80–85% 区、密室评分、$1M 台阶、NYC 采用、HAA 设计）。</li>
+      <li>独立核查与批评：<a href="https://vanja.io/alpha-school/">Vanja Petreski · Alpha School: Two Hours of AI a Day, and What It Costs</a>（MAP 数据未公开、Arizona 10%、监控报道、学费区间）。</li>
+      <li>Alpha 自家页面：<a href="https://alpha.school/">alpha.school</a>（含 Lonsdale 访谈、K-12 重做、未来教育愿景三篇转述）。</li>
+      <li>HAA 背景：<a href="https://www.fastcompany.com/91611319/a16zs-new-academy-wants-to-be-the-anti-college-for-aspiring-tech-founders">Fast Company · a16z's new academy</a>（$42M、首年免学费、50 人创始班）。</li>
+      <li>HAA 官网：<a href="https://www.theacademysf.com/">theacademysf.com</a>；Alpha 官网：<a href="https://alpha.school/joe-liemandt-and-the-future-of-education/">alpha.school 未来教育页</a>。</li>
+    </ul>
+    <p>本页事实层来自节目简介与上述二手转述，未听写全集逐字稿；引文以转述页为准，正式引用前请回节目原音核对。Alpha 数字一律按“自述”处理。</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · TODAY'S NOTES · 2026-10-27</div>
+</div>
+</body>
+</html>
