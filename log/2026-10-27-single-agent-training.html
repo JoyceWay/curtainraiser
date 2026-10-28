@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>单 Agent 训练：一步一步看懂今天那篇文章</title>
+<style>
+  :root{
+    --paper:#f5f4f0; --paper-2:#e6e5e0; --ink:#1c1a17; --muted:#6f6a61;
+    --line:rgba(28,26,23,.16); --red:#ae6557; --greyline:#8a8987;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",serif;line-height:1.85;font-size:17px}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+  .kicker{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.22em;
+    color:var(--red);text-transform:uppercase}
+  h1{font-size:38px;line-height:1.3;font-weight:900;margin:14px 0 8px}
+  .sub{font-size:15px;color:var(--muted);line-height:1.7}
+  .meta{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);
+    letter-spacing:.06em;margin:20px 0 0;padding-top:16px;border-top:1px solid var(--line)}
+  .howto{background:var(--paper-2);padding:18px 22px;margin:32px 0;font-size:15px;line-height:1.8}
+  .howto b{color:var(--red)}
+  h2{font-size:24px;line-height:1.4;font-weight:900;margin:0 0 6px}
+  h2 .no{color:var(--red)}
+  .lesson{padding:36px 0 8px;border-top:1px solid var(--line);margin-top:36px}
+  .lesson:first-of-type{border-top:none}
+  .say{font-size:18px;line-height:1.8;margin:0 0 14px}
+  h3{font-size:15px;margin:22px 0 8px;font-family:ui-monospace,Menlo,monospace;
+    letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  p{margin:0 0 12px}
+  ul,ol{margin:0 0 12px;padding-left:22px}
+  li{margin-bottom:8px}
+  li b{font-weight:700}
+  .term{font-weight:700}
+  .note{font-size:14px;color:var(--muted);line-height:1.7}
+  .flow{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+    padding:18px 4px;margin:24px 0;font-size:18px;line-height:2;text-align:center}
+  .flow b{color:var(--red)}
+  .relate{background:var(--paper-2);padding:16px 20px;font-size:15px;line-height:1.8}
+  .src{background:var(--paper-2);border-left:3px solid var(--greyline);
+    padding:16px 20px;font-size:14px;line-height:1.8;color:var(--muted);margin-top:40px}
+  .quiz{border-top:1px solid var(--ink);margin-top:48px;padding-top:28px}
+  .quiz ol li{margin-bottom:14px}
+  .ans{color:var(--muted);font-size:15px}
+  @media(max-width:600px){body{font-size:16px}h1{font-size:30px}.wrap{padding:32px 18px 64px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Training · 从零开始</div>
+<h1>单 Agent 训练：一步一步看懂今天那篇文章</h1>
+<p class="sub">今天发的文章《多 Agent 祛魅：为什么“单 Agent + Skill”才是一人公司的最优解？》的逐节拆解。<br>
+默认你什么都不知道。每个词第一次出现，都会讲清楚它是什么、像什么、为什么重要。</p>
+<p class="meta">2026-10-27 · 对应文章 10 节 · 按顺序读，每课约 3 分钟</p>
+
+<div class="howto"><b>怎么用这页：</b>从第 0 课按顺序读到第 10 课。读完能回答文末三道自测题，就算看懂了今天的文章。读的时候不用记代码，不用记英文缩写——记住每课那句人话就够了。</div>
+
+<div class="lesson">
+<h2><span class="no">第 0 课</span> · 先认识四样东西</h2>
+<p class="say">没有这四样东西，后面全是黑话。先把地基打好。</p>
+<h3>对应知识点</h3>
+<ul>
+<li><span class="term">电脑：</span>一台按指令干活的机器。你给它指令，它照做，不问为什么。</li>
+<li><span class="term">程序：</span>写给电脑的指令清单。像菜谱：先放什么、后放什么、火开多大，一步一步写清楚。</li>
+<li><span class="term">大模型：</span>一种特别的程序。你说一句人话，它回一句人话。它很会说话，但有三个短板：不记事，不动手，关掉窗口就忘。</li>
+<li><span class="term">聊天和干活的区别：</span>聊天是问一句、答一句。干活是交代一件事，对方多轮做完，中间不用你一步步指挥。今天这篇文章讲的，就是怎么让大模型从“聊天”变成“干活”。</li>
+</ul>
+</div>
+
+<div class="lesson">
+<h2><span class="no">第 1 课</span> · 为什么多 Agent 会变坏（对应文章开头 + 01 节）</h2>
+<p class="say">文章开头在说：过去两年最流行画很多 Agent 分工图，看起来很厉害；现在发现，分工本身成了最大的累赘。</p>
+<h3>对应知识点</h3>
+<ul>
+<li><span class="term">Agent（智能体）：</span>能自己多轮干活的模型。不是一个新东西，是“模型 + 循环 + 工具”凑出来的工作方式（第 2 课细讲）。</li>
+<li><span class="term">组织图和康威定律：</span>你怎么分工，系统就长成什么样。公司里每个部门各配一个专属 Agent，最后攒出几百个功能重叠的 Agent，谁也不服谁，也没有统一标准。</li>
+<li><span class="term">上下文：</span>模型一次能记住的工作台面。台面就这么大，东西一多就乱，旧东西就被挤掉。</li>
+<li><span class="term">电话游戏：</span>Agent 之间传话，每传一次丢一点细节。像小时候玩的传话游戏，传到最后面目全非，而且没人知道丢的是哪一句。</li>
+<li><span class="term">科学怪人提示词：</span>每个人都往指令里加一句话，最后指令自己打架，语气精神分裂。名字来自科学怪人——东拼西凑缝出来的东西。</li>
+<li><span class="term">交接成本：</span>每次换手，都要重新讲一遍背景。又慢，又贵，又丢东西。这是全文最核心的一个词，后面反复出现。</li>
+</ul>
+<div class="relate"><b>和你的关系：</b>你指挥我的时候，如果让我拆成五六个 Agent 各干一段，交接丢的东西最后是你买单。所以默认不拆，是省钱省时间，不是偷懒。</div>
+</div>
+
+<div class="lesson">
+<h2><span class="no">第 2 课</span> · 新默认：一个主循环，按需加载 Skill（对应 02 节）</h2>
+<p class="say">文章给出的新默认：只留一个主 Agent 干全程，Skill 和工具平时只露个名字，用到的时候再加载全文。</p>
+<h3>对应知识点</h3>
+<ul>
+<li><span class="term">主循环（main agent loop）：</span>一个人（一个模型）从头干到尾的工作方式。不换手，就没有交接成本。</li>
+<li><span class="term">循环四步：</span>写计划 → 调工具 → 看结果 → 修计划。一直转，直到给出答案，或者撞上预算停下。这是全文的骨架，记住这四步，就记住了单 Agent 是什么。</li>
+<li><span class="term">Skill（技能包）：</span>写好的做事经验。像菜谱：步骤、规则、判断标准。注意：Skill 不是工具，是“怎么做事”的知识。</li>
+<li><span class="term">工具：</span>动手的东西：查资料、跑代码、发消息、读写文件。Skill 告诉它怎么做，工具让它能动手。一个是脑子里的经验，一个是手里的家伙。</li>
+<li><span class="term">渐进披露（progressive disclosure）：</span>平时只给目录，需要哪页翻哪页。就像平时只带一本薄薄的工具目录，真要拧螺丝了再去仓库提货。省的就是上下文那个台面。</li>
+</ul>
+</div>
+
+<div class="lesson">
+<h2><span class="no">第 3 课</span> · 为什么现在才行：三个变化（对应 03 节）</h2>
+<p class="say">以前非拆不可，是因为模型太弱；现在不用拆了，是因为三个条件凑齐了。</p>
+<h3>对应知识点</h3>
+<ul>
+<li><span class="term">共享上下文不断裂：</span>一个人从头看到尾，不用靠别人交回来的摘要过日子。写功能又写测试的如果是同一个人，上下文本来就在手里。</li>
+<li><span class="term">系统提示词大瘦身：</span>系统提示词就是开机时给模型的那份总指令。Skill 平时只露短说明，总指令就变薄了。Anthropic 说，靠这一招，它把 Claude Code 给新模型的系统提示砍了 80% 以上。</li>
+<li><span class="term">模型硬实力跨代：</span>从 Opus 4.5 起，模型能在单个循环里管更复杂的计划。以前那种僵硬的多 Agent 结构，反而会挡住新模型多干活。</li>
+</ul>
+</div>
+
+<div class="lesson">
+<h2><span class="no">第 4 课</span> · 单循环长什么样（对应 04 节）</h2>
+<p class="say">这一节是全文的操作图。一个模型、一个上下文窗口，跑一个开放式工具循环。</p>
+<div class="flow">目标 → <b>写计划</b> → <b>工具调用</b> → <b>harness 交回原始结果</b> → <b>修订计划</b> → 答案（或撞上预算停下）→ <b>verifier 核查</b></div>
+<h3>对应知识点</h3>
+<ul>
+<li><span class="term">Harness（运行框架）：</span>跑腿的架子。负责把工具调用真的跑起来、并行跑完、把原始结果交回来。它不决策，只执行。是执行层，不是大脑。</li>
+<li><span class="term">预算：</span>回合数 + 成本上限。撞上就停，不无限跑下去。这是防止 Agent 一根筋烧钱的安全绳。</li>
+<li><span class="term">Verifier（验证者）：</span>只核对、不决策的检查员。像质检员：不参与做菜，只尝味道对不对。核对单号和日期对不对，但不决定怎么回答。</li>
+<li><span class="term">三分法（分工不是按人头分，是按东西的性质分）：</span>
+  <br>当“手脚”用的——要动手、要读实时数据、要返回固定格式结果的，放进工具。
+  <br>当“做事经验”用的——要知道“这个团队是怎么做事的”，也就是步骤、规则和判断的，放进 Skill。
+  <br>当“字典”用的——偶尔才查的参考资料，比如政策、指标定义、产品说明，放进知识库，需要时用搜索工具去查。</li>
+<li><span class="term">Anthropic 明确反对的做法：</span>用代码把上下文抓出来、直接塞进提示词里。正确做法是让模型自己在循环里按需取。</li>
+</ul>
+</div>
+
+<div class="lesson">
+<h2><span class="no">第 5 课</span> · 工具太多，Agent 也会选错（对应 05 节）</h2>
+<p class="say">工具不是越多越好。工具一多，模型挑花眼，选错的概率就上去了。</p>
+<h3>对应知识点</h3>
+<ul>
+<li><span class="term">工具定义：</span>告诉模型“有这么个工具、怎么用”的说明书。工具越多，说明书越厚，模型越容易挑错。</li>
+<li><span class="term">工程水位线：</span>大约 30 到 50 个工具定义，选工具的准确率就容易下滑。这是文章给的经验数字，不是物理定律。</li>
+<li><span class="term">工具搜索（tool search）：</span>工具平时不全加载，Agent 按需发现、按需加载。解法不是按部门拆 Agent，而是工具按用户意图分组 + 按需搜索。</li>
+<li><span class="term">例子与口径（注意，别当成通用承诺）：</span>Anthropic 文档里的例子——GitHub、Slack、Sentry、Grafana、Splunk 这套常见组合，工具定义大约占 55,000 个 token，用工具搜索通常能砍掉 85% 以上。换一个团队未必是这个数。</li>
+<li><span class="term">Skill 库管理：</span>Skill 会越长越大。文章的建议是：每个团队指定一个人管自己的 Skill，Skill 发布时自带评测；中央小团队统一管系统提示和整体质量。小团队反而迭代更快。</li>
+</ul>
+</div>
+
+<div class="lesson">
+<h2><span class="no">第 6 课</span> · Subagent 什么时候留 + 合并三步（对应 05 节后半 + 06 节）</h2>
+<p class="say">Subagent 不是没用了，是从“默认选项”退居成了“特种部队”。只有特殊情况才派出去。</p>
+<h3>对应知识点</h3>
+<ul>
+<li><span class="term">三条硬标尺（至少踩中一条才加 Subagent）：</span>
+  <br>① 单 Agent 因为上下文膨胀，性能出现可测量的下滑——注意，是“可测量”，不是“感觉变差”。
+  <br>② 几个任务可以并行跑，各自用完即弃的新上下文窗口。
+  <br>③ 单 Agent 老选错工具，或者系统提示里有互相冲突的指令。
+  <br>三条之外先不加。</li>
+<li><span class="term">两种常见留法（上面三条的展开，不是新标准）：</span>
+  <br>并行只读的侦察工作：同时查几路资料、跑几项独立检查，派出去、收回来就好。
+  <br>验证工作：让一个独立 Agent 只跑测试、只报结果，不碰决策。</li>
+<li><span class="term">Eval（评测）：</span>考试卷。黄金例题就是精心挑的考题，起步大约 10 道。没有考试卷，就不知道改完是变好还是变坏。</li>
+<li><span class="term">基线：</span>改之前先量的分数。没有基线，改完分数动了也不知道是进步还是退步。</li>
+<li><span class="term">合并三步：先量、再合、后验。</span>
+  <br>先量：每条在生产里会一起跑的 Agent 链都要有一道题，每条绝不能破的规则也要有一道题。
+  <br>再合：一次只改一处。两处一起改，分数动了不知道是谁动的。目标不是“全合掉”，保留本身就是合格结果，要的是“有证据的系统”。
+  <br>后验：看哪些题翻了，还要多跑几遍。工具包例子里的教训：一次合并降了延迟，却弄坏了一个原本正常工作的流程，而且这个故障在两次运行里只出现了一次。</li>
+<li><span class="term">Tamberwick Home：</span>工具包自带的例子。起步是一个路由器加六个 Subagent，附带 19 道端到端评测题，还有不用 API key 就能先跑通流程的离线冒烟检查（基础排雷测试：先确认流程本身通不通，再谈对不对）。</li>
+<li><span class="term">迁移工具包：</span>Anthropic 在 GitHub 上线的参考实现，开源协议 Apache-2.0（拿去用可以），不接受外部维护（出了问题自己负责验证和维护）。工具包对每个 Subagent 会给一个裁决：合进主循环、和别的合并、改成工具调用，或者保留——裁决要自己复核，别当成官方背书。</li>
+</ul>
+</div>
+
+<div class="lesson">
+<h2><span class="no">第 7 课</span> · 外部佐证怎么读（对应 07 节）</h2>
+<p class="say">除了 Anthropic 自己的实测，文章还引用了两条第三方观察。关键是：方向一致，不等于定论。</p>
+<h3>对应知识点</h3>
+<ul>
+<li><span class="term">Vals 的研究（研究结论）：</span>Agent 团队可以比单 Agent 更快，但质量并没有更高；从 10 个 Agent 扩到 30 个、100 个，质量没有提升，成本却明显更高。</li>
+<li><span class="term">Eric Provencher 的判断（个人判断）：</span>他质疑 Agent 群的价值，称它们“几乎肯定”是在浪费钱。这是个人判断，不是研究结论。</li>
+<li><span class="term">怎么读佐证：</span>一个是研究结论，一个是个人判断，口径不同。两条和 Anthropic 的方向一致，但都不能直接当成“单 Agent 永远赢”的证据。以后看到“某某也这么说”，先问一句：这是研究、实测，还是个人判断？</li>
+</ul>
+</div>
+
+<div class="lesson">
+<h2><span class="no">第 8 课</span> · 一个任务，两种走法：客服问单号那次（对应 08 节）</h2>
+<p class="say">拿工具包自带的例子走一遍，差别立刻看得见。用户问：我的订单到哪了，什么时候送到？</p>
+<h3>对应知识点</h3>
+<ul>
+<li><span class="term">多 Agent 的走法：</span>路由器先接单，再交给订单 Agent 查单，订单 Agent 再把结果交给配送 Agent 查日期，最后汇总回主 Agent 回答。每次交接都是一次摘要，摘要里丢掉的东西，回答里就找不回来了。</li>
+<li><span class="term">单循环的走法：</span>主循环先加载订单 Skill，订单查询工具和配送查询工具都在手里，一次看完单号和日期再回答。只留一个独立的 verifier，核对单号和日期对不对，不碰决策。</li>
+<li><span class="term">翻车教训：</span>工具包的例子里有一次，主循环直接用订单工具自己回答了，没去问配送日期。教训不是“别合”，而是把“必须查配送日期”写进核查门里，而不是再加回一个 Agent。意思是：缺的东西，补到检查清单里，不补一个新人。</li>
+</ul>
+</div>
+
+<div class="lesson">
+<h2><span class="no">第 9 课</span> · 判断：默认不是信仰 + 一人公司打法（对应 09 节）</h2>
+<p class="say">这一节的三句话是文章作者的判断，不是 Anthropic 的原话。判断和事实要分开，这是读所有文章都该有的习惯。</p>
+<h3>对应知识点</h3>
+<ul>
+<li><span class="term">判断一：</span>默认单循环，因为交接成本是确定的，分工收益是不确定的。分工要先证明它省了什么，再谈它值多少钱。</li>
+<li><span class="term">判断二：</span>一人公司的场景里，三条保留标准其实常只剩两条在天天发生：验证者和并行侦察。权限隔离等到接外部不可信输入、或者 Agent 能写钱写库的时候再加，别提前搭一座空城。</li>
+<li><span class="term">判断三（动手前三问，答不上来就先别合）：</span>
+  <br>这一步能不能写成 Skill？
+  <br>有没有一道题能验它？
+  <br>合完之后，主循环会不会先回答、后核查？</li>
+<li><span class="term">三个数字摆在一起看：</span>评估改造成果时，永远把评测通过率、单任务成本、延迟三个数字摆在一起看。只盯速度，一定会把系统性的隐蔽故障藏起来。</li>
+<li><span class="term">一人公司打法：</span>先定一个主循环，再把重复做法写成 Skill，每个 Skill 配几道自己的黄金例题，合之前先测、合之后再测。你自己就是 Skill 库的唯一主理人，守住边界，别让它悄悄长成新的科学怪人提示词。</li>
+<li><span class="term">护城河：</span>你的护城河从来不是画出来的 Agent 数量，而是你手头每一个经过真实评测锤炼的 Skill。</li>
+</ul>
+</div>
+
+<div class="lesson">
+<h2><span class="no">第 10 课</span> · 这篇的边界：先说清楚，再下结论（对应 10 节）</h2>
+<p class="say">好文章的一个标志：结论之前，先把自己的边界说清楚。这节就是边界。</p>
+<h3>对应知识点</h3>
+<ul>
+<li><span class="term">边界一：</span>Anthropic 的结论来自企业部署经验，不是同行评审论文。经验很值钱，但不是论文级别的证明。</li>
+<li><span class="term">边界二：</span>跨客户的基准表没有公布，“快一倍”只是一个客户的对比，不能直接当成普适定律。</li>
+<li><span class="term">边界三：</span>迁移工具包有明确标注的未验证范围：完整单循环、Subagent 的合并与维护阶段、从没有评测的系统迁移、以及用到示例之外的系统，都不在已验证范围内；其中一部分改进只经过离线测试确认。</li>
+<li><span class="term">边界四：</span>工具包的裁决要自己复核，别把它当成官方背书。</li>
+</ul>
+<p class="note">记住这个习惯：以后你读任何一篇“某某指南说”的文章，先翻到它的边界节。没有边界节的文章，结论要打折听。</p>
+</div>
+
+<div class="quiz">
+<h2>自测三问</h2>
+<p>不用写下来，能用自己的话答出来就算过。</p>
+<ol>
+<li>循环四步是什么？<br><span class="ans">写计划 → 调工具 → 看结果 → 修计划，直到给答案或撞上预算。</span></li>
+<li>Skill 和工具的区别是什么？<br><span class="ans">Skill 是做事经验（菜谱：步骤、规则、判断），工具是动手的能力（手：查资料、跑代码、发消息）。</span></li>
+<li>什么时候留 Subagent？<br><span class="ans">三条硬标尺至少中一条：上下文膨胀导致性能可测量下滑；可并行、各用完即弃的新窗口；老选错工具或指令互相冲突。</span></li>
+</ol>
+</div>
+
+<div class="src">
+<b>来源：</b>Anthropic 指南 Building agents: When to fold subagents into your main agent loop（2026-10-22）；The Decoder 报道；迁移工具包与单循环细节交叉核对（ccleaks）。Vals 研究与 Eric Provencher 判断为第三方说法，非 Anthropic 结论。<br>
+<b>说明：</b>本页是 Joyce 2026-10-27 所发单 Agent 文章的教学拆解，概念用自己的话重讲，不复制原文。数字口径与边界以文章第 10 课为准。
+</div>
+
+</div>
+</body>
+</html>
