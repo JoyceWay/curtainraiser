@@ -1342,5 +1342,61 @@
     "en": "follow the data flow",
     "explain": "盯住一个变量，看它从哪来、经过哪些函数、最后到哪去，比从头逐行读快得多。",
     "example": "读 fundamentals/index.html 时别逐行抠，先盯住 cards 这个变量：从 cards.json 读进来，怎么变成一张张卡片"
+  },
+  {
+    "day": 24,
+    "topic": "Shell",
+    "term": "sort | uniq -c",
+    "en": "",
+    "explain": "把重复行合并并数数，常用来统计出现次数。",
+    "example": "cat words.txt | sort | uniq -c，立刻看出每个词出现了几次"
+  },
+  {
+    "day": 24,
+    "topic": "Git",
+    "term": "git add -p",
+    "en": "",
+    "explain": "按块挑着暂存：一个文件改了多处，只先提交想提交的那几块。",
+    "example": "改了三处只想先交一处时，git add -p 逐块按 y 或 n 挑选"
+  },
+  {
+    "day": 24,
+    "topic": "Python",
+    "term": "for k, v in dict.items()",
+    "en": "",
+    "explain": "同时拿到字典的键和值，一次循环全遍历。",
+    "example": "scores = {'Ella': 90, 'Eric': 95}，for name, score in scores.items(): print(name, score)"
+  },
+  {
+    "day": 24,
+    "topic": "HTML/CSS",
+    "term": "align-items: center",
+    "en": "",
+    "explain": "flex 容器里交叉轴方向对齐，center 就是垂直居中。",
+    "example": ".row { display: flex; align-items: center; }，图标和文字上下对齐不歪"
+  },
+  {
+    "day": 24,
+    "topic": "Prompt",
+    "term": "先出计划，批了再执行",
+    "en": "",
+    "explain": "两段式指令：先让 AI 列出步骤，等你点头后再动手，避免一口气跑偏。",
+    "example": "先写『先给我步骤清单，不要动手』，看完觉得对再说『按这个做』"
+  },
+  {
+    "day": 24,
+    "topic": "AI 概念",
+    "term": "Agent 循环",
+    "en": "ReAct loop",
+    "explain": "思考、行动、看结果，再思考——agent 靠这个循环一步步把任务做完。",
+    "example": "查天气的 agent：先想『要调天气工具』，调完看到结果，再决定下一步说什么"
+  },
+  {
+    "day": 24,
+    "topic": "读代码",
+    "term": "先读测试，再读实现",
+    "en": "",
+    "explain": "测试用例就是函数的『考题』，先看考题，比直接啃实现更快明白它该干嘛。",
+    "example": "看不懂一个函数时，先找 test_ 开头的文件，看它喂什么输入、期望什么输出"
   }
 ]
