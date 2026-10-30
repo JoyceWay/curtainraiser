@@ -1398,5 +1398,61 @@
     "en": "",
     "explain": "测试用例就是函数的『考题』，先看考题，比直接啃实现更快明白它该干嘛。",
     "example": "看不懂一个函数时，先找 test_ 开头的文件，看它喂什么输入、期望什么输出"
+  },
+  {
+    "day": 25,
+    "topic": "Shell",
+    "term": "&& 连接命令",
+    "en": "AND operator",
+    "explain": "把两个命令串起来，前一个成功了才跑下一个，省得在错目录里白忙。",
+    "example": "cd ~/workspace/curtainraiser-site && git status，先进站再查状态，进错目录就直接停住不乱跑"
+  },
+  {
+    "day": 25,
+    "topic": "Git",
+    "term": "add + commit + push 三连",
+    "en": "stage, commit, push",
+    "explain": "改完代码的标准收尾三步：收进暂存区、写备注存档、推到 GitHub。",
+    "example": "git add fundamentals/cards.json && git commit -m '字卡 Day 25' && git push origin main，今天的字卡就是这么上线的"
+  },
+  {
+    "day": 25,
+    "topic": "Python",
+    "term": "dict.get()",
+    "en": "dictionary get method",
+    "explain": "字典取值的安全版：键不存在也不报错，还能顺手给个默认值。",
+    "example": "d = {'a': 1}\nprint(d.get('b', 0))  # 输出 0，不会像 d['b'] 那样报错"
+  },
+  {
+    "day": 25,
+    "topic": "HTML/CSS",
+    "term": "gap",
+    "en": "gap property",
+    "explain": "flex 布局里元素之间的间距，一行搞定，不用给每个格子单独写 margin。",
+    "example": ".cards { display: flex; gap: 16px; }，字卡页的卡片之间就留 16px 空隙"
+  },
+  {
+    "day": 25,
+    "topic": "Prompt",
+    "term": "拆步骤 + 设检查点",
+    "en": "stepwise with checkpoints",
+    "explain": "大任务先拆成几步，每步出结果、你点头了再往下走，AI 就不会一路跑偏。",
+    "example": "'先出大纲我确认，再写正文；正文分三段交，每段我点头了再写下一段'"
+  },
+  {
+    "day": 25,
+    "topic": "AI 概念",
+    "term": "RAG vs 微调：怎么选",
+    "en": "RAG vs fine-tuning",
+    "explain": "知识常变、私有数据用 RAG（现查现用）；想改说话风格、固定格式用微调。",
+    "example": "问她自己的网站内容用 RAG；想让 AI 永远按她的口吻写卡片，才考虑微调"
+  },
+  {
+    "day": 25,
+    "topic": "读代码",
+    "term": "先看签名，再看实现",
+    "en": "function signature first",
+    "explain": "读函数先看 def 那一行：名字、参数、返回值，知道了它收什么吐什么，再进函数体就不晕。",
+    "example": "看到 def add_card(day, topic): 就知道它要两个参数，体里再长的逻辑也有了锚"
   }
 ]
