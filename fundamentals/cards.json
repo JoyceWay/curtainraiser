@@ -1454,5 +1454,61 @@
     "en": "function signature first",
     "explain": "读函数先看 def 那一行：名字、参数、返回值，知道了它收什么吐什么，再进函数体就不晕。",
     "example": "看到 def add_card(day, topic): 就知道它要两个参数，体里再长的逻辑也有了锚"
+  },
+  {
+    "day": 26,
+    "topic": "Shell",
+    "term": "find + xargs",
+    "en": "find / xargs",
+    "explain": "组合：find 先按名字找出文件，xargs 把名单批量喂给下一个命令，一次处理一堆文件。",
+    "example": "在 ~/workspace/curtainraiser-site 里找所有含『字卡』的页面：find . -name '*.html' | xargs grep -l '字卡'"
+  },
+  {
+    "day": 26,
+    "topic": "Git",
+    "term": "git log + git show",
+    "en": "git log / git show",
+    "explain": "组合：先 log 看一行一个的提交记录，选中某次提交，再 show 看它到底改了哪几行。",
+    "example": "在 curtainraiser-site 里：git log --oneline 查到某次字卡提交的编号，再 git show 那串编号，看那次加了哪些卡片"
+  },
+  {
+    "day": 26,
+    "topic": "Python",
+    "term": "enumerate()",
+    "en": "enumerate",
+    "explain": "组合：循环里同时拿到序号和值，不用自己再设一个计数器从 0 数起。",
+    "example": "words = ['apple', 'banana', 'cherry']；for i, w in enumerate(words, 1): print(i, w) 就打出 1 apple、2 banana、3 cherry"
+  },
+  {
+    "day": 26,
+    "topic": "HTML/CSS",
+    "term": "flex-wrap: wrap",
+    "en": "flex-wrap",
+    "explain": "组合：配合 display: flex 用，卡片排不下时自动换到下一行，不会挤出屏幕。",
+    "example": "字卡墙的容器写 display: flex; flex-wrap: wrap; gap: 12px，卡片多了一行会自动往下排，手机上也不挤"
+  },
+  {
+    "day": 26,
+    "topic": "Prompt",
+    "term": "先让 AI 反问你",
+    "en": "clarifying questions",
+    "explain": "组合：任务 + 反问——指令最后加一句『动手前先问我 3 个你最需要澄清的问题』，模糊点先对齐再开工。",
+    "example": "让 AI 帮你写单词卡前先说：『先问我 3 个问题：给几年级、要不要中文、卡片风格』，答完它再出卡，返工少很多"
+  },
+  {
+    "day": 26,
+    "topic": "AI 概念",
+    "term": "temperature（温度）",
+    "en": "temperature",
+    "explain": "调大模型回答随机性的旋钮：温度低，回答稳、几乎每次一样；温度高，回答更发散、更有意外。",
+    "example": "让 AI 出单词卡笑话时温度调高一点（比如 0.9），点子更多；让它查资料、写代码时调低（比如 0.2），答案更稳"
+  },
+  {
+    "day": 26,
+    "topic": "读代码",
+    "term": "报错自下而上读",
+    "en": "traceback",
+    "explain": "组合读法：报错信息先看最后一行——那是真正的错误类型和原因，再往上找第一处你自己写的文件和行号。",
+    "example": "跑 Python 报错先看最后一行，比如 KeyError: 'name'，再往上找标着你文件名的那一行，就是出错位置"
   }
 ]
