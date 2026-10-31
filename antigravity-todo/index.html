@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jules 关了，Antigravity 接棒 — 待办清单</title>
+<meta name="description" content="Jules 关停时间线、Antigravity 插件市场、历史星图 Step 1 的待办清单。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f4f0; color: #2b2b28; font-family: "Noto Sans SC", -apple-system, "PingFang SC", sans-serif; line-height: 1.8; padding: 24px 16px 80px; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  .kicker { font-family: ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 3px; color: #8a8987; text-transform: uppercase; margin-bottom: 8px; }
+  h1 { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 30px; line-height: 1.35; margin-bottom: 6px; }
+  .sub { font-size: 14px; color: #8a8987; margin-bottom: 28px; }
+  .sub a { color: #ae6557; }
+  h2 { font-size: 19px; margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #ae6557; }
+  .todo { list-style: none; }
+  .todo li { display: flex; gap: 12px; align-items: flex-start; background: #fff; border: 1px solid #e6e5e0; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+  .todo input[type="checkbox"] { width: 20px; height: 20px; margin-top: 4px; accent-color: #ae6557; flex-shrink: 0; cursor: pointer; }
+  .todo li.done { opacity: 0.55; }
+  .todo li.done .t { text-decoration: line-through; }
+  .t { font-size: 15.5px; }
+  .t small { display: block; font-size: 13.5px; color: #8a8987; margin-top: 2px; }
+  .t code { font-family: ui-monospace, Menlo, monospace; font-size: 13.5px; background: #e6e5e0; padding: 1px 5px; border-radius: 4px; }
+  .note { background: #e6e5e0; border-left: 3px solid #8a8987; padding: 12px 16px; border-radius: 0 10px 10px 0; font-size: 14px; margin: 20px 0; }
+  .note a { color: #ae6557; }
+  .foot { margin-top: 36px; font-size: 13px; color: #8a8987; }
+  .foot a { color: #ae6557; }
+  button.reset { margin-top: 24px; border: 1px solid #ae6557; background: transparent; color: #ae6557; font-size: 14px; padding: 8px 18px; border-radius: 20px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Todo · Antigravity</div>
+  <h1>Jules 关了，Antigravity 接棒 — 待办清单</h1>
+  <p class="sub">2026-10-31 · 打勾状态存在这台设备的浏览器里，换设备不互通 · 背景来源：<a href="https://www.chromegeek.com/google-jules-shutdown-antigravity-plugin-marketplace/">Chrome Geek（转述 Google 公告）</a></p>
+
+  <h2>先确认</h2>
+  <ul class="todo">
+    <li><input type="checkbox" data-id="jules-skip" checked><span class="t">我没用过 Jules：导出整节跳过<small>2026-10-31 已确认。教程第 2 节是给 Jules 用户的，与你无关。</small></span></li>
+  </ul>
+
+  <h2>插件市场</h2>
+  <ul class="todo">
+    <li><input type="checkbox" data-id="market-see"><span class="t">打开 Antigravity，看 Customizations 里有没有 Marketplace<small>App 和 CLI 都在分批上线（rolling out），看不到先更新 / 等推送，别到处找开关。</small></span></li>
+    <li><input type="checkbox" data-id="market-first"><span class="t">以后加工具先在 Marketplace 找一键装<small>替代以前手动搭 MCP、环境变量、技能、子 agent 那套。一次只装一个，跑通一个小任务再装下一个。</small></span></li>
+  </ul>
+
+  <h2>历史星图 Step 1（终极定稿 2026-10-14）</h2>
+  <ul class="todo">
+    <li><input type="checkbox" data-id="step0" checked><span class="t">第 0 步：四步上线指南部署到网站 /history-guide/<small>已在站内，2026-10-14 上线：<a href="../history-guide/">history-guide</a>。这步已完成。</small></span></li>
+    <li><input type="checkbox" data-id="step1"><span class="t">第 1 步：Antigravity 打开网站根目录<small>File → Open Folder，选中点进去能看到 vocab 文件夹的那个。</small></span></li>
+    <li><input type="checkbox" data-id="step2"><span class="t">第 2 步：粘贴终极定稿全文<small>文件：<code>history-game/mvp-build-prompt-final.md</code>。别用同目录的 muse-version，那不是定稿。</small></span></li>
+    <li><input type="checkbox" data-id="step3"><span class="t">第 3 步：验收只看闭环跑没跑通，不看美术满分<small>点金色 SAT 词 +10 币、翻 Secret Trivia 卡 +10 币、两道闯关题全对 +50 币并解锁猫咪印章。小瑕疵记下来，Step 2 一起修。</small></span></li>
+    <li><input type="checkbox" data-id="step4"><span class="t">第 4 步：哪项没过，截图发 Muse<small>Muse 写成返工指令，她贴回 Antigravity。</small></span></li>
+  </ul>
+
+  <h2>背景（知道就行，不用做）</h2>
+  <ul class="todo">
+    <li><input type="checkbox" data-id="bg-timeline"><span class="t">Jules 时间线：11 月 11 日起只读，12 月 31 日彻底关停<small>Jules 式后台任务进 Antigravity，Google 未给日期。导出含 env-variables.json 明文，别放进仓库——与你无关，你没用过 Jules。</small></span></li>
+  </ul>
+
+  <button class="reset" id="resetBtn">一键清空打勾</button>
+
+  <div class="note">附录依据：终极定稿 <code>history-game/mvp-build-prompt-final.md</code>；四步上线指南 <code>history-guide</code>。本页事实来自 Chrome Geek 2026-10-30 文章转述的 Google 公告与 Antigravity 博客，未逐字核对 Google 原公告。</div>
+  <p class="foot"><a href="../index.html">← 回卷帘人首页</a></p>
+</div>
+<script>
+  var KEY = "antigravity-todo-v1";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { saved = {}; }
+  var boxes = document.querySelectorAll(".todo input[type=checkbox]");
+  boxes.forEach(function (box) {
+    var id = box.getAttribute("data-id");
+    if (saved[id] !== undefined) box.checked = saved[id];
+    sync(box);
+    box.addEventListener("change", function () {
+      saved[id] = box.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+      sync(box);
+    });
+  });
+  function sync(box) {
+    var li = box.closest("li");
+    if (li) li.classList.toggle("done", box.checked);
+  }
+  document.getElementById("resetBtn").addEventListener("click", function () {
+    saved = {};
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    boxes.forEach(function (box) { box.checked = false; sync(box); });
+  });
+</script>
+</body>
+</html>
