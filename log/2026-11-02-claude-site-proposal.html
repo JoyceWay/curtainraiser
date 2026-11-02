@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>别做 Prompt 字典：教别人用 AI 的网站全案 — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+<div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+        <a href="2026-10-21-ai-summoner.html"><b>召唤师</b><span>指挥 AI 笔记</span></a>
+        <a href="2026-10-21-top-summoner.html"><b>顶级召唤师</b><span>协奏与记录</span></a>
+        <a href="2026-10-22-ai-bestiary.html"><b>召唤师图鉴</b><span>全部法力盘点</span></a>
+        <a href="2026-10-22-notebooklm.html"><b>工具入门</b><span>NotebookLM</span></a>
+        <a href="2026-10-22-evals.html"><b>评估</b><span>Evals 入门</span></a>
+        <a href="2026-10-22-copilot.html"><b>工具分析</b><span>Copilot</span></a>
+        <a href="2026-10-22-github-student-pack.html"><b>学生包</b><span>GitHub 学生包全解</span></a>
+        <a href="2026-10-22-grok-sprint-plan.html"><b>外审存档</b><span>Grok 冲刺计划</span></a>
+        <a href="2026-10-23-x-search-operators.html"><b>搜索语法</b><span>找一手信源</span></a>
+        <a href="2026-10-27-alpha-school.html"><b>AI 学校</b><span>Alpha 笔记</span></a>
+        <a href="cs146s.html"><b>课程精讲</b><span>斯坦福 CS146S</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+      <a href="../styles/index.html"><b>体库</b><span>STYLE LIBRARY</span></a>
+    </div>
+</nav>
+<div class="wrap">
+  <div class="kicker">CLAUDE SITE · 2026-11-02</div>
+  <h1>别做 Prompt 字典：教别人用 AI 的网站全案</h1>
+  <div class="sub">From a static prompt dictionary to an interactive context-architecture playground — the full proposal, the dual-engine workflow, and the slimmed-down V1, with Muse's item-by-item review in the appendix.</div>
+
+  <div class="note-item">
+    <h3>01｜死穴与定位</h3>
+    <a class="topic" href="#">定位</a>
+    <p>做 AI 教程网站，最大的死穴就是做成“静态 Prompt 字典”。</p>
+    <ul class="pts">
+      <li>现在已经是 2026 年底，Claude 早就进化到了 <b>Adaptive Reasoning（自适应推理）、Artifacts 行内交互、Projects 自动检索、MCP v2 零配置连接</b> 以及 <b>Claude Code 自动化 /loop</b> 的时代。</li>
+      <li>如果还在教用户背诵“你是一个有 20 年经验的专家，请不要使用被动语态，一步步思考”，不仅过时，而且在最新一代 Claude 模型上会直接触发 <b>反向降智（Over-constraining）</b>。</li>
+      <li>真正能打、能变现、让用户从 0 玩转 Claude 的平台，核心定位必须是：<b>“交互式 Context 架构与 Agent 演练场”</b>。</li>
+    </ul>
+    <p class="en">The death trap is a static prompt dictionary; the position is an interactive context-architecture and agent playground.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>02｜建站前必须想清楚的 4 个核心维度</h3>
+    <a class="topic" href="#">维度</a>
+    <ul class="pts">
+      <li><b>理念迭代：先把用户的“旧脑子”格式化</b>。Anthropic 官方在 2026 年彻底重写了 Prompt 指南。网站第一课不应该是“怎么写提示词”，而是“戒掉旧习惯”：告别“角色扮演（Persona）迷信”——死板的“扮演某某大师”对提升输出质量几乎无效，清晰的上下文（Context）+ 评价标准（Verification Criteria）才是核心；告别“负面指令堆砌（Don'ts）”——告诉 Claude“不要用列表”会让它在推理中不断强化“列表”概念，直接给正向目标（“请写成连贯的散文段落”）效果好十倍；从 Prompt Engineering 转向 Context Architecture——学会用 XML 标签（&lt;context&gt;、&lt;goal&gt;、&lt;constraints&gt;）做结构化喂料，以及利用 Interview Prompting（让 Claude 反过来采访你，帮你生成项目指令）。</li>
+      <li><b>教学形态：用“游乐场（Playground）”代替“图文视频”</b>。Bad vs. Good 实时对比器：左边展示普通人写的烂 Prompt 及其平庸输出，右边展示经过 XML 结构化重构后的 Prompt 及其惊艳输出，支持一键拖动滑块对比（Diff View）。闯关式沙盒（Interactive Quests）：不要让用户只看字，给一个残缺的业务场景（比如“把这份杂乱的会议纪要变成可交互的 React 看板”），让用户在网页端填空或重构指令，系统后台调用 API 实时评分。</li>
+      <li><b>内容分层：照顾到“纯小白”到“Vibe Coder”的跃迁</b>。很多人进来只是想写好邮件、做深度阅读；但一旦尝到甜头，他们就会想用 Artifacts 搓小工具，进而想用 Claude Code 和 MCP 自动化自己的工作流。课程必须像游戏升级一样平滑衔接。</li>
+      <li><b>API 成本与防薅羊毛机制（商业底线）</b>。零基础教学区用预渲染缓存（Cached Responses）+ 静态高仿真沙盒，0 API 成本就能让用户爽到。进阶实操区采用 BYOK（Bring Your Own Key）或订阅制积分消耗，既控制服务器账单，又能筛选出高价值付费用户。</li>
+    </ul>
+    <p class="en">Four dimensions first: unlearn old habits, playground over articles, a ladder from novice to vibe coder, and a cost floor.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>03｜项目提案：定位、价值与受众</h3>
+    <a class="topic" href="#">提案</a>
+    <ul class="pts">
+      <li><b>项目定位</b>：新一代交互式 Claude 实战掌握平台（A Gamified, Interactive Mastery Platform for the Claude Ecosystem）。</li>
+      <li><b>核心价值主张</b>：不教过时的“咒语背诵”，只教最新一代的 Context 架构、Vibe Coding 与 Agent 协同工作流。让零基础用户在 7 天内，从“把 AI 当搜索引擎用”进化为“一人成军的 AI 架构师”。</li>
+      <li><b>目标受众</b>：① 效率追求者 / 创作者：想用 Claude 打造个人知识库、自动化长文写作与深度研究的人。② 零代码构建者（Vibe Coders）：不懂传统编程，但想用 Artifacts 和 Claude Code 快速搓出 Web 工具、小游戏、内部系统的创业者或职场人。③ 进阶开发者：想掌握 MCP v2、/loop 自动测试闭环与多 Agent 调度的技术人员。</li>
+    </ul>
+    <p class="en">Position, value, audience: a gamified mastery platform for the Claude ecosystem, from search-box users to solo architects.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>04｜课程体系：四阶通关路线图</h3>
+    <a class="topic" href="#">路线图</a>
+    <ul class="pts">
+      <li><b>Level 1 · 思维重塑：破除旧咒语</b>。为什么“一步步思考”和“角色扮演”失灵了？掌握黄金法则（Golden Rule）、正向指令法、以及 Claude 原生最爱的 XML 标签架构。任务：将一段 500 字的混乱需求，重构为 100 字的高效 XML 结构化指令。</li>
+      <li><b>Level 2 · 工作台基建：Projects &amp; Artifacts</b>。一个工作流一个 Project（拒绝大杂烩）；用“反向采访法”让 Claude 自己写 System Instruction；掌握 Artifacts 行内局部编辑（Inline Editing）与持久化状态共享。任务：零代码在 10 分钟内生成一个带交互图表的数据分析看板，并发布可 Fork 的链接。</li>
+      <li><b>Level 3 · 连接万物：MCP 与外挂大脑</b>。零配置打通本地文件、Notion、数据库与外部工具（MCP v2 实战）；掌握 Adaptive Reasoning（自适应推理等级控制：standard / high / xhigh）的省钱与提效平衡术。任务：配置一个能自动读取本地资料并生成审计报告的专属桌面端 Claude 助手。</li>
+      <li><b>Level 4 · 终极进化：Claude Code &amp; Vibe Coding</b>。告别手动复制粘贴代码。在终端里用自然语言驱动 Claude Code，实战 /compact 压缩上下文、/ultrareview 代码审计、以及 /loop 全自动改 Bug 直到测试全绿。任务：从 0 构建并部署一个完整的全栈微型 SaaS 应用。</li>
+    </ul>
+    <p class="en">Four stages: unlearn, workbench, connections, then Claude Code — each ending in a shippable quest.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>05｜网站核心产品功能与技术栈</h3>
+    <a class="topic" href="#">功能与栈</a>
+    <ul class="pts">
+      <li><b>Prompt X-Ray（提示词 X 光机）</b>。用户把平时写的 Prompt 贴进去，网站自动用颜色高亮诊断出问题（例如：标红“负面约束过多”，标黄“缺少输出格式验证”），并一键生成符合最新规范的 XML 重构版。</li>
+      <li><b>交互式演练沙盒（Split-Screen Sandbox）</b>。左边是任务简报与代码块，右边是内置的模拟 Claude 界面。用户完成指定修改后解锁下一关，获得经验值与技能徽章。</li>
+      <li><b>生产级工作流军火库（Workflow Blueprints）</b>。不是给几句简单的 Prompt，而是提供全套工程包下载：包含 Project Instructions 模板、参考文档结构、MCP 配置文件（JSON）以及 /goal 验证模板。</li>
+      <li><b>模型迭代雷达（Evolution Radar）</b>。专门设立一个板块，追踪每次模型升级（如 Sonnet / Opus 更新）后，哪些旧技巧作废了、哪些新特性上线了，保持高留存率与复访率。</li>
+      <li><b>技术栈</b>。前端与全栈框架：Next.js (App Router) + React + Tailwind CSS + Framer Motion（丝滑的微交互动画与闯关反馈）。内容引擎：MDX (Contentlayer / Nextra 定制），写教程像写 Markdown 一样简单，同时能在文章里直接插入可交互的 React 组件（如 Prompt 对比滑块、测验卡片）。后端与数据库：Supabase (PostgreSQL + Auth），轻松搞定用户登录、闯关进度保存、Prompt 收藏夹以及付费权限控制。AI 接口层：Anthropic SDK + Prompt Caching（提示词缓存），利用 Claude 的静态上下文缓存机制，将长篇教学背景放在头部缓存起来，把 API 调用的延迟和成本砍掉 80% 以上。</li>
+    </ul>
+    <p class="en">Four features — X-Ray, sandbox, blueprints, radar — on Next.js, MDX, Supabase, and cached Claude calls.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>06｜商业模式与 MVP 敏捷落地计划</h3>
+    <a class="topic" href="#">商业</a>
+    <ul class="pts">
+      <li><b>免费引流层（Free Tier / Lead Magnet）</b>：开放 Level 1 全部交互式课程 + 每日 3 次免费使用「Prompt X 光机」。提供一份高颜值、可交互的《Claude 2026 避坑与提效速查表》，通过社交媒体（如 X / 小红书 / 邮件列表）病毒式传播。</li>
+      <li><b>Pro 会员 / 买断制通行证（$49 – $99）</b>：解锁 Level 2–4 完整实战沙盒（含 Claude Code 与 MCP 深度实战）。解锁 50+ 个行业级 Project 蓝图包（可直接导入使用）。</li>
+      <li><b>高客单价孵化营 / 企业内训（Cohort / B2B）</b>：针对想要用 Claude 搭建自动化业务流的独立开发者或小型团队，提供源码级模板与架构咨询。</li>
+      <li><b>MVP 第 1 周（骨架与王牌单品）</b>：用 Next.js 搭好网站框架，优先开发最容易出圈的免费小工具——「Prompt X 光机」+ 3 节颠覆认知的互动图文课。</li>
+      <li><b>MVP 第 2 周（沙盒与核心课程）</b>：上线 Level 1 &amp; 2 的闯关沙盒（采用预置高仿真响应 + 少量 API 实时校验），接通 Supabase 用户进度系统。</li>
+      <li><b>MVP 第 3 周（公测与饥饿营销）</b>：在社交平台发布深度的“反常识 Claude 技巧”长文，文末挂载网站测试入口，收集首批 500 名种子用户反馈。</li>
+      <li><b>MVP 第 4 周（商业化闭环）</b>：接入 Stripe 支付，正式上线 Level 3 &amp; 4 高阶模块（MCP + Claude Code 实战）及可下载的工作流模板库。</li>
+    </ul>
+    <p class="en">Free tier as bait, $49–$99 lifetime pass as the engine, cohorts later; four weeks to a paid loop.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>07｜元叙事与黄金“双引擎”驱动架构</h3>
+    <a class="topic" href="#">元叙事</a>
+    <p>用 AI 开发一个教别人用 AI 的网站，本身就是一场极佳的“元叙事（Meta-building）”。你不仅能把原本需要 2 个月的全栈开发周期压缩到 1 周以内，而且你写代码、调 Bug、压成本的每一个过程，都可以直接录制下来变成网站里最值钱的实战课程。</p>
+    <p>要实现真正的“一人成军”，不能再把 AI 当成复制粘贴代码的聊天框，而是要搭建一套 2026 年最前沿的 AI 原生开发流水线（Dual-Engine Vibe Coding Workflow）。现在独立开发者效率最高的范式，不是在工具间二选一，而是“终端自治 Agent + 视觉精修 IDE”协同作战：</p>
+    <ul class="pts">
+      <li><b>重装基建与多文件重构 — Claude Code (CLI 终端)，AI 主导，你掌舵</b>。负责从 0 生成 Next.js 目录结构、配置 Supabase 鉴权、编写跨 5–10 个文件的核心功能、自动跑测试并提交 Git。遇到复杂逻辑直接开启 ultracode（xhigh 自适应推理模式）启动多子智能体并行开发。</li>
+      <li><b>前端交互与外科手术微调 — Cursor (IDE 编辑器)，你主导，AI 辅助</b>。用来实时预览网页、用 Cmd+K 微调 Tailwind CSS 间距、打磨 Framer Motion 动画手感、修改单行文案与渐变色。</li>
+      <li><b>高层架构与课程内容兵工厂 — Gemini / Claude Projects</b>。负责在写代码之前生成严密的 PRD（产品需求文档）、数据库 SQL Schema，以及批量生成 MDX 交互式教程脚本与预置 JSON 数据。</li>
+      <li><b>外挂神经系统 — MCP (Model Context Protocol)</b>。在本地配置 Supabase MCP（让 AI 直接读写数据库表结构）、Playwright/Browser MCP（让 AI 自己打开浏览器截图检查 UI 是否错位）和 Stripe MCP。</li>
+    </ul>
+    <p class="en">Meta-building: building the school with the tools it teaches — terminal agent for heavy lifting, IDE for polish.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>08｜分步落地：5 步用 AI 榨干开发效率</h3>
+    <a class="topic" href="#">落地</a>
+    <ul class="pts">
+      <li><b>第 1 步：植入“项目宪法”（CLAUDE.md &amp; .cursorrules）—— 最高杠杆动作</b>。AI 写代码最大的通病是“局部聪明，全局精神分裂”，写到后面风格全乱。在写第一行代码前，先让 AI 帮你生成一份根目录下的 CLAUDE.md 文件（Claude Code 和 Cursor 会共享这套记忆）。里面写什么：技术栈死规矩（如：Next.js App Router、Tailwind CSS、Lucide Icons，严禁使用过时的 Pages 路由）；视觉规范（定义你的经典色板、字体层级、圆角大小、暗黑模式变量）；目录结构约定与错误处理标准。效果：以后每次对话，你不需要重复任何背景，AI 生成的每一个组件都像同一个高级工程师写的。</li>
+      <li><b>第 2 步：遵循“Explore → Plan → Code”铁律，拒绝盲目生成</b>。拿到需求（比如开发核心引流工具「Prompt X 光机」）时，绝对不要直接让 AI 写代码：① 先出方案（Plan Mode）：在终端对 Claude Code 说：“先不要修改任何文件。请阅读当前项目结构，为‘Prompt X 光机’设计技术方案，列出需要新建的组件、API 路由和数据流向。”② 人工把关：花 2 分钟审阅它的计划（比如把高成本的实时流式请求改为先查本地缓存）。③ 一键执行：确认无误后，让它一次性创建所有文件并自动运行 npm run build 检查类型错误。</li>
+      <li><b>第 3 步：利用 AI 批量“预烘焙（Pre-bake）”互动课程数据（省下 90% 成本）</b>。互动沙盒和“好坏 Prompt 对比滑块”如果每次都调真实 API，既慢又烧钱。做法：写一个自动化脚本（或者直接用 AI），针对 20 个常见职场场景，让 Claude 批量生成结构化的 JSON / MDX 数据包。数据包里包含：bad_prompt（反面教材）、bad_output（平庸结果）、xray_diagnosis（诊断高亮坐标）、good_xml_prompt（重构后的 XML 提示词）、good_output（惊艳结果）。前端呈现：用户在网页上拖动滑块、点击“诊断”按钮时，前端直接毫秒级读取这些预烘焙好的 JSON 数据，配合打字机动画渲染出来——体验像极了实时 AI，但你的 API 成本是 $0。</li>
+      <li><b>第 4 步：开启 Git Worktrees 并行流水线（一人活成一支团队）</b>。当你熟悉节奏后，可以利用 git worktrees 在同一个项目里同时开 2–3 个终端窗口：终端 A（Claude Code 1 号）在 feature/sandbox 分支上后台自动开发闯关沙盒逻辑并跑单元测试；终端 B（Claude Code 2 号）在 feature/content 分支上把 Markdown 教程批量转换成带交互组件的 MDX 页面；你自己（在 Cursor 主窗口）悠闲地喝着咖啡，微调首页 Hero Section 的视觉动效与排版。</li>
+      <li><b>第 5 步：定期执行“AI 代码瘦身（Debloat Pass）”</b>。AI 生成的代码往往会堆积冗余的抽象层和未使用的变量。每隔几天，在晚上休息前，给 Claude Code 下达一个自动化巡检指令：“扫描整个代码库，找出死代码、重复的 Tailwind 样式和未使用的组件，在不破坏任何现有测试的前提下进行重构精简，并提交一个 PR。”（实测通常能砍掉 20%~30% 的冗余代码，让网站保持极致轻量。）</li>
+      <li><b>终极增长黑客：“Build in Public”双鱼一吃</b>。开发这个网站的过程，本身就是你最硬核的营销素材：当你用 CLAUDE.md 规范了整个项目架构时，截个图发一条动态，这就是网站 Level 4（Claude Code 实战）的活广告。当你用 AI 在 10 分钟内搓出「Prompt X 光机」的前端界面时，把这段 Prompt 和生成效果放进网站的免费引流课里，告诉用户：“你现在看到的这个网站，就是用我接下来要教你的这套方法，在 72 小时内构建出来的。”这种说服力比任何华丽的宣传语都强一百倍。</li>
+    </ul>
+    <p class="en">Five moves: constitution first, plan before code, pre-bake content, parallel worktrees, periodic debloat — and sell the process itself.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>09｜方案大瘦身：哪些现在坚决不做？（先砍掉 70% 的复杂度）</h3>
+    <a class="topic" href="#">瘦身</a>
+    <p>听到你说“我自己也是小白”，提案人先给一颗定心丸——这不仅不是劣势，反而是你做这个网站最大的护城河。为什么？因为顶级程序员写出来的教程，往往充满了“知识的诅咒”（默认你懂环境变量、懂 JSON、懂终端），小白看两行就想关掉网页。而一个刚刚通过 AI 摸索出门道、清楚知道“卡点”在哪里的初学者，写出来的避坑指南才是最有共鸣、最能卖钱的。</p>
+    <p>但是，既然是零基础起步，提案人反思：前面的方案太“重”了！如果第一天就去搞 Supabase 数据库、MCP 协议、Git Worktrees 多开终端和 API 缓存，大概率会在配环境的第三个小时因为满屏报错而崩溃放弃。为了保证能在 48 小时内看到自己的网站活生生地跑在互联网上，第一阶段（V1.0）大刀阔斧地调整如下：</p>
+    <ul class="pts">
+      <li><b>Supabase 数据库 + 用户登录 ❌ 先砍掉！</b>登录和数据库是新手第一大劝退坑。第一版不需要用户注册，所有人打开网页就能直接玩。等以后有几千人访问了，再让 AI 用半天时间加上。</li>
+      <li><b>真实调用 Claude API ❌ 先砍掉！</b>接真实 API 需要绑信用卡、防黑客盗刷、处理服务器超时。第一版全部用“预制菜（写死在文件里的优质问答数据）”，模拟出丝滑的互动效果，既安全又 0 成本。</li>
+      <li><b>Git Worktrees 多终端并行 ❌ 先砍掉！</b>那是老手炫技用的。现在只需要开 1 个窗口，像跟微信好友聊天一样，让 AI 一件事一件事排队帮你做。</li>
+      <li><b>核心互动页面 + 爆款诊断器 ✅ 全力保留！</b>这是网站的灵魂。哪怕整个网站只有 1 个首页 + 1 个「Prompt X 光机」模拟页 + 3 篇互动卡片教程，只要体验好玩、颜值高，就足够惊艳全网。</li>
+    </ul>
+    <p class="en">Cut 70% for V1: no login, no live API, no parallel terminals — keep the X-Ray and three lessons, ship in 48 hours.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>10｜搞懂底层逻辑：开一家精美的全自动咖啡馆</h3>
+    <a class="topic" href="#">底层逻辑</a>
+    <p>把做网站想象成“开一家精美的全自动咖啡馆”。你不需要自己去种咖啡豆、也不需要自己砌砖头，你的角色是“店长兼总导演”。你只需要做以下 4 件事：</p>
+    <ul class="pts">
+      <li><b>搭骨架（Frontend UI）—— 相当于“装修店面与摆桌椅”</b>。你要做什么：用大白话告诉 AI 你想要什么样的颜色、按钮放在哪、点一下会发生什么动画。为什么要做：用户进站的前 3 秒决定了留不留下来。好看、能点、有反馈的网页（比如点一下按钮，烂 Prompt 自动变成好 Prompt），比冷冰冰的 Word 文档有吸引力 100 倍。</li>
+      <li><b>备食材（Static JSON Data）—— 相当于“准备精品预制菜”</b>。你要做什么：在网页聊天框里（比如现在跟我的对话，或者跟 Claude 聊天），整理出 5~10 个最经典的“提问反面教材 vs 满级改造版”，让 AI 帮你打包成一个固定格式的数据文件（JSON）。为什么要做：网站需要内容填充。把内容做成标准数据包，网页就能自动把它们渲染成漂亮的对比卡片、闯关题目，而你不需要每次去改网页代码。</li>
+      <li><b>定规矩（CLAUDE.md / .cursorrules）—— 相当于“给施工队发装修图纸”</b>。你要做什么：在项目文件夹里放一个纯文本文件，里面写好“全站统一用深邃蓝配色、所有代码必须写中文注释、不要用复杂的旧语法”。为什么要做：AI 有时候像个健忘的实习生，写第 3 个页面时就忘了第 1 个页面的风格。有了这份“图纸”，它每次干活前都会先瞄一眼，保证整个网站风格高度统一，不会越改越乱。</li>
+      <li><b>上线迎客（Vercel 部署）—— 相当于“剪彩开业，挂上门牌号”</b>。你要做什么：把做好的文件夹同步到网上（GitHub），然后点两下鼠标连上 Vercel，绑定你的域名。为什么要做：代码在自己电脑上只有你自己能看；推到 Vercel 上，全世界的人输入网址都能秒开，而且完全免费。</li>
+    </ul>
+    <p class="en">Four jobs only: decorate the shop, prep the ingredients, hand out the blueprint, open the doors.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>11｜如果觉得“很难、看不懂”，借助什么来破局？</h3>
+    <a class="topic" href="#">破局</a>
+    <p>当你看到满屏英文代码或报错时，感到害怕是人类本能。这时候千万不要去啃编程书，用下面这 4 个“降维打击外挂”：</p>
+    <ul class="pts">
+      <li><b>视觉先行法：不碰黑框框，先在浏览器里“捏橡皮泥”</b>。如果你觉得在电脑上装环境太难，第一步根本不打开编程软件。借助工具：直接让 AI（通过内置的 Web Canvas 画布）或者用 Claude 的 Artifacts，在聊天窗口右边直接把网页画出来。怎么用：你看着右边的画面，直接指挥：“把这个按钮改成暗金色”、“左边加个对比滑块”。等你看着画面觉得“哇，这就是我想要的网站！”之后，再把它导出成代码放到电脑上。眼见为实，恐惧感瞬间消失。</li>
+      <li><b>“翻译官”指令：逼 AI 说人话 + 写满中文注释</b>。当你用 Cursor 或 Antigravity 看代码文件时，如果看不懂：选中那段代码，按快捷键问 AI：“请把这段代码当成厨房做菜的过程，用比喻讲给我听它到底在干嘛？并在每一行代码后面加上大白话中文注释。”效果：你会发现所谓的 useState，其实就是“拿一个小本子记下用户现在点到了第几关”；所谓的 props，其实就是“上菜时端过去的托盘”。</li>
+      <li><b>“截图甩锅法”：报错了连一个字母都不用读</b>。小白最怕红色的报错信息（Error）。遇到报错或者页面歪了，1 秒钟都不要自己去读那个英文！直接截个图（或者把报错整段复制），丢给 AI 说：“报错了，看图，帮我修好，顺便用一句话告诉我刚才为什么错了。”</li>
+      <li><b>“边学边卖”心法：把你的卡点变成网站的第一课</b>。每次你觉得“哎呀，这个概念好难懂”的时候，立刻拿小本子记下来。当你让 AI 用比喻把你讲懂之后，直接把这个比喻放进你的网站教程里！因为你卡住的地方，就是未来成千上万个用户会卡住的地方。</li>
+    </ul>
+    <p class="en">Four lifelines: draw first, demand plain-language comments, screenshot the error, sell the stuck point.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>12｜属于你的“零压力 4 步走”行动路线</h3>
+    <a class="topic" href="#">行动</a>
+    <p>你完全不需要去记上面所有的概念。提案人自任技术合伙人兼一步步带路的教练，每次只推进一小步：</p>
+    <ul class="pts">
+      <li><b>第一阶段（今天，0 代码）</b>：先在聊天框里，把网站首页和核心玩具「Prompt X 光机」的交互画面（原型）直接画出来，你只需要动嘴提意见。</li>
+      <li><b>第二阶段（填肉）</b>：帮你生成 3 组最抓人眼球的“普通人提问 vs 高手提问”对比数据，塞进这个画面里，让它真正能点、能玩。</li>
+      <li><b>第三阶段（搬家到本地）</b>：手把手教你打开电脑上的编辑器，输入 3 行指令，把这个网页在你的电脑上跑起来。</li>
+      <li><b>第四阶段（上线）</b>：带你点几下鼠标，把它发布到公网上，生成你的专属链接。</li>
+    </ul>
+    <p>他的原话提问：把心放回肚子里，告诉我你想从下面哪个最轻松的动作开始第一步？</p>
+    <p class="en">Four zero-pressure steps: prototype in chat, fill it with three comparisons, run it locally, publish.</p>
+  </div>
+
+  <div class="note-item">
+    <blockquote>“你现在看到的这个网站，就是用我接下来要教你的这套方法，在 72 小时内构建出来的。”</blockquote>
+    <p class="en">The Build in Public line: the site itself is the proof of the method it teaches.</p>
+  </div>
+
+  <h2>附录：Muse 的意见（逐条）</h2>
+  <div class="note-item">
+    <p>以下是我自己的判断，不是提案原文，错了你直接推翻。其中标“未核实”的，是提案里的说法、我今天没有逐项核实，建之前要先核，核实前不当事实讲。</p>
+    <ul class="pts">
+      <li><b>附 01｜“静态 Prompt 字典是死穴”：认同方向，补半句</b>。“只做字典会死”是对的，且与你的学习哲学同构（fun 是工作方式、闯关是形态）。但要补半句：字典本身不是死穴，查表需求永远存在，死的是“只有字典”；免费速查表仍可当引流钩子——提案自己也留了速查表当 lead magnet，前后一致。</li>
+      <li><b>附 02｜特性名与“官方重写”：未核实清单</b>。Adaptive Reasoning、MCP v2、/loop、ultracode、xhigh、“Anthropic 2026 彻底重写 Prompt 指南”、“角色扮演几乎无效”、“反向降智机制”：我今天没有逐项核实。笔记正文照提案原样收录，但写进课程之前必须先核，核实前不当事实讲。</li>
+      <li><b>附 03｜“7 天成 AI 架构师”：营销语，不是学习结果</b>。按你的教材标准（零基础假设、给机制、带练习自测），Level 3–4 各需数周实操。路线图本身合理（破旧习惯 → 工作台 → 连接 → 代码），但时间承诺要改，否则就是过度承诺。</li>
+      <li><b>附 04｜技术栈：与 Case 10 母舰模板是同一套，不是新学，是复用</b>。Next.js + Supabase + Stripe 就是 SOP 第一周那套母舰模板；但这正是瘦身版先砍的部分（登录 / 数据库后加），先砍后加的顺序是对的，别被全栈清单吓住。另补一句：Vercel 免费档起步没错，但“完全免费”只对轻量用量成立，上量后要付费，建的时候我再核额度。</li>
+      <li><b>附 05｜商业模式：$49–$99 买断制合理，且今天的日报正好有一条佐证</b>。儿童英语 App 评论里 101 人赞同想要一口价版本，订阅疲劳是真实信号，买断制对得上。但 B2B 孵化营是远期，别写进 V1。</li>
+      <li><b>附 06｜排期：排在 LAB 之后，不并行</b>。年底第一笔收入只剩 8 周左右，一次只开一条变现线；这个站是值得做的第二条线（见总评），不是这个月的线。</li>
+      <li><b>附 07｜4 周 MVP：太乐观</b>。第 1 周（框架 + X 光机 + 3 节互动课）对 solo + AI 已是满负荷；Level 3–4 还依赖未核实的特性。现实 MVP = 瘦身版（1 首页 + X 光机模拟页 + 3 课）先上线验证，再决定加什么。</li>
+      <li><b>附 08｜双引擎分工：认同分工，但对小白是第二阶段</b>。终端自治 vs 视觉精修的分工本身是对的；瘦身版砍 worktrees / MCP 是对的——先 1 个窗口排队做事，再谈 2–3 终端并行。</li>
+      <li><b>附 09｜CLAUDE.md 宪法：全案杠杆最高的一条，认同且可立即复用</b>。不只用于这个站，你所有项目（Odyssey、LAB、笔记本）都该有；且与你“指挥 AI”的 #1 学习优先级直接咬合。这是今天就可以立的规矩，不用等建站。</li>
+      <li><b>附 10｜预烘焙与百分比数字：方向对，数字当目标听</b>。“省 90% 成本”“砍 80% 延迟成本”“砍 20–30% 冗余代码”全是提案数字，未实测。缓存 + 静态仿真确实能把 V1 成本压到接近 0，但百分比不当承诺。</li>
+      <li><b>附 11｜小白护城河：认同核心，但补一个前提</b>。知识的诅咒是真的，卡点 = 课程也是真的；护城河成立的前提是“刚爬出来”——卖的那一课必须是已走通的，不能是正在卡的。边学边卖是对的，但顺序是“先走通，再卖那一步”。</li>
+      <li><b>附 12｜Build in Public：认同，且与你副号案例拆解打法同构</b>。但要过你的边界：不露生活、不露打法（文章只谈思想）。开发过程能晒的是方法与截图，不是你具体在做什么产品、用什么招数；晒之前过这条线。</li>
+      <li><b>附 13｜第一步：选阶段一（今天，0 代码画原型）</b>。0 成本、可逆、你只需动嘴提意见，符合你 0.1% 的分工；且原型画出来那天，Vercel 那半小时学习（上次说的现学现用）正好接上。</li>
+    </ul>
+    <p><b>总评 8/10</b>：方向值得排期（交互式演练场 + 瘦身 V1 是对的路），扣分在未核实特性与 4 周时间表过乐观，且排期在 LAB 之后。</p>
+    <p class="en">Appendix: thirteen item-by-item judgments, plus an 8/10 overall — worth scheduling, after the LAB.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 卷帘人 📜</div>
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
