@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>抄作业：把每天做的事拆成数字扭蛋机 — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+</style>
+</head>
+<body>
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+<div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+        <a href="2026-10-21-ai-summoner.html"><b>召唤师</b><span>指挥 AI 笔记</span></a>
+        <a href="2026-10-21-top-summoner.html"><b>顶级召唤师</b><span>协奏与记录</span></a>
+        <a href="2026-10-22-ai-bestiary.html"><b>召唤师图鉴</b><span>全部法力盘点</span></a>
+        <a href="2026-10-22-notebooklm.html"><b>工具入门</b><span>NotebookLM</span></a>
+        <a href="2026-10-22-evals.html"><b>评估</b><span>Evals 入门</span></a>
+        <a href="2026-10-22-copilot.html"><b>工具分析</b><span>Copilot</span></a>
+        <a href="2026-10-22-github-student-pack.html"><b>学生包</b><span>GitHub 学生包全解</span></a>
+        <a href="2026-10-22-grok-sprint-plan.html"><b>外审存档</b><span>Grok 冲刺计划</span></a>
+        <a href="2026-10-23-x-search-operators.html"><b>搜索语法</b><span>找一手信源</span></a>
+        <a href="2026-10-27-alpha-school.html"><b>AI 学校</b><span>Alpha 笔记</span></a>
+        <a href="cs146s.html"><b>课程精讲</b><span>斯坦福 CS146S</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+      <a href="../styles/index.html"><b>体库</b><span>STYLE LIBRARY</span></a>
+    </div>
+</nav>
+<div class="wrap">
+  <div class="kicker">SOLO PLAYBOOK · 2026-11-02</div>
+  <h1>抄作业：把每天做的事拆成数字扭蛋机</h1>
+  <div class="sub">From Case 10's silicon pipeline to my own micro-SaaS shotgun — four products, a 30-day SOP, and three guardrails against burnout.</div>
+
+  <div class="note-item">
+    <h3>1. 起跑线对标：我的牌比他当年豪华</h3>
+    <p><span class="topic">起跑线</span></p>
+    <p>我不需要从零去学陌生的商业模式。仔细对标手里的牌，我现在的起跑线，比 Case 10 主人公（采访化名“在悉尼和稀泥”）当年的起跑线还要豪华。</p>
+    <ul class="pts">
+      <li><b>技术底盘</b>：懂 Python、Next.js、SQL，正在折腾 AI 编排，有现成的独立域名（conjurer.us）和 GitHub / Vercel 部署链路。</li>
+      <li><b>流量与审美</b>：在运营 X 双号（主号深度长文 + 副号案例拆解），懂富文本排版、信息图和情绪钩子；现代极简建筑与空间规划的审美底子，做出来的 UI 不会是糙汉程序员风。</li>
+      <li><b>性格与铁律</b>：极度反感无效社交、拒绝人工磨嘴皮子做销售、不想管人内耗——而他那套「散弹枪微产品矩阵 + AI 全自动内容获客 + Stripe 自助收钱」，恰恰是为零社交、高审美、强逻辑的“幕后造物主”量身定制的终极形态。</li>
+    </ul>
+    <p class="en">No need to learn a strange business model from zero. My starting hand is stronger than his: stack, distribution and taste, plus zero-social rules — the silicon-pipeline model is built for exactly this profile.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>2. 四发散弹枪：把正在做的事拆成微产品</h3>
+    <p><span class="topic">产品矩阵</span></p>
+    <p>他做了 24 个产品才跑出 3–4 个现金牛。我不用憋大招，直接把正在做的 X 内容生产、长文排版、闯关教育、空间设计拆成 4 个微工具，全部挂在主域名或子域名下测水温。</p>
+    <ul class="pts">
+      <li><b>Idea 1 · X Articles 爆款排版与视觉炼金炉（最快见钱，离副号最近）</b>：X 创作者写长文的痛——Markdown 表格粘贴就碎、没有好看的引用块、不会画高点击率封面和信息架构图。丢进草稿或链接 → AI 按「黄金 3 秒钩子 + 审计风 / 案例风」重写 → 一键导出兼容 X DOM 的富文本剪贴板 + 3 张配套信息图。定价 $19 / 月或 $49 买断；获客：每篇长文文末带一句“本文排版与配图由我的 AI 流水线 3 分钟生成，工具在简介”。</li>
+      <li><b>Idea 2 · AI 闯关式词根 / 历史关卡生成器（游戏化引擎商业化）</b>：欧美 Homeschool 家长、独立备考老师、语言博主想做互动游戏给孩子背 SAT 词汇或历史，但不会写代码和 JSON。把「猫咪角色剧情 + 自动 JSON 关卡生成引擎」掏出来包装成 SaaS：输入任何词表或枯燥课文 → 1 分钟生成可分享的网页版 RPG 闯关链接。免费玩 1 关，生成私有题库 $9.9 / 月；获客：Programmatic SEO，AI 生成 500 个“SAT［具体词根］互动闯关测试”网页截胡谷歌搜索流。</li>
+      <li><b>Idea 3 · AI 短剧 / 视觉分镜与角色一致性工作台（出海 AIGC 刚需）</b>：做 AI 短剧或漫画视频的人最头疼剧本不会拆镜头、同一角色换镜头就变脸、算力浪费在废片上。输入小说 / 故事梗概 → AI 拆解为带运镜参数的表格 + 锁定角色特征 Seed 的生图 / 生视频 Prompt 矩阵（一键复制给主流视频模型）。按 Credits 充值，$15 / $39 档位；获客：X 和 YouTube Shorts 自动发科幻 / 奇幻分镜对比图，评论区放工具链接。</li>
+      <li><b>Idea 4 · 独立屋 / ADU 极简空间平面图与造价审计器（高客单价）</b>：加州 / 北美想自建 ADU 或改造车库的业主看不懂市政规范，找设计师画初稿动辄几千美金且沟通极慢。输入地块尺寸、预算和需求（如 800 sqft 两层、双卫）→ AI 生成符合基础规范的动线建议、极简材质搭配清单、避坑指南与大致 BOM 预算表。单次深度审计报告 $29 ~ $79；获客：AI 批量生成各城市“ADU 审批 / 空间布局指南”SEO 落地页，被动捞高净值业主。</li>
+    </ul>
+    <p class="en">Four micro-SaaS probes from work I already do: X formatting, game-level generation, storyboard consistency, ADU audit. Each ships self-serve, zero social selling.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>3. 30 天 SOP：老板模式跑通硅基印钞机</h3>
+    <p><span class="topic">SOP</span></p>
+    <p>不同时开 4 个坑。按他的老板模式（给 AI 下 KPI + 算力换人力），30 天拆成 4 个不用跟任何人社交的通关步骤。</p>
+    <ul class="pts">
+      <li><b>第一周（Day 1–7）：造底座——母舰模板</b>：他两周更 6 个版本，靠的是登录、数据库、收钱、UI 框架早就做成预制菜母版。锁定 Next.js（App Router）+ Tailwind + Supabase（数据库与登录）+ Stripe（全球收款）+ Vercel（一键部署）；新建 conjurer-saas-boilerplate 仓库，给 Claude Code / Cursor 下老板级 KPI：极简黑金 / 现代建筑美学的 SaaS 母版，含 Google 一键登录、Stripe Checkout 订阅与按次充值 Webhook 闭环、剩余额度（Credits）扣减的 SQL 表结构。验收：在 conjurer.us 下挂测试子页面，自己用测试卡刷 $1，数据库点数自动 +100。此后每开一个新产品只需复制文件夹、改核心 Prompt 页，开发时间从 1 个月压缩到 1 个下午。</li>
+      <li><b>第二周（Day 8–14）：雇员工——精简版 5-Agent 增长流水线</b>：他用 13 个 Agent，我刚开始用 5 个串联角色就够（Python 调 API，或 Make / Coze / Dify 串联）：01 情报猎手（每天抓 Product Hunt 榜首、Indie Hackers 热帖、头部独立开发者爆款推文，筛 3 个高赞选题）；02 商业审计官（套多巴胺机制、单位经济模型、算力套利，把干瘪新闻拆成有深度的骨架）；03 双号主笔（同一骨架一鱼两吃：主号冷峻深度洞察 + 副号手把手抄作业案例）；04 视觉与排版工（转成 X Articles 纯净 HTML 格式，生成封面图英文绘图 Prompt）；05 SEO 渔网生成机（改写成英文 / 双语教程网页，自动 Commit 到网站博客目录养谷歌权重）。我的唯一工作：每天早上喝咖啡时花 15 分钟扫一眼草稿，点一下“发布”。</li>
+      <li><b>第三周（Day 15–21）：打第一枪——48 小时上线 Idea 1</b>：把自己在用的「X Articles 纯净 HTML 转换 + 爆款结构重写」工作流套上母版，做成极简网页工具。零销售冷启动（Build in Public）：副号连发 3 篇高水平案例拆解，每篇固定签名栏写“⚡ 审计官工具箱：本文由我训练的 AI 排版与案例拆解 Agent 自动生成格式，想直接用同款工作流的独立创作者，点这里自助取用 👉［链接］”。全程零沟通：觉得排版爽、想抄作业的人自然点进去刷卡。</li>
+      <li><b>第四周（Day 22–30）：开启散弹枪模式——上线 Idea 2 + 程序化 SEO</b>：复制母版，48 小时上线第二个微工具；写 Python 脚本调用大模型一次性生成 200 个长尾静态页面（如“如何用游戏化方式记住 100 个高频 SAT 历史词汇”），全自动部署到 Vercel，全部指向付费生成按钮。</li>
+    </ul>
+    <p class="en">Week 1 boilerplate, week 2 five agents, week 3 ship idea 1 in public, week 4 ship idea 2 plus 200 programmatic SEO pages. One afternoon per new product once the template exists.</p>
+  </div>
+
+  <div class="note-item">
+    <h3>4. 反内耗护栏：抄作业避坑铁律</h3>
+    <p><span class="topic">护栏</span></p>
+    <p>三条贴在屏幕边上，防止掉进传统创业的陷阱。</p>
+    <ul class="pts">
+      <li><b>铁律 1：单个产品未满 $500 营收前，绝不写超过 3 个核心页面</b>：不是在造艺术品，是在用极低成本的探针测市场。Landing Page + 核心生成页 + Stripe 付款页就够了；设置页、个人资料修改页全砍掉。</li>
+      <li><b>铁律 2：绝不接定制开发、绝不搞人工客服拉群</b>：有人发邮件问“能不能帮我定制一个功能，我付你 $200”，直接拒绝或让 AI 自动礼貌回绝。目标是边际交付成本为 0 的硅基资产，不是把自己变成按小时卖命的高级外包。</li>
+      <li><b>铁律 3：用“Token 消耗量”考核自己，而不是“坐在电脑前的时间”</b>：今天觉得很累、敲了很多字，说明又退化成“手艺人”了。停下来想：刚才这半小时干的活，怎么写一段 System Prompt 或 Python 脚本，让 AI 明天自动帮我干完？</li>
+    </ul>
+    <blockquote>“用 Token 消耗量考核自己，而不是坐在电脑前的时间。”</blockquote>
+    <p class="en">Three guardrails: under $500 revenue, three pages max. No custom work, no human support groups. Measure tokens consumed, not hours sat at the desk.</p>
+  </div>
+
+  <div class="foot">CURTAINRAISER · 卷帘人 📜</div>
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
