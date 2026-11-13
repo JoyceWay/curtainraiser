@@ -42,6 +42,24 @@
     display:flex;justify-content:space-between}
   figcaption .tag{border:1px solid var(--ink);color:var(--ink);padding:1px 8px}
   figcaption .tag.alt{border-color:var(--red);color:var(--red)}
+  figure{cursor:pointer}
+  figure.picked{outline:3px solid var(--red);outline-offset:-1px}
+  figcaption .badge{display:none;background:var(--red);color:#fff;
+    padding:1px 8px;letter-spacing:.08em}
+  figure.picked figcaption .badge{display:inline-block}
+  .howto{margin-top:18px;font-size:15px;color:#3c382f}
+  .howto b{color:var(--red)}
+  .pickbar{position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:var(--paper);border-top:2px solid var(--ink);
+    padding:10px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+    font-size:13px;letter-spacing:.12em}
+  .pickbar .count{font-weight:700}
+  .pickbar button{font:inherit;letter-spacing:.12em;cursor:pointer;
+    background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+    padding:6px 18px}
+  .pickbar button.ghost{background:transparent;color:var(--ink)}
+  .pickbar button:hover{opacity:.85}
+  body{padding-bottom:64px}
   footer{border-top:1px solid var(--line);padding:18px 28px;font-size:12px;
     letter-spacing:.16em;color:var(--gray);text-align:center}
   @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}h1{font-size:32px}}
@@ -58,6 +76,8 @@
   <p class="lede">每词一张主卡 + <b>三张不重复的搞笑备用图</b>：火柴人（V2）· 团子（V3）· 贴纸（V4）。
   三十个梗先与 Gemini 商量过一轮，再由内部量表复核，全部 ≥ 8 分才进生产。</p>
 
+  <p class="howto"><b>怎么选：</b>点一张卡 = 选它做这一词的定稿；选完点『复制结果』，把结果粘给 Muse 就行。</p>
+
   <div class="notes">
     <h2 class="mono">商量后换掉的 5 个梗</h2>
     <ul>
@@ -71,6 +91,12 @@
   </div>
 
   <div id="words"></div>
+
+  <div class="pickbar mono">
+    <span class="count" id="pickCount">已选 0 / 10</span>
+    <button id="copyBtn" type="button">复制结果</button>
+    <button id="clearBtn" type="button" class="ghost">清空</button>
+  </div>
 </main>
 <footer class="mono">内部评审页 · 未公开链接 · VOCAB LINE</footer>
 
@@ -94,14 +120,58 @@ for (const [no, word, meta] of WORDS) {
   sec.className = "word";
   let figs = "";
   for (const [sfx, zh, tag] of SLOTS) {
-    figs += `<figure><img loading="lazy" src="cards/${no}-${word}${sfx}.webp" alt="${word} ${tag}">
-      <figcaption><span>${zh}</span><span class="tag${sfx ? " alt" : ""}">${tag}</span></figcaption></figure>`;
+    figs += `<figure data-no="${no}" data-sfx="${sfx}"><img loading="lazy" src="cards/${no}-${word}${sfx}.webp" alt="${word} ${tag}">
+      <figcaption><span>${zh}</span><span class="badge">✓ 已选</span><span class="tag${sfx ? " alt" : ""}">${tag}</span></figcaption></figure>`;
   }
   sec.innerHTML = `<div class="whead"><span class="wno mono">NO. ${no}</span>
     <span class="wname">${word}</span><span class="wmeta mono">${meta}</span></div>
     <div class="grid">${figs}</div>`;
   host.appendChild(sec);
 }
+
+// ---- 点选定稿 ----
+const LS_KEY = "review-g1-picks-v1";
+const SLOT_LABEL = {"":"主卡 MAIN","-v2":"V2 火柴人","-v3":"V3 团子","-v4":"V4 贴纸"};
+let picks = {};
+try { picks = JSON.parse(localStorage.getItem(LS_KEY) || "{}") || {}; } catch (e) { picks = {}; }
+const countEl = document.getElementById("pickCount");
+const copyBtn = document.getElementById("copyBtn");
+const clearBtn = document.getElementById("clearBtn");
+
+function savePicks(){ localStorage.setItem(LS_KEY, JSON.stringify(picks)); }
+function renderPicks(){
+  document.querySelectorAll("figure[data-no]").forEach(fig => {
+    fig.classList.toggle("picked", picks[fig.dataset.no] === fig.dataset.sfx);
+  });
+  const n = WORDS.filter(([no]) => no in picks).length;
+  countEl.textContent = `已选 ${n} / ${WORDS.length}`;
+}
+document.querySelectorAll("figure[data-no]").forEach(fig => {
+  fig.addEventListener("click", () => {
+    const no = fig.dataset.no, sfx = fig.dataset.sfx;
+    if (picks[no] === sfx) delete picks[no]; else picks[no] = sfx;
+    savePicks(); renderPicks();
+  });
+});
+copyBtn.addEventListener("click", async () => {
+  const lines = WORDS.map(([no, word]) =>
+    (no in picks) ? `${no} ${word} → ${SLOT_LABEL[picks[no]]}` : `${no} ${word} → 未选`);
+  const text = lines.join("\n");
+  try { await navigator.clipboard.writeText(text); }
+  catch (e) {
+    const ta = document.createElement("textarea");
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand("copy"); ta.remove();
+  }
+  const old = copyBtn.textContent;
+  copyBtn.textContent = "已复制 ✓";
+  setTimeout(() => { copyBtn.textContent = old; }, 1500);
+});
+clearBtn.addEventListener("click", () => {
+  if (!confirm("确定要清空全部选择吗？")) return;
+  picks = {}; savePicks(); renderPicks();
+});
+renderPicks();
 </script>
 </body>
 </html>
