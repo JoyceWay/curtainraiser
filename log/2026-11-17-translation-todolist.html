@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>翻译 todolist — 卷帘人 CurtainRaiser</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #FCFCFC;
+    background-image:
+      linear-gradient(to right, rgba(37,82,110,.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37,82,110,.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center top;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #342C2C;
+  }
+  @media (max-width: 767.98px) { body { background-size: 22px 22px; } }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 32px 96px; }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 4px;
+    color: #66AC35; margin-bottom: 20px;
+  }
+  h1 { font-size: 38px; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
+  .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: #8B8B8B; margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 22px; font-weight: 700; margin: 0 0 6px;
+    padding-top: 48px;
+  }
+  .en-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    color: #8B8B8B; margin-bottom: 20px;
+  }
+  .note-item { margin-bottom: 40px; }
+  .note-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+  .note-item p { font-size: 16px; line-height: 1.7; margin: 0 0 10px; color: #3E3838; }
+  .note-item p.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: #8B8B8B; font-style: italic; line-height: 1.6;
+  }
+  .note-item code {
+    font-family: 'Inter', monospace; font-size: 14px;
+    background: rgba(102,172,53,.1); color: #4E8A28;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .note-item a { color: #4E8A28; text-decoration: underline; text-underline-offset: 3px; }
+  .note-item blockquote {
+    margin: 0 0 8px; padding: 4px 0 4px 16px;
+    border-left: 3px solid #66AC35;
+    font-size: 18px; font-weight: 500; line-height: 1.65; color: #342C2C;
+  }
+  .note-item .origin {
+    font-size: 15px; color: #8B8B8B; margin: 0 0 12px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .note-item p b { color: #342C2C; }
+  .topic {
+    display: inline-block; font-size: 13px; letter-spacing: 1px;
+    color: #4E8A28; border: 1px solid rgba(102,172,53,.45);
+    border-radius: 20px; padding: 2px 12px; margin: 0 8px 0 0;
+    text-decoration: none; font-weight: 500;
+  }
+  .qa { list-style: none; margin: 0; padding: 0; }
+  .qa li {
+    padding: 14px 4px; border-bottom: 1px solid rgba(52,44,44,.09);
+    font-size: 16px; line-height: 1.7;
+  }
+  .qa li:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; }
+  .qa .a { color: #3E3838; }
+  .pts { list-style: none; margin: 0 0 12px; padding: 0; }
+  .pts li { position: relative; font-size: 16px; line-height: 1.7; color: #3E3838;
+            padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(52,44,44,.07); }
+  .pts li:last-child { border-bottom: none; }
+  .pts li::before { content: ''; position: absolute; left: 7px; top: 18px;
+                    width: 5px; height: 5px; border-radius: 50%; background: #66AC35; }
+  .pts li b { color: #342C2C; }
+  .pts li code { font-family: 'Inter', monospace; font-size: 14px;
+                 background: rgba(102,172,53,.1); color: #4E8A28;
+                 padding: 2px 8px; border-radius: 4px; }
+  .foot {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid rgba(52,44,44,.12);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 2px; color: #8B8B8B;
+  }
+
+  /* Hermès-style two-tier header */
+  body { padding-top: 0; }
+  .hermes-head { background: #FAF7F1; }
+  .brand-bar { position: relative; text-align: center; padding: 20px 0 16px; }
+  .wordmark { display: inline-block; text-decoration: none; color: #342C2C;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 22px; letter-spacing: 12px; text-indent: 12px; }
+  .wordmark span { display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 5px; text-indent: 5px; color: #8B8B8B; margin-top: 6px; }
+  .nav-strip { position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: #FAF7F1; border-bottom: 1px solid rgba(52,44,44,.14); }
+  .nav-links { max-width: 760px; margin: 0 auto; padding: 8px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 36px; }
+  .nav-links > a, .has-menu > a { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: #342C2C; text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
+  .nav-links > a > b, .has-menu > a > b { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; }
+  .nav-links > a > span, .has-menu > a > span { font-size: 10px; font-weight: 400; letter-spacing: 3px; color: #8B8B8B; }
+  .nav-links > a:hover, .has-menu > a:hover { border-bottom-color: #342C2C; }
+  .nav-links > a.active > b, .has-menu > a.active > b { color: #A8894F; }
+  .nav-links > a.active, .has-menu > a.active { border-bottom-color: #A8894F; }
+  .nav-toggle { display: none; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); background: none; border: 0; cursor: pointer; padding: 10px; }
+    .nav-toggle span { display: block; width: 20px; height: 1px; background: #342C2C; margin: 6px 0; }
+    .nav-strip { display: none; }
+    .nav-strip.open { display: block; }
+    .nav-links { flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 0; }
+    .nav-links > a, .has-menu > a { align-items: flex-start; padding: 15px 24px; border-bottom: 1px solid rgba(52,44,44,.07); }
+    .nav-links a.active { border-bottom-color: rgba(52,44,44,.07); border-left: 3px solid #A8894F; padding-left: 21px; }
+  }
+
+  /* mega menu — hover dropdown */
+  .has-menu { position: relative; padding-bottom: 16px; margin-bottom: -16px; }
+  .mega { display: none; position: absolute; top: calc(100% - 16px); left: 50%; transform: translateX(-50%);
+    background: #FAF7F1; border: 1px solid rgba(52,44,44,.12);
+    min-width: 230px; padding: 10px 0; z-index: 101; }
+  .has-menu:hover .mega { display: block; }
+  .mega a { display: flex !important; align-items: baseline; gap: 14px;
+    padding: 11px 26px !important; border-bottom: none !important; white-space: nowrap;
+    color: #342C2C; text-decoration: none; }
+  .mega a b { font-size: 11px; letter-spacing: 2px; color: #A8894F; font-weight: 600; }
+  .mega a span { font-size: 13px; letter-spacing: 1px; color: #342C2C; }
+  .mega a:hover { background: rgba(52,44,44,.045); }
+  @media (max-width: 640px) { .mega { display: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="hermes-head">
+  <div class="brand-bar">
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span></button>
+    <a class="wordmark" href="../index.html">卷帘人<span>CURTAINRAISER</span></a>
+  </div>
+</header>
+<nav class="nav-strip">
+    <div class="nav-links">
+      <a href="../index.html"><b>首页</b><span>HOME</span></a>
+<div class="has-menu">
+      <a href="../roadmap/index.html"><b>学习计划</b><span>STUDY PLAN</span></a>
+      <div class="mega">
+        <a href="../roadmap/index.html#phase1"><b>阶段一</b><span>跑通</span></a>
+        <a href="../roadmap/index.html#phase2"><b>阶段二</b><span>加深</span></a>
+        <a href="../roadmap/index.html#phase3"><b>阶段三</b><span>开干</span></a>
+      </div>
+    </div>
+      <a href="../library/index.html"><b>资料库</b><span>LIBRARY</span></a>
+      <div class="has-menu">
+      <a href="index.html" class="active"><b>笔记本</b><span>NOTEBOOK</span></a>
+      <div class="mega">
+        <a href="index.html"><b>列表</b><span>内容目录</span></a>
+        <a href="2026-10-05-day-zero.html"><b>DAY 0</b><span>开学</span></a>
+        <a href="2026-10-05-day-one.html"><b>DAY 1</b><span>P0 开工</span></a>
+        <a href="2026-10-06-skillry.html"><b>案例拆解</b><span>skillry</span></a>
+        <a href="2026-10-08-grounding.html"><b>AI 对话</b><span>落地公式</span></a>
+        <a href="2026-10-09-loop-part4.html"><b>Loop 工程</b><span>Part 4 收官</span></a>
+        <a href="2026-10-10-bigv-handbook.html"><b>写作课</b><span>大牛借鉴手册</span></a>
+        <a href="2026-10-21-ai-summoner.html"><b>召唤师</b><span>指挥 AI 笔记</span></a>
+        <a href="2026-10-21-top-summoner.html"><b>顶级召唤师</b><span>协奏与记录</span></a>
+        <a href="2026-10-22-ai-bestiary.html"><b>召唤师图鉴</b><span>全部法力盘点</span></a>
+        <a href="2026-10-22-notebooklm.html"><b>工具入门</b><span>NotebookLM</span></a>
+        <a href="2026-10-22-evals.html"><b>评估</b><span>Evals 入门</span></a>
+        <a href="2026-10-22-copilot.html"><b>工具分析</b><span>Copilot</span></a>
+        <a href="2026-10-22-github-student-pack.html"><b>学生包</b><span>GitHub 学生包全解</span></a>
+        <a href="2026-10-22-grok-sprint-plan.html"><b>外审存档</b><span>Grok 冲刺计划</span></a>
+        <a href="2026-10-23-x-search-operators.html"><b>搜索语法</b><span>找一手信源</span></a>
+        <a href="2026-10-27-alpha-school.html"><b>AI 学校</b><span>Alpha 笔记</span></a>
+        <a href="cs146s.html"><b>课程精讲</b><span>斯坦福 CS146S</span></a>
+      </div>
+    </div>
+      <a href="../fundamentals/index.html"><b>字卡</b><span>FLASHCARDS</span></a>
+      <a href="../design/index.html"><b>设计分析</b><span>DESIGN</span></a>
+      <a href="../styles/index.html"><b>体库</b><span>STYLE LIBRARY</span></a>
+    </div>
+</nav>
+<div class="wrap">
+
+<div class="kicker">TRANSLATION TODOLIST · 2026-11-17</div>
+<h1>翻译 todolist</h1>
+<div class="sub">Translation pipeline for the X column — finished pieces in full, next up in line, good leads mined along the way.</div>
+
+<div class="note-item">
+<h3>这页是什么</h3>
+<p>翻译栏目的 todolist。已翻完的放全文，附原文链接；待翻的先列队；待挖是顺手挖到的商业线索——有价值就留在这里，排队核实。</p>
+<p class="en">A running list for the translation column: finished pieces in full with original links, next up in line, and business leads worth mining.</p>
+</div>
+
+<h2>已翻完</h2>
+
+<div class="note-item">
+<h3>01 · Jason Wei — “会做什么”的没落与“你认识谁”的崛起</h3>
+<p class="origin">原文：Jason Wei《The fall of "what you can do" and the rise of "who you know"》，2026-11-11 · <a href="https://www.jasonwei.net/blog/the-fall-of-what-you-can-do-and-the-rise-of-who-you-know">原文链接 ↗</a> · 状态：已翻完</p>
+<p>传统上，我们很多人相信这样一个世界：你多努力，比你认识谁更重要。我曾经也信奉这个观念——既作为一名科学家，相信关于这个世界的事实与“是谁说的”无关；也作为一个美国人，从小相信成功取决于你多努力，而不是你认识谁。</p>
+<p>但现在，我在 AI 领域感受到一个实质性的变化，尤其是在过去五年里：“你认识谁”变得越来越重要，“你会做什么”则变得没那么重要。我当然不是说技术能力不重要，或者说没有人脉就无法成功。技术能力依然重要，甚至决定你的职业生涯。但我注意到一个趋势。<b>如果给个大概的数字，我会说，五年前，成功 75% 靠你的能力，25% 靠你认识谁。现在，大概是 55% 靠能力，45% 靠你认识谁。</b></p>
+<p>这个趋势背后有三个技术原因。第一是智能的商品化（commoditization of intelligence）—— coding agent（编程智能体）基本上让研究执行民主化了。过去，你可以通过熬夜调代码、更频繁地盯着实验来甩开竞争对手。现在，很多研究任务只要知道该输入什么提示词，谁都能完成。研究品味（research taste）当然依然重要，但竞争环境确实变得更公平了。当技术执行不再是区分彼此的关键，其他优势自然就变得更重要了。</p>
+<p>第二个原因是，随着语言模型规模化（scaling）的成功，资源丰富让你更容易成功，这已经是个事实。十年前，一个拥有 8 张 GPU 的学术实验室完全有机会做出出色的研究。现在，一次 RL（强化学习）训练就可能需要几百张（甚至几千张）GPU，还有大量的数据和基础设施。所以现在，两个能力相当的研究者，成果可能天差地别，取决于他们手里有什么资源。而能不能拿到这些资源，不只取决于技术能力，还取决于声誉、与决策者之间建立的信任，以及职业关系。这些东西一直都很重要，但随着前沿 AI 对资源的需求越来越大，它们的重要性也在水涨船高。</p>
+<p>第三，当公司不再发表研究、转向保密的闭源模型，AI 成了一个可观测性（observability）很差的领域。在象棋或足球这类可观测性完美的领域，很容易看出来谁表现出色、谁做了什么贡献。但现在 AI 领域公开归属功劳的机制越来越少，外人很难知道一次模型发布背后到底是谁做了什么。那这个问题怎么解决？当一个人的技术贡献难以被独立验证时，人们越来越依赖间接信号，比如声誉、个人背书，以及谁愿意为你担保。于是，“你认识谁”在招聘、招募和融资中扮演的角色就大得多。</p>
+<p>我们经常谈论如何提高技术能力，却很少有人谈论如何提升“你认识谁”。我的一个观察是，很多有人脉的人把工作和生活混在一起。传统智慧是两者之间要划清界限，这在过去是非常合理的策略。但现在，社交的回报变高了，这意味着还坚持划清界限的人，付出的代价比以前大得多。</p>
+<p>Sam Altman 就是一个工作生活不分家、人脉极广的典型例子。他身上有很多值得学习的地方。比如，OpenAI 还很小的时候，Sam 就邀请几乎所有员工到他家里参加社交活动。他还在家里办扑克之夜和晚宴，目的就是招人。Sam 以慷慨待人、善待朋友而闻名，我认为这给他带来了不成比例的回报。当然，OpenAI 内部的人际关系并非都一帆风顺，但我认为 OpenAI 的成功很大程度上来自 Sam 的人脉。</p>
+<p>有意思的是，刻意努力去结识人，可能并不是最优策略。我不认为 Sam 结交人脉是因为他知道这会在职业生涯中得到回报，而是因为他天生就是一个慷慨的人，对人和技术有着天生的好奇心。也许最好的策略就是做最好、最真实的自己——说起来容易做起来难，尤其是在一个技术不断变化的世界里。</p>
+<p>虽然这些技术趋势让这个领域对技术实力的依赖变小了，但我并不认为这一定是坏事，而且这也不是我们这个领域第一次发生这种事。比如，Python 引入的抽象（abstraction）也让编程变得不那么技术化，让更多人能写代码。而且对某些技能组合来说，现在的机会比以往任何时候都多。比如，没有编程背景的人现在也能做出很棒的技术产品，产品品味或研究品味成了更关键的杠杆。<b>所以，虽然“我们能做什么”被商品化了，但“我们选择做什么”以及“和谁一起做”，将比以往任何时候都重要。</b></p>
+<blockquote>原文金句：“So while what we can do is commoditized, what we choose to do, and who we do it with will matter more than ever.”</blockquote>
+<p>感谢 Edward Hu 对这篇文章的反馈。</p>
+</div>
+
+<div class="note-item">
+<h3>02 · Andrew Ng — 用开源 OpenWorker Agent Harness SDK，为任意大模型搭建 agent harness</h3>
+<p class="origin">原文：Andrew Ng，The Batch 第 379 期，2026-11-13 · <a href="https://www.deeplearning.ai/the-batch/issue-379">原文链接 ↗</a> · 状态：已翻完</p>
+<p><b>一、为什么现在要学搭 harness</b></p>
+<p>亲爱的朋友们，</p>
+<p>搭建 agent harness（智能体脚手架）已经成为构建 AI 智能体的一种快速流行的方法。OpenWorker 项目刚刚发布了开源的 OpenWorker Agent Harness SDK，邀请大家去看看。如果你以前没有搭建过 agent harness，我鼓励你动手试一次。（这项技能已经写进了《AI 工程技能图谱》（AI Engineering Skills Map），而且面试里越来越多地会问你有没有做过这件事。）这封信要讲的，就是如何指挥编程智能体（coding agent），快速搭建出一个 agent harness。</p>
+<p><b>二、agent harness 到底是什么</b></p>
+<p><b>所谓 agent harness，就是包在大模型外面的一层代码，它给大模型提供上下文（context）、工具（tools）和护栏（guardrails），把它变成一个真正的应用。</b></p>
+<p>从去年年底以来，大模型已经强大到这个程度：很多应用都可以靠反复调用大模型、让它自己决定下一步做什么来搭建。比如，你可以给它一组工具（函数）——读 / 存文件、跑 shell 命令、执行它自己写出来的代码、读取执行结果——来打造属于你自己的编程智能体。有了这些工具，你就能做出一个简单的编程智能体：把代码存进文件，跑起来，看看有没有报错，再一轮一轮迭代改进。</p>
+<p><b>三、动手：搭一个整理文件的演示智能体</b></p>
+<p>再举第二个例子：下面是如何搭建一个整理文件的小演示智能体。首先，在一个新的空项目目录里，在 bash 中运行：</p>
+<pre style="background:#F4F1EA;padding:14px;overflow-x:auto;font-size:13px;line-height:1.6;border-radius:6px"><code>npx @openworkerai/openworker-harness-builder --agent claude --project .</code></pre>
+<p>如果你的编程智能体是 Codex，就把上面的 <code>claude</code> 换成 <code>codex</code>。这一步会在当前目录安装 OpenWorker 的 openworker-harness-builder。然后，给你的编程智能体下这样一段提示词：</p>
+<pre style="background:#F4F1EA;padding:14px;overflow-x:auto;font-size:13px;line-height:1.6;border-radius:6px"><code>Use the openworker-harness-builder skill to build a small local file-organizing agent using the OpenWorker Harness SDK. Generate 10 sample text files in a dedicated demo directory. The app should have an agent that has tools to list and read files, create/delete subdirectories, and move files. Configure the harness such that all of these tools are restricted to only the demo directory. Use OPENAI_API_KEY in ~/.env and gpt-6.1-terra [or ANTHROPIC_API_KEY and claude-sonnet-5-5]. Prompt the agent to organize files, create subdirectories, and move files into appropriate subdirectories to organize the files. Require user approval before each subdirectory creation and file move, showing the proposed operation. Display tool activity so the user can see what happens at each step of the demo. As it is running, also display a succinct description of the status of the agent loop so the user can see what's happening.</code></pre>
+<p>提示词要点（我的说明，不是原文）：用 OpenWorker Harness SDK 搭一个本地整理文件的小智能体；生成 10 个示例文本文件；所有工具只能动演示目录；每次建子目录、移文件之前都要用户批准，并展示拟执行的操作；全程显示工具活动和 agent loop 的状态。</p>
+<p><b>四、长期运行的智能体还要管什么</b></p>
+<p>搭建 agent harness，需要管理大模型的上下文。对于长时间运行的智能体，这意味着要搭建一套记忆架构（比如上下文太长时做记忆压缩（memory compaction））。一个 harness 可能还需要护栏（比如输入 / 输出检查）、审批机制、安全控制（比如不让凭证碰到大模型），以及沙箱隔离（sandboxing）。</p>
+<p>OpenWorker Desktop 已经在许多安全工作流里用起来了，我和 Rohit Prsad 打造 OpenWorker Harness SDK，本来是为了更方便地改进 OpenWorker Desktop。但让我们惊喜的是，好几个其他团队也发现 Harness SDK 对搭建别的智能体很有用，所以我们决定把它开源。你可以用它搭建本地运行的智能体，也可以搭建部署到线上的智能体。</p>
+<p><b>五、为什么选开源的 OpenWorker</b></p>
+<p>如果你还没有搭建过 agent harness，请按上面的步骤试一次。和模型厂商提供的 agent harness 工具不同，OpenWorker 的 Harness SDK 是开源的，不绑任何一家模型，所以你可以轻松搭建出能在任意模型厂商、任意云上运行的智能体。</p>
+<p>继续搭建吧！ Keep building!</p>
+<p>—— 吴恩达（Andrew Ng）</p>
+</div>
+
+<h2>待翻</h2>
+
+<div class="note-item">
+<h3>下一批，从这三篇里挑</h3>
+<ul>
+<li><b>Ethan Mollick《30 Months on the Exponential (in Charts)》</b>（2026-10-20）· <a href="https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts">原文链接 ↗</a><br>指数曲线 30 个月复盘（图表）。</li>
+<li><b>Andrew Ng《The AI Engineering Skills Map Part 4 — Coding Agents》</b>（2026-09-04）· <a href="https://www.deeplearning.ai/the-batch/the-ai-engineering-skills-map-in-detail-using-coding-agents">原文链接 ↗</a><br>AI 工程技能图谱第 4 部分：Coding Agents。</li>
+<li><b>Jason Wei《AI will not automate radiologists like you think》</b>（2026-10-19）· <a href="https://www.jasonwei.net/blog/ai-will-not-automate-radiologists-like-you-think">原文链接 ↗</a><br>AI 不会像你想的那样自动化放射科医生。</li>
+</ul>
+<p>顺序未定，下次开工前挑一篇。</p>
+</div>
+
+<h2>待挖</h2>
+
+<div class="note-item">
+<h3>小红书小工具：Claude 做的游戏，14 块卖了 18 份</h3>
+<p class="origin">来源：Km @Zkm211，X，2026-11-15 · <a href="https://x.com/zkm211/status/2122138174759789035">原帖链接 ↗</a> · 132.7K 浏览 · 2,020 收藏 · 价值：8/10</p>
+<p>小红书小工具正在内测买断和内购，后续还能接广告变现。路子和微信小程序差不多，但小红书这边还是蓝海，而且平台对小工具相关的帖子有很大的流量激励。</p>
+<p>例子：朋友的游戏《好雨时节》上架几个小时，¥14 卖了 18 份（约 ¥252），用薯币支付。玩法很简单：把 Claude 做的游戏直接移植到小红书，小红书配好了 Agent 协作工具，全程 AI 能做完。评论里也有人说上架很简单，只要代码合规，没其他门槛。</p>
+<p>对我们的意义：妈妈号的分发 + 年底前第一笔收入的新路子。单词卡和小游戏移植过去要先核实：英文 SAT 内容是否适合小红书小工具的受众、支付与合规怎么走。</p>
+<p>注：18 份是作者单方说法，未独立验证；小工具内测的准入条件未知。</p>
+<p><b>下一步：</b>核实小红书小工具的上架条件与支付方式，再决定要不要移植。</p>
+</div>
+
+</div>
+<div class="foot">CURTAINRAISER · 卷帘人 📜</div>
+</div>
+<script>
+var _nt=document.querySelector(".nav-toggle"),_ns=document.querySelector(".nav-strip");
+if(_nt&&_ns){_nt.addEventListener("click",function(){_ns.classList.toggle("open");});}
+</script>
+</body>
+</html>
