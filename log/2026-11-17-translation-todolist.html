@@ -196,7 +196,7 @@
 
 <div class="note-item">
 <h3>这页是什么</h3>
-<p>翻译栏目的 todolist。已翻完的放全文，附原文链接；待翻的先列队；待挖是顺手挖到的商业线索——有价值就留在这里，排队核实。</p>
+<p>翻译栏目的 todolist（以后简称 tdl）。已翻完的放全文，附原文链接；待翻的先列队；待挖是顺手挖到的商业线索——有价值就留在这里，排队核实。</p>
 <p class="en">A running list for the translation column: finished pieces in full with original links, next up in line, and business leads worth mining.</p>
 </div>
 
@@ -265,6 +265,22 @@
 <p>注：18 份是作者单方说法，未独立验证；小工具内测的准入条件未知。</p>
 <p><b>下一步：</b>核实小红书小工具的上架条件与支付方式，再决定要不要移植。</p>
 </div>
+<div class="note-item">
+<h3>Gemini 4 Hydrogen 免费 API：1500 次是假的，20 次是真的</h3>
+<p class="origin">来源：喵老师 @ohouhou717，X，2026-11-15 · <a href="https://x.com/ohouhou717/status/2122109896271466648">原帖链接 ↗</a> · 371.4K 浏览 · 4,721 收藏 · 价值：7/10</p>
+<p>原帖说：Google 又开始大撒币，Gemini 4 Hydrogen 免费白嫖 API，100 万上下文，每天大概 1500 次额度，搞 Agent 爽翻，去 AI Studio 建个 Key、模型填 <code>gemini-4-hydrogen</code> 就行。</p>
+<p><b>核查结果（2026-11-17，第三方整理的 Google 官方文档，11 月 12–14 日核实）：</b></p>
+<ul class="pts">
+<li><b>模型是真的：</b>Gemini 4 Hydrogen，2026-11-12 发布，模型 ID <code>gemini-4-hydrogen</code>，上下文 1,048,576 tokens，免费层确实存在（AI Studio 建 Key，不用绑卡）。</li>
+<li><b>额度是假的：</b>免费层是 <b>5 RPM / 250K TPM / 20 RPD</b>，不是 1500 次/天——差了 75 倍。额度按项目算，不按 Key 算；每天午夜 PT 重置。评论区已经有人纠正（约 20–50 次/天，不够高频跑 Agent）。</li>
+<li><b>付费价是真的便宜：</b>$1.50 输入 / $7.50 输出 每百万 tokens，1M 上下文全程 flat 价；付费 Tier 1 升到 10K RPD。Carbon / Argon 是付费专属（$2.00 / $10.00，11 月 30 日前）。</li>
+<li><b>免费层的代价：</b>免费层提示词可能被 Google 用来改进产品；免费层没有 Search / Maps grounding。</li>
+</ul>
+<p><b>对我们的意义：</b>翻译栏目 8/10 的选题——爆款帖 + 俚语（大撒币 / 白嫖 / 羊毛 / 薅）+“传言 vs 配额”的反转，翻的时候必须附纠正，不能原样传 1500 次。一人公司：免费只能试手（20 次/天跑不了 agent），真要跑按付费价算账，Hydrogen 是便宜的长上下文小弟；Argon 仍是付费专属主力。RoastPrep / 妈妈号：无直接关系，最多以后生成内容时用便宜模型降成本。</p>
+<p>注：20 RPD 是文档表里的数字，不同项目以 AI Studio 里自己项目的实时配额为准；免费额度随时可能变，不要写进任何商业计划。</p>
+<p><b>下一步：</b>翻成栏目短篇（传言 vs 配额）+ 去 AI Studio 看一眼自己项目的实时配额（1 分钟验证）。</p>
+</div>
+
 
 </div>
 <div class="foot">CURTAINRAISER · 卷帘人 📜</div>
